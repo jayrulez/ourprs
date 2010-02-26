@@ -51,7 +51,7 @@ Field* FormSet::SearchDepartmentForm()
     this->FormCode=1;
     this->FormSize=1;
     static Field SearchDepartmentFormField[1];
-    SearchDepartmentFormField[0].SetField("Dept. Code",20,15,1,STRICTNUMERICTYPE,NO_SPACING,4);
+    SearchDepartmentFormField[0].SetField("Dept. Code",20,19,1,STRICTNUMERICTYPE,NO_SPACING,4);
     return SearchDepartmentFormField;
 }
 Field* FormSet::AddEmployeeForm()
@@ -72,6 +72,6 @@ Field* FormSet::SearchEmployeeForm()
     this->FormCode=1;
     this->FormSize=1;
     static Field SearchEmployeeFormField[1];
-    SearchEmployeeFormField[0].SetField("ID. No",20,15,1,STRICTNUMERICTYPE,NO_SPACING,4);
+    SearchEmployeeFormField[0].SetField("ID. No",20,19,1,STRICTNUMERICTYPE,NO_SPACING,4);
     return SearchEmployeeFormField;
 }
