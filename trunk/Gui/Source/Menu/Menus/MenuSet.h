@@ -42,18 +42,41 @@ public:
     string GetMenuTitle();
     void ShowMenuTitle(int);
     void SetMenuTitle(string);
+
     Item* MainMenu();
+
+    //Department Menu Set
     Item* DepartmentMenu();
     Item* UpdateDepartmentFormMenu();
+    void UpdateDepartmentFormMenuExtension(int);
+    Item* ViewDepartmentMenu();
+    Item* ViewAllDepartmentMenu();
+    void ViewAllDepartmentMenuExtension(int);
+    void ViewDepartmentMenuExtension(int);
+
+    //Employee Menu Set
     Item* EmployeeMenu();
     Item* UpdateEmployeeFormMenu();
-    Item* PayrollMenu();
+    Item* ViewEmployeeMenu();
+    Item* ViewAllEmployeeMenu();
+    void ViewAllEmployeeMenuExtension(int);
+    void ViewEmployeeMenuExtension(int);
     Item* ViewSortedEmployeeMenu();
     void ViewSortedEmployeeMenuExtension(int);
+
+    //Payroll Menu Set
+    Item* PayrollMenu();
     Item* ViewSortedPayrollMenu();
     void ViewSortedPayrollMenuExtension(int);
+
+    //General Forms Menu Set
     Item* GeneralFormMenu();
-    Item* EditFormMenu();
     void GeneralFormMenuExtension(int);
+    Item* EditFormMenu();
+
+    //List Menu Set
+    Item* ListMenu();
+    void DimPrevious();
+    void DimNext();
 };
 #endif // MENUSET_H

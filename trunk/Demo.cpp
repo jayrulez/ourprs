@@ -9,6 +9,6 @@ int main()
     MasterFormMenuController MasterFormMenuControllerObj;
     Services ServicesObj;
     ServicesObj.BasicRunLevel();
-    MasterFormMenuControllerObj.SearchEmployeeMenu();
+    MasterFormMenuControllerObj.ViewEmployeeMenu();
     return 0;
 }

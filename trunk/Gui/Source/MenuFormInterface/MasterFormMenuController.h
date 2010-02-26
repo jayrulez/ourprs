@@ -6,6 +6,7 @@
 #include "../Menu/Menus/MenuSet.h"
 #include "../Form/FormController.h"
 #include "../Form/FormSet/FormSet.h"
+#include "../List/List.h"
 #include "../Menu/Menus/Extended/ExtendedMenuController.h"
 
 class MasterFormMenuController
@@ -16,6 +17,7 @@ private:
     FormController FormControllerObj;
     ExtendedMenuController ExtendedMenuControllerObj;
     FormSet FormSetObj;
+    List ListObj;
 public:
 	MasterFormMenuController();
 	~MasterFormMenuController();
