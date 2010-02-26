@@ -18,6 +18,7 @@
 	#include "../../../../Win32/Core/Console.h"
 #endif
 #include "../../../Screen/Screen.h"
+#include "Documentation/HelpDocumentation.h"
 
 #define ON 1
 #define OFF 2
@@ -32,6 +33,7 @@ private:
 	Console ConsoleObj;
 	Screen ScreenObj;
 	string MenuTitle;
+	HelpDocumentation HelpDocumentationObj;
 public:
 	Help();
 	~Help();

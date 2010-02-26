@@ -66,12 +66,16 @@ void Help::ShowHelpInfo(int Code)
     switch(Code)
     {
         case MAIN_CODE:
+            HelpDocumentationObj.MainMenuDoc();
         break;
         case DEPARTMENT_CODE:
+            HelpDocumentationObj.DepartmentMenuDoc();
         break;
         case EMPLOYEE_CODE:
+            HelpDocumentationObj.EmployeeMenuDoc();
         break;
         case PAYROLL_CODE:
+            HelpDocumentationObj.PayrollMenuDoc();
         break;
         case EXIT_CODE:
         break;
