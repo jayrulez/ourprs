@@ -27,7 +27,9 @@ public:
     int GetFormCode(Field*);
     int GetFormSize(Field*);
     Field* AddDepartmentForm();
+    Field* SearchDepartmentForm();
     Field* AddEmployeeForm();
+    Field* SearchEmployeeForm();
 
 };
 #endif

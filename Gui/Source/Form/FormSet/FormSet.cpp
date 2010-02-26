@@ -46,6 +46,14 @@ Field* FormSet::AddDepartmentForm()
     AddDepartmentFormField[3].SetField("Overtime Rate ($)",5,19,4,CURRENCYTYPE,NO_SPACING,20);
     return AddDepartmentFormField;
 }
+Field* FormSet::SearchDepartmentForm()
+{
+    this->FormCode=1;
+    this->FormSize=1;
+    static Field SearchDepartmentFormField[1];
+    SearchDepartmentFormField[0].SetField("Dept. Code",20,15,1,STRICTNUMERICTYPE,NO_SPACING,4);
+    return SearchDepartmentFormField;
+}
 Field* FormSet::AddEmployeeForm()
 {
     this->FormCode=2;
@@ -58,4 +66,12 @@ Field* FormSet::AddEmployeeForm()
     AddEmployeeFormField[4].SetField("Position",5,22,8,ALPHANUMERICTYPE,SPACING,50);
     AddEmployeeFormField[5].SetField("Hours Worked",5,25,9,FREENUMERICTYPE,NO_SPACING,20);
     return AddEmployeeFormField;
+}
+Field* FormSet::SearchEmployeeForm()
+{
+    this->FormCode=1;
+    this->FormSize=1;
+    static Field SearchEmployeeFormField[1];
+    SearchEmployeeFormField[0].SetField("ID. No",20,15,1,STRICTNUMERICTYPE,NO_SPACING,4);
+    return SearchEmployeeFormField;
 }
