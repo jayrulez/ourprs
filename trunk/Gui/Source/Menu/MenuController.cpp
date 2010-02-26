@@ -31,6 +31,7 @@ MenuController::MenuController(Item *iptr, int size,int MenuCode)
         this->size=size;
         this->MenuCode=MenuCode;
         this->CurrentItem=DefaultStartingItem();
+        this->VerticalRangeCheck=true;
     }
 }
 /*
@@ -44,6 +45,7 @@ bool MenuController::SetMenu(Item *iptr, int size,int MenuCode)
         this->size=size;
         this->MenuCode=MenuCode;
         this->CurrentItem=DefaultStartingItem();
+        this->VerticalRangeCheck=true;
         return true;
     }
     return false;
