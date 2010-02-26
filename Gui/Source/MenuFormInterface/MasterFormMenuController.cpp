@@ -154,10 +154,53 @@ int MasterFormMenuController::UpdateDepartmentMenu()
 }
 int MasterFormMenuController::ViewDepartmentMenu()
 {
+    bool Flag;
+    if(MenuControllerObj.SetMenu(MenuSetObj.ViewDepartmentMenu(),MenuSetObj.GetMenuSize(MenuSetObj.ViewDepartmentMenu()),
+    MenuSetObj.GetMenuCode(MenuSetObj.ViewDepartmentMenu())))
+    {
+        MenuControllerObj.ShowMenu();
+        MenuSetObj.ShowMenuTitle(ON);
+        MenuSetObj.ViewDepartmentMenuExtension(ON);
+        do
+        {
+            do
+            {
+                Flag=false;
+                if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuControllerObj.BrowseMenu(),MenuControllerObj.GetMenuCode()))
+                {
+                    MenuControllerObj.ShowMenu();
+                    MenuSetObj.ShowMenuTitle(ON);
+                    MenuSetObj.ViewDepartmentMenuExtension(ON);
+                    Flag=true;
+                }
+            }while(Flag);
+        }while(true);
+    }
     return 0;
 }
 int MasterFormMenuController::ViewAllDepartmentMenu()
 {
+    bool Flag;
+    if(MenuControllerObj.SetMenu(MenuSetObj.ViewAllDepartmentMenu(),MenuSetObj.GetMenuSize(MenuSetObj.ViewAllDepartmentMenu()),
+    MenuSetObj.GetMenuCode(MenuSetObj.ViewAllDepartmentMenu())))
+        MenuControllerObj.ShowMenu();
+        MenuSetObj.ViewAllDepartmentMenuExtension(ON);
+        MenuSetObj.ShowMenuTitle(ON);
+        do
+        {
+            do
+            {
+                Flag=false;
+                ListObj.BrowseList();
+                if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuControllerObj.BrowseMenu(),MenuControllerObj.GetMenuCode()))
+                {
+                    MenuControllerObj.ShowMenu();
+                    MenuSetObj.ViewAllDepartmentMenuExtension(ON);
+                    MenuSetObj.ShowMenuTitle(ON);
+                    Flag=true;
+                }
+            }while(Flag);
+        }while(true);
     return 0;
 }
 /*
@@ -274,6 +317,28 @@ int MasterFormMenuController::UpdateEmployeeMenu()
 }
 int MasterFormMenuController::ViewEmployeeMenu()
 {
+    bool Flag;
+    if(MenuControllerObj.SetMenu(MenuSetObj.ViewEmployeeMenu(),MenuSetObj.GetMenuSize(MenuSetObj.ViewEmployeeMenu()),
+    MenuSetObj.GetMenuCode(MenuSetObj.ViewEmployeeMenu())))
+    {
+        MenuControllerObj.ShowMenu();
+        MenuSetObj.ShowMenuTitle(ON);
+        MenuSetObj.ViewEmployeeMenuExtension(ON);
+        do
+        {
+            do
+            {
+                Flag=false;
+                if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuControllerObj.BrowseMenu(),MenuControllerObj.GetMenuCode()))
+                {
+                    MenuControllerObj.ShowMenu();
+                    MenuSetObj.ShowMenuTitle(ON);
+                    MenuSetObj.ViewEmployeeMenuExtension(ON);
+                    Flag=true;
+                }
+            }while(Flag);
+        }while(true);
+    }
     return 0;
 }
 int MasterFormMenuController::ViewSortedEmployeeMenu()

@@ -110,6 +110,26 @@ Item* MenuSet::UpdateEmployeeFormMenu()
     UpdateEmployeeFormMenuItem[1].SetItem(45,28,1,"MAINMENU");
     return UpdateEmployeeFormMenuItem;
 }
+Item* MenuSet::ViewEmployeeMenu()
+{
+    this->MenuCode = 8;
+    this->MenuSize = 2;
+    MenuTitle="View Employee";
+    static Item ViewEmployeeMenuItem[2];
+    ViewEmployeeMenuItem[0].SetItem(25,28,1,"<--EMPLOYEE");
+    ViewEmployeeMenuItem[1].SetItem(45,28,1,"MAINMENU");
+    return ViewEmployeeMenuItem;
+}
+Item* MenuSet::ViewAllEmployeeMenu()
+{
+    this->MenuCode = 8;
+    this->MenuSize = 2;
+    MenuTitle="View all Employees";
+    static Item ViewAllEmployeeMenuItem[2];
+    ViewAllEmployeeMenuItem[0].SetItem(25,48,1,"<--EMPLOYEE");
+    ViewAllEmployeeMenuItem[1].SetItem(45,48,1,"MAINMENU");
+    return ViewAllEmployeeMenuItem;
+}
 Item* MenuSet::ViewSortedEmployeeMenu()
 {
     this->MenuCode = 4;
@@ -124,6 +144,34 @@ Item* MenuSet::ViewSortedEmployeeMenu()
     ViewSortedEmployeeItem[5].SetItem(25,29,4,"<--EMPLOYEE");
     ViewSortedEmployeeItem[6].SetItem(45,29,4,"MAIN MENU");
     return &ViewSortedEmployeeItem[0];
+}
+void MenuSet::ViewAllEmployeeMenuExtension(int state)
+{
+    if(state==OFF)
+    {
+        ScreenObj.SetScreenTextColour(ConsoleObj.GetConsoleScreenColour()+3);
+    }
+    LineObj.setVCoord(47,49,22);
+    LineObj.vSLine();
+    LineObj.setVCoord(47,49,41);
+    LineObj.vSLine();
+    LineObj.setVCoord(47,49,55);
+    LineObj.vSLine();
+    ScreenObj.SetScreenTextColour(48);
+}
+void MenuSet::ViewEmployeeMenuExtension(int state)
+{
+    if(state==OFF)
+    {
+        ScreenObj.SetScreenTextColour(ConsoleObj.GetConsoleScreenColour()+3);
+    }
+    LineObj.setVCoord(27,29,22);
+    LineObj.vSLine();
+    LineObj.setVCoord(27,29,40);
+    LineObj.vSLine();
+    LineObj.setVCoord(27,29,55);
+    LineObj.vSLine();
+    ScreenObj.SetScreenTextColour(48);
 }
 void MenuSet::ViewSortedEmployeeMenuExtension(int state)
 {
@@ -212,6 +260,54 @@ Item* MenuSet::EditFormMenu()
     EditFormMenuItem[2].SetItem(58,35,1,"MAIN MENU");
     return EditFormMenuItem;
 }
+Item* MenuSet::ViewDepartmentMenu()
+{
+    this->MenuCode = 8;
+    this->MenuSize = 2;
+    MenuTitle="View Department";
+    static Item ViewDepartmentMenuItem[2];
+    ViewDepartmentMenuItem[0].SetItem(25,28,1,"<--DEPARTMENT");
+    ViewDepartmentMenuItem[1].SetItem(45,28,1,"MAINMENU");
+    return ViewDepartmentMenuItem;
+}
+Item* MenuSet::ViewAllDepartmentMenu()
+{
+    this->MenuCode = 8;
+    this->MenuSize = 2;
+    MenuTitle="View all Departments";
+    static Item ViewAllDepartmentMenuItem[2];
+    ViewAllDepartmentMenuItem[0].SetItem(25,48,1,"<--DEPARTMENT");
+    ViewAllDepartmentMenuItem[1].SetItem(45,48,1,"MAINMENU");
+    return ViewAllDepartmentMenuItem;
+}
+void MenuSet::ViewAllDepartmentMenuExtension(int state)
+{
+    if(state==OFF)
+    {
+        ScreenObj.SetScreenTextColour(ConsoleObj.GetConsoleScreenColour()+3);
+    }
+    LineObj.setVCoord(47,49,22);
+    LineObj.vSLine();
+    LineObj.setVCoord(47,49,41);
+    LineObj.vSLine();
+    LineObj.setVCoord(47,49,55);
+    LineObj.vSLine();
+    ScreenObj.SetScreenTextColour(48);
+}
+void MenuSet::ViewDepartmentMenuExtension(int state)
+{
+    if(state==OFF)
+    {
+        ScreenObj.SetScreenTextColour(ConsoleObj.GetConsoleScreenColour()+3);
+    }
+    LineObj.setVCoord(27,29,22);
+    LineObj.vSLine();
+    LineObj.setVCoord(27,29,41);
+    LineObj.vSLine();
+    LineObj.setVCoord(27,29,55);
+    LineObj.vSLine();
+    ScreenObj.SetScreenTextColour(48);
+}
 Item* MenuSet::UpdateDepartmentFormMenu()
 {
     this->MenuCode = 8;
@@ -221,6 +317,44 @@ Item* MenuSet::UpdateDepartmentFormMenu()
     UpdateDepartmentFormMenuItem[0].SetItem(25,28,1,"SUBMIT");
     UpdateDepartmentFormMenuItem[1].SetItem(45,28,1,"MAINMENU");
     return UpdateDepartmentFormMenuItem;
+}
+void MenuSet::UpdateDepartmentFormMenuExtension(int state)
+{
+    if(state==OFF)
+    {
+        ScreenObj.SetScreenTextColour(ConsoleObj.GetConsoleScreenColour()+3);
+    }
+    LineObj.setVCoord(27,29,22);
+    LineObj.vSLine();
+    LineObj.setVCoord(27,29,41);
+    LineObj.vSLine();
+    LineObj.setVCoord(27,29,55);
+    LineObj.vSLine();
+    ScreenObj.SetScreenTextColour(48);
+}
+Item* MenuSet::ListMenu()
+{
+    this->MenuCode = 8;
+    this->MenuSize = 2;
+    static Item ListMenuItem[2];
+    ListMenuItem[0].SetItem(3,46,1,"[<--Prev]");
+    ListMenuItem[1].SetItem(69,46,1,"[Next-->]");
+    return ListMenuItem;
+}
+void MenuSet::DimPrevious()
+{
+    ScreenObj.SetScreenTextColour(WhiteColour);
+    ConsoleObj.xyCoord(3,46);
+    cout<<"[<--PREVIOUS]";
+    ScreenObj.SetScreenTextColour(DefaultTextColour);
+
+}
+void MenuSet::DimNext()
+{
+    ScreenObj.SetScreenTextColour(WhiteColour);
+    ConsoleObj.xyCoord(69,46);
+    cout<<"[NEXT-->]";
+    ScreenObj.SetScreenTextColour(DefaultTextColour);
 }
 void MenuSet::GeneralFormMenuExtension(int state)
 {
