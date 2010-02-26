@@ -68,6 +68,8 @@ public:
     Item* PayrollMenu();
     Item* ViewSortedPayrollMenu();
     void ViewSortedPayrollMenuExtension(int);
+    Item* ViewPayrollMenu();
+    void ViewPayrollMenuExtension(int);
 
     //General Forms Menu Set
     Item* GeneralFormMenu();

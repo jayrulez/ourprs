@@ -400,6 +400,28 @@ int MasterFormMenuController::ProcessPayrollMenu()
 }
 int MasterFormMenuController::ViewPayrollMenu()
 {
+    bool Flag;
+    if(MenuControllerObj.SetMenu(MenuSetObj.ViewPayrollMenu(),MenuSetObj.GetMenuSize(MenuSetObj.ViewPayrollMenu()),
+    MenuSetObj.GetMenuCode(MenuSetObj.ViewPayrollMenu())))
+    {
+        MenuControllerObj.ShowMenu();
+        MenuSetObj.ShowMenuTitle(ON);
+        MenuSetObj.ViewDepartmentMenuExtension(ON);
+        do
+        {
+            do
+            {
+                Flag=false;
+                if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuControllerObj.BrowseMenu(),MenuControllerObj.GetMenuCode()))
+                {
+                    MenuControllerObj.ShowMenu();
+                    MenuSetObj.ShowMenuTitle(ON);
+                    MenuSetObj.ViewDepartmentMenuExtension(ON);
+                    Flag=true;
+                }
+            }while(Flag);
+        }while(true);
+    }
     return 0;
 }
 int MasterFormMenuController::ViewSortedPayrollMenu()

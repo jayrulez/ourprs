@@ -21,22 +21,23 @@ private:
 public:
 	MasterFormMenuController();
 	~MasterFormMenuController();
+	//Main Menu
 	int MainMenu();
-
+    //Department
 	int DepartmentMenu();
 	int AddDepartmentMenu();
 	int SearchDepartmentMenu();
     int UpdateDepartmentMenu();
     int ViewDepartmentMenu();
     int ViewAllDepartmentMenu();
-
+    //Employee
 	int EmployeeMenu();
 	int AddEmployeeMenu();
 	int SearchEmployeeMenu();
     int UpdateEmployeeMenu();
     int ViewEmployeeMenu();
     int ViewSortedEmployeeMenu();
-
+    //Payroll
 	int PayrollMenu();
 	int ProcessPayrollMenu();
 	int ViewPayrollMenu();
