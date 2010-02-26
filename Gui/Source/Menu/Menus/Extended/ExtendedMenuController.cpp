@@ -37,7 +37,7 @@ bool ExtendedMenuController::ExtendedMenuParser()
         case F1_KEY:
             ServicesObj.SystemClearScreen();
             HelpObj.ShowHelpMenuTitle(ON);
-            HelpObj.ShowHelpInfo();
+            HelpObj.ShowHelpInfo(CurrentCode);
             CancelObj.ShowCancelMenu();
 			return true;
         break;

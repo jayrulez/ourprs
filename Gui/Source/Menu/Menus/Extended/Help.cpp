@@ -13,6 +13,13 @@
 #include <iostream>
 #include <string>
 #include "../../../Tools/Colour.h"
+#include "../../../Tools/Frame.h"
+#include "../../../Screen/Screen.h"
+#include "../MenuSet.h"
+#ifdef _WIN32
+	#include "../../../../Win32/Core/Console.h"
+#endif
+
 using namespace std;
 
 Help::Help()
@@ -54,7 +61,20 @@ void Help::ShowHelpMenu()
     ConsoleObj.xyCoord(1,STANDARD_FRAME_HEIGHT-1);
     cout<<"[F1] - Help";
 }
-void Help::ShowHelpInfo()
+void Help::ShowHelpInfo(int Code)
 {
+    switch(Code)
+    {
+        case MAIN_CODE:
+        break;
+        case DEPARTMENT_CODE:
+        break;
+        case EMPLOYEE_CODE:
+        break;
+        case PAYROLL_CODE:
+        break;
+        case EXIT_CODE:
+        break;
+    }
 	//cout<<"HELP";
 }
