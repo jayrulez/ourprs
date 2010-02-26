@@ -201,6 +201,17 @@ Item* MenuSet::GeneralFormMenu()
     GeneralFormMenuItem[3].SetItem(58,35,1,"MAIN MENU");
     return GeneralFormMenuItem;
 }
+Item* MenuSet::EditFormMenu()
+{
+    this->MenuCode = 7;
+    this->MenuSize = 3;
+    MenuTitle="Add Member Menu";
+    static Item EditFormMenuItem[3];
+    EditFormMenuItem[0].SetItem(25,35,1,"SUBMIT");
+    EditFormMenuItem[1].SetItem(45,35,1,"CANCEL");
+    EditFormMenuItem[2].SetItem(58,35,1,"MAIN MENU");
+    return EditFormMenuItem;
+}
 Item* MenuSet::UpdateDepartmentFormMenu()
 {
     this->MenuCode = 8;

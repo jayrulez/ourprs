@@ -53,6 +53,7 @@ public:
     Item* ViewSortedPayrollMenu();
     void ViewSortedPayrollMenuExtension(int);
     Item* GeneralFormMenu();
+    Item* EditFormMenu();
     void GeneralFormMenuExtension(int);
 };
 #endif // MENUSET_H
