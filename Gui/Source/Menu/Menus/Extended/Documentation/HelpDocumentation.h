@@ -16,5 +16,8 @@ class HelpDocumentation
 		HelpDocumentation();
 		~HelpDocumentation();
 		void MainMenuDoc();
+		void DepartmentMenuDoc();
+		void EmployeeMenuDoc();
+		void PayrollMenuDoc();
 };
 #endif

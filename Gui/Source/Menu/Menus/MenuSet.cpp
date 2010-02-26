@@ -195,7 +195,7 @@ void MenuSet::ViewSortedEmployeeMenuExtension(int state)
 }
 Item* MenuSet::PayrollMenu()
 {
-    this->MenuCode = 5;
+    this->MenuCode = 4;
     this->MenuSize = 4;
     MenuTitle="Payroll Menu";
     static Item PayrollItem[4];
