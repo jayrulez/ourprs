@@ -100,6 +100,16 @@ Item* MenuSet::EmployeeMenu()
     EmployeeItem[5].SetItem(43,29,4,"MAIN MENU");
     return &EmployeeItem[0];
 }
+Item* MenuSet::UpdateEmployeeFormMenu()
+{
+    this->MenuCode = 8;
+    this->MenuSize = 2;
+    MenuTitle="Update Department";
+    static Item UpdateEmployeeFormMenuItem[2];
+    UpdateEmployeeFormMenuItem[0].SetItem(25,28,1,"SUBMIT");
+    UpdateEmployeeFormMenuItem[1].SetItem(45,28,1,"MAINMENU");
+    return UpdateEmployeeFormMenuItem;
+}
 Item* MenuSet::ViewSortedEmployeeMenu()
 {
     this->MenuCode = 4;
@@ -190,6 +200,16 @@ Item* MenuSet::GeneralFormMenu()
     GeneralFormMenuItem[2].SetItem(45,35,1,"CANCEL");
     GeneralFormMenuItem[3].SetItem(58,35,1,"MAIN MENU");
     return GeneralFormMenuItem;
+}
+Item* MenuSet::UpdateDepartmentFormMenu()
+{
+    this->MenuCode = 8;
+    this->MenuSize = 2;
+    MenuTitle="Update Department";
+    static Item UpdateDepartmentFormMenuItem[2];
+    UpdateDepartmentFormMenuItem[0].SetItem(25,28,1,"SUBMIT");
+    UpdateDepartmentFormMenuItem[1].SetItem(45,28,1,"MAINMENU");
+    return UpdateDepartmentFormMenuItem;
 }
 void MenuSet::GeneralFormMenuExtension(int state)
 {

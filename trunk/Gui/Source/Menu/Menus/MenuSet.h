@@ -44,7 +44,9 @@ public:
     void SetMenuTitle(string);
     Item* MainMenu();
     Item* DepartmentMenu();
+    Item* UpdateDepartmentFormMenu();
     Item* EmployeeMenu();
+    Item* UpdateEmployeeFormMenu();
     Item* PayrollMenu();
     Item* ViewSortedEmployeeMenu();
     void ViewSortedEmployeeMenuExtension(int);

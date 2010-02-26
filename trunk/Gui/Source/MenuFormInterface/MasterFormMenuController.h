@@ -23,12 +23,14 @@ public:
 
 	int DepartmentMenu();
 	int AddDepartmentMenu();
+	int SearchDepartmentMenu();
     int UpdateDepartmentMenu();
     int ViewDepartmentMenu();
     int ViewAllDepartmentMenu();
 
 	int EmployeeMenu();
 	int AddEmployeeMenu();
+	int SearchEmployeeMenu();
     int UpdateEmployeeMenu();
     int ViewEmployeeMenu();
     int ViewSortedEmployeeMenu();
