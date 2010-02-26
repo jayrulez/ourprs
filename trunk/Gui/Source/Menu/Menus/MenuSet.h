@@ -22,6 +22,17 @@
 #define OFF 2
 #include <string>
 #define MENU_TITLE_JOINT 194
+
+/*
+ *Menu Codes
+*/
+#define MAIN_CODE 1
+#define DEPARTMENT_CODE 2
+#define EMPLOYEE_CODE 3
+#define PAYROLL_CODE 4
+#define EXIT_CODE 5
+//End Codes
+
 using namespace std;
 
 class MenuSet

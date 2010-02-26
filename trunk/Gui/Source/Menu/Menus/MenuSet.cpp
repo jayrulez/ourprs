@@ -66,10 +66,10 @@ Item* MenuSet::MainMenu()
     this->MenuSize = 4;
     MenuTitle="MAIN MENU";
     static Item MainItem[4];
-    MainItem[0].SetItem(17,23,1,"Department");
-    MainItem[1].SetItem(37,23,2,"Employee");
-    MainItem[2].SetItem(54,23,3,"Payroll");
-    MainItem[3].SetItem(39,27,4,"Exit");
+    MainItem[0].SetItem(17,23,2,"Department");
+    MainItem[1].SetItem(37,23,3,"Employee");
+    MainItem[2].SetItem(54,23,4,"Payroll");
+    MainItem[3].SetItem(39,27,5,"Exit");
     return &MainItem[0];
 }
 

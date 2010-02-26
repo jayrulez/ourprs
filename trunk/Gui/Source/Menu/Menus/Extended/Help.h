@@ -18,6 +18,7 @@
 	#include "../../../../Win32/Core/Console.h"
 #endif
 #include "../../../Screen/Screen.h"
+
 #define ON 1
 #define OFF 2
 #define MENU_TITLE_JOINT 194
@@ -36,7 +37,7 @@ public:
 	~Help();
 	bool SetHelpMenu();
 	void ShowHelpMenuTitle(int);
-	void ShowHelpInfo();
+	void ShowHelpInfo(int);
 	void ShowHelpMenu();
 };
 #endif
