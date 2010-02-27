@@ -16,6 +16,7 @@
 #include "Scroller.h"
 #ifdef _WIN32
 	#include "../../Win32/Core/Console.h"
+	#include "../../Win32/Media/Media.h"
 #endif
 #include "../Tools/Frame.h"
 #include "../Screen/Screen.h"
@@ -36,6 +37,7 @@ class MenuController
 {
 private:
     Console ConsoleObj;
+    Media MediaObj;
     Scroller ScrollerObj;
     Screen ScreenObj;
     Frame FrameObj;
