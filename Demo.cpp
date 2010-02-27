@@ -10,6 +10,6 @@ int main()
     Services ServicesObj;
     ServicesObj.SizeConsoleWindow();
     ServicesObj.BasicRunLevel();
-    MasterFormMenuControllerObj.ViewAllDepartmentMenu();
+    MasterFormMenuControllerObj.PayrollMenu();
     return 0;
 }
