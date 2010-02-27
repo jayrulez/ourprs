@@ -25,5 +25,6 @@ public:
 	void BasicRunLevel();
 	void SystemTitle();
 	void SystemClearScreen();
+	void SizeConsoleWindow();
 };
 #endif
