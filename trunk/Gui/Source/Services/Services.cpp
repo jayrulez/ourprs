@@ -34,10 +34,12 @@ void Services::SystemClearScreen()
     ConsoleObj.xyCoord(50,1);
     cout<<"SSN Payroll Management System";
 }
+void Services::SizeConsoleWindow()
+{
+    ConsoleObj.CenterConsole(680,680);
+}
 void Services::BasicRunLevel()
 {
-
-    ConsoleObj.CenterConsole(680,680);
     ScreenObj.SetScreenColour(DefaultBgColour);
     ScreenObj.SetScreenTextColour(DefaultTextColour);
 

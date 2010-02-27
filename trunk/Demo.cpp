@@ -8,6 +8,7 @@ int main()
 {
     MasterFormMenuController MasterFormMenuControllerObj;
     Services ServicesObj;
+    ServicesObj.SizeConsoleWindow();
     ServicesObj.BasicRunLevel();
     MasterFormMenuControllerObj.PayrollMenu();
     return 0;
