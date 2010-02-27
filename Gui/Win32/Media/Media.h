@@ -12,6 +12,8 @@
 #ifndef MEDIA_H
 #define MEDIA_H
 
+#define ExtendedMenuSound "../Source/Media/Sounds/Buttons/ExtendedMenuSound.wav"
+
 class Media
 {
 public:
