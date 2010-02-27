@@ -32,6 +32,7 @@ MenuController::MenuController(Item *iptr, int size,int MenuCode)
         this->MenuCode=MenuCode;
         this->CurrentItem=DefaultStartingItem();
         this->VerticalRangeCheck=true;
+        this->HorizontalRangeCheck=true;
     }
 }
 /*
@@ -46,6 +47,7 @@ bool MenuController::SetMenu(Item *iptr, int size,int MenuCode)
         this->MenuCode=MenuCode;
         this->CurrentItem=DefaultStartingItem();
         this->VerticalRangeCheck=true;
+        this->HorizontalRangeCheck=true;
         return true;
     }
     return false;
@@ -77,19 +79,31 @@ int MenuController::BrowseMenu()
             break;
             case LEFT_KEY:
                 CurrentItem=ItemX(_PREV);
-                MediaObj.PlayWav(MenuScrollSound);
+                if(HorizontalRangeCheck==IN_MENU_RANGE)
+                {
+                    MediaObj.PlayWav(MenuScrollSound);
+                }
             break;
             case RIGHT_KEY:
                 CurrentItem=ItemX(_NEXT);
-                MediaObj.PlayWav(MenuScrollSound);
+                if(HorizontalRangeCheck==IN_MENU_RANGE)
+                {
+                    MediaObj.PlayWav(MenuScrollSound);
+                }
             break;
             case UP_KEY:
                 CurrentItem=ItemY(_PREV);
-                MediaObj.PlayWav(MenuScrollSound);
+                if(VerticalRangeCheck==IN_MENU_RANGE)
+                {
+                    MediaObj.PlayWav(MenuScrollSound);
+                }
             break;
             case DOWN_KEY:
                 CurrentItem=ItemY(_NEXT);
-                MediaObj.PlayWav(MenuScrollSound);
+                if(VerticalRangeCheck==IN_MENU_RANGE)
+                {
+                    MediaObj.PlayWav(MenuScrollSound);
+                }
             break;
             case ENTER_KEY:
                 MediaObj.PlayWav(MenuSelectSound);
@@ -109,6 +123,10 @@ int MenuController::BrowseMenu()
             {
                 ScrollerObj.KillScroll();
             }
+        }
+        if(HorizontalRangeCheck==OUT_OF_MENU_RANGE)
+        {
+            HorizontalRangeCheck=IN_MENU_RANGE;
         }
 
     }
@@ -214,13 +232,9 @@ Item MenuController::SearchMenuY(int type)
                 }
             }
             if(!FoundInline && RangeCheckY(_NEXT)==IN_MENU_RANGE)
-            {
                 TempItem=ClosestItemY(_NEXT);
-            }
             else if(RangeCheckY(_NEXT)==OUT_OF_MENU_RANGE)
-            {
-                VerticalRangeCheck=OUT_OF_MENU_RANGE;;
-            }
+                VerticalRangeCheck=OUT_OF_MENU_RANGE;
             return TempItem;
         break;
 
@@ -243,13 +257,9 @@ Item MenuController::SearchMenuY(int type)
                 }
             }
             if(!FoundInline && RangeCheckY(_PREV)==IN_MENU_RANGE)
-            {
                 TempItem=ClosestItemY(_PREV);
-            }
             else if(RangeCheckY(_PREV)==OUT_OF_MENU_RANGE)
-            {
-                VerticalRangeCheck=OUT_OF_MENU_RANGE;;
-            }
+                VerticalRangeCheck=OUT_OF_MENU_RANGE;
             return TempItem;
         break;
 	}
@@ -262,6 +272,7 @@ Item MenuController::SearchMenuX(int type)
 {
     int x;
     int y;
+    bool FoundInline=false;
     Item TempItem=CurrentItem;
 	switch(type)
 	{
@@ -271,6 +282,7 @@ Item MenuController::SearchMenuX(int type)
                 if((iptr+x)->GetItemX()>CurrentItem.GetItemX() && (iptr+x)->GetItemY()==CurrentItem.GetItemY())
                 {
                     TempItem=*(iptr+x);
+                    FoundInline=true;
                     for(y=0;y<size;y++)
                     {
                         if((iptr+y)->GetItemX()<TempItem.GetItemX() && (iptr+y)->GetItemX()>CurrentItem.GetItemX()&&
@@ -282,6 +294,10 @@ Item MenuController::SearchMenuX(int type)
                     break;
                 }
             }
+            if(RangeCheckX(_NEXT)==OUT_OF_MENU_RANGE)
+                HorizontalRangeCheck=OUT_OF_MENU_RANGE;
+            else if(!FoundInline)
+                HorizontalRangeCheck=OUT_OF_MENU_RANGE;
             return TempItem;
         break;
 
@@ -291,6 +307,7 @@ Item MenuController::SearchMenuX(int type)
                 if((iptr+x)->GetItemX()<CurrentItem.GetItemX() && (iptr+x)->GetItemY()==CurrentItem.GetItemY())
                 {
                     TempItem=*(iptr+x);
+                    FoundInline=true;
                     for(y=0;y<size;y++)
                     {
                         if((iptr+y)->GetItemX()>TempItem.GetItemX() && (iptr+y)->GetItemX()<CurrentItem.GetItemX()&&
@@ -302,6 +319,10 @@ Item MenuController::SearchMenuX(int type)
                     break;
                 }
             }
+            if(RangeCheckX(_PREV)==OUT_OF_MENU_RANGE)
+                HorizontalRangeCheck=OUT_OF_MENU_RANGE;
+            else if(!FoundInline)
+                HorizontalRangeCheck=OUT_OF_MENU_RANGE;
             return TempItem;
         break;
 	}
@@ -413,6 +434,34 @@ bool MenuController::RangeCheckY(int type)
             for(x=0;x<size;x++)
             {
                 if((iptr+x)->GetItemY()<CurrentItem.GetItemY())
+                {
+
+                    return IN_MENU_RANGE;
+                }
+            }
+        break;
+    }
+    return OUT_OF_MENU_RANGE;
+}
+bool MenuController::RangeCheckX(int type)
+{
+    int x;
+    switch(type)
+    {
+        case _NEXT:
+            for(x=0;x<size;x++)
+            {
+                if((iptr+x)->GetItemX()>CurrentItem.GetItemX())
+                {
+
+                    return IN_MENU_RANGE;
+                }
+            }
+        break;
+        case _PREV:
+            for(x=0;x<size;x++)
+            {
+                if((iptr+x)->GetItemX()<CurrentItem.GetItemX())
                 {
 
                     return IN_MENU_RANGE;

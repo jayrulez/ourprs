@@ -45,6 +45,7 @@ private:
     int size;
     int MenuCode;
     bool VerticalRangeCheck;
+    bool HorizontalRangeCheck;
     Item CurrentItem;
     Item PreviousItem;
 public:
@@ -64,6 +65,7 @@ public:
     void ShowMenu();
     void KillMenu();
     bool RangeCheckY(int);
+    bool RangeCheckX(int);
     Item DefaultStartingItem();
 };
 #endif
