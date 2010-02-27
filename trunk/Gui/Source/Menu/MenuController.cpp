@@ -77,17 +77,22 @@ int MenuController::BrowseMenu()
             break;
             case LEFT_KEY:
                 CurrentItem=ItemX(_PREV);
+                MediaObj.PlayWav(MenuScrollSound);
             break;
             case RIGHT_KEY:
                 CurrentItem=ItemX(_NEXT);
+                MediaObj.PlayWav(MenuScrollSound);
             break;
             case UP_KEY:
                 CurrentItem=ItemY(_PREV);
+                MediaObj.PlayWav(MenuScrollSound);
             break;
             case DOWN_KEY:
                 CurrentItem=ItemY(_NEXT);
+                MediaObj.PlayWav(MenuScrollSound);
             break;
             case ENTER_KEY:
+                MediaObj.PlayWav(MenuSelectSound);
             break;
             case F1_KEY:
                 return F1_KEY;

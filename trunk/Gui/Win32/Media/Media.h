@@ -12,16 +12,16 @@
 #ifndef MEDIA_H
 #define MEDIA_H
 
-#define ExtendedMenuSound "../Source/Media/Sounds/buttons/ExtendedMenuSound.wav"
-#define MenuScrollSound	"../Source/Media/Sounds/buttons/MenuScrollSound.wav"
-#define MenuSelectSound "../Source/Media/Sounds/buttons/MenuSelectSound.wav"
-#define ScreenChangeSound "../Source/Media/Sounds/buttons/ScreenChangeSound.wav"
+#define ExtendedMenuSound "../../Source/Media/Sounds/buttons/ExtendedMenuSound.wav"
+#define MenuScrollSound	"../../Source/Media/Sounds/buttons/MenuScrollSound.wav"
+#define MenuSelectSound "../../Source/Media/Sounds/buttons/MenuSelectSound.wav"
+#define ScreenChangeSound "../../Source/Media/Sounds/buttons/ScreenChangeSound.wav"
 
 class Media
 {
 public:
     Media();
     ~Media();
-    void play(char*);
+    void PlayWav(char*);
 };
 #endif // MEDIA_H

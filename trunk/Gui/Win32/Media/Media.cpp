@@ -19,7 +19,7 @@ Media::Media()
 Media::~Media()
 {
 }
-void Media::play(char* f)
+void Media::PlayWav(char* f)
 {
     PlaySound(f,NULL,SND_FILENAME|SND_ASYNC);
 }
