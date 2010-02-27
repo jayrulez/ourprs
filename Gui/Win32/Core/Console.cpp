@@ -112,6 +112,14 @@ CONSOLE_SCREEN_BUFFER_INFO Console::GetConsoleBuffer()
     GetConsoleScreenBufferInfo(hOut,&BufferInfo);
     return BufferInfo;
 }
+void Console::SetConsoleBufferHeigth(int BufferHeigth)
+{
+    CONSOLE_SCREEN_BUFFER_INFO BufferInfo = GetConsoleBuffer();
+    //cout<<"["<<BufferInfo.dwSize.Y<<"]";
+    BufferInfo.dwSize.Y=BufferHeigth;
+    BufferInfo.dwMaximumWindowSize.Y=BufferHeigth;
+    SetConsoleScreenBufferSize(hOut,BufferInfo.dwSize);
+}
 /*
     *
     *

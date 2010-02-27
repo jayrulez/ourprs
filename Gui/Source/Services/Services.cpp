@@ -37,6 +37,7 @@ void Services::SystemClearScreen()
 void Services::SizeConsoleWindow()
 {
     ConsoleObj.CenterConsole(680,680);
+    ConsoleObj.SetConsoleBufferHeigth(STANDARD_FRAME_HEIGHT+2);
 }
 void Services::BasicRunLevel()
 {
