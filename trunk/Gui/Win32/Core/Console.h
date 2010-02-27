@@ -76,6 +76,7 @@ class Console
         int GetConsoleBufferWidth();
         int GetCursorPositionX();
         int GetCursorPositionY();
+        void SetConsoleBufferHeigth(int);
         RECT GetConsolePosition();
         bool SetConsolePosition(int,int,int,int);
         bool CenterConsole(int,int);
