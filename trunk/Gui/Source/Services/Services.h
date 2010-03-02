@@ -8,6 +8,7 @@
 #include "../Screen/Screen.h"
 #ifdef _WIN32
 	#include "../../Win32/Core/Console.h"
+    #include "../../Win32/Media/Media.h"
 #endif
 
 class Services
@@ -15,6 +16,7 @@ class Services
 private:
     Screen ScreenObj;
     Console ConsoleObj;
+    Media MediaObj;
     Frame FrameObj;
     Help HelpObj;
     About AboutObj;
@@ -25,6 +27,8 @@ public:
 	void BasicRunLevel();
 	void SystemTitle();
 	void SystemClearScreen();
+	void SystemChangeScreen();
 	void SizeConsoleWindow();
+	void SystemChangeScreenSound();
 };
 #endif

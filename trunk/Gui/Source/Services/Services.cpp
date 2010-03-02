@@ -8,6 +8,7 @@
 #include "../Screen/Screen.h"
 #ifdef _WIN32
 	#include "../../Win32/Core/Console.h"
+	#include "../../Win32/Media/Media.h"
 #endif
 
 using namespace std;
@@ -33,6 +34,19 @@ void Services::SystemClearScreen()
     ScreenObj.SetScreenTextColour(DefaultTextColour);
     ConsoleObj.xyCoord(50,1);
     cout<<"SSN Payroll Management System";
+}
+void Services::SystemChangeScreenSound()
+{
+    MediaObj.PlayWav(ScreenChangeSound);
+}
+void Services::SystemChangeScreen()
+{
+    ScreenObj.ClearScreen();
+    FrameObj.ResetScreenFrame();
+    ScreenObj.SetScreenTextColour(DefaultTextColour);
+    ConsoleObj.xyCoord(50,1);
+    cout<<"SSN Payroll Management System";
+    SystemChangeScreenSound();
 }
 void Services::SizeConsoleWindow()
 {
