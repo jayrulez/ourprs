@@ -35,7 +35,7 @@ bool ExtendedMenuController::ExtendedMenuParser()
     switch(Key)
     {
         case F1_KEY:
-            ServicesObj.SystemClearScreen();
+            ServicesObj.SystemChangeScreen();
             HelpObj.ShowHelpMenuTitle(ON);
             HelpObj.ShowHelpInfo(CurrentCode);
             CancelObj.ShowCancelMenu();
@@ -43,7 +43,7 @@ bool ExtendedMenuController::ExtendedMenuParser()
         break;
 
         case F3_KEY:
-            ServicesObj.SystemClearScreen();
+            ServicesObj.SystemChangeScreen();
             AboutObj.ShowAboutMenuTitle(ON);
             AboutObj.ShowAboutInfo();
             CancelObj.ShowCancelMenu();
@@ -61,7 +61,8 @@ int ExtendedMenuController::ExtendedMenuBrowser()
         switch(ConsoleObj.ReadConsoleVirtualKeyInput())
         {
             case ESC_KEY:
-                ScreenObj.ClearScreen();
+                ServicesObj.SystemChangeScreenSound();
+                ServicesObj.SystemChangeScreen();
                 ServicesObj.BasicRunLevel();
                 read=true;
             break;
