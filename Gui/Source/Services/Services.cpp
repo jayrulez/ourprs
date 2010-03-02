@@ -10,6 +10,7 @@
 	#include "../../Win32/Core/Console.h"
 	#include "../../Win32/Media/Media.h"
 #endif
+#include <string>
 
 using namespace std;
 
@@ -24,7 +25,7 @@ Services::~Services()
 void Services::SystemTitle()
 {
     ScreenObj.SetScreenTextColour(DefaultTextColour);
-    ConsoleObj.xyCoord(50,1);
+    ConsoleObj.xyCoord(2,1);
     cout<<"SSN Payroll Management System";
 }
 void Services::SystemClearScreen()
@@ -32,7 +33,7 @@ void Services::SystemClearScreen()
     ScreenObj.ClearScreen();
     FrameObj.ResetScreenFrame();
     ScreenObj.SetScreenTextColour(DefaultTextColour);
-    ConsoleObj.xyCoord(50,1);
+    ConsoleObj.xyCoord(2,1);
     cout<<"SSN Payroll Management System";
 }
 void Services::SystemChangeScreenSound()
@@ -44,7 +45,7 @@ void Services::SystemChangeScreen()
     ScreenObj.ClearScreen();
     FrameObj.ResetScreenFrame();
     ScreenObj.SetScreenTextColour(DefaultTextColour);
-    ConsoleObj.xyCoord(50,1);
+    ConsoleObj.xyCoord(2,1);
     cout<<"SSN Payroll Management System";
     SystemChangeScreenSound();
 }
@@ -52,6 +53,10 @@ void Services::SizeConsoleWindow()
 {
     ConsoleObj.CenterConsole(680,680);
     ConsoleObj.SetConsoleBufferHeigth(STANDARD_FRAME_HEIGHT+2);
+}
+void Services::Title(string Title)
+{
+    ConsoleObj.SetCurrentConsoleTitle(Title);
 }
 void Services::BasicRunLevel()
 {

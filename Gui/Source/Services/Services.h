@@ -10,6 +10,9 @@
 	#include "../../Win32/Core/Console.h"
     #include "../../Win32/Media/Media.h"
 #endif
+#include <string>
+
+using namespace std;
 
 class Services
 {
@@ -30,5 +33,6 @@ public:
 	void SystemChangeScreen();
 	void SizeConsoleWindow();
 	void SystemChangeScreenSound();
+	void Title(string);
 };
 #endif

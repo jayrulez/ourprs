@@ -14,6 +14,9 @@
 #define CONSOLE_H
 #include <windows.h>
 
+#include <string>
+using namespace std;
+
 #define TAB_KEY VK_TAB
 
 #define LEFT_KEY VK_LEFT
@@ -89,6 +92,7 @@ class Console
         unsigned long GetConsoleScreenColour();
         void SetConsoleScreenColour(unsigned long);
         int ReadConsoleVirtualKeyInput();
+        void SetCurrentConsoleTitle(string);
         MY_INPUT_RECORD ReadConsoleCharInput();
 };
 #endif // CONSOLE_H
