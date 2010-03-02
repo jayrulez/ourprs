@@ -9,7 +9,8 @@ int main()
     MasterFormMenuController MasterFormMenuControllerObj;
     Services ServicesObj;
     ServicesObj.SizeConsoleWindow();
+    ServicesObj.Title("SSN Payroll Management System");
     ServicesObj.BasicRunLevel();
-    MasterFormMenuControllerObj.PayrollMenu();
+    MasterFormMenuControllerObj.ViewSortedPayrollMenu();
     return 0;
 }

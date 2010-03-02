@@ -141,8 +141,8 @@ Item* MenuSet::ViewSortedEmployeeMenu()
     ViewSortedEmployeeItem[2].SetItem(34,22,3,"Dept. Code");
     ViewSortedEmployeeItem[3].SetItem(48,22,4,"Position");
     ViewSortedEmployeeItem[4].SetItem(60,22,4,"Hours Worked");
-    ViewSortedEmployeeItem[5].SetItem(25,29,4,"<--Employee");
-    ViewSortedEmployeeItem[6].SetItem(45,29,4,"Main Menu");
+    ViewSortedEmployeeItem[5].SetItem(25,32,4,"<--Employee");
+    ViewSortedEmployeeItem[6].SetItem(45,32,4,"Main Menu");
     return &ViewSortedEmployeeItem[0];
 }
 void MenuSet::ViewAllEmployeeMenuExtension(int state)
@@ -191,6 +191,12 @@ void MenuSet::ViewSortedEmployeeMenuExtension(int state)
     LineObj.vSLine();
     LineObj.setVCoord(21,23,73);
     LineObj.vSLine();
+    if(FrameObj.SetFrame(2,76,16,28,NORMAL_FRAME))
+    {
+        FrameObj.sFraming();
+        ConsoleObj.xyCoord(5,16);
+        cout<<"Sort Employee by:";
+    }
     ScreenObj.SetScreenTextColour(48);
 }
 Item* MenuSet::PayrollMenu()
@@ -215,8 +221,8 @@ Item* MenuSet::ViewSortedPayrollMenu()
     ViewSortedPayrollItem[1].SetItem(26,22,2,"Last Name");
     ViewSortedPayrollItem[2].SetItem(41,22,3,"Dept. Code");
     ViewSortedPayrollItem[3].SetItem(58,22,4,"Position");
-    ViewSortedPayrollItem[4].SetItem(25,29,4,"<--Payroll");
-    ViewSortedPayrollItem[5].SetItem(45,29,4,"Main Menu");
+    ViewSortedPayrollItem[4].SetItem(25,32,4,"<--Payroll");
+    ViewSortedPayrollItem[5].SetItem(45,32,4,"Main Menu");
     return &ViewSortedPayrollItem[0];
 }
 void MenuSet::ViewSortedPayrollMenuExtension(int state)
@@ -235,6 +241,12 @@ void MenuSet::ViewSortedPayrollMenuExtension(int state)
     LineObj.vSLine();
     LineObj.setVCoord(21,23,69);
     LineObj.vSLine();
+    if(FrameObj.SetFrame(6,72,16,28,NORMAL_FRAME))
+    {
+        FrameObj.sFraming();
+        ConsoleObj.xyCoord(9,16);
+        cout<<"Sort Payroll by:";
+    }
     ScreenObj.SetScreenTextColour(48);
 }
 Item* MenuSet::ViewPayrollMenu()

@@ -20,7 +20,9 @@
 #include <windows.h>
 #include "Console.h"
 #include <iostream>
+#include <string>
 using namespace std;
+
 Console::Console()
 {
     this->colour=0;
@@ -331,4 +333,8 @@ int Console::GetCursorPositionY()
     hOut = GetStdHandle (STD_OUTPUT_HANDLE);
     GetConsoleScreenBufferInfo (hOut, &ScreenBufferInfo);
     return ScreenBufferInfo.dwCursorPosition.Y;
+}
+void Console::SetCurrentConsoleTitle(string Title)
+{
+    SetConsoleTitle(Title.c_str());
 }
