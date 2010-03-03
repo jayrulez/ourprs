@@ -1,4 +1,4 @@
-﻿#ifndef _BASEMODEL_H
+#ifndef _BASEMODEL_H
 #include "./BaseModel.h"
 #endif
 

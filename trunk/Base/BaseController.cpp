@@ -1,4 +1,4 @@
-﻿#ifndef _BASECONTROLLER_H
+#ifndef _BASECONTROLLER_H
 #include "./BaseController.h"
 #endif
 
