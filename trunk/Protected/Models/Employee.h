@@ -29,5 +29,6 @@ public:
 	void setDeptCode(int);
 	void setPosition(string);
 	void setHoursWorked(float);
+	Employee * next = NULL;
 };
 #endif
