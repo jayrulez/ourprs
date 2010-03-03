@@ -1,6 +1,10 @@
 #ifndef _COMPONENT_H
-#include "./Component.h"
-#endif
+#define _COMPONENT_H
 
-Component::Component() {}
-Component::~Component() {}
+class Component
+{
+public:
+	Component();
+	~Component();
+};
+#endif
