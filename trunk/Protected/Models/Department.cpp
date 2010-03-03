@@ -18,6 +18,16 @@ Department::Department(int deptCode, string deptName, float regularRate, float o
 	this->next = next;
 }
 
+Department* Department::getNext()
+{
+	return this->next;
+}
+
+void Department::setNext(Department * next = NULL)
+{
+	this->next = next;
+}
+
 int Department::getDeptCode() {
 	return this->deptCode;
 }
