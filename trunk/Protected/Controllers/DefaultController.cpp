@@ -1,5 +1,5 @@
 #ifndef _DEFAULTCONTROLLER_H
-	#include "./DefaultController.h"
+#include "./DefaultController.h"
 #endif
 
 DefaultController::DefaultController()
@@ -7,4 +7,9 @@ DefaultController::DefaultController()
 }
 DefaultController::~DefaultController()
 {
+}
+
+int DefaultController::actionIndex()
+{
+
 }

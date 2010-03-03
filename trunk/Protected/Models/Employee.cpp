@@ -10,7 +10,7 @@ Employee::~Employee()
 {
 }
 
-Employee::Employee(int id, string firstname, string lastname, int deptCode, string position, float hoursWorked, Employee * next = NULL) {
+Employee::Employee(int id = 0, string firstname = "", string lastname = "", int deptCode = 0, string position = "", float hoursWorked = 0, Employee * next = NULL) {
 	this->id = id;
 	this->firstname = firstname;
 	this->lastname = lastname;
