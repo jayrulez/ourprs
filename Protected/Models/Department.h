@@ -24,5 +24,6 @@ public:
 	void setDeptName(string);
 	void setRegularRate(float);
 	void setOvertimeRate(float);
+	Department * next = NULL;
 };
 #endif
