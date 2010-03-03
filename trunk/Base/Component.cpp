@@ -17,3 +17,15 @@ Services* Component::getServicesObj()
 {
     return this->services;
 }
+
+int Component::run() {
+	return 0;
+}
+
+void Component::setComponent(Component* component) {
+	this->component = component;
+}
+
+Component* Component::getComponent() {
+	return this->component;
+}

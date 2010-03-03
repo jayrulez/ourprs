@@ -4,6 +4,7 @@
 
 Department::Department()
 {
+	this->next = NULL;
 }
 
 Department::~Department()

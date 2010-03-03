@@ -8,10 +8,14 @@ class Component
 private:
     MasterFormMenuController * menu;
     Services * services;
+	Component * component;
 public:
 	Component();
-	~Component();
+	virtual ~Component();
 	MasterFormMenuController* getMenuObj();
 	Services* getServicesObj();
+	void setComponent(Component*);
+	Component* getComponent();
+	virtual int run();
 };
 #endif
