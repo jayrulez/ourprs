@@ -5,6 +5,46 @@
 Department::Department()
 {
 }
+
 Department::~Department()
 {
+}
+
+Department::Department(int deptCode, string deptName, float regularRate, float overtimeRate) {
+	this->deptCode = deptCode;
+	this->deptName = deptName;
+	this->regularRate = regularRate;
+	this->overtimeRate = overtimeRate;
+}
+
+int Department::getDeptCode() {
+	return this->deptCode;
+}
+
+string Department::getDeptName() {
+	return this->deptName;
+}
+
+float Department::getRegularRate() {
+	return this->regularRate;
+}
+
+float Department::getOvertimeRate() {
+	return this->overtimeRate;
+}
+
+void Department::setDeptCode(int deptCode) {
+	this->deptCode = deptCode;
+}
+
+void Department::setDeptName(string deptName) {
+	this->deptName = deptName;
+}
+
+void Department::setRegularRate(float regularRate) {
+	this->regularRate = regularRate;
+}
+
+void Department::setOvertimeRate(float overtimeRate) {
+	this->overtimeRate = overtimeRate;
 }
