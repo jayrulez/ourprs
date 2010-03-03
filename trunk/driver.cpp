@@ -1,9 +1,6 @@
-﻿#include "./config.h"
-#ifndef _APPLICATION_H
-#include "./Protected/Application.h"
-#endif
-
-int main()
+﻿int main()
 {
+	Application *app = new Application();
+	app->run();
 	return 0;
 }
