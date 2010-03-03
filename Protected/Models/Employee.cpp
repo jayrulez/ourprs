@@ -4,6 +4,7 @@
 
 Employee::Employee()
 {
+	this->next = NULL;
 }
 
 Employee::~Employee()
