@@ -1,4 +1,4 @@
-﻿#ifndef _APPLICATION_H
+#ifndef _APPLICATION_H
 #include "./Application.h"
 #endif
 
@@ -12,10 +12,11 @@ Application::~Application()
 
 int Application::run()
 {
-    this->init();
+	this->init();
+	return 0;
 }
 
 int Application::init()
 {
-    return 0;
+	return 0;
 }

@@ -1,4 +1,4 @@
-﻿#ifndef _COMPONENT_H
+#ifndef _COMPONENT_H
 #include "./Component.h"
 #endif
 
