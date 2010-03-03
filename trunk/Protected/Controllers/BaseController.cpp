@@ -1,0 +1,2 @@
+﻿BaseController::BaseController() {}
+BaseController::~BaseController() {}
