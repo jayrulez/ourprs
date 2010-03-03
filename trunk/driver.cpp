@@ -1,7 +1,9 @@
-﻿#ifndef _APPLICATION_H
+#include "./config.h"
+#ifndef _APPLICATION_H
 #include "./Base/Application.h"
 #endif
 
+using namespace std;
 
 int main()
 {

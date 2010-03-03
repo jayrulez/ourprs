@@ -1,2 +1,2 @@
-﻿DefaultController::DefaultController() {}
+DefaultController::DefaultController() {}
 DefaultController::~DefaultController() {}

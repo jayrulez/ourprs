@@ -1,2 +1,2 @@
-﻿Department::Department() {}
+Department::Department() {}
 Department::~Department() {}

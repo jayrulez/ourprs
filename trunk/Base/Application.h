@@ -1,4 +1,4 @@
-﻿#ifndef _APPLICATION_H
+#ifndef _APPLICATION_H
 #define _APPLICATION_H
 #ifndef _COMPONENT_H
 #include "./Component.h"
@@ -10,5 +10,6 @@ public:
 	Application();
 	~Application();
 	int run();
+	int init();
 };
 #endif

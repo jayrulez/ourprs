@@ -1,4 +1,4 @@
-﻿#ifndef _EMPLOYEE_H
+#ifndef _EMPLOYEE_H
 #define _EMPLOYEE_H
 #ifndef _BASEMODEL_H
 #include "../../Base/BaseModel.h"
