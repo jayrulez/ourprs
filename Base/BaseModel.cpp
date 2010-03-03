@@ -1,2 +1,2 @@
-BaseModel::BaseModel() {}
+﻿BaseModel::BaseModel() {}
 BaseModel::~BaseModel() {}

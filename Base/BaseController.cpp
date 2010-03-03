@@ -1,2 +1,2 @@
-BaseController::BaseController() {}
+﻿BaseController::BaseController() {}
 BaseController::~BaseController() {}
