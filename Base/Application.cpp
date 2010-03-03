@@ -1,3 +1,11 @@
-﻿Application::Application() {}
-Application::~Application() {}
-int Application::run() {}
+﻿Application::Application()
+{
+}
+
+Application::~Application()
+{
+}
+
+int Application::run() 
+{
+}
