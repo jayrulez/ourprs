@@ -1,0 +1,2 @@
+﻿BaseModel::BaseModel() {}
+BaseModel::~BaseModel() {}

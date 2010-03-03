@@ -1,0 +1,2 @@
+﻿Employee::Employee() {}
+Employee::~Employee() {}
