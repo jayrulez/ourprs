@@ -1,10 +1,10 @@
 #ifndef _DEFAULTCONTROLLER_H
-	#include "../../Base/BaseController.h"
+	#include "./DefaultController.h"
 #endif
 
-BaseController::DefaultController()
+DefaultController::DefaultController()
 {
 }
-BaseController::~DefaultController()
+DefaultController::~DefaultController()
 {
 }
