@@ -9,5 +9,6 @@ class Application: public Component
 public:
 	Application();
 	~Application();
+	int run();
 };
 #endif
