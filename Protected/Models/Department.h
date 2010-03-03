@@ -15,7 +15,7 @@ private:
 public:
 	Department();
 	~Department();
-	Department(int, string, float, float);
+	Department(int, string, float, float, Department*);
 	int getDeptCode();
 	string getDeptName();
 	float getRegularRate();
