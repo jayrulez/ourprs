@@ -4,8 +4,7 @@
 #include "./Component.h"
 #endif
 
-class Application: public Component
-{
+class Application: public Component {
 public:
 	Application();
 	~Application();
