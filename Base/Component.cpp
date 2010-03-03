@@ -1,2 +1,2 @@
-﻿Component::Component() {}
+Component::Component() {}
 Component::~Component() {}
