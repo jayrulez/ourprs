@@ -10,7 +10,7 @@ Department::~Department()
 {
 }
 
-Department::Department(int deptCode, string deptName, float regularRate, float overtimeRate, Department * next = NULL) {
+Department::Department(int deptCode = 0, string deptName = "", float regularRate = 0, float overtimeRate = 0, Department * next = NULL) {
 	this->deptCode = deptCode;
 	this->deptName = deptName;
 	this->regularRate = regularRate;
