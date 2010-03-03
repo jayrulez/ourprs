@@ -13,6 +13,7 @@ private:
 	int deptCode;
 	string position;
 	float hoursWorked;
+	Employee * next;
 public:
 	Employee();
 	~Employee();
@@ -29,6 +30,7 @@ public:
 	void setDeptCode(int);
 	void setPosition(string);
 	void setHoursWorked(float);
-	Employee * next = NULL;
+	void setNext(Employee*);
+	Employee* getNext();
 };
 #endif

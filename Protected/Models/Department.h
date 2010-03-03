@@ -12,6 +12,7 @@ private:
 	string deptName;
 	float regularRate;
 	float overtimeRate;
+	Department * next;
 public:
 	Department();
 	~Department();
@@ -24,6 +25,7 @@ public:
 	void setDeptName(string);
 	void setRegularRate(float);
 	void setOvertimeRate(float);
-	Department * next = NULL;
+	void setNext(Department*);
+	Department* getNext();
 };
 #endif

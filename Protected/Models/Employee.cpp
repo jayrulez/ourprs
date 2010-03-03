@@ -20,6 +20,16 @@ Employee::Employee(int id, string firstname, string lastname, int deptCode, stri
 	this->next = next;
 }
 
+Employee* Employee::getNext()
+{
+	return this->next;
+}
+
+void Employee::setNext(Employee * next = NULL)
+{
+	this->next = next;
+}
+
 int Employee::getId() {
 	return this->id;
 }
