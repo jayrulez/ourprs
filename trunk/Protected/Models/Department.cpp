@@ -10,11 +10,12 @@ Department::~Department()
 {
 }
 
-Department::Department(int deptCode, string deptName, float regularRate, float overtimeRate) {
+Department::Department(int deptCode, string deptName, float regularRate, float overtimeRate, Department * next = NULL) {
 	this->deptCode = deptCode;
 	this->deptName = deptName;
 	this->regularRate = regularRate;
 	this->overtimeRate = overtimeRate;
+	this->next = next;
 }
 
 int Department::getDeptCode() {

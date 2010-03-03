@@ -16,7 +16,7 @@ private:
 public:
 	Employee();
 	~Employee();
-	Employee(int, string, string, int, string, float);
+	Employee(int, string, string, int, string, float, Employee*);
 	int getId();
 	string getFirstname();
 	string getLastname();

@@ -10,13 +10,14 @@ Employee::~Employee()
 {
 }
 
-Employee::Employee(int id, string firstname, string lastname, int deptCode, string position, float hoursWorked) {
+Employee::Employee(int id, string firstname, string lastname, int deptCode, string position, float hoursWorked, Employee * next = NULL) {
 	this->id = id;
 	this->firstname = firstname;
 	this->lastname = lastname;
 	this->deptCode = deptCode;
 	this->position = position;
 	this->hoursWorked = hoursWorked;
+	this->next = next;
 }
 
 int Employee::getId() {
