@@ -88,8 +88,8 @@ public:
     void ViewSortedPayrollMenuExtension(int);
     Item* ViewPayrollMenu();
     void ViewPayrollMenuExtension(int);
-    void AddDepartmentAfterSaveMenu();
-    void UpdateDepartmentAfterSaveMenu();
+    Item* AddDepartmentAfterSaveMenu();
+    Item* UpdateDepartmentAfterSaveMenu();
 
     //General Forms Menu Set
     Item* GeneralFormMenu();
