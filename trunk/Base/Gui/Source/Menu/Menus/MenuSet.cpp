@@ -62,7 +62,7 @@ void MenuSet::SetMenuTitle(string MenuTitle)
 }
 Item* MenuSet::MainMenu()
 {
-    this->MenuCode = 1;
+    this->MenuCode = MAIN_CODE;
     this->MenuSize = 4;
     MenuTitle="MAIN MENU";
     static Item MainItem[4];
@@ -75,7 +75,7 @@ Item* MenuSet::MainMenu()
 
 Item* MenuSet::DepartmentMenu()
 {
-    this->MenuCode = 2;
+    this->MenuCode = DEPARTMENT_CODE;
     this->MenuSize = 5;
     MenuTitle="Department Menu";
     static Item DepartmentItem[5];
@@ -88,7 +88,7 @@ Item* MenuSet::DepartmentMenu()
 }
 Item* MenuSet::EmployeeMenu()
 {
-    this->MenuCode = 3;
+    this->MenuCode = EMPLOYEE_CODE;
     this->MenuSize = 6;
     MenuTitle="Employee Menu";
     static Item EmployeeItem[6];
@@ -201,7 +201,7 @@ void MenuSet::ViewSortedEmployeeMenuExtension(int state)
 }
 Item* MenuSet::PayrollMenu()
 {
-    this->MenuCode = 4;
+    this->MenuCode = PAYROLL_CODE;
     this->MenuSize = 4;
     MenuTitle="Payroll Menu";
     static Item PayrollItem[4];
