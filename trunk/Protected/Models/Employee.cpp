@@ -5,6 +5,7 @@
 Employee::Employee()
 {
 	this->next = NULL;
+	this->setFilename("Employee Payroll Data.txt");
 }
 
 Employee::~Employee()
@@ -20,6 +21,7 @@ Employee::Employee(int id = 0, string firstname = "", string lastname = "", int 
 	this->position = position;
 	this->hoursWorked = hoursWorked;
 	this->next = next;
+	this->setFilename("Employee Payroll Data.txt");
 }
 
 Employee* Employee::getNext()

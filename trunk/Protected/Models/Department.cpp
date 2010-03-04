@@ -5,6 +5,7 @@
 Department::Department()
 {
 	this->next = NULL;
+	this->setFilename("Department Rates.txt");
 }
 
 Department::~Department()
@@ -18,6 +19,7 @@ Department::Department(int deptCode = 0, string deptName = "", float regularRate
 	this->regularRate = regularRate;
 	this->overtimeRate = overtimeRate;
 	this->next = next;
+	this->setFilename("Department Rates.txt");
 }
 
 Department* Department::getNext()

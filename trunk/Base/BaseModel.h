@@ -11,6 +11,8 @@ private:
 public:
 	BaseModel();
 	~BaseModel();
+	void setFilename();
+	string getFilename();
 	virtual void write();
 	virtual void read();
 };
