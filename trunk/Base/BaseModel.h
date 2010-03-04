@@ -3,6 +3,9 @@
 #ifndef _COMPONENT_H
 #include "./Component.h"
 #endif
+#include <string>
+
+using namespace std;
 
 class BaseModel: public Component
 {
