@@ -348,7 +348,7 @@ Item* MenuSet::DepartmentMenu()
 }
 Item* MenuSet::ViewDepartmentMenu()
 {
-    this->MenuCode = 8;
+    this->MenuCode = DEPARTMENT_VIEW_CODE;
     this->MenuSize = 2;
     MenuTitle="View Department";
     static Item ViewDepartmentMenuItem[2];
@@ -358,7 +358,7 @@ Item* MenuSet::ViewDepartmentMenu()
 }
 Item* MenuSet::ViewAllDepartmentMenu()
 {
-    this->MenuCode = 8;
+    this->MenuCode = DEPARTMENT_LIST_CODE;
     this->MenuSize = 2;
     MenuTitle="View all Departments";
     static Item ViewAllDepartmentMenuItem[2];
@@ -396,7 +396,7 @@ void MenuSet::ViewDepartmentMenuExtension(int state)
 }
 Item* MenuSet::UpdateDepartmentFormMenu()
 {
-    this->MenuCode = 8;
+    this->MenuCode = DEPARTMENT_UPDATE_CODE;
     this->MenuSize = 2;
     MenuTitle="Update Department";
     static Item UpdateDepartmentFormMenuItem[2];
@@ -418,6 +418,29 @@ void MenuSet::UpdateDepartmentFormMenuExtension(int state)
     LineObj.vSLine();
     ScreenObj.SetScreenTextColour(48);
 }
+void MenuSet::AddDepartmentAfterSaveMenu()
+{
+    this->MenuCode = 8;
+    this->MenuSize = 2;
+    MenuTitle="Update Department";
+    static Item AddDepartmentAfterSaveMenuItem[2];
+    AddDepartmentAfterSaveMenuItem[0].SetItem(25,28,DEPARTMENT_SEARCH_CODE,"Add More");
+    AddDepartmentAfterSaveMenuItem[1].SetItem(25,48,DEPARTMENT_CODE,"<--Department");
+    AddDepartmentAfterSaveMenuItem[2].SetItem(45,28,MAIN_CODE,"Main Menu");
+    return AddDepartmentAfterSaveMenuItem;
+}
+void MenuSet::UpdateDepartmentAfterSaveMenu()
+{
+    this->MenuCode = 8;
+    this->MenuSize = 2;
+    MenuTitle="Update Department";
+    static Item UpdateDepartmentAfterSaveMenuItem[2];
+    UpdateDepartmentAfterSaveMenuItem[0].SetItem(25,28,DEPARTMENT_SEARCH_CODE,"Update Another");
+    UpdateDepartmentAfterSaveMenuItem[1].SetItem(25,48,DEPARTMENT_CODE,"<--Department");
+    UpdateDepartmentAfterSaveMenuItem[2].SetItem(45,28,MAIN_CODE,"Main Menu");
+    return UpdateDepartmentAfterSaveMenuItem;
+}
+
 
 
 
