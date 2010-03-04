@@ -17,7 +17,7 @@ DefaultController::~DefaultController()
 
 int DefaultController::getDefaultActionCode()
 {
-    return 1000;
+    return _DEFAULTCONTROLLER_ACTIONINDEX;
 }
 
 int DefaultController::actionIndex()
@@ -30,5 +30,13 @@ int DefaultController::actionIndex()
 
 int DefaultController::run(int actionCode)
 {
-	return this->actionIndex();
+    int call;
+    switch(actionCode)
+    {
+        case _DEFAULTCONTROLLER_ACTIONINDEX:
+        default:
+            call = this->actionIndex();
+        break;
+    }
+    return call;
 }

@@ -9,6 +9,9 @@
 #ifndef _DEPARTMENTCONTROLLER_H
 #include "../Protected/Controllers/DepartmentController.h"
 #endif
+#ifndef _EMPLOYEECONTROLLER_H
+#include "../Protected/Controllers/EmployeeController.h"
+#endif
 
 class Application: public Component
 {
