@@ -107,6 +107,7 @@ int MenuController::BrowseMenu()
             break;
             case ENTER_KEY:
                 MediaObj.PlayWav(MenuSelectSound);
+                return CurrentItem.GetItemCode();
             break;
             case F1_KEY:
                 return F1_KEY;
