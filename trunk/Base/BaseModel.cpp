@@ -10,6 +10,16 @@ BaseModel::~BaseModel()
 {
 }
 
+void BaseModel::write()
+{
+
+}
+
+void BaseModel::read()
+{
+
+}
+
 void BaseModel::setFilename(string filename)
 {
 	this->filename = filename;
