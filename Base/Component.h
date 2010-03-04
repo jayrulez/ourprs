@@ -17,5 +17,6 @@ public:
 	void setComponent(Component*);
 	Component* getComponent();
 	virtual int run();
+	void callMenu(Component*);
 };
 #endif

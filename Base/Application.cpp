@@ -30,7 +30,6 @@ int Application::init()
 int Application::main()
 {
 	DefaultController controller(this);
-	Component * frontController = &controller;
-	frontController->run();
+	this->callMenu(&controller);
 	return 0;
 }
