@@ -6,8 +6,12 @@
 
 class BaseModel: public Component
 {
+private:
+	string filename;
 public:
 	BaseModel();
 	~BaseModel();
+	virtual void write();
+	virtual void read();
 };
 #endif

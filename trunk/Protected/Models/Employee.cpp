@@ -11,7 +11,8 @@ Employee::~Employee()
 {
 }
 
-Employee::Employee(int id = 0, string firstname = "", string lastname = "", int deptCode = 0, string position = "", float hoursWorked = 0, Employee * next = NULL) {
+Employee::Employee(int id = 0, string firstname = "", string lastname = "", int deptCode = 0, string position = "", float hoursWorked = 0, Employee * next = NULL)
+{
 	this->id = id;
 	this->firstname = firstname;
 	this->lastname = lastname;
@@ -31,50 +32,72 @@ void Employee::setNext(Employee * next = NULL)
 	this->next = next;
 }
 
-int Employee::getId() {
+int Employee::getId()
+{
 	return this->id;
 }
 
-string Employee::getFirstname() {
+string Employee::getFirstname()
+{
 	return this->firstname;
 }
 
-string Employee::getLastname() {
+string Employee::getLastname()
+{
 	return this->lastname;
 }
 
-int Employee::getDeptCode() {
+int Employee::getDeptCode()
+{
 	return this->deptCode;
 }
 
-string Employee::getPosition() {
+string Employee::getPosition()
+{
 	return this->position;
 }
 
-float Employee::getHoursWorked() {
+float Employee::getHoursWorked()
+{
 	return this->hoursWorked;
 }
 
-void Employee::setId(int id) {
+void Employee::setId(int id)
+{
 	this->id = id;
 }
 
-void Employee::setFirstname(string firstname) {
+void Employee::setFirstname(string firstname)
+{
 	this->firstname = firstname;
 }
 
-void Employee::setLastname(string lastname) {
+void Employee::setLastname(string lastname)
+{
 	this->lastname = lastname;
 }
 
-void Employee::setDeptCode(int deptCode) {
+void Employee::setDeptCode(int deptCode)
+{
 	this->deptCode = deptCode;
 }
 
-void Employee::setPosition(string position) {
+void Employee::setPosition(string position)
+{
 	this->position = position;
 }
 
-void Employee::setHoursWorked(float hoursWorked) {
+void Employee::setHoursWorked(float hoursWorked)
+{
 	this->hoursWorked = hoursWorked;
+}
+
+void Employee::write()
+{
+
+}
+
+void Employee::read()
+{
+
 }
