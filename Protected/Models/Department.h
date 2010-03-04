@@ -1,7 +1,7 @@
 #ifndef _DEPARTMENT_H
 #define _DEPARTMENT_H
 #ifndef _BASEMODEL_H
-	#include "../../Base/BaseModel.h"
+#include "../../Base/BaseModel.h"
 #endif
 #include <string>
 
@@ -27,5 +27,7 @@ public:
 	void setOvertimeRate(float);
 	void setNext(Department*);
 	Department* getNext();
+	void read();
+	void write();
 };
 #endif

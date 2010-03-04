@@ -32,5 +32,20 @@ public:
 	void setHoursWorked(float);
 	void setNext(Employee*);
 	Employee* getNext();
+	void read();
+	void write();
+	bool Employee::operator==(const Employee &employee) const
+	{
+		return this->id == employee.id &&
+		this->firstname == employee.firstname &&
+		this->lastname == employee.lastname &&
+		this->deptCode == employee.deptCode &&
+		this->position == employee.position &&
+		this->hoursWorked == employee.hoursWorked;
+	}
+	bool Employee::operator!=(const Employee &employee) const
+	{
+		return !(*this == employee);
+	}
 };
 #endif
