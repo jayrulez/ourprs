@@ -60,6 +60,10 @@ void MenuSet::SetMenuTitle(string MenuTitle)
 {
     this->MenuTitle=MenuTitle;
 }
+
+
+
+//main menu
 Item* MenuSet::MainMenu()
 {
     this->MenuCode = MAIN_CODE;
@@ -73,19 +77,10 @@ Item* MenuSet::MainMenu()
     return &MainItem[0];
 }
 
-Item* MenuSet::DepartmentMenu()
-{
-    this->MenuCode = DEPARTMENT_CODE;
-    this->MenuSize = 5;
-    MenuTitle="Department Menu";
-    static Item DepartmentItem[5];
-    DepartmentItem[0].SetItem(15,24,1,"Add");
-    DepartmentItem[1].SetItem(28,24,2,"Update");
-    DepartmentItem[2].SetItem(43,24,3,"View");
-    DepartmentItem[3].SetItem(55,24,4,"View All");
-    DepartmentItem[4].SetItem(35,29,MAIN_CODE,"Main Menu");
-    return &DepartmentItem[0];
-}
+
+
+
+//Employee Menu
 Item* MenuSet::EmployeeMenu()
 {
     this->MenuCode = EMPLOYEE_CODE;
@@ -199,6 +194,14 @@ void MenuSet::ViewSortedEmployeeMenuExtension(int state)
     }
     ScreenObj.SetScreenTextColour(48);
 }
+
+
+
+
+
+
+
+//Payroll Menu
 Item* MenuSet::PayrollMenu()
 {
     this->MenuCode = PAYROLL_CODE;
@@ -273,6 +276,14 @@ void MenuSet::ViewPayrollMenuExtension(int state)
     LineObj.vSLine();
     ScreenObj.SetScreenTextColour(48);
 }
+
+
+
+
+
+
+
+//Form Menu
 Item* MenuSet::GeneralFormMenu()
 {
     this->MenuCode = 7;
@@ -280,10 +291,28 @@ Item* MenuSet::GeneralFormMenu()
     MenuTitle="Add Member Menu";
     static Item GeneralFormMenuItem[4];
     GeneralFormMenuItem[0].SetItem(13,35,1,"Submit");
-    GeneralFormMenuItem[1].SetItem(26,35,1,"Clear Fields");
+    GeneralFormMenuItem[1].SetItem(26,35,1,"Reset Fields");
     GeneralFormMenuItem[2].SetItem(45,35,1,"Cancel");
     GeneralFormMenuItem[3].SetItem(58,35,MAIN_CODE,"Main Menu");
     return GeneralFormMenuItem;
+}
+void MenuSet::GeneralFormMenuExtension(int state)
+{
+    if(state==OFF)
+    {
+        ScreenObj.SetScreenTextColour(ConsoleObj.GetConsoleScreenColour()+3);
+    }
+    LineObj.setVCoord(34,36,9);
+    LineObj.vSLine();
+    LineObj.setVCoord(34,36,22);
+    LineObj.vSLine();
+    LineObj.setVCoord(34,36,41);
+    LineObj.vSLine();
+    LineObj.setVCoord(34,36,54);
+    LineObj.vSLine();
+    LineObj.setVCoord(34,36,69);
+    LineObj.vSLine();
+    ScreenObj.SetScreenTextColour(48);
 }
 Item* MenuSet::EditFormMenu()
 {
@@ -291,10 +320,31 @@ Item* MenuSet::EditFormMenu()
     this->MenuSize = 3;
     MenuTitle="Add Member Menu";
     static Item EditFormMenuItem[3];
-    EditFormMenuItem[0].SetItem(25,35,1,"Submit");
+    EditFormMenuItem[0].SetItem(25,35,1,"Save");
     EditFormMenuItem[1].SetItem(45,35,1,"Cancel");
     EditFormMenuItem[2].SetItem(58,35,MAIN_CODE,"Main Menu");
     return EditFormMenuItem;
+}
+
+
+
+
+
+
+
+//Department Menu
+Item* MenuSet::DepartmentMenu()
+{
+    this->MenuCode = DEPARTMENT_CODE;
+    this->MenuSize = 5;
+    MenuTitle="Department Menu";
+    static Item DepartmentItem[5];
+    DepartmentItem[0].SetItem(15,24,DEPARTMENT_ADD_CODE,"Add");
+    DepartmentItem[1].SetItem(28,24,DEPARTMENT_UPDATE_CODE,"Update");
+    DepartmentItem[2].SetItem(43,24,DEPARTMENT_VIEW_CODE,"View");
+    DepartmentItem[3].SetItem(55,24,DEPARTMENT_LIST_CODE,"View All");
+    DepartmentItem[4].SetItem(35,29,MAIN_CODE,"Main Menu");
+    return &DepartmentItem[0];
 }
 Item* MenuSet::ViewDepartmentMenu()
 {
@@ -350,7 +400,7 @@ Item* MenuSet::UpdateDepartmentFormMenu()
     this->MenuSize = 2;
     MenuTitle="Update Department";
     static Item UpdateDepartmentFormMenuItem[2];
-    UpdateDepartmentFormMenuItem[0].SetItem(25,28,1,"Submit");
+    UpdateDepartmentFormMenuItem[0].SetItem(25,28,DEPARTMENT_SEARCH_CODE,"Search");
     UpdateDepartmentFormMenuItem[1].SetItem(45,28,MAIN_CODE,"Main Menu");
     return UpdateDepartmentFormMenuItem;
 }
@@ -368,6 +418,14 @@ void MenuSet::UpdateDepartmentFormMenuExtension(int state)
     LineObj.vSLine();
     ScreenObj.SetScreenTextColour(48);
 }
+
+
+
+
+
+
+
+//List Menu
 Item* MenuSet::ListMenu()
 {
     this->MenuCode = 8;
@@ -381,7 +439,7 @@ void MenuSet::DimPrevious()
 {
     ScreenObj.SetScreenTextColour(WhiteColour);
     ConsoleObj.xyCoord(3,46);
-    cout<<"[<--PREVIOUS]";
+    cout<<"[<--Previous]";
     ScreenObj.SetScreenTextColour(DefaultTextColour);
 
 }
@@ -389,24 +447,12 @@ void MenuSet::DimNext()
 {
     ScreenObj.SetScreenTextColour(WhiteColour);
     ConsoleObj.xyCoord(69,46);
-    cout<<"[NEXT-->]";
+    cout<<"[Next-->]";
     ScreenObj.SetScreenTextColour(DefaultTextColour);
 }
-void MenuSet::GeneralFormMenuExtension(int state)
-{
-    if(state==OFF)
-    {
-        ScreenObj.SetScreenTextColour(ConsoleObj.GetConsoleScreenColour()+3);
-    }
-    LineObj.setVCoord(34,36,9);
-    LineObj.vSLine();
-    LineObj.setVCoord(34,36,22);
-    LineObj.vSLine();
-    LineObj.setVCoord(34,36,41);
-    LineObj.vSLine();
-    LineObj.setVCoord(34,36,54);
-    LineObj.vSLine();
-    LineObj.setVCoord(34,36,69);
-    LineObj.vSLine();
-    ScreenObj.SetScreenTextColour(48);
-}
+
+
+
+
+
+
