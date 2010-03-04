@@ -418,23 +418,23 @@ void MenuSet::UpdateDepartmentFormMenuExtension(int state)
     LineObj.vSLine();
     ScreenObj.SetScreenTextColour(48);
 }
-void MenuSet::AddDepartmentAfterSaveMenu()
+Item* MenuSet::AddDepartmentAfterSaveMenu()
 {
     this->MenuCode = 8;
-    this->MenuSize = 2;
+    this->MenuSize = 3;
     MenuTitle="Update Department";
-    static Item AddDepartmentAfterSaveMenuItem[2];
+    static Item AddDepartmentAfterSaveMenuItem[3];
     AddDepartmentAfterSaveMenuItem[0].SetItem(25,28,DEPARTMENT_SEARCH_CODE,"Add More");
     AddDepartmentAfterSaveMenuItem[1].SetItem(25,48,DEPARTMENT_CODE,"<--Department");
     AddDepartmentAfterSaveMenuItem[2].SetItem(45,28,MAIN_CODE,"Main Menu");
     return AddDepartmentAfterSaveMenuItem;
 }
-void MenuSet::UpdateDepartmentAfterSaveMenu()
+Item* MenuSet::UpdateDepartmentAfterSaveMenu()
 {
     this->MenuCode = 8;
-    this->MenuSize = 2;
+    this->MenuSize = 3;
     MenuTitle="Update Department";
-    static Item UpdateDepartmentAfterSaveMenuItem[2];
+    static Item UpdateDepartmentAfterSaveMenuItem[3];
     UpdateDepartmentAfterSaveMenuItem[0].SetItem(25,28,DEPARTMENT_SEARCH_CODE,"Update Another");
     UpdateDepartmentAfterSaveMenuItem[1].SetItem(25,48,DEPARTMENT_CODE,"<--Department");
     UpdateDepartmentAfterSaveMenuItem[2].SetItem(45,28,MAIN_CODE,"Main Menu");
