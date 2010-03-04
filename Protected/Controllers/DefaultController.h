@@ -3,7 +3,6 @@
 #ifndef _BASECONTROLLER_H
 #include "../../Base/BaseController.h"
 #endif
-#define _DEFAULTCONTROLLER_ACTIONINDEX 1000
 
 class DefaultController: public BaseController
 {
