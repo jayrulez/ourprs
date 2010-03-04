@@ -19,5 +19,6 @@ public:
 	int run();
 	int init();
 	int main();
+	int exit();
 };
 #endif

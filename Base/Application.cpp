@@ -63,5 +63,10 @@ int Application::main()
             break;
         }
     }
-	return 0;
+	return this->exit();
+}
+
+int Application::exit()
+{
+    return 0;
 }
