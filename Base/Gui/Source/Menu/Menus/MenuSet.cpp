@@ -83,7 +83,7 @@ Item* MenuSet::DepartmentMenu()
     DepartmentItem[1].SetItem(28,24,2,"Update");
     DepartmentItem[2].SetItem(43,24,3,"View");
     DepartmentItem[3].SetItem(55,24,4,"View All");
-    DepartmentItem[4].SetItem(35,29,4,"Main Menu");
+    DepartmentItem[4].SetItem(35,29,MAIN_CODE,"Main Menu");
     return &DepartmentItem[0];
 }
 Item* MenuSet::EmployeeMenu()
@@ -97,7 +97,7 @@ Item* MenuSet::EmployeeMenu()
     EmployeeItem[2].SetItem(43,24,3,"View");
     EmployeeItem[3].SetItem(55,24,4,"View Sorted");
     EmployeeItem[4].SetItem(28,29,4,"Delete");
-    EmployeeItem[5].SetItem(43,29,4,"Main Menu");
+    EmployeeItem[5].SetItem(43,29,MAIN_CODE,"Main Menu");
     return &EmployeeItem[0];
 }
 Item* MenuSet::UpdateEmployeeFormMenu()
@@ -107,7 +107,7 @@ Item* MenuSet::UpdateEmployeeFormMenu()
     MenuTitle="Update Department";
     static Item UpdateEmployeeFormMenuItem[2];
     UpdateEmployeeFormMenuItem[0].SetItem(25,28,1,"Submit");
-    UpdateEmployeeFormMenuItem[1].SetItem(45,28,1,"Main Menu");
+    UpdateEmployeeFormMenuItem[1].SetItem(45,28,MAIN_CODE,"Main Menu");
     return UpdateEmployeeFormMenuItem;
 }
 Item* MenuSet::ViewEmployeeMenu()
@@ -116,8 +116,8 @@ Item* MenuSet::ViewEmployeeMenu()
     this->MenuSize = 2;
     MenuTitle="View Employee";
     static Item ViewEmployeeMenuItem[2];
-    ViewEmployeeMenuItem[0].SetItem(26,28,1,"<--Employee");
-    ViewEmployeeMenuItem[1].SetItem(44,28,1,"Main Menu");
+    ViewEmployeeMenuItem[0].SetItem(26,28,PAYROLL_CODE,"<--Employee");
+    ViewEmployeeMenuItem[1].SetItem(44,28,MAIN_CODE,"Main Menu");
     return ViewEmployeeMenuItem;
 }
 Item* MenuSet::ViewAllEmployeeMenu()
@@ -126,8 +126,8 @@ Item* MenuSet::ViewAllEmployeeMenu()
     this->MenuSize = 2;
     MenuTitle="View all Employees";
     static Item ViewAllEmployeeMenuItem[2];
-    ViewAllEmployeeMenuItem[0].SetItem(25,48,1,"<--Employee");
-    ViewAllEmployeeMenuItem[1].SetItem(45,48,1,"Main Menu");
+    ViewAllEmployeeMenuItem[0].SetItem(25,48,PAYROLL_CODE,"<--Employee");
+    ViewAllEmployeeMenuItem[1].SetItem(45,48,MAIN_CODE,"Main Menu");
     return ViewAllEmployeeMenuItem;
 }
 Item* MenuSet::ViewSortedEmployeeMenu()
@@ -141,8 +141,8 @@ Item* MenuSet::ViewSortedEmployeeMenu()
     ViewSortedEmployeeItem[2].SetItem(34,22,3,"Dept. Code");
     ViewSortedEmployeeItem[3].SetItem(48,22,4,"Position");
     ViewSortedEmployeeItem[4].SetItem(60,22,4,"Hours Worked");
-    ViewSortedEmployeeItem[5].SetItem(25,32,4,"<--Employee");
-    ViewSortedEmployeeItem[6].SetItem(45,32,4,"Main Menu");
+    ViewSortedEmployeeItem[5].SetItem(25,32,PAYROLL_CODE,"<--Employee");
+    ViewSortedEmployeeItem[6].SetItem(45,32,MAIN_CODE,"Main Menu");
     return &ViewSortedEmployeeItem[0];
 }
 void MenuSet::ViewAllEmployeeMenuExtension(int state)
@@ -208,7 +208,7 @@ Item* MenuSet::PayrollMenu()
     PayrollItem[0].SetItem(10,23,1,"Process Payroll");
     PayrollItem[1].SetItem(34,23,2,"View Payroll");
     PayrollItem[2].SetItem(52,23,3,"View Sorted Payroll");
-    PayrollItem[3].SetItem(36,27,2,"Main Menu");
+    PayrollItem[3].SetItem(36,27,MAIN_CODE,"Main Menu");
     return &PayrollItem[0];
 }
 Item* MenuSet::ViewSortedPayrollMenu()
@@ -221,8 +221,8 @@ Item* MenuSet::ViewSortedPayrollMenu()
     ViewSortedPayrollItem[1].SetItem(26,22,2,"Last Name");
     ViewSortedPayrollItem[2].SetItem(41,22,3,"Dept. Code");
     ViewSortedPayrollItem[3].SetItem(58,22,4,"Position");
-    ViewSortedPayrollItem[4].SetItem(25,32,4,"<--Payroll");
-    ViewSortedPayrollItem[5].SetItem(45,32,4,"Main Menu");
+    ViewSortedPayrollItem[4].SetItem(25,32,PAYROLL_CODE,"<--Payroll");
+    ViewSortedPayrollItem[5].SetItem(45,32,MAIN_CODE,"Main Menu");
     return &ViewSortedPayrollItem[0];
 }
 void MenuSet::ViewSortedPayrollMenuExtension(int state)
@@ -255,8 +255,8 @@ Item* MenuSet::ViewPayrollMenu()
     this->MenuSize = 2;
     MenuTitle="View Employee";
     static Item ViewPayrollMenuItem[2];
-    ViewPayrollMenuItem[0].SetItem(25,28,1,"<--Payroll");
-    ViewPayrollMenuItem[1].SetItem(45,28,1,"Main Menu");
+    ViewPayrollMenuItem[0].SetItem(25,28,PAYROLL_CODE,"<--Payroll");
+    ViewPayrollMenuItem[1].SetItem(45,28,MAIN_CODE,"Main Menu");
     return ViewPayrollMenuItem;
 }
 void MenuSet::ViewPayrollMenuExtension(int state)
@@ -282,7 +282,7 @@ Item* MenuSet::GeneralFormMenu()
     GeneralFormMenuItem[0].SetItem(13,35,1,"Submit");
     GeneralFormMenuItem[1].SetItem(26,35,1,"Clear Fields");
     GeneralFormMenuItem[2].SetItem(45,35,1,"Cancel");
-    GeneralFormMenuItem[3].SetItem(58,35,1,"Main Menu");
+    GeneralFormMenuItem[3].SetItem(58,35,MAIN_CODE,"Main Menu");
     return GeneralFormMenuItem;
 }
 Item* MenuSet::EditFormMenu()
@@ -293,7 +293,7 @@ Item* MenuSet::EditFormMenu()
     static Item EditFormMenuItem[3];
     EditFormMenuItem[0].SetItem(25,35,1,"Submit");
     EditFormMenuItem[1].SetItem(45,35,1,"Cancel");
-    EditFormMenuItem[2].SetItem(58,35,1,"Main Menu");
+    EditFormMenuItem[2].SetItem(58,35,MAIN_CODE,"Main Menu");
     return EditFormMenuItem;
 }
 Item* MenuSet::ViewDepartmentMenu()
@@ -302,8 +302,8 @@ Item* MenuSet::ViewDepartmentMenu()
     this->MenuSize = 2;
     MenuTitle="View Department";
     static Item ViewDepartmentMenuItem[2];
-    ViewDepartmentMenuItem[0].SetItem(25,28,1,"<--Department");
-    ViewDepartmentMenuItem[1].SetItem(45,28,1,"Main Menu");
+    ViewDepartmentMenuItem[0].SetItem(25,28,DEPARTMENT_CODE,"<--Department");
+    ViewDepartmentMenuItem[1].SetItem(45,28,MAIN_CODE,"Main Menu");
     return ViewDepartmentMenuItem;
 }
 Item* MenuSet::ViewAllDepartmentMenu()
@@ -312,8 +312,8 @@ Item* MenuSet::ViewAllDepartmentMenu()
     this->MenuSize = 2;
     MenuTitle="View all Departments";
     static Item ViewAllDepartmentMenuItem[2];
-    ViewAllDepartmentMenuItem[0].SetItem(25,48,1,"<--Department");
-    ViewAllDepartmentMenuItem[1].SetItem(45,48,1,"Main Menu");
+    ViewAllDepartmentMenuItem[0].SetItem(25,48,DEPARTMENT_CODE,"<--Department");
+    ViewAllDepartmentMenuItem[1].SetItem(45,48,MAIN_CODE,"Main Menu");
     return ViewAllDepartmentMenuItem;
 }
 void MenuSet::ViewAllDepartmentMenuExtension(int state)
@@ -351,7 +351,7 @@ Item* MenuSet::UpdateDepartmentFormMenu()
     MenuTitle="Update Department";
     static Item UpdateDepartmentFormMenuItem[2];
     UpdateDepartmentFormMenuItem[0].SetItem(25,28,1,"Submit");
-    UpdateDepartmentFormMenuItem[1].SetItem(45,28,1,"Main Menu");
+    UpdateDepartmentFormMenuItem[1].SetItem(45,28,MAIN_CODE,"Main Menu");
     return UpdateDepartmentFormMenuItem;
 }
 void MenuSet::UpdateDepartmentFormMenuExtension(int state)
