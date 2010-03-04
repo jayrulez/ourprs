@@ -22,6 +22,12 @@ int Component::run() {
 	return 0;
 }
 
+void Component::callMenu(Component * menu)
+{
+	Component *item = menu;
+	menu->run();
+}
+
 void Component::setComponent(Component* component) {
 	this->component = component;
 }
