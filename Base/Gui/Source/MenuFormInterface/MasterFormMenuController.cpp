@@ -233,6 +233,7 @@ int MasterFormMenuController::EmployeeMenu()
 int MasterFormMenuController::AddEmployeeMenu()
 {
     bool Flag;
+    int MenuCall;
     if(FormControllerObj.SetForm(FormSetObj.AddEmployeeForm(),FormSetObj.GetFormSize(FormSetObj.AddEmployeeForm()),
     FormSetObj.GetFormCode(FormSetObj.AddEmployeeForm()))&&
     MenuControllerObj.SetMenu(MenuSetObj.GeneralFormMenu(),MenuSetObj.GetMenuSize(MenuSetObj.GeneralFormMenu()),
