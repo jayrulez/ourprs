@@ -82,3 +82,22 @@ void Department::read()
 {
 
 }
+
+Department* Department::model()
+{
+	return new Department(0,"",0,0,NULL);
+}
+
+Department* Department::find(int deptCode)
+{
+	/*
+
+		Department *department = &record;
+		// department = record;
+	*/
+	return NULL;
+}
+
+void Department::show()
+{
+}
