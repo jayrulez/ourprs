@@ -20,7 +20,7 @@ int DefaultController::actionIndex()
     this->getServicesObj()->SizeConsoleWindow();
     this->getServicesObj()->Title("SSN Payroll Management System");
     this->getServicesObj()->BasicRunLevel();
-    this->getMenuObj()->ViewSortedPayrollMenu();
+    this->getMenuObj()->MainMenu();
 	return 0;
 }
 

@@ -26,11 +26,11 @@
 /*
  *Menu Codes
 */
-#define MAIN_CODE 1
-#define DEPARTMENT_CODE 2
-#define EMPLOYEE_CODE 3
-#define PAYROLL_CODE 4
-#define EXIT_CODE 5
+#define MAIN_CODE 1000
+#define DEPARTMENT_CODE 2000
+#define EMPLOYEE_CODE 3000
+#define PAYROLL_CODE 4000
+#define EXIT_CODE 5000
 //End Codes
 
 using namespace std;
