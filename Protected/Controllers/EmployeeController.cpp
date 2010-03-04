@@ -22,8 +22,6 @@ int EmployeeController::getDefaultActionCode()
 
 int EmployeeController::actionIndex()
 {
-    this->getServicesObj()->SizeConsoleWindow();
-    this->getServicesObj()->Title("SSN Payroll Management System");
     this->getServicesObj()->BasicRunLevel();
     return this->getMenuObj()->EmployeeMenu();
 }

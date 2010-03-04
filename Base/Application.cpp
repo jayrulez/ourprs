@@ -1,6 +1,18 @@
 #ifndef _APPLICATION_H
 #include "./Application.h"
 #endif
+#ifndef _DEFAULTCONTROLLER_H
+#include "../Protected/Controllers/DefaultController.h"
+#endif
+#ifndef _DEPARTMENTCONTROLLER_H
+#include "../Protected/Controllers/DepartmentController.h"
+#endif
+#ifndef _EMPLOYEECONTROLLER_H
+#include "../Protected/Controllers/EmployeeController.h"
+#endif
+#ifndef _PAYROLLCONTROLLER_H
+#include "../Protected/Controllers/PayrollController.h"
+#endif
 
 Application::Application()
 {
@@ -50,7 +62,8 @@ int Application::main()
             break;
             case PAYROLL_CODE:
             {
-
+                PayrollController payrollController(this);
+                menuCode = this->callMenu(&payrollController, payrollController.getDefaultActionCode());
             }
             break;
             case EXIT_CODE:

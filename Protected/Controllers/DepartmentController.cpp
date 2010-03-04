@@ -22,8 +22,6 @@ int DepartmentController::getDefaultActionCode()
 
 int DepartmentController::actionIndex()
 {
-    this->getServicesObj()->SizeConsoleWindow();
-    this->getServicesObj()->Title("SSN Payroll Management System");
     this->getServicesObj()->BasicRunLevel();
     return this->getMenuObj()->DepartmentMenu();
 }
