@@ -29,5 +29,8 @@ public:
 	Department* getNext();
 	void read();
 	void write();
+	static Department* model();
+	Department* find(int);
+	void show();
 };
 #endif

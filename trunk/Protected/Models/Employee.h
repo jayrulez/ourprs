@@ -34,6 +34,24 @@ public:
 	Employee* getNext();
 	void read();
 	void write();
+	Employee & Employee::operator=(const Employee &employee)
+	{
+		if(this != &employee)
+		{
+			this->id = employee.id;
+			this->firstname = employee.firstname;
+			this->lastname = employee.lastname;
+			this->deptCode = employee.deptCode;
+			this->position = employee.position;
+			this->hoursWorked = employee.hoursWorked;
+		}
+		return *this;
+	}
+	Employee & Employee::operator+=(const Employee &employee)
+	{
+		// add values e.g. this->hoursWorked + employee.hoursWorked
+		return *this;
+	}
 	bool Employee::operator==(const Employee &employee) const
 	{
 		return this->id == employee.id &&
