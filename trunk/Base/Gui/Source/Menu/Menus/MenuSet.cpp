@@ -422,7 +422,7 @@ Item* MenuSet::AddDepartmentAfterSaveMenu()
 {
     this->MenuCode = 8;
     this->MenuSize = 3;
-    MenuTitle="Update Department";
+    MenuTitle="Add Department";
     static Item AddDepartmentAfterSaveMenuItem[3];
     AddDepartmentAfterSaveMenuItem[0].SetItem(25,28,DEPARTMENT_SEARCH_CODE,"Add More");
     AddDepartmentAfterSaveMenuItem[1].SetItem(25,48,DEPARTMENT_CODE,"<--Department");
@@ -435,7 +435,7 @@ Item* MenuSet::UpdateDepartmentAfterSaveMenu()
     this->MenuSize = 3;
     MenuTitle="Update Department";
     static Item UpdateDepartmentAfterSaveMenuItem[3];
-    UpdateDepartmentAfterSaveMenuItem[0].SetItem(25,28,DEPARTMENT_SEARCH_CODE,"Update Another");
+    UpdateDepartmentAfterSaveMenuItem[0].SetItem(25,28,DEPARTMENT_SEARCH_CODE,"Update More");
     UpdateDepartmentAfterSaveMenuItem[1].SetItem(25,48,DEPARTMENT_CODE,"<--Department");
     UpdateDepartmentAfterSaveMenuItem[2].SetItem(45,28,MAIN_CODE,"Main Menu");
     return UpdateDepartmentAfterSaveMenuItem;
