@@ -3,7 +3,6 @@
 #ifndef _BASECONTROLLER_H
 #include "../../Base/BaseController.h"
 #endif
-#define _DEPARTMENTCONTROLLER_ACTIONINDEX 2000
 
 class DepartmentController: public BaseController
 {

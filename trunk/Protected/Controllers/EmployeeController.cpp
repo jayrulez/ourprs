@@ -17,7 +17,7 @@ EmployeeController::~EmployeeController()
 
 int EmployeeController::getDefaultActionCode()
 {
-    return _EMPLOYEECONTROLLER_ACTIONINDEX;
+    return EMPLOYEE_CODE;
 }
 
 int EmployeeController::actionIndex()
@@ -33,7 +33,7 @@ int EmployeeController::run(int actionCode)
     int call;
     switch(actionCode)
     {
-        case _EMPLOYEECONTROLLER_ACTIONINDEX:
+        case EMPLOYEE_CODE:
         default:
             call = this->actionIndex();
         break;

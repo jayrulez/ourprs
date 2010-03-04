@@ -3,7 +3,6 @@
 #ifndef _BASECONTROLLER_H
 #include "../../Base/BaseController.h"
 #endif
-#define _EMPLOYEECONTROLLER_ACTIONINDEX 3000
 
 class EmployeeController: public BaseController
 {
