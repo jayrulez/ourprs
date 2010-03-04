@@ -6,6 +6,9 @@
 #ifndef _DEFAULTCONTROLLER_H
 #include "../Protected/Controllers/DefaultController.h"
 #endif
+#ifndef _DEPARTMENTCONTROLLER_H
+#include "../Protected/Controllers/DepartmentController.h"
+#endif
 
 class Application: public Component
 {

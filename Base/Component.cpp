@@ -18,14 +18,14 @@ Services* Component::getServicesObj()
     return this->services;
 }
 
-int Component::run() {
+int Component::run(int code) {
 	return 0;
 }
 
-void Component::callMenu(Component * menu)
+int Component::callMenu(Component * menu, int actionCode)
 {
 	Component *item = menu;
-	menu->run();
+	return item->run(actionCode);
 }
 
 void Component::setComponent(Component* component) {

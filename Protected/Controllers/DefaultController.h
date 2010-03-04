@@ -12,6 +12,7 @@ public:
 	~DefaultController();
 	DefaultController(Component*);
 	int actionIndex();
-	int run();
+	int run(int);
+	int getDefaultActionCode();
 };
 #endif
