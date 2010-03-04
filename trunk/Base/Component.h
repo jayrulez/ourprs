@@ -16,7 +16,7 @@ public:
 	Services* getServicesObj();
 	void setComponent(Component*);
 	Component* getComponent();
-	virtual int run();
-	void callMenu(Component*);
+	virtual int run(int);
+	int callMenu(Component*, int actionCode);
 };
 #endif

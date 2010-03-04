@@ -15,17 +15,20 @@ DefaultController::~DefaultController()
 {
 }
 
+int DefaultController::getDefaultActionCode()
+{
+    return 1000;
+}
+
 int DefaultController::actionIndex()
 {
     this->getServicesObj()->SizeConsoleWindow();
     this->getServicesObj()->Title("SSN Payroll Management System");
     this->getServicesObj()->BasicRunLevel();
-    this->getMenuObj()->MainMenu();
-	return 0;
+    return this->getMenuObj()->MainMenu();
 }
 
-int DefaultController::run()
+int DefaultController::run(int actionCode)
 {
-	this->actionIndex();
-	return 0;
+	return this->actionIndex();
 }
