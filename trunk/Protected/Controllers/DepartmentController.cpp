@@ -17,7 +17,7 @@ DepartmentController::~DepartmentController()
 
 int DepartmentController::getDefaultActionCode()
 {
-    return 1000;
+    return _DEPARTMENTCONTROLLER_ACTIONINDEX;
 }
 
 int DepartmentController::actionIndex()
@@ -30,5 +30,13 @@ int DepartmentController::actionIndex()
 
 int DepartmentController::run(int actionCode)
 {
-	return this->actionIndex();
+    int call;
+    switch(actionCode)
+    {
+        case _DEPARTMENTCONTROLLER_ACTIONINDEX:
+        default:
+            call = this->actionIndex();
+        break;
+    }
+    return call;
 }

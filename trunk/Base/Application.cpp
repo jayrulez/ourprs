@@ -44,7 +44,8 @@ int Application::main()
             break;
             case EMPLOYEE_CODE:
             {
-
+                EmployeeController employeeController(this);
+                menuCode = this->callMenu(&employeeController, employeeController.getDefaultActionCode());
             }
             break;
             case PAYROLL_CODE:
