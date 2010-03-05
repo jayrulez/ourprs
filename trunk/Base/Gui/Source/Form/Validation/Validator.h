@@ -15,8 +15,8 @@
 #ifdef _WIN32
 	#include "../../../Win32/Core/Console.h"
 #endif
+#include "../../../../../Protected/Models/Department.h"
 #include <string>
-#define DEPARTMENT_FILE "../../../../../Protected/Data/Department Rates.txt"
 
 using namespace std;
 
@@ -25,6 +25,7 @@ class Validator
 private:
     Screen ScreenObj;
     Console ConsoleObj;
+    Department DepartmentObj;
 public:
     Validator();
     ~Validator();

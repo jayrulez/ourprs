@@ -217,6 +217,13 @@ bool FormController::ValidateField()
     {
         return false;
     }
+    if(PreviousField.GetFieldName()=="Dept. Code")
+    {
+        if(ValidatorObj.CheckDepartmentExistence(PreviousField.GetFieldData()))
+        {
+            return false;
+        }
+    }
 	return true;
 }
 bool FormController::ValidateForm()
