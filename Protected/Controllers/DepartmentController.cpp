@@ -32,8 +32,15 @@ int DepartmentController::actionIndex()
 int DepartmentController::actionAdd()
 {
 	int actionCode;
+	MasterFormMenuController* menuInstance = this->getMenuObj();
     this->getServicesObj()->BasicRunLevel();
-	actionCode = this->getMenuObj()->AddDepartmentMenu();
+	actionCode = menuInstance->AddDepartmentMenu();
+	Field * data = menuInstance->GetAllFieldData();
+	int deptCode = atoi((data)->GetFieldData().c_str());
+	string deptName = (data+1)->GetFieldData();
+	float regularRate = atof((data+2)->GetFieldData().c_str());
+	float overtimeRate = atof((data+3)->GetFieldData().c_str());
+	Department * department = new Department(deptCode, deptName, regularRate, overtimeRate, NULL);
 	// cout << actionCode; fgetc(stdin);
 	if(actionCode == MAIN_CODE || actionCode == DEPARTMENT_CODE || actionCode == DEPARTMENT_ADD_CODE)
 	{
