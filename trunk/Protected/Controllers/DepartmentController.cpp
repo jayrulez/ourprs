@@ -4,6 +4,7 @@
 #ifndef _DEPARTMENT_H
 #include "../Models/Department.h"
 #endif
+#include <sstream>
 
 DepartmentController::DepartmentController()
 {
@@ -33,20 +34,37 @@ int DepartmentController::actionAdd()
 {
 	int actionCode;
 	MasterFormMenuController* menuInstance = this->getMenuObj();
+
     this->getServicesObj()->BasicRunLevel();
 	actionCode = menuInstance->AddDepartmentMenu();
-	Field * data = menuInstance->GetAllFieldData();
-	int deptCode = atoi((data)->GetFieldData().c_str());
-	string deptName = (data+1)->GetFieldData();
-	float regularRate = atof((data+2)->GetFieldData().c_str());
-	float overtimeRate = atof((data+3)->GetFieldData().c_str());
-	Department * department = new Department(deptCode, deptName, regularRate, overtimeRate, NULL);
+
 	// cout << actionCode; fgetc(stdin);
 	if(actionCode == MAIN_CODE || actionCode == DEPARTMENT_CODE || actionCode == DEPARTMENT_ADD_CODE)
 	{
 		return this->run(actionCode);
 	}
-	return actionCode;
+	if(actionCode == DEPARTMENT_ADD_SAVE_CODE)
+	{
+        Field * data = menuInstance->GetAllFieldData();
+
+        istringstream deptCodeString((data)->GetFieldData());
+        istringstream regularRateString((data+2)->GetFieldData());
+        istringstream overtimeRateString((data+3)->GetFieldData());
+
+        int deptCode;
+        string deptName;
+        float regularRate;
+        float overtimeRate;
+
+        deptCodeString >> deptCode;
+        deptName = (data+1)->GetFieldData();
+        regularRateString >> regularRate;
+        overtimeRateString >> overtimeRate;
+
+        Department * department = new Department(deptCode, deptName, regularRate, overtimeRate, NULL);
+        //department->save();
+	}
+	return MAIN_CODE;
 }
 
 int DepartmentController::actionUpdate(int deptCode)
