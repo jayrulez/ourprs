@@ -38,7 +38,9 @@ public:
 	bool operator != (const Department);
 	bool operator == (const Department);
 	Department operator = (const Department);
-	Department* operator >> (const Department &);
+	/*fstream & operator >> (const fstream &, const Department &);
+	fstream & operator << (const fstream &, const Department &);*/
+	bool Department::findByCode(int);
 
 };
 #endif
