@@ -36,6 +36,8 @@
 #define DEPARTMENT_SEARCH_CODE 2500
 
 #define EMPLOYEE_CODE 3000
+#define EMPLOYEE_ADD_CODE 3100
+
 #define PAYROLL_CODE 4000
 #define EXIT_CODE 5000
 //End Codes
@@ -92,8 +94,11 @@ public:
     Item* UpdateDepartmentAfterSaveMenu();
 
     //General Forms Menu Set
-    Item* GeneralFormMenu();
-    void GeneralFormMenuExtension(int);
+    Item*AddDepartmentFormMenu();
+    void AddDepartmentFormMenuExtension(int);
+    Item*AddEmployeeFormMenu();
+    void AddEmployeeFormMenuExtension(int);
+
     Item* EditFormMenu();
 
     //List Menu Set

@@ -284,19 +284,49 @@ void MenuSet::ViewPayrollMenuExtension(int state)
 
 
 //Form Menu
-Item* MenuSet::GeneralFormMenu()
+Item* MenuSet::AddDepartmentFormMenu()
 {
-    this->MenuCode = 7;
+    this->MenuCode = DEPARTMENT_ADD_CODE;
     this->MenuSize = 4;
     MenuTitle="Add Member Menu";
-    static Item GeneralFormMenuItem[4];
-    GeneralFormMenuItem[0].SetItem(13,35,1,"Submit");
-    GeneralFormMenuItem[1].SetItem(26,35,1,"Reset Fields");
-    GeneralFormMenuItem[2].SetItem(45,35,1,"Cancel");
-    GeneralFormMenuItem[3].SetItem(58,35,MAIN_CODE,"Main Menu");
-    return GeneralFormMenuItem;
+    static Item AddDepartmentFormItem[4];
+    AddDepartmentFormItem[0].SetItem(13,35,1,"Save");
+    AddDepartmentFormItem[1].SetItem(26,35,DEPARTMENT_ADD_CODE,"Reset Fields");
+    AddDepartmentFormItem[2].SetItem(45,35,DEPARTMENT_CODE,"Cancel");
+    AddDepartmentFormItem[3].SetItem(58,35,MAIN_CODE,"Main Menu");
+    return AddDepartmentFormItem;
 }
-void MenuSet::GeneralFormMenuExtension(int state)
+void MenuSet::AddDepartmentFormMenuExtension(int state)
+{
+    if(state==OFF)
+    {
+        ScreenObj.SetScreenTextColour(ConsoleObj.GetConsoleScreenColour()+3);
+    }
+    LineObj.setVCoord(34,36,9);
+    LineObj.vSLine();
+    LineObj.setVCoord(34,36,22);
+    LineObj.vSLine();
+    LineObj.setVCoord(34,36,41);
+    LineObj.vSLine();
+    LineObj.setVCoord(34,36,54);
+    LineObj.vSLine();
+    LineObj.setVCoord(34,36,69);
+    LineObj.vSLine();
+    ScreenObj.SetScreenTextColour(48);
+}
+Item* MenuSet::AddEmployeeFormMenu()
+{
+    this->MenuCode = EMPLOYEE_ADD_CODE;
+    this->MenuSize = 4;
+    MenuTitle="Add Member Menu";
+    static Item AddEmployeeFormMenuItem[4];
+    AddEmployeeFormMenuItem[0].SetItem(13,35,1,"Save");
+    AddEmployeeFormMenuItem[1].SetItem(26,35,EMPLOYEE_ADD_CODE,"Reset Fields");
+    AddEmployeeFormMenuItem[2].SetItem(45,35,EMPLOYEE_CODE,"Cancel");
+    AddEmployeeFormMenuItem[3].SetItem(58,35,MAIN_CODE,"Main Menu");
+    return AddEmployeeFormMenuItem;
+}
+void MenuSet::AddEmployeeFormMenuExtension(int state)
 {
     if(state==OFF)
     {
