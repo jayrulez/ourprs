@@ -56,7 +56,7 @@ public:
     ~FormController();
 	int GetFormCode();
 	int GetFormSize();
-	bool GetFormCompletionStation();
+	bool GetFormCompletionState();
     Field* GetAllFieldInfo();
     void UpdateAllFieldInfo(Field*);
     bool SetForm(Field*,int,int);
