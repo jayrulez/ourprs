@@ -34,6 +34,7 @@ int DepartmentController::actionAdd()
 	int actionCode;
     this->getServicesObj()->BasicRunLevel();
 	actionCode = this->getMenuObj()->AddDepartmentMenu();
+	cout << actionCode; fgetc(stdin);
 	if(actionCode == MAIN_CODE || actionCode == DEPARTMENT_CODE)
 	{
 		return this->run(actionCode);
