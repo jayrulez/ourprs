@@ -101,3 +101,27 @@ Department* Department::find(int deptCode)
 void Department::show()
 {
 }
+bool Department::operator != (const Department DepartmentObj)
+{
+    if(DepartmentObj.deptCode!=this->deptCode && DepartmentObj.deptName!=this->deptName
+    &&DepartmentObj.overtimeRate!=this->overtimeRate&&DepartmentObj.regularRate!=this->regularRate)
+        return true;
+    else
+        return false;
+}
+bool Department::operator == (const Department DepartmentObj)
+{
+    if(DepartmentObj.deptCode==this->deptCode && DepartmentObj.deptName==this->deptName
+    &&DepartmentObj.overtimeRate==this->overtimeRate&&DepartmentObj.regularRate==this->regularRate)
+        return true;
+    else
+        return false;
+}
+Department Department::operator = (const Department DepartmentObj)
+{
+    this->deptCode= DepartmentObj.deptCode;
+    this->deptName=DepartmentObj.deptName;
+    this->overtimeRate=DepartmentObj.overtimeRate;
+    this->regularRate=DepartmentObj.regularRate;
+    return *this;
+}

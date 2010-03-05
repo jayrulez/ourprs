@@ -32,5 +32,8 @@ public:
 	static Department* model();
 	Department* find(int);
 	void show();
+	bool operator != (const Department);
+	bool operator == (const Department);
+	Department operator = (const Department);
 };
 #endif
