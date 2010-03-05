@@ -1,6 +1,6 @@
 #ifndef MASTERFORMCONTROLLER_H
 #define MASTERFORMCONTROLLER_H
-
+#include "../Form/Field.h"
 #include "../Menu/MenuController.h"
 #include "../Form/FormController.h"
 #include "../Menu/Menus/MenuSet.h"
@@ -18,9 +18,14 @@ private:
     ExtendedMenuController ExtendedMenuControllerObj;
     FormSet FormSetObj;
     List ListObj;
+    Field* FieldObj;
+    int FormSize;
 public:
 	MasterFormMenuController();
 	~MasterFormMenuController();
+	int GetFormSize();
+    Field* GetAllFieldData();
+
 	//Main Menu
 	int MainMenu();
     //Department

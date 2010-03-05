@@ -1,5 +1,5 @@
 #include "MasterFormMenuController.h"
-
+#include "../Form/Field.h"
 #include "../Menu/MenuController.h"
 #include "../Form/FormController.h"
 #include "../Menu/Menus/MenuSet.h"
@@ -9,9 +9,18 @@
 
 MasterFormMenuController::MasterFormMenuController()
 {
+    FormSize=0;
 }
 MasterFormMenuController::~MasterFormMenuController()
 {
+}
+Field* MasterFormMenuController::GetAllFieldData()
+{
+    return FieldObj;
+}
+int MasterFormMenuController::GetFormSize()
+{
+    return FormSize;
 }
 /*
  * Main Menu
@@ -113,6 +122,8 @@ int MasterFormMenuController::AddDepartmentMenu()
             }while(Flag);
         }while(MenuCall==0);
     }
+    this->FieldObj=FormControllerObj.GetAllFieldInfo();
+    this->FormSize=FormControllerObj.GetFormSize();
     return MenuCall;
 }
 int MasterFormMenuController::SearchDepartmentMenu()
