@@ -47,11 +47,6 @@ public:
 		}
 		return *this;
 	}
-	Employee & Employee::operator+=(const Employee &employee)
-	{
-		// add values e.g. this->hoursWorked + employee.hoursWorked
-		return *this;
-	}
 	bool Employee::operator==(const Employee &employee) const
 	{
 		return this->id == employee.id &&
