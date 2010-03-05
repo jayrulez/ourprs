@@ -31,7 +31,7 @@ int FormController::GetFormSize()
 {
 	return this->FormSize;
 }
-bool FormController::GetFormCompletionStation()
+bool FormController::GetFormCompletionState()
 {
     return CompleteState;
 }
@@ -64,6 +64,8 @@ int FormController::BrowseForm()
         {
             case UP_KEY:
                 CurrentField=SearchField(_PREV);
+                ConsoleObj.xyCoord(PreviousField.GetFieldX(),PreviousField.GetFieldY()-1);
+                ValidateField();
             break;
             case TAB_KEY:
             case DOWN_KEY:
@@ -224,12 +226,14 @@ bool FormController::ValidateForm()
     for(x=0;x<this->FormSize;x++)
     {
         TempField=*(fptr+x);
+        ConsoleObj.xyCoord(TempField.GetFieldX(),TempField.GetFieldY()-1);
         if(ValidateField()==_FAIL)
         {
             CompleteState=false;
             return false;
         }
     }
+    CompleteState=true;
     return true;
 }
 void FormController::ShowForm()
@@ -240,7 +244,7 @@ void FormController::ShowForm()
     {
         (fptr+x)->ShowField();
         TempField=*(fptr+x);
-        ConsoleObj.xyCoord(PreviousField.GetFieldX(),PreviousField.GetFieldY()-1);
+        ConsoleObj.xyCoord(TempField.GetFieldX(),TempField.GetFieldY()-1);
         ValidateField();
     }
 }

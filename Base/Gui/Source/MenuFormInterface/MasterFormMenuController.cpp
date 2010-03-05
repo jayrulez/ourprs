@@ -119,9 +119,9 @@ int MasterFormMenuController::AddDepartmentMenu()
                     MenuSetObj.AddDepartmentFormMenuExtension(ON);
                     Flag=true;
                 }
-                if(MenuCall==DEPARTMENT_ADD_SAVE_CODE&&FormControllerObj.GetFormCompletionStation()==_FAIL)
+                if(MenuCall==DEPARTMENT_ADD_SAVE_CODE&&FormControllerObj.GetFormCompletionState()==_FAIL)
                 {
-                    MenuCall=0;
+                    Flag=true;
                 }
             }while(Flag);
         }while(MenuCall==0);
