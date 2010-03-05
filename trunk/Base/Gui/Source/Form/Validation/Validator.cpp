@@ -47,3 +47,7 @@ bool Validator::CheckDataExistence(string str)
         return true;
     }
 }
+bool Validator::CheckDepartmentExistence(string DeptCode)
+{
+
+}
