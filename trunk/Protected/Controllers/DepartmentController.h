@@ -3,6 +3,8 @@
 #ifndef _BASECONTROLLER_H
 #include "../../Base/BaseController.h"
 #endif
+#include <iostream>
+using namespace std;
 
 class DepartmentController: public BaseController
 {
