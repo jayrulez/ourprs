@@ -13,6 +13,7 @@ private:
 	float regularRate;
 	float overtimeRate;
 	Department * next;
+	bool isNewRecord;
 public:
 	Department();
 	~Department();
@@ -26,6 +27,8 @@ public:
 	void setRegularRate(float);
 	void setOvertimeRate(float);
 	void setNext(Department*);
+	bool getIsNewRecord();
+	void setIsNewRecord(bool);
 	Department* getNext();
 	void read();
 	void write();
@@ -35,5 +38,7 @@ public:
 	bool operator != (const Department);
 	bool operator == (const Department);
 	Department operator = (const Department);
+	Department* operator >> (const Department &);
+
 };
 #endif

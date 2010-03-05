@@ -62,7 +62,7 @@ int DepartmentController::actionAdd()
         overtimeRateString >> overtimeRate;
 
         Department * department = new Department(deptCode, deptName, regularRate, overtimeRate, NULL);
-        //department->save();
+        return menuInstance->AddDepartmentAfterSaveMenu();
 	}
 	return MAIN_CODE;
 }

@@ -1,11 +1,16 @@
 #ifndef _DEPARTMENT_H
 #include "./Department.h"
 #endif
+#include <sstream>
+#include <fstream>
+
+using namespace std;
 
 Department::Department()
 {
 	this->next = NULL;
 	this->setFilename("Department Rates.txt");
+	this->isNewRecord = true;
 }
 
 Department::~Department()
@@ -20,6 +25,17 @@ Department::Department(int deptCode = 0, string deptName = "", float regularRate
 	this->overtimeRate = overtimeRate;
 	this->next = next;
 	this->setFilename("Department Rates.txt");
+	this->isNewRecord = true;
+}
+
+bool Department::getIsNewRecord()
+{
+	return this->isNewRecord;
+}
+
+void Department::setIsNewRecord(bool isNewRecord)
+{
+	this->isNewRecord = isNewRecord;
 }
 
 Department* Department::getNext()
@@ -116,4 +132,10 @@ Department Department::operator = (const Department DepartmentObj)
     this->overtimeRate=DepartmentObj.overtimeRate;
     this->regularRate=DepartmentObj.regularRate;
     return *this;
+}
+
+Department* Department::operator >> (const Department &department)
+{
+	//department >>
+	return NULL;
 }
