@@ -1,6 +1,9 @@
 #ifndef _DEPARTMENT_H
 #include "./Department.h"
 #endif
+#ifndef _CONFIG_H
+#include "../../config.h"
+#endif
 #include <sstream>
 #include <fstream>
 
@@ -9,7 +12,7 @@ using namespace std;
 Department::Department()
 {
 	this->next = NULL;
-	this->setFilename("Department Rates.txt");
+	this->setFilename(DEPARTMENT_RATES_FILE);
 	this->isNewRecord = true;
 }
 
@@ -134,8 +137,33 @@ Department Department::operator = (const Department DepartmentObj)
     return *this;
 }
 
-Department* Department::operator >> (const Department &department)
+bool Department::findByCode(int keyCode)
+{
+	char* filenameChar;
+	istringstream filenameString(this->getFilename());
+	filenameString >> filenameChar;
+	fstream streamObj(filenameChar);
+
+	if(streamObj.is_open())
+	{
+		Department department(0,"",0,0);
+		while(streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate)
+		{
+			if(department.deptCode == keyCode)
+				return true;
+		}
+	}
+	return false;
+}
+
+/*fstream & Department::operator >> (const fstream &mystream, Department &department)
+{
+	mystream << department.deptCode << "\t" << department.deptCode << "\t" << department.regularRate << "\t" << department.overtimeRate;
+	return NULL;
+}
+
+fstream & Department::operator << (const fstream &mystream, Department &department)
 {
 	//department >>
 	return NULL;
-}
+}*/
