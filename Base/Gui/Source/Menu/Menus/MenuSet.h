@@ -96,7 +96,7 @@ public:
     //General Forms Menu Set
     Item*AddDepartmentFormMenu();
     void AddDepartmentFormMenuExtension(int);
-    Item*AddEmployeeFormMenu();
+    Item* AddEmployeeFormMenu();
     void AddEmployeeFormMenuExtension(int);
 
     Item* EditFormMenu();
