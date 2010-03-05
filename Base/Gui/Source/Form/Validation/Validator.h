@@ -16,6 +16,7 @@
 	#include "../../../Win32/Core/Console.h"
 #endif
 #include <string>
+#define DEPARTMENT_FILE "../../../../../Protected/Data/Department Rates.txt"
 
 using namespace std;
 
@@ -30,5 +31,6 @@ public:
     bool CheckStringLenght(string);
     bool CheckNumberValue(string);
     bool CheckDataExistence(string);
+    bool CheckDepartmentExistence(string);
 };
 #endif
