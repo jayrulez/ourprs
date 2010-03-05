@@ -7,7 +7,10 @@
 #ifdef _WIN32
     #include "../../Win32/Core/Console.h"
 #endif
-#define DEPARTMENT_ROW_HEIGTH 4
+#define DEPARTMENT_ROW_HEIGTH 2
+#define UPPER_ROW_COLUMN_JOINT 194
+#define LOWER_ROW_COLUMN_JOINT 193
+
 class Table
 {
 private:
