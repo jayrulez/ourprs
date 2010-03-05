@@ -35,6 +35,7 @@ public:
     int UpdateDepartmentMenu();
     int ViewDepartmentMenu();
     int ViewAllDepartmentMenu();
+	int AddDepartmentAfterSaveMenu();
     //Employee
 	int EmployeeMenu();
 	int AddEmployeeMenu();

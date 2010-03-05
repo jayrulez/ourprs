@@ -227,6 +227,32 @@ int MasterFormMenuController::ViewAllDepartmentMenu()
         }while(MenuCall==0);
     return MenuCall;
 }
+int MasterFormMenuController::AddDepartmentAfterSaveMenu()
+{
+    int MenuCall;
+    bool Flag;
+    if(MenuControllerObj.SetMenu(MenuSetObj.AddDepartmentAfterSaveMenu(),MenuSetObj.GetMenuSize(MenuSetObj.AddDepartmentAfterSaveMenu()),
+    MenuSetObj.GetMenuCode(MenuSetObj.AddDepartmentAfterSaveMenu())))
+    {
+        MenuSetObj.ShowMenuTitle(ON);
+        MenuControllerObj.ShowMenu();
+        do
+        {
+            do
+            {
+                Flag=false;
+                MenuCall=MenuControllerObj.BrowseMenu();
+                if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuCall,MenuControllerObj.GetMenuCode()))
+                {
+                    MenuSetObj.ShowMenuTitle(ON);
+                    MenuControllerObj.ShowMenu();
+                    Flag=true;
+                }
+            }while(Flag);
+        }while(MenuCall==0);
+    }
+    return MenuCall;
+}
 /*
  *Employee Menu
 */
