@@ -31,6 +31,10 @@ int FormController::GetFormSize()
 {
 	return this->FormSize;
 }
+bool FormController::GetFormCompletionStation()
+{
+    return CompleteState;
+}
 bool FormController::SetForm(Field* FormObj,int FormSize,int FormCode)
 {
     if(FormSize>0)
@@ -39,6 +43,7 @@ bool FormController::SetForm(Field* FormObj,int FormSize,int FormCode)
         this->fptr=FormObj;
         this->FormCode=FormCode;
         CurrentField=DefaultStartingField();
+        CompleteState=true;
         VerticalFormRangeCheck=IN_FORM_RANGE;
         return true;
     }
@@ -64,7 +69,8 @@ int FormController::BrowseForm()
             case DOWN_KEY:
             case ENTER_KEY:
                 CurrentField=SearchField(_NEXT);
-                Validate();
+                ConsoleObj.xyCoord(PreviousField.GetFieldX(),PreviousField.GetFieldY()-1);
+                ValidateField();
             break;
             case F1_KEY:
                 return F1_KEY;
@@ -80,6 +86,7 @@ int FormController::BrowseForm()
             VerticalFormRangeCheck=IN_FORM_RANGE;
         }
     }
+    ValidateForm();
     return 0;
 }
 void FormController::Browse()
@@ -202,14 +209,27 @@ void FormController::FieldInput()
     TextInputObj.SetFormTextInput(CurrentField.GetInputType(),CurrentField.GetInputLength(),CurrentField.GetSpaceType());
     CurrentField.SetFieldData(TextInputObj.FormTextInput(CurrentField.GetFieldData()));
 }
-bool FormController::Validate()
+bool FormController::ValidateField()
 {
-    ConsoleObj.xyCoord(PreviousField.GetFieldX(),PreviousField.GetFieldY()-1);
     if(!ValidatorObj.CheckDataExistence(PreviousField.GetFieldData()))
     {
         return false;
     }
 	return true;
+}
+bool FormController::ValidateForm()
+{
+    int x;
+    for(x=0;x<this->FormSize;x++)
+    {
+        PreviousField=*(fptr+x);
+        if(ValidateField()==_FAIL)
+        {
+            CompleteState=false;
+            return false;
+        }
+    }
+    return true;
 }
 void FormController::ShowForm()
 {
@@ -217,6 +237,9 @@ void FormController::ShowForm()
     for(x=0;x<this->FormSize;x++)
     {
         (fptr+x)->ShowField();
+        PreviousField=*(fptr+x);
+        ConsoleObj.xyCoord(PreviousField.GetFieldX(),PreviousField.GetFieldY()-1);
+        ValidateField();
     }
 }
 Field* FormController::GetAllFieldInfo()

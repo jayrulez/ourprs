@@ -34,6 +34,9 @@ using namespace std;
 #define _PREV 0
 #define _NEXT 1
 
+#define _PASS 1
+#define _FAIL 0
+
 class FormController
 {
 private:
@@ -47,11 +50,13 @@ private:
     int FormSize;
     int FormCode;
     bool VerticalFormRangeCheck;
+    bool CompleteState;
 public:
     FormController();
     ~FormController();
 	int GetFormCode();
 	int GetFormSize();
+	bool GetFormCompletionStation();
     Field* GetAllFieldInfo();
     void UpdateAllFieldInfo(Field*);
     bool SetForm(Field*,int,int);
@@ -63,6 +68,7 @@ public:
     void FieldInput();
     void UpdateField();
     bool FormRangeCheck(int);
-    bool Validate();
+    bool ValidateField();
+    bool ValidateForm();
 };
 #endif // FORMCONTROLLER_H
