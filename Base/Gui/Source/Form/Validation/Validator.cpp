@@ -12,6 +12,7 @@
 #include "Validator.h"
 #include <iostream>
 #include <string>
+#include <sstream>
 #include "../../Tools/Colour.h"
 
 using namespace std;
@@ -49,5 +50,18 @@ bool Validator::CheckDataExistence(string str)
 }
 bool Validator::CheckDepartmentExistence(string DeptCode)
 {
-
+    int intCode;
+    istringstream MyStream(DeptCode);
+    MyStream>>intCode;
+    if(DepartmentObj.findByCode(intCode))
+    {
+        ScreenObj.SetScreenTextColour(WhiteColour);
+        cout<<"<Department already exist>";
+        ScreenObj.SetScreenTextColour(DefaultTextColour);
+        return true;
+    }
+    ScreenObj.SetScreenTextColour(DefaultBgColour);
+    cout<<"<Department already exist>";
+    ScreenObj.SetScreenTextColour(WhiteColour);
+    return false;
 }

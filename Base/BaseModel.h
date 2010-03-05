@@ -1,19 +1,20 @@
 #ifndef _BASEMODEL_H
 #define _BASEMODEL_H
-#ifndef _COMPONENT_H
-#include "./Component.h"
-#endif
+/*#ifndef _COMPONENT_H
+#include"./Component.h"
+#endif*/
 #include <string>
 
 using namespace std;
 
-class BaseModel: public Component
+//class BaseModel: public Component
+class BaseModel
 {
 private:
 	string filename;
 public:
 	BaseModel();
-	~BaseModel();
+    virtual ~BaseModel();
 	void setFilename(string);
 	string getFilename();
 	virtual void write();

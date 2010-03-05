@@ -40,7 +40,7 @@ public:
 	Department operator = (const Department);
 	/*fstream & operator >> (const fstream &, const Department &);
 	fstream & operator << (const fstream &, const Department &);*/
-	bool Department::findByCode(int);
+	bool findByCode(int);
 
 };
 #endif
