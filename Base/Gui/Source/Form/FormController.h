@@ -51,6 +51,7 @@ public:
     FormController();
     ~FormController();
 	int GetFormCode();
+	int GetFormSize();
     Field* GetAllFieldInfo();
     void UpdateAllFieldInfo(Field*);
     bool SetForm(Field*,int,int);

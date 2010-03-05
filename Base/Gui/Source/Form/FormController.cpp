@@ -27,6 +27,10 @@ int FormController::GetFormCode()
 {
 	return this->FormCode;
 }
+int FormController::GetFormSize()
+{
+	return this->FormSize;
+}
 bool FormController::SetForm(Field* FormObj,int FormSize,int FormCode)
 {
     if(FormSize>0)
