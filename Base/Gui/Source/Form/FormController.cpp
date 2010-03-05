@@ -220,9 +220,10 @@ bool FormController::ValidateField()
 bool FormController::ValidateForm()
 {
     int x;
+    Field TempField;
     for(x=0;x<this->FormSize;x++)
     {
-        PreviousField=*(fptr+x);
+        TempField=*(fptr+x);
         if(ValidateField()==_FAIL)
         {
             CompleteState=false;
@@ -234,10 +235,11 @@ bool FormController::ValidateForm()
 void FormController::ShowForm()
 {
     int x;
+    Field TempField;
     for(x=0;x<this->FormSize;x++)
     {
         (fptr+x)->ShowField();
-        PreviousField=*(fptr+x);
+        TempField=*(fptr+x);
         ConsoleObj.xyCoord(PreviousField.GetFieldX(),PreviousField.GetFieldY()-1);
         ValidateField();
     }
