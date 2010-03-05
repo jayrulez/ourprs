@@ -77,13 +77,13 @@ int MasterFormMenuController::AddDepartmentMenu()
     int MenuCall;
     if(FormControllerObj.SetForm(FormSetObj.AddDepartmentForm(),FormSetObj.GetFormSize(FormSetObj.AddDepartmentForm()),
     FormSetObj.GetFormCode(FormSetObj.AddDepartmentForm()))&&
-    MenuControllerObj.SetMenu(MenuSetObj.GeneralFormMenu(),MenuSetObj.GetMenuSize(MenuSetObj.GeneralFormMenu()),
-    MenuSetObj.GetMenuCode(MenuSetObj.GeneralFormMenu())))
+    MenuControllerObj.SetMenu(MenuSetObj.AddDepartmentFormMenu(),MenuSetObj.GetMenuSize(MenuSetObj.AddDepartmentFormMenu()),
+    MenuSetObj.GetMenuCode(MenuSetObj.AddDepartmentFormMenu())))
     {
         FormControllerObj.ShowForm();
         MenuControllerObj.ShowMenu();
         MenuSetObj.ShowMenuTitle(ON);
-        MenuSetObj.GeneralFormMenuExtension(ON);
+        MenuSetObj.AddDepartmentFormMenuExtension(ON);
         do
         {
             do
@@ -94,7 +94,7 @@ int MasterFormMenuController::AddDepartmentMenu()
                     FormControllerObj.ShowForm();
                     MenuControllerObj.ShowMenu();
                     MenuSetObj.ShowMenuTitle(ON);
-                    MenuSetObj.GeneralFormMenuExtension(ON);
+                    MenuSetObj.AddDepartmentFormMenuExtension(ON);
                     Flag=true;
                 }
             }while(Flag);
@@ -107,7 +107,7 @@ int MasterFormMenuController::AddDepartmentMenu()
                     FormControllerObj.ShowForm();
                     MenuControllerObj.ShowMenu();
                     MenuSetObj.ShowMenuTitle(ON);
-                    MenuSetObj.GeneralFormMenuExtension(ON);
+                    MenuSetObj.AddDepartmentFormMenuExtension(ON);
                     Flag=true;
                 }
             }while(Flag);
@@ -251,13 +251,13 @@ int MasterFormMenuController::AddEmployeeMenu()
     int MenuCall;
     if(FormControllerObj.SetForm(FormSetObj.AddEmployeeForm(),FormSetObj.GetFormSize(FormSetObj.AddEmployeeForm()),
     FormSetObj.GetFormCode(FormSetObj.AddEmployeeForm()))&&
-    MenuControllerObj.SetMenu(MenuSetObj.GeneralFormMenu(),MenuSetObj.GetMenuSize(MenuSetObj.GeneralFormMenu()),
-    MenuSetObj.GetMenuCode(MenuSetObj.GeneralFormMenu())))
+    MenuControllerObj.SetMenu(MenuSetObj.AddEmployeeFormMenu(),MenuSetObj.GetMenuSize(MenuSetObj.AddEmployeeFormMenu()),
+    MenuSetObj.GetMenuCode(MenuSetObj.AddEmployeeFormMenu())))
     {
         FormControllerObj.ShowForm();
         MenuControllerObj.ShowMenu();
         MenuSetObj.ShowMenuTitle(ON);
-        MenuSetObj.GeneralFormMenuExtension(ON);
+        MenuSetObj.AddEmployeeFormMenuExtension(ON);
         do
         {
             do
@@ -268,7 +268,7 @@ int MasterFormMenuController::AddEmployeeMenu()
                     FormControllerObj.ShowForm();
                     MenuControllerObj.ShowMenu();
                     MenuSetObj.ShowMenuTitle(ON);
-                    MenuSetObj.GeneralFormMenuExtension(ON);
+                    MenuSetObj.AddEmployeeFormMenuExtension(ON);
                     Flag=true;
                 }
             }while(Flag);
@@ -281,7 +281,7 @@ int MasterFormMenuController::AddEmployeeMenu()
                     FormControllerObj.ShowForm();
                     MenuControllerObj.ShowMenu();
                     MenuSetObj.ShowMenuTitle(ON);
-                    MenuSetObj.GeneralFormMenuExtension(ON);
+                    MenuSetObj.AddEmployeeFormMenuExtension(ON);
                     Flag=true;
                 }
             }while(Flag);
