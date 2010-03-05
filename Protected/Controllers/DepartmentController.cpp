@@ -26,12 +26,19 @@ int DepartmentController::getDefaultActionCode()
 int DepartmentController::actionIndex()
 {
     this->getServicesObj()->BasicRunLevel();
-    return this->getMenuObj()->DepartmentMenu();
+	return this->run(this->getMenuObj()->DepartmentMenu());
 }
 
 int DepartmentController::actionAdd()
 {
-    return DEPARTMENT_CODE;
+	int actionCode;
+    this->getServicesObj()->BasicRunLevel();
+	actionCode = this->getMenuObj()->AddDepartmentMenu();
+	if(actionCode == MAIN_CODE || actionCode == DEPARTMENT_CODE)
+	{
+		return this->run(actionCode);
+	}
+	return actionCode;
 }
 
 int DepartmentController::actionUpdate(int deptCode)
@@ -58,8 +65,13 @@ int DepartmentController::actionList(int page = 0)
 int DepartmentController::run(int actionCode)
 {
     int call;
+	if(actionCode == MAIN_CODE)
+		return actionCode;
     switch(actionCode)
     {
+		case DEPARTMENT_ADD_CODE:
+			call = this->actionAdd();
+		break;
         case DEPARTMENT_CODE:
         default:
             call = this->actionIndex();
