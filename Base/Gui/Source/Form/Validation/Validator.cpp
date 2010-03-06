@@ -62,6 +62,6 @@ bool Validator::CheckDepartmentExistence(string DeptCode)
     }
     ScreenObj.SetScreenTextColour(DefaultBgColour);
     cout<<"<Department already exist>";
-    ScreenObj.SetScreenTextColour(WhiteColour);
+    ScreenObj.SetScreenTextColour(DefaultTextColour);
     return false;
 }
