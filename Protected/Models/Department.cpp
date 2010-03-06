@@ -5,6 +5,7 @@
 #include "../../config.h"
 #endif
 #include <fstream>
+#include <iostream>
 
 using namespace std;
 
@@ -26,7 +27,7 @@ Department::Department(int deptCode = 0, string deptName = "", float regularRate
 	this->regularRate = regularRate;
 	this->overtimeRate = overtimeRate;
 	this->next = next;
-	this->setFilename("Department Rates.txt");
+	this->setFilename(DEPARTMENT_RATES_FILE);
 	this->isNewRecord = true;
 }
 
@@ -138,7 +139,7 @@ Department Department::operator = (const Department DepartmentObj)
 
 bool Department::findByCode(int keyCode)
 {
-	fstream streamObj(this->getFilename());
+	ifstream streamObj(this->getFilename());
 
 	if(streamObj.is_open())
 	{
@@ -146,20 +147,27 @@ bool Department::findByCode(int keyCode)
 		while(streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate)
 		{
 			if(department.deptCode == keyCode)
+			{
+			    streamObj.close();
 				return true;
+			}
 		}
+		streamObj.close();
 	}
 	return false;
 }
 
 void Department::save()
 {
-	fstream streamObj(this->getFilename());
+	ofstream streamObj(this->getFilename(),ios::out);
 
-	if(streamObj.is_open())
+	cout << "this->getFilename()"; fgetc(stdin);
+
+	if(streamObj)
 	{
 		while(!streamObj.eof())
 		{
+            if(streamObj.eof()) break;
 		}
 		streamObj << this->deptCode << "\t" << this->deptName << "\t" << this->regularRate << "\t" << this->overtimeRate <<endl;
 		streamObj.close();
