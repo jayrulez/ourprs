@@ -159,17 +159,13 @@ bool Department::findByCode(int keyCode)
 
 void Department::save()
 {
-	ofstream streamObj(this->getFilename(),ios::out);
+	ofstream streamObj(this->getFilename(),ios::app);
 
 	cout << "this->getFilename()"; fgetc(stdin);
 
 	if(streamObj)
 	{
-		while(!streamObj.eof())
-		{
-            if(streamObj.eof()) break;
-		}
-		streamObj << this->deptCode << "\t" << this->deptName << "\t" << this->regularRate << "\t" << this->overtimeRate <<endl;
+		streamObj << this->deptCode << "\t" << this->deptName << "\t" << this->regularRate << "\t" << this->overtimeRate << "\n";
 		streamObj.close();
 	}
 }
