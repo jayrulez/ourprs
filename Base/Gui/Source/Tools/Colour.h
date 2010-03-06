@@ -16,5 +16,6 @@
 #define DefaultBgColour 51
 #define WhiteColour 55
 #define RedTextColour 52
+#define GreenTextColour 58
 
 #endif // COLOUR_H
