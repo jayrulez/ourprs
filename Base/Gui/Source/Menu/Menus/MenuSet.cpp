@@ -454,9 +454,9 @@ Item* MenuSet::AddDepartmentAfterSaveMenu()
     this->MenuSize = 3;
     MenuTitle="Add Department";
     static Item AddDepartmentAfterSaveMenuItem[3];
-    AddDepartmentAfterSaveMenuItem[0].SetItem(15,28,DEPARTMENT_ADD_CODE,"Add More");
-    AddDepartmentAfterSaveMenuItem[1].SetItem(32,28,DEPARTMENT_CODE,"<--Department");
-    AddDepartmentAfterSaveMenuItem[2].SetItem(55,28,MAIN_CODE,"Main Menu");
+    AddDepartmentAfterSaveMenuItem[0].SetItem(15,32,DEPARTMENT_ADD_CODE,"Add More");
+    AddDepartmentAfterSaveMenuItem[1].SetItem(32,32,DEPARTMENT_CODE,"<--Department");
+    AddDepartmentAfterSaveMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");
     return AddDepartmentAfterSaveMenuItem;
 }
 Item* MenuSet::UpdateDepartmentAfterSaveMenu()

@@ -3,6 +3,10 @@
 #ifndef _BASEMODEL_H
 #include "../../Base/BaseModel.h"
 #endif
+#ifdef _WIN32
+    #include "../../Base/Gui/Win32/Core/Console.h"
+#endif
+#include "../../Base/Gui/Source/Tools/Frame.h"
 #include <string>
 
 class Department: public BaseModel
@@ -14,6 +18,8 @@ private:
 	float overtimeRate;
 	Department * next;
 	bool isNewRecord;
+	Console ConsoleObj;
+	Frame FrameObj;
 public:
 	Department();
 	~Department();
@@ -34,7 +40,7 @@ public:
 	void write();
 	static Department* model();
 	Department* find(int);
-	void show();
+	void show(int);
 	bool operator != (const Department);
 	bool operator == (const Department);
 	Department operator = (const Department);
