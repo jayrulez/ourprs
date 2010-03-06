@@ -84,14 +84,21 @@ int DepartmentController::actionUpdate()
     return DEPARTMENT_CODE;
 }
 
-int DepartmentController::actionView(int deptCode)
+int DepartmentController::actionView()
 {
+    int actionCode;
+	MasterFormMenuController* menuInstance = this->getMenuObj();
+
+    this->getServicesObj()->BasicRunLevel();
+	actionCode = menuInstance->SearchDepartmentMenu();
+    /*
 	Department *department = Department::model()->find(deptCode);
 	if(department!=NULL)
 	{
  		department->show(14);
 	}
 	// return this->getMenuObj()->afterDepartmentViewMenu();
+	*/
     return DEPARTMENT_CODE;
 }
 
@@ -113,6 +120,8 @@ int DepartmentController::run(int actionCode)
 		case DEPARTMENT_UPDATE_CODE:
             call = this->actionUpdate();
         break;
+        case DEPARTMENT_VIEW_CODE:
+            call = this->actionView();
         case DEPARTMENT_CODE:
         default:
             call = this->actionIndex();
