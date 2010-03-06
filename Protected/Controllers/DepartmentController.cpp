@@ -84,7 +84,7 @@ int DepartmentController::actionView(int deptCode)
 	Department *department = Department::model()->find(deptCode);
 	if(department!=NULL)
 	{
- 		department->show(10);
+ 		department->show(14);
 	}
 	// return this->getMenuObj()->afterDepartmentViewMenu();
     return DEPARTMENT_CODE;
