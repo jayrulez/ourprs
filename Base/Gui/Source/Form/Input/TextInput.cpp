@@ -107,7 +107,7 @@ string TextInput::FormTextInput(string input)
                 case CURRENCYTYPE:
                     if(isdigit(Achar)||Achar=='.')
                     {
-                        if(Achar=='.'&&input.find('.')==string::npos)
+                        if(Achar=='.'&&input.find('.')!=input.npos)
                         {
                         }
                         else

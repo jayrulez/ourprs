@@ -1,6 +1,9 @@
 #ifndef _DEPARTMENT_H
 #include "./Department.h"
 #endif
+#ifndef _BASEMODEL_H
+#include "../../Base/BaseModel.h"
+#endif
 #ifndef _CONFIG_H
 #include "../../config.h"
 #endif
@@ -140,7 +143,6 @@ Department Department::operator = (const Department DepartmentObj)
 bool Department::findByCode(int keyCode)
 {
 	ifstream streamObj(this->getFilename());
-
 	if(streamObj.is_open())
 	{
 		Department department(0,"",0,0);
@@ -160,9 +162,6 @@ bool Department::findByCode(int keyCode)
 void Department::save()
 {
 	ofstream streamObj(this->getFilename(),ios::app);
-
-	cout << "this->getFilename()"; fgetc(stdin);
-
 	if(streamObj)
 	{
 		streamObj << this->deptCode << "\t" << this->deptName << "\t" << this->regularRate << "\t" << this->overtimeRate << "\n";

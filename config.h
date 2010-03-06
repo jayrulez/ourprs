@@ -1,1 +1,1 @@
-#define DEPARTMENT_RATES_FILE "DepartmentRates.txt"
+#define DEPARTMENT_RATES_FILE "Department Rates.txt"

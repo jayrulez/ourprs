@@ -16,7 +16,7 @@ public:
 	BaseModel();
     virtual ~BaseModel();
 	void setFilename(string);
-	char* getFilename();
+	const char* getFilename();
 	virtual void write();
 	virtual void read();
 };
