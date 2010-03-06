@@ -66,7 +66,9 @@ int DepartmentController::actionAdd()
         department->save();
 
 		this->getServicesObj()->BasicRunLevel();
+
         department->show(14);
+
         return menuInstance->AddDepartmentAfterSaveMenu();
 	}
 	return MAIN_CODE;

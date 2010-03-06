@@ -235,7 +235,7 @@ bool FormController::ValidateForm()
         TempField=*(fptr+x);
         ConsoleObj.xyCoord(TempField.GetFieldX(),TempField.GetFieldY()-1);
         if(ValidatorObj.CheckDataExistence(TempField.GetFieldData())==_FAIL||(
-        ValidatorObj.CheckDepartmentExistence(TempField.GetFieldData())==true&&TempField.GetFieldName()=="Dept. Code"))
+        TempField.GetFieldName()=="Dept. Code"&&ValidatorObj.CheckDepartmentExistence(TempField.GetFieldData())==true))
         {
             CompleteState=false;
             return false;
