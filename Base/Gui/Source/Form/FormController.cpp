@@ -12,6 +12,7 @@
 
 #include "FormController.h"
 #include "../Menu/MenuController.h"
+#include "FormSet/FormSet.h"
 #include "Field.h"
 #include <iostream>
 using namespace std;
@@ -219,9 +220,12 @@ bool FormController::ValidateField()
     }
     else if(PreviousField.GetFieldName()=="Dept. Code")
     {
-        if(ValidatorObj.CheckDepartmentExistence(PreviousField.GetFieldData()))
+        if(this->FormCode!=DEPARTMENT_SEARCH_FORM_CODE)
         {
-            return false;
+            if(ValidatorObj.CheckDepartmentExistence(PreviousField.GetFieldData()))
+            {
+                return false;
+            }
         }
     }
 	return true;
@@ -235,7 +239,8 @@ bool FormController::ValidateForm()
         TempField=*(fptr+x);
         ConsoleObj.xyCoord(TempField.GetFieldX(),TempField.GetFieldY()-1);
         if(ValidatorObj.CheckDataExistence(TempField.GetFieldData())==_FAIL||(
-        TempField.GetFieldName()=="Dept. Code"&&ValidatorObj.CheckDepartmentExistence(TempField.GetFieldData())==true))
+        TempField.GetFieldName()=="Dept. Code"&&this->FormCode!=DEPARTMENT_SEARCH_FORM_CODE
+        &&ValidatorObj.CheckDepartmentExistence(TempField.GetFieldData())==true))
         {
             CompleteState=false;
             return false;

@@ -13,7 +13,8 @@
 #define FORMSET_H
 #include "../Field.h"
 #define INVALID_FORMSET 0x8001
-
+#define DEPARTMENT_ADD_FORM_CODE 2001
+#define DEPARTMENT_SEARCH_FORM_CODE 2002
 class FormSet
 {
 private:

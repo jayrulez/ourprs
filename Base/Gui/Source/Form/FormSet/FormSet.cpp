@@ -37,7 +37,7 @@ int FormSet::GetFormSize(Field *FieldObj)
 }
 Field* FormSet::AddDepartmentForm()
 {
-    this->FormCode=1;
+    this->FormCode=DEPARTMENT_ADD_FORM_CODE;
     this->FormSize=4;
     static Field AddDepartmentFormField[4];
     AddDepartmentFormField[0].SetField("Dept. Code",5,10,1,STRICTNUMERICTYPE,NO_SPACING,4);
@@ -48,7 +48,7 @@ Field* FormSet::AddDepartmentForm()
 }
 Field* FormSet::SearchDepartmentForm()
 {
-    this->FormCode=1;
+    this->FormCode=DEPARTMENT_SEARCH_FORM_CODE;
     this->FormSize=1;
     static Field SearchDepartmentFormField[1];
     SearchDepartmentFormField[0].SetField("Dept. Code",20,19,1,STRICTNUMERICTYPE,NO_SPACING,4);
