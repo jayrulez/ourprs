@@ -66,7 +66,7 @@ int DepartmentController::actionAdd()
         department->save();
 
 		this->getServicesObj()->BasicRunLevel();
-
+        department->show(14);
         return menuInstance->AddDepartmentAfterSaveMenu();
 	}
 	return MAIN_CODE;
@@ -82,7 +82,7 @@ int DepartmentController::actionView(int deptCode)
 	Department *department = Department::model()->find(deptCode);
 	if(department!=NULL)
 	{
-		department->show();
+ 		department->show(10);
 	}
 	// return this->getMenuObj()->afterDepartmentViewMenu();
     return DEPARTMENT_CODE;

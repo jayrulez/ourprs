@@ -7,8 +7,13 @@
 #ifndef _CONFIG_H
 #include "../../config.h"
 #endif
+#ifdef _WIN32
+    #include "../../Base/Gui/Win32/Core/Console.h"
+#endif
+#include "../../Base/Gui/Source/Tools/Frame.h"
 #include <fstream>
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -120,8 +125,21 @@ Department* Department::find(int deptCode)
 	return NULL;
 }
 
-void Department::show()
+void Department::show(int y)
 {
+    if(FrameObj.SetFrame(5,STANDARD_FRAME_WIDTH-5,y,y+11,NORMAL_FRAME))
+    {
+        FrameObj.sFraming();
+    }
+    ConsoleObj.xyCoord(10,y+2);
+    cout<<"Dept. Code        : "<<deptCode;
+    ConsoleObj.xyCoord(10,y+4);
+    cout<<"Dept. Name        : "<<deptName;
+    ConsoleObj.xyCoord(10,y+6);
+    cout<<"Regular Rate ($)  : "<<regularRate;
+    ConsoleObj.xyCoord(10,y+8);
+    cout<<"Overtime Rate ($) : "<<overtimeRate;
+    ConsoleObj.xyCoord(10,y+10);
 }
 bool Department::operator == (const Department DepartmentObj)
 {
@@ -143,12 +161,14 @@ Department Department::operator = (const Department DepartmentObj)
 bool Department::findByCode(int keyCode)
 {
 	ifstream streamObj(this->getFilename());
+	string line;
 	if(streamObj.is_open())
 	{
-		Department department(0,"",0,0);
-		while(streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate)
+	    std::getline( streamObj, line );
+		while(streamObj!=NULL)
 		{
-			if(department.deptCode == keyCode)
+		    streamObj >>deptCode >>deptName >>regularRate >>overtimeRate;
+			if(deptCode == keyCode)
 			{
 			    streamObj.close();
 				return true;
