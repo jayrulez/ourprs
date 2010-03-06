@@ -14,7 +14,7 @@ public:
 	DepartmentController(Component*);
 	int actionIndex();
 	int actionAdd();
-	int actionUpdate(int);
+	int actionUpdate();
 	int actionView(int);
 	int actionList(int);
 	int run(int);

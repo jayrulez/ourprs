@@ -74,8 +74,13 @@ int DepartmentController::actionAdd()
 	return MAIN_CODE;
 }
 
-int DepartmentController::actionUpdate(int deptCode)
+int DepartmentController::actionUpdate()
 {
+	int actionCode;
+	MasterFormMenuController* menuInstance = this->getMenuObj();
+
+    this->getServicesObj()->BasicRunLevel();
+	actionCode = menuInstance->SearchDepartmentMenu();
     return DEPARTMENT_CODE;
 }
 
@@ -105,6 +110,9 @@ int DepartmentController::run(int actionCode)
 		case DEPARTMENT_ADD_CODE:
 			call = this->actionAdd();
 		break;
+		case DEPARTMENT_UPDATE_CODE:
+            call = this->actionUpdate();
+        break;
         case DEPARTMENT_CODE:
         default:
             call = this->actionIndex();
