@@ -41,6 +41,7 @@ public:
 	/*fstream & operator >> (const fstream &, const Department &);
 	fstream & operator << (const fstream &, const Department &);*/
 	bool findByCode(int);
+	void save();
 
 };
 #endif

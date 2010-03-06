@@ -4,7 +4,6 @@
 #ifndef _CONFIG_H
 #include "../../config.h"
 #endif
-#include <sstream>
 #include <fstream>
 
 using namespace std;
@@ -139,10 +138,7 @@ Department Department::operator = (const Department DepartmentObj)
 
 bool Department::findByCode(int keyCode)
 {
-	char* filenameChar;
-	istringstream filenameString(this->getFilename());
-	filenameString >> filenameChar;
-	fstream streamObj(filenameChar);
+	fstream streamObj(this->getFilename());
 
 	if(streamObj.is_open())
 	{
@@ -154,6 +150,20 @@ bool Department::findByCode(int keyCode)
 		}
 	}
 	return false;
+}
+
+void Department::save()
+{
+	fstream streamObj(this->getFilename());
+
+	if(streamObj.is_open())
+	{
+		while(!streamObj.eof())
+		{
+		}
+		streamObj << this->deptCode << "\t" << this->deptName << "\t" << this->regularRate << "\t" << this->overtimeRate <<endl;
+		streamObj.close();
+	}
 }
 
 /*fstream & Department::operator >> (const fstream &mystream, Department &department)

@@ -1,6 +1,7 @@
 #ifndef _BASEMODEL_H
 #include "./BaseModel.h"
 #endif
+#include <sstream>
 
 BaseModel::BaseModel()
 {
@@ -25,7 +26,10 @@ void BaseModel::setFilename(string filename)
 	this->filename = filename;
 }
 
-string BaseModel::getFilename()
+char* BaseModel::getFilename()
 {
-	return this->filename;
+	char* filenameCharS;
+	istringstream filenameString(this->filename);
+	filenameString >> filenameCharS;
+	return filenameCharS;
 }
