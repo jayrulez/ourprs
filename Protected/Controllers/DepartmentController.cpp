@@ -9,6 +9,7 @@
 #endif
 #include "../../Base/Gui/Source/Screen/Screen.h"
 #include "../../Base/Gui/Source/Tools/Colour.h"
+#include "../../Base/Gui/Source/Form/FormSet/FormSet.h"
 #include <sstream>
 
 DepartmentController::DepartmentController()
@@ -129,7 +130,8 @@ int DepartmentController::actionUpdate()
 			regularRateString = regularRate.str();
 			overtimeRateString = overtimeRate.str();
 
-            Field *record;
+            FormSet FormSetObj;
+            Field *record=FormSetObj.UpdateDepartmentForm();
 
 			(record+0)->SetFieldData(deptCodeString);
 			(record+1)->SetFieldData(department->getDeptName());
