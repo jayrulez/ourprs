@@ -191,6 +191,11 @@ int MasterFormMenuController::UpdateDepartmentMenu()
     MenuControllerObj.SetMenu(MenuSetObj.UpdateDepartmentFormMenu(),MenuSetObj.GetMenuSize(MenuSetObj.UpdateDepartmentFormMenu()),
     MenuSetObj.GetMenuCode(MenuSetObj.UpdateDepartmentFormMenu())))
     {
+        /*
+        Field *ptr=FormControllerObj.GetAllFieldInfo();
+        cout<<"["<<(ptr+2)->GetFieldData()<<"]";
+        system("pause");
+        */
         FormControllerObj.ShowForm();
         MenuControllerObj.ShowMenu();
         MenuSetObj.ShowMenuTitle(ON);

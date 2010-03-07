@@ -141,9 +141,10 @@ int DepartmentController::actionUpdate()
 			this->getServicesObj()->BasicRunLevel();
 
 			menuInstance->SetAllFieldData(record);
+
 			actionCode = menuInstance->UpdateDepartmentMenu();;
 
-			system("pause");
+
             //department->show(14);
 		}
 	}
