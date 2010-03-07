@@ -38,12 +38,11 @@ int DepartmentController::actionIndex()
 int DepartmentController::actionAdd()
 {
 	int actionCode;
-	MasterFormMenuController *menuInstance = this->getMenuObj();
+	MasterFormMenuController *menuInstance = this->getMenuObj(true);
 
     this->getServicesObj()->BasicRunLevel();
 	actionCode = menuInstance->AddDepartmentMenu();
 	Field * data = menuInstance->GetAllFieldData();
-	this->getMenuObj(true);
 
 	// cout << actionCode; fgetc(stdin);
 	if(actionCode == MAIN_CODE || actionCode == DEPARTMENT_CODE || actionCode == DEPARTMENT_ADD_CODE)
@@ -98,11 +97,11 @@ int DepartmentController::actionAdd()
 int DepartmentController::actionUpdate()
 {
 	int actionCode;
-	MasterFormMenuController* menuInstance = this->getMenuObj();
+	MasterFormMenuController* menuInstance = this->getMenuObj(true);
 
     this->getServicesObj()->BasicRunLevel();
-	actionCode = menuInstance->SearchDepartmentMenu();
 
+	actionCode = menuInstance->SearchDepartmentMenu();
 	Field * data = menuInstance->GetAllFieldData();
 	int deptCode;
 
@@ -112,12 +111,40 @@ int DepartmentController::actionUpdate()
 	if(actionCode == DEPARTMENT_SEARCH_CODE)
 	{
 	    Department *department = Department::model()->findByCode(deptCode);
-		if(department!= NULL)
+		if(department != NULL)
 		{
-			cout << "found";
+			string deptCodeString;
+			string regularRateString;
+			string overtimeRateString;
+
+			ostringstream deptCode;
+			ostringstream regularRate;
+			ostringstream overtimeRate;
+
+			deptCode << department->getDeptCode();
+			regularRate << department->getRegularRate();
+			overtimeRate << department->getOvertimeRate();
+
+			deptCodeString = deptCode.str();
+			regularRateString = regularRate.str();
+			overtimeRateString = overtimeRate.str();
+
+            Field *record;
+			(record+0)->SetFieldData(deptCodeString);
+			(record+1)->SetFieldData(department->getDeptName());
+			(record+2)->SetFieldData(regularRateString);
+			(record+3)->SetFieldData(overtimeRateString);
+
+			menuInstance->SetAllFieldData(record);
+
+			this->getServicesObj()->BasicRunLevel();
+
+			actionCode = menuInstance->AddDepartmentMenu();
+
+            //department->show(14);
 		}
 	}
-	fgetc(stdin);
+	//fgetc(stdin);
 
     return actionCode;
 }
