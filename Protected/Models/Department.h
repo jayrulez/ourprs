@@ -8,6 +8,8 @@
 #endif
 #include "../../Base/Gui/Source/Tools/Frame.h"
 #include <string>
+#define STATE_SUCCESS true
+#define STATE_FAILURE false
 
 class Department: public BaseModel
 {
@@ -17,7 +19,7 @@ private:
 	float regularRate;
 	float overtimeRate;
 	Department * next;
-	bool isNewRecord;
+	bool operationState;
 	Console ConsoleObj;
 	Frame FrameObj;
 public:
@@ -33,8 +35,8 @@ public:
 	void setRegularRate(float);
 	void setOvertimeRate(float);
 	void setNext(Department*);
-	bool getIsNewRecord();
-	void setIsNewRecord(bool);
+	bool getOperationState();
+	void setOperationState(bool);
 	Department* getNext();
 	void read();
 	void write();
@@ -46,8 +48,9 @@ public:
 	Department operator = (const Department);
 	/*fstream & operator >> (const fstream &, const Department &);
 	fstream & operator << (const fstream &, const Department &);*/
-	bool findByCode(int);
+	bool recordExists(int);
+	Department * findByCode(int);
 	void save();
-
+	void update();
 };
 #endif
