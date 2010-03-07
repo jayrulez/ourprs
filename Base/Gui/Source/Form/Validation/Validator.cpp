@@ -65,7 +65,7 @@ bool Validator::CheckDepartmentExistence(string DeptCode)
     ScreenObj.SetScreenTextColour(DefaultTextColour);
     return false;
 }
-bool Validator::CheckOtherDepartmentExistence(string OldDeptCode,string CurrentDeptCode)
+bool Validator::CheckOtherDepartmentExistence(string CurrentDeptCode,string OldDeptCode)
 {
     int intOldCode;
     int intCurrentCode;
@@ -75,7 +75,7 @@ bool Validator::CheckOtherDepartmentExistence(string OldDeptCode,string CurrentD
     istringstream MyStream1(CurrentDeptCode);
     MyStream1>>intCurrentCode;
 
-    if(DepartmentObj.model()->recordExists(intOldCode,intCurrentCode))
+    if(DepartmentObj.model()->recordExists(intCurrentCode,intOldCode))
     {
         ScreenObj.SetScreenTextColour(RedTextColour);
         cout<<"<Department already exist>";
