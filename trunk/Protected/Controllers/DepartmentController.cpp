@@ -82,7 +82,7 @@ int DepartmentController::actionAdd()
 		}
 		else
 		{
-            ConsoleObj.xyCoord(20,9);
+            ConsoleObj.xyCoord(24,9);
             ScreenObj.SetScreenTextColour(GreenTextColour);
 			cout << "Department Added Successfuly" << endl;
 			ScreenObj.SetScreenTextColour(DefaultTextColour);
