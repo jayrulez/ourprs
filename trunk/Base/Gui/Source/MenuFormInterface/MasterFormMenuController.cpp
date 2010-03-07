@@ -139,14 +139,14 @@ int MasterFormMenuController::AddDepartmentMenu()
     this->FormSize=FormControllerObj.GetFormSize();
     return MenuCall;
 }
-int MasterFormMenuController::SearchDepartmentMenu()
+int MasterFormMenuController::UpdateSearchDepartmentMenu()
 {
     bool Flag;
     int MenuCall;
     if(FormControllerObj.SetForm(FormSetObj.SearchDepartmentForm(),FormSetObj.GetFormSize(FormSetObj.SearchDepartmentForm()),
     FormSetObj.GetFormCode(FormSetObj.SearchDepartmentForm()))&&
-    MenuControllerObj.SetMenu(MenuSetObj.SearchDepartmentFormMenu(),MenuSetObj.GetMenuSize(MenuSetObj.SearchDepartmentFormMenu()),
-    MenuSetObj.GetMenuCode(MenuSetObj.SearchDepartmentFormMenu())))
+    MenuControllerObj.SetMenu(MenuSetObj.UpdateSearchDepartmentFormMenu(),MenuSetObj.GetMenuSize(MenuSetObj.UpdateSearchDepartmentFormMenu()),
+    MenuSetObj.GetMenuCode(MenuSetObj.UpdateSearchDepartmentFormMenu())))
     {
         FormControllerObj.ShowForm();
         MenuControllerObj.ShowMenu();
@@ -240,32 +240,50 @@ int MasterFormMenuController::UpdateDepartmentMenu()
     this->FormSize=FormControllerObj.GetFormSize();
     return MenuCall;
 }
-int MasterFormMenuController::ViewDepartmentMenu()
+int MasterFormMenuController::ViewSearchDepartmentMenu()
 {
     bool Flag;
     int MenuCall;
-    if(MenuControllerObj.SetMenu(MenuSetObj.ViewDepartmentMenu(),MenuSetObj.GetMenuSize(MenuSetObj.ViewDepartmentMenu()),
-    MenuSetObj.GetMenuCode(MenuSetObj.ViewDepartmentMenu())))
+    if(FormControllerObj.SetForm(FormSetObj.SearchDepartmentForm(),FormSetObj.GetFormSize(FormSetObj.SearchDepartmentForm()),
+    FormSetObj.GetFormCode(FormSetObj.SearchDepartmentForm()))&&
+    MenuControllerObj.SetMenu(MenuSetObj.ViewSearchDepartmentFormMenu(),MenuSetObj.GetMenuSize(MenuSetObj.ViewSearchDepartmentFormMenu()),
+    MenuSetObj.GetMenuCode(MenuSetObj.ViewSearchDepartmentFormMenu())))
     {
+        FormControllerObj.ShowForm();
         MenuControllerObj.ShowMenu();
         MenuSetObj.ShowMenuTitle(ON);
-        MenuSetObj.ViewDepartmentMenuExtension(ON);
+        MenuSetObj.SearchDepartmentFormMenuExtension(ON);
         do
         {
             do
             {
                 Flag=false;
-                MenuCall = MenuControllerObj.BrowseMenu();
-                if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuCall,MenuControllerObj.GetMenuCode()))
+                if(ExtendedMenuControllerObj.ExtendedMenuCalls(FormControllerObj.BrowseForm(),FormControllerObj.GetFormCode()))
                 {
+                    FormControllerObj.ShowForm();
                     MenuControllerObj.ShowMenu();
                     MenuSetObj.ShowMenuTitle(ON);
-                    MenuSetObj.ViewDepartmentMenuExtension(ON);
+                    MenuSetObj.SearchDepartmentFormMenuExtension(ON);
+                    Flag=true;
+                }
+            }while(Flag);
+            do
+            {
+                Flag=false;
+                MenuCall=MenuControllerObj.BrowseMenu();
+                if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuCall,MenuControllerObj.GetMenuCode()))
+                {
+                    FormControllerObj.ShowForm();
+                    MenuControllerObj.ShowMenu();
+                    MenuSetObj.ShowMenuTitle(ON);
+                    MenuSetObj.SearchDepartmentFormMenuExtension(ON);
                     Flag=true;
                 }
             }while(Flag);
         }while(MenuCall==0);
     }
+    this->FieldObj=FormControllerObj.GetAllFieldInfo();
+    this->FormSize=FormControllerObj.GetFormSize();
     return MenuCall;
 }
 int MasterFormMenuController::DepartmentAfterViewMenu()

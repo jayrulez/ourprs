@@ -72,9 +72,9 @@ public:
 
     //Department Menu Set
     Item* DepartmentMenu();
-    Item* SearchDepartmentFormMenu();
+    Item* UpdateSearchDepartmentFormMenu();
     void SearchDepartmentFormMenuExtension(int);
-    Item* ViewDepartmentMenu();
+    Item* ViewSearchDepartmentFormMenu();
     Item* DepartmentAfterViewMenu();
     Item* ViewAllDepartmentMenu();
     void ViewAllDepartmentMenuExtension(int);
