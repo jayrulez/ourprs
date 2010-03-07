@@ -38,7 +38,7 @@ int DepartmentController::actionAdd()
     this->getServicesObj()->BasicRunLevel();
 	actionCode = menuInstance->AddDepartmentMenu();
 	Field * data = menuInstance->GetAllFieldData();
-	menuInstance = this->getMenuObj(true); // returns a new instance of menu
+	menuInstance->ClearAllFieldData();
 	
 	// cout << actionCode; fgetc(stdin);
 	if(actionCode == MAIN_CODE || actionCode == DEPARTMENT_CODE || actionCode == DEPARTMENT_ADD_CODE)
