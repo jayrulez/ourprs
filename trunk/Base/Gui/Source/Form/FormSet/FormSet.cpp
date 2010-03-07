@@ -54,6 +54,17 @@ Field* FormSet::SearchDepartmentForm()
     SearchDepartmentFormField[0].SetField("Dept. Code",20,19,1,STRICTNUMERICTYPE,NO_SPACING,4);
     return SearchDepartmentFormField;
 }
+Field* FormSet::UpdateDepartmentForm()
+{
+    this->FormCode=DEPARTMENT_UPDATE_FORM_CODE;
+    this->FormSize=4;
+    static Field UpdateDepartmentFormField[4];
+    UpdateDepartmentFormField[0].SetField("Dept. Code",5,10,1,STRICTNUMERICTYPE,NO_SPACING,4);
+    UpdateDepartmentFormField[1].SetField("Dept. Name",5,13,2,ALPHABETICALTYPE,SPACING,50);
+    UpdateDepartmentFormField[2].SetField("Regular Rate ($)",5,16,3,CURRENCYTYPE,NO_SPACING,20);
+    UpdateDepartmentFormField[3].SetField("Overtime Rate ($)",5,19,4,CURRENCYTYPE,NO_SPACING,20);
+    return UpdateDepartmentFormField;
+}
 Field* FormSet::AddEmployeeForm()
 {
     this->FormCode=2;

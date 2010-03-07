@@ -13,8 +13,9 @@
 #define FORMSET_H
 #include "../Field.h"
 #define INVALID_FORMSET 0x8001
-#define DEPARTMENT_ADD_FORM_CODE 2001
-#define DEPARTMENT_SEARCH_FORM_CODE 2002
+#define DEPARTMENT_ADD_FORM_CODE 2010
+#define DEPARTMENT_UPDATE_FORM_CODE 220
+#define DEPARTMENT_SEARCH_FORM_CODE 2030
 class FormSet
 {
 private:
@@ -29,6 +30,7 @@ public:
     int GetFormSize(Field*);
     Field* AddDepartmentForm();
     Field* SearchDepartmentForm();
+    Field* UpdateDepartmentForm();
     Field* AddEmployeeForm();
     Field* SearchEmployeeForm();
 
