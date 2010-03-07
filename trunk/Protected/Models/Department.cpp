@@ -183,13 +183,15 @@ bool Department::recordExists(int keyCode, int ignore)
 		{
 		    //streamObj >>deptCode >>deptName >>regularRate >>overtimeRate;
 			streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate;
-			if(department.deptCode != keyCode)
+			if(department.deptCode == keyCode)
 			{
-				if(department.deptCode == keyCode)
-				{
-					streamObj.close();
-					return true;
-				}
+				continue;
+				// consider breaking intead of continue
+			}
+			if(department.deptCode == keyCode)
+			{
+				streamObj.close();
+				return true;
 			}
 		}
 		streamObj.close();
@@ -229,6 +231,8 @@ void Department::save()
 	{
 		if(streamObj << this->deptCode << "\t" << this->deptName << "\t" << this->regularRate << "\t" << this->overtimeRate << "\n")
 			this->operationState = OPERATIONSTATE_SUCCESS;
+		else
+			this->operationState = OPERATIONSTATE_FAILURE;
 		streamObj.close();
 	}
 }
@@ -258,9 +262,21 @@ void Department::update()
 			streamObj.seekp(position-1,ios::cur);
 			if(streamObj << this->deptCode << "\t" << this->deptName << "\t" << this->regularRate << "\t" << this->overtimeRate << "\n")
 				this->operationState = OPERATIONSTATE_SUCCESS;
+			else
+				this->operationState = OPERATIONSTATE_FAILURE;
 		}
 		streamObj.close();
 	}
+}
+
+void Department::setOldDeptCode(int oldDeptCode)
+{
+	this->oldDeptCode = oldDeptCode;
+}
+
+int Department::getOldDeptCode()
+{
+	return this->oldDeptCode;
 }
 
 /*fstream & Department::operator >> (const fstream &mystream, Department &department)
