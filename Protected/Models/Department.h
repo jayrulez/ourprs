@@ -15,6 +15,7 @@ class Department: public BaseModel
 {
 private:
 	int deptCode;
+	int oldDeptCode;
 	string deptName;
 	float regularRate;
 	float overtimeRate;
@@ -50,6 +51,8 @@ public:
 	fstream & operator << (const fstream &, const Department &);*/
 	bool recordExists(int);
 	bool recordExists(int, int);
+	void setOldDeptCode(int);
+	int getOldDeptCode();
 	Department * findByCode(int);
 	void save();
 	void update();
