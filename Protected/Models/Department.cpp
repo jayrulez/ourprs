@@ -117,10 +117,6 @@ Department* Department::model()
 
 void Department::show(int y)
 {
-    if(FrameObj.SetFrame(5,STANDARD_FRAME_WIDTH-5,y,y+11,NORMAL_FRAME))
-    {
-        FrameObj.sFraming();
-    }
     ConsoleObj.xyCoord(10,y+2);
     cout<<"Dept. Code        : "<<deptCode;
     ConsoleObj.xyCoord(10,y+4);
@@ -129,7 +125,10 @@ void Department::show(int y)
     cout<<"Regular Rate ($)  : "<<regularRate;
     ConsoleObj.xyCoord(10,y+8);
     cout<<"Overtime Rate ($) : "<<overtimeRate;
-    ConsoleObj.xyCoord(10,y+10);
+    if(FrameObj.SetFrame(5,STANDARD_FRAME_WIDTH-5,y,y+10,NORMAL_FRAME))
+    {
+        FrameObj.sFraming();
+    }
 }
 bool Department::operator == (const Department DepartmentObj)
 {
