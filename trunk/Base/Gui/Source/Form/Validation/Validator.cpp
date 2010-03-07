@@ -65,3 +65,20 @@ bool Validator::CheckDepartmentExistence(string DeptCode)
     ScreenObj.SetScreenTextColour(DefaultTextColour);
     return false;
 }
+bool Validator::CheckOtherDepartmentExistence(string DeptCode)
+{
+    int intCode;
+    istringstream MyStream(DeptCode);
+    MyStream>>intCode;
+    if(DepartmentObj.model()->recordExists(intCode,intCode))
+    {
+        ScreenObj.SetScreenTextColour(RedTextColour);
+        cout<<"<Department already exist>";
+        ScreenObj.SetScreenTextColour(DefaultTextColour);
+        return true;
+    }
+    ScreenObj.SetScreenTextColour(DefaultBgColour);
+    cout<<"<Department already exist>";
+    ScreenObj.SetScreenTextColour(DefaultTextColour);
+    return false;
+}
