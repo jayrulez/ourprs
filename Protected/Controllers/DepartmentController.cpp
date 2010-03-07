@@ -212,19 +212,40 @@ int DepartmentController::actionUpdate()
 int DepartmentController::actionView()
 {
     int actionCode;
+    int deptCode;
+    Department *department;
 	MasterFormMenuController* menuInstance = this->getMenuObj();
 
     this->getServicesObj()->BasicRunLevel();
-	actionCode = menuInstance->SearchDepartmentMenu();
-    /*
-	Department *department = Department::model()->find(deptCode);
-	if(department!=NULL)
+	do
 	{
- 		department->show(14);
-	}
-	// return this->getMenuObj()->afterDepartmentViewMenu();
-	*/
-    return DEPARTMENT_CODE;
+        actionCode = menuInstance->SearchDepartmentMenu();
+
+        Field * data = menuInstance->GetAllFieldData();
+        istringstream deptCodeString((data)->GetFieldData());
+        deptCodeString >> deptCode;
+
+        department = Department::model()->find(deptCode);
+        if(actionCode==DEPARTMENT_SEARCH_CODE)
+        {
+            if(department!=NULL)
+            {
+                department->show(14);
+                return this->getMenuObj()->DepartmentAfterViewMenu();
+            }
+            else
+            {
+                this->getServicesObj()->BasicRunLevel();
+                ConsoleObj.xyCoord(20,9);
+                ScreenObj.SetScreenTextColour(RedTextColour);
+                cout << "Error: Could not find department record" << endl;
+                ScreenObj.SetScreenTextColour(DefaultTextColour);
+            }
+        }
+        else
+            break;
+	}while(department==NULL);
+    return this->run(actionCode);
 }
 
 int DepartmentController::actionList(int page = 0)
