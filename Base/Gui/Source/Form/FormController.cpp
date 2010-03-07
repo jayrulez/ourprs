@@ -271,8 +271,11 @@ void FormController::UpdateAllFieldInfo(Field *fptr)
 }
 void FormController::ClearAllFieldData()
 {
+    /*
     for(int x=0;x<FormSize;x++)
     {
         (fptr+x)->SetFieldData(NULL);
     }
+    */
+    fptr=NULL;
 }
