@@ -68,7 +68,10 @@ int DepartmentController::actionAdd()
         menuInstance->ClearAllFieldData();
 
 		this->getServicesObj()->BasicRunLevel();
-
+		if(department->getIsNewRecord())
+			cout << "Error" << endl;
+		else
+			cout << "Success" << endl;
         department->show(14);
 
         return this->run(menuInstance->AddDepartmentAfterSaveMenu());
