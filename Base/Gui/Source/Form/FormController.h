@@ -51,6 +51,7 @@ private:
     int FormCode;
     bool VerticalFormRangeCheck;
     bool CompleteState;
+    string UpdateFormOldKey;
 public:
     FormController();
     ~FormController();

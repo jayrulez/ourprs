@@ -46,6 +46,10 @@ bool FormController::SetForm(Field* FormObj,int FormSize,int FormCode)
         CurrentField=DefaultStartingField();
         CompleteState=true;
         VerticalFormRangeCheck=IN_FORM_RANGE;
+        if(this->FormCode==DEPARTMENT_UPDATE_FORM_CODE)
+        {
+            this->UpdateFormOldKey=(this->fptr)->GetFieldData();
+        }
         return true;
     }
     else
