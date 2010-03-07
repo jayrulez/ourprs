@@ -186,7 +186,7 @@ Department* Department::findByCode(int keyCode)
 			if(department.deptCode == keyCode)
 			{
 			    streamObj.close();
-			    Department * record = &department;
+			    Department * record = new Department(department.deptCode,department.deptName,department.regularRate,department.overtimeRate);
 				return record;
 				//return NULL;
 			}
