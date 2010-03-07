@@ -457,11 +457,12 @@ void MenuSet::ViewDepartmentMenuExtension(int state)
 Item* MenuSet::SearchDepartmentFormMenu()
 {
     this->MenuCode = DEPARTMENT_UPDATE_CODE;
-    this->MenuSize = 2;
+    this->MenuSize = 3;
     MenuTitle="Update Department";
-    static Item UpdateDepartmentFormMenuItem[2];
-    UpdateDepartmentFormMenuItem[0].SetItem(25,28,DEPARTMENT_SEARCH_CODE,"Search");
-    UpdateDepartmentFormMenuItem[1].SetItem(45,28,MAIN_CODE,"Main Menu");
+    static Item UpdateDepartmentFormMenuItem[3];
+    UpdateDepartmentFormMenuItem[0].SetItem(15,28,DEPARTMENT_SEARCH_CODE,"Search");
+    UpdateDepartmentFormMenuItem[1].SetItem(32,28,DEPARTMENT_CODE,"<--Department");
+    UpdateDepartmentFormMenuItem[2].SetItem(55,28,MAIN_CODE,"Main Menu");
     return UpdateDepartmentFormMenuItem;
 }
 void MenuSet::SearchDepartmentFormMenuExtension(int state)
@@ -470,11 +471,13 @@ void MenuSet::SearchDepartmentFormMenuExtension(int state)
     {
         ScreenObj.SetScreenTextColour(ConsoleObj.GetConsoleScreenColour()+3);
     }
-    LineObj.setVCoord(27,29,22);
+    LineObj.setVCoord(27,29,11);
     LineObj.vSLine();
-    LineObj.setVCoord(27,29,41);
+    LineObj.setVCoord(27,29,26);
     LineObj.vSLine();
-    LineObj.setVCoord(27,29,55);
+    LineObj.setVCoord(27,29,50);
+    LineObj.vSLine();
+    LineObj.setVCoord(27,29,67);
     LineObj.vSLine();
     ScreenObj.SetScreenTextColour(48);
 }

@@ -99,102 +99,114 @@ int DepartmentController::actionAdd()
 int DepartmentController::actionUpdate()
 {
 	int actionCode;
-	MasterFormMenuController* menuInstance = this->getMenuObj(true);
-
-    this->getServicesObj()->BasicRunLevel();
-
-	actionCode = menuInstance->SearchDepartmentMenu();
-	Field * data = menuInstance->GetAllFieldData();
 	int deptCode;
+	Department *department;
 
-	istringstream deptCodeString((data)->GetFieldData());
-	deptCodeString >> deptCode;
+	MasterFormMenuController* menuInstance = this->getMenuObj(true);
+    this->getServicesObj()->BasicRunLevel();
+    do
+    {
+        actionCode = menuInstance->SearchDepartmentMenu();
+        Field * data = menuInstance->GetAllFieldData();
 
-	if(actionCode == DEPARTMENT_SEARCH_CODE)
-	{
-	    Department *department = Department::model()->findByCode(deptCode);
-		if(department != NULL)
-		{
-			string deptCodeString;
-			string regularRateString;
-			string overtimeRateString;
+        istringstream deptCodeString((data)->GetFieldData());
+        deptCodeString >> deptCode;
 
-			ostringstream deptCode;
-			ostringstream regularRate;
-			ostringstream overtimeRate;
+        if(actionCode == DEPARTMENT_SEARCH_CODE)
+        {
+            department = Department::model()->findByCode(deptCode);
+            if(department != NULL)
+            {
+                string deptCodeString;
+                string regularRateString;
+                string overtimeRateString;
 
-			deptCode << department->getDeptCode();
-			regularRate << department->getRegularRate();
-			overtimeRate << department->getOvertimeRate();
+                ostringstream deptCode;
+                ostringstream regularRate;
+                ostringstream overtimeRate;
 
-			deptCodeString = deptCode.str();
-			regularRateString = regularRate.str();
-			overtimeRateString = overtimeRate.str();
+                deptCode << department->getDeptCode();
+                regularRate << department->getRegularRate();
+                overtimeRate << department->getOvertimeRate();
 
-            FormSet FormSetObj;
-            Field *record=FormSetObj.UpdateDepartmentForm();
+                deptCodeString = deptCode.str();
+                regularRateString = regularRate.str();
+                overtimeRateString = overtimeRate.str();
 
-			(record+0)->SetFieldData(deptCodeString);
-			(record+1)->SetFieldData(department->getDeptName());
-			(record+2)->SetFieldData(regularRateString);
-			(record+3)->SetFieldData(overtimeRateString);
+                FormSet FormSetObj;
+                Field *record=FormSetObj.UpdateDepartmentForm();
 
-			this->getServicesObj()->BasicRunLevel();
+                (record+0)->SetFieldData(deptCodeString);
+                (record+1)->SetFieldData(department->getDeptName());
+                (record+2)->SetFieldData(regularRateString);
+                (record+3)->SetFieldData(overtimeRateString);
 
-			menuInstance->SetAllFieldData(record);
-			
-			actionCode = menuInstance->UpdateDepartmentMenu();
-			Field * newData = menuInstance->GetAllFieldData();
+                this->getServicesObj()->BasicRunLevel();
 
-			int _deptCodeInt;
-			string _deptName;
-			float _regularRateFloat;
-			float _overtimeRateFloat;
+                menuInstance->SetAllFieldData(record);
 
-			istringstream _deptCodeString((newData)->GetFieldData());
-			istringstream _regularRateString((newData+2)->GetFieldData());
-			istringstream _overtimeRateString((newData+3)->GetFieldData());
+                actionCode = menuInstance->UpdateDepartmentMenu();
+                Field * newData = menuInstance->GetAllFieldData();
 
-			_deptCodeString >> _deptCodeInt;
-			_deptName = (newData+1)->GetFieldData();
-			_regularRateString >> _regularRateFloat;
-			_overtimeRateString >> _overtimeRateFloat;
+                int _deptCodeInt;
+                string _deptName;
+                float _regularRateFloat;
+                float _overtimeRateFloat;
 
-			Department * updatedDepartment = new Department(_deptCodeInt,_deptName,_regularRateFloat,_overtimeRateFloat,NULL);
-			if(actionCode == MAIN_CODE || actionCode == DEPARTMENT_CODE)
-			{
-				return this->run(actionCode);
-			}
-			if(actionCode == DEPARTMENT_UPDATE_SAVE_CODE)
-			{
-				//updatedDepartment->setOldDeptCode(department->getDeptCode());
-				updatedDepartment->update();
-				menuInstance->ClearAllFieldData();
+                istringstream _deptCodeString((newData)->GetFieldData());
+                istringstream _regularRateString((newData+2)->GetFieldData());
+                istringstream _overtimeRateString((newData+3)->GetFieldData());
 
-				this->getServicesObj()->BasicRunLevel();
-				if(updatedDepartment->getOperationState() == OPERATIONSTATE_FAILURE)
-				{
-					ConsoleObj.xyCoord(20,9);
-					ScreenObj.SetScreenTextColour(RedTextColour);
-					cout << "Error: Could not update department record" << endl;
-					ScreenObj.SetScreenTextColour(DefaultTextColour);
-				}
-				else if(updatedDepartment->getOperationState() == OPERATIONSTATE_SUCCESS)
-				{
-					ConsoleObj.xyCoord(24,9);
-					ScreenObj.SetScreenTextColour(GreenTextColour);
-					cout << "Department Updated Successfuly" << endl;
-					ScreenObj.SetScreenTextColour(DefaultTextColour);
+                _deptCodeString >> _deptCodeInt;
+                _deptName = (newData+1)->GetFieldData();
+                _regularRateString >> _regularRateFloat;
+                _overtimeRateString >> _overtimeRateFloat;
 
-				}
-				updatedDepartment->show(14);
-				
-				return this->run(menuInstance->UpdateDepartmentAfterSaveMenu());
-			}
-		}
-	}
+                Department * updatedDepartment = new Department(_deptCodeInt,_deptName,_regularRateFloat,_overtimeRateFloat,NULL);
+                if(actionCode == MAIN_CODE || actionCode == DEPARTMENT_CODE)
+                {
+                    return this->run(actionCode);
+                }
+                if(actionCode == DEPARTMENT_UPDATE_SAVE_CODE)
+                {
+                    //updatedDepartment->setOldDeptCode(department->getDeptCode());
+                    updatedDepartment->update();
+                    menuInstance->ClearAllFieldData();
 
-    return MAIN_CODE;
+                    this->getServicesObj()->BasicRunLevel();
+                    if(updatedDepartment->getOperationState() == OPERATIONSTATE_FAILURE)
+                    {
+                        ConsoleObj.xyCoord(20,9);
+                        ScreenObj.SetScreenTextColour(RedTextColour);
+                        cout << "Error: Could not update department record" << endl;
+                        ScreenObj.SetScreenTextColour(DefaultTextColour);
+                    }
+                    else if(updatedDepartment->getOperationState() == OPERATIONSTATE_SUCCESS)
+                    {
+                        ConsoleObj.xyCoord(24,9);
+                        ScreenObj.SetScreenTextColour(GreenTextColour);
+                        cout << "Department Updated Successfuly" << endl;
+                        ScreenObj.SetScreenTextColour(DefaultTextColour);
+                    }
+                    updatedDepartment->show(14);
+
+                    return this->run(menuInstance->UpdateDepartmentAfterSaveMenu());
+                }
+            }
+            else
+            {
+                this->getServicesObj()->BasicRunLevel();
+                ConsoleObj.xyCoord(20,9);
+                ScreenObj.SetScreenTextColour(RedTextColour);
+                cout << "Error: Could not find department record" << endl;
+                ScreenObj.SetScreenTextColour(DefaultTextColour);
+            }
+        }
+        else
+            break;
+    }while(department==NULL);
+
+    return this->run(actionCode);
 }
 
 int DepartmentController::actionView()
