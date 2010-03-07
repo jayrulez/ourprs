@@ -129,10 +129,8 @@ int DepartmentController::actionUpdate()
 			regularRateString = regularRate.str();
 			overtimeRateString = overtimeRate.str();
 
-            Field *record = menuInstance->GetAllFieldData();
+            Field *record;
 
-			cout << "found";
-			system("pause");
 			(record+0)->SetFieldData(deptCodeString);
 			(record+1)->SetFieldData(department->getDeptName());
 			(record+2)->SetFieldData(regularRateString);
