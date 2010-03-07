@@ -79,6 +79,7 @@ int DepartmentController::actionAdd()
             ScreenObj.SetScreenTextColour(RedTextColour);
 			cout << "Error: Could not save department info to file" << endl;
 			ScreenObj.SetScreenTextColour(DefaultTextColour);
+			return this->run(menuInstance->AddDepartmentFailSaveMenu());
 		}
 		else
 		{

@@ -38,6 +38,8 @@ public:
     int ViewDepartmentMenu();
     int ViewAllDepartmentMenu();
 	int AddDepartmentAfterSaveMenu();
+	int AddDepartmentFailSaveMenu();
+	int UpdateDepartmentFailSaveMenu();
     //Employee
 	int EmployeeMenu();
 	int AddEmployeeMenu();

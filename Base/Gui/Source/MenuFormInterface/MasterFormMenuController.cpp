@@ -318,6 +318,58 @@ int MasterFormMenuController::AddDepartmentAfterSaveMenu()
     }
     return MenuCall;
 }
+int MasterFormMenuController::AddDepartmentFailSaveMenu()
+{
+    int MenuCall;
+    bool Flag;
+    if(MenuControllerObj.SetMenu(MenuSetObj.AddDepartmentFailSaveMenu(),MenuSetObj.GetMenuSize(MenuSetObj.AddDepartmentFailSaveMenu()),
+    MenuSetObj.GetMenuCode(MenuSetObj.AddDepartmentFailSaveMenu())))
+    {
+        MenuSetObj.ShowMenuTitle(ON);
+        MenuControllerObj.ShowMenu();
+        do
+        {
+            do
+            {
+                Flag=false;
+                MenuCall=MenuControllerObj.BrowseMenu();
+                if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuCall,MenuControllerObj.GetMenuCode()))
+                {
+                    MenuSetObj.ShowMenuTitle(ON);
+                    MenuControllerObj.ShowMenu();
+                    Flag=true;
+                }
+            }while(Flag);
+        }while(MenuCall==0);
+    }
+    return MenuCall;
+}
+int MasterFormMenuController::UpdateDepartmentFailSaveMenu()
+{
+    int MenuCall;
+    bool Flag;
+    if(MenuControllerObj.SetMenu(MenuSetObj.UpdateDepartmentFailSaveMenu(),MenuSetObj.GetMenuSize(MenuSetObj.UpdateDepartmentFailSaveMenu()),
+    MenuSetObj.GetMenuCode(MenuSetObj.UpdateDepartmentFailSaveMenu())))
+    {
+        MenuSetObj.ShowMenuTitle(ON);
+        MenuControllerObj.ShowMenu();
+        do
+        {
+            do
+            {
+                Flag=false;
+                MenuCall=MenuControllerObj.BrowseMenu();
+                if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuCall,MenuControllerObj.GetMenuCode()))
+                {
+                    MenuSetObj.ShowMenuTitle(ON);
+                    MenuControllerObj.ShowMenu();
+                    Flag=true;
+                }
+            }while(Flag);
+        }while(MenuCall==0);
+    }
+    return MenuCall;
+}
 /*
  *Employee Menu
 */
