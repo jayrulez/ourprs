@@ -452,25 +452,46 @@ Item* MenuSet::AddDepartmentAfterSaveMenu()
 {
     this->MenuCode = 8;
     this->MenuSize = 3;
-    MenuTitle="Add Department";
+    MenuTitle="Add Department - Success";
     static Item AddDepartmentAfterSaveMenuItem[3];
     AddDepartmentAfterSaveMenuItem[0].SetItem(15,32,DEPARTMENT_ADD_CODE,"Add More");
     AddDepartmentAfterSaveMenuItem[1].SetItem(32,32,DEPARTMENT_CODE,"<--Department");
     AddDepartmentAfterSaveMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");
     return AddDepartmentAfterSaveMenuItem;
 }
+Item* MenuSet::AddDepartmentFailSaveMenu()
+{
+    this->MenuCode = 8;
+    this->MenuSize = 3;
+    MenuTitle="Add Department - Failed";
+    static Item AddDepartmentFailSaveMenuItem[3];
+    AddDepartmentFailSaveMenuItem[0].SetItem(15,32,DEPARTMENT_ADD_CODE,"<--Add Form");
+    AddDepartmentFailSaveMenuItem[1].SetItem(32,32,DEPARTMENT_CODE,"Department");
+    AddDepartmentFailSaveMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");
+    return AddDepartmentFailSaveMenuItem;
+}
 Item* MenuSet::UpdateDepartmentAfterSaveMenu()
 {
     this->MenuCode = 8;
     this->MenuSize = 3;
-    MenuTitle="Update Department";
+    MenuTitle="Update Department - Sucess";
     static Item UpdateDepartmentAfterSaveMenuItem[3];
     UpdateDepartmentAfterSaveMenuItem[0].SetItem(25,28,DEPARTMENT_SEARCH_CODE,"Update More");
     UpdateDepartmentAfterSaveMenuItem[1].SetItem(25,48,DEPARTMENT_CODE,"<--Department");
     UpdateDepartmentAfterSaveMenuItem[2].SetItem(45,28,MAIN_CODE,"Main Menu");
     return UpdateDepartmentAfterSaveMenuItem;
 }
-
+Item* MenuSet::UpdateDepartmentFailSaveMenu()
+{
+    this->MenuCode = 8;
+    this->MenuSize = 3;
+    MenuTitle="Update Department - Failed";
+    static Item UpdateDepartmentFailSaveMenuItem[3];
+    UpdateDepartmentFailSaveMenuItem[0].SetItem(25,28,DEPARTMENT_UPDATE_FORM_MENU_CODE,"<--Update Form");
+    UpdateDepartmentFailSaveMenuItem[1].SetItem(25,48,DEPARTMENT_CODE,"Department");
+    UpdateDepartmentFailSaveMenuItem[2].SetItem(45,28,MAIN_CODE,"Main Menu");
+    return UpdateDepartmentFailSaveMenuItem;
+}
 
 
 

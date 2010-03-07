@@ -146,7 +146,7 @@ string TextInput::FormTextInput(string input)
                 }
                 break;
             case SPACEBAR_KEY:
-                if(position==0)
+                if(position>0)
                 {
                     switch(this->SpaceType)
                     {

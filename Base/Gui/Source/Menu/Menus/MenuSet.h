@@ -31,7 +31,10 @@
 #define DEPARTMENT_CODE 2000
 #define DEPARTMENT_ADD_CODE 2100
 #define DEPARTMENT_ADD_SAVE_CODE 2110
+
 #define DEPARTMENT_UPDATE_CODE 2200
+#define DEPARTMENT_UPDATE_FORM_MENU_CODE 2210
+
 #define DEPARTMENT_VIEW_CODE 2300
 #define DEPARTMENT_LIST_CODE 2400
 #define DEPARTMENT_SEARCH_CODE 2500
@@ -74,6 +77,8 @@ public:
     Item* ViewAllDepartmentMenu();
     void ViewAllDepartmentMenuExtension(int);
     void ViewDepartmentMenuExtension(int);
+    Item* AddDepartmentFailSaveMenu();
+    Item* UpdateDepartmentFailSaveMenu();
 
     //Employee Menu Set
     Item* EmployeeMenu();
