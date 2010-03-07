@@ -171,6 +171,32 @@ bool Department::recordExists(int keyCode)
 	return false;
 }
 
+bool Department::recordExists(int keyCode, int ignore)
+{
+	ifstream streamObj(this->getFilename());
+	string line;
+	if(streamObj.is_open())
+	{
+		Department department(0,"",0,0);
+	    std::getline( streamObj, line );
+		while(streamObj!=NULL)
+		{
+		    //streamObj >>deptCode >>deptName >>regularRate >>overtimeRate;
+			streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate;
+			if(department.deptCode != keyCode)
+			{
+				if(department.deptCode == keyCode)
+				{
+					streamObj.close();
+					return true;
+				}
+			}
+		}
+		streamObj.close();
+	}
+	return false;
+}
+
 Department* Department::findByCode(int keyCode)
 {
 	ifstream streamObj(this->getFilename());
