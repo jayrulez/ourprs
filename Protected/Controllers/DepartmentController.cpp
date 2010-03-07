@@ -232,7 +232,7 @@ int DepartmentController::actionView()
             {
                 this->getServicesObj()->BasicRunLevel();
                 department->show(14);
-                return this->getMenuObj()->DepartmentAfterViewMenu();
+                return this->run(this->getMenuObj()->DepartmentAfterViewMenu());
             }
             else
             {
