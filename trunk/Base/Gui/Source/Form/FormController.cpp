@@ -257,6 +257,15 @@ bool FormController::ValidateForm()
                     return false;
                 }
             }
+            if(FormCode==DEPARTMENT_UPDATE_FORM_CODE)
+            {
+
+                if(ValidatorObj.CheckOtherDepartmentExistence(UpdateFormOldKey,TempField.GetFieldData())==true)
+                {
+                    CompleteState=false;
+                    return false;
+                }
+            }
         }
     }
     CompleteState=true;
