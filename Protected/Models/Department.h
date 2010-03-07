@@ -49,6 +49,7 @@ public:
 	/*fstream & operator >> (const fstream &, const Department &);
 	fstream & operator << (const fstream &, const Department &);*/
 	bool recordExists(int);
+	bool recordExists(int, int);
 	Department * findByCode(int);
 	void save();
 	void update();
