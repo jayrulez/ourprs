@@ -241,6 +241,7 @@ void Department::update()
 {
 	fstream streamObj(this->getFilename(), ios::in|ios::out);
 	string line;
+	string lineContent;
 	int position;
 	bool found = false;
 	if(streamObj.is_open())
@@ -250,6 +251,7 @@ void Department::update()
 		while(streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate)
 		{
 			//streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate;
+			streamObj << lineContent;
 			if(this->deptCode == department.deptCode)
 			{
 				found = true;
@@ -259,8 +261,10 @@ void Department::update()
 		}
 		if(found)
 		{
-			streamObj.seekp(position-1,ios::cur);
-			if(streamObj << this->deptCode << "\t" << this->deptName << "\t" << this->regularRate << "\t" << this->overtimeRate << "\n")
+			streamObj.seekp(position-1,ios::beg);
+			int x = streamObj.tellg();
+			cout << position<<":"<< x<<endl;system("pause");
+			if(streamObj << "\n" << this->deptCode << "\t" << this->deptName << "\t" << this->regularRate << "\t" << this->overtimeRate << "\n")
 				this->operationState = OPERATIONSTATE_SUCCESS;
 			else
 				this->operationState = OPERATIONSTATE_FAILURE;
