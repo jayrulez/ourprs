@@ -186,7 +186,8 @@ void Department::save()
 	ofstream streamObj(this->getFilename(),ios::app);
 	if(streamObj)
 	{
-		streamObj << this->deptCode << "\t" << this->deptName << "\t" << this->regularRate << "\t" << this->overtimeRate << "\n";
+		if(streamObj << this->deptCode << "\t" << this->deptName << "\t" << this->regularRate << "\t" << this->overtimeRate << "\n")
+			this->isNewRecord = false;
 		streamObj.close();
 	}
 }
