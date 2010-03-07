@@ -138,12 +138,12 @@ int DepartmentController::actionUpdate()
 			(record+2)->SetFieldData(regularRateString);
 			(record+3)->SetFieldData(overtimeRateString);
 
-			menuInstance->SetAllFieldData(record);
-
 			this->getServicesObj()->BasicRunLevel();
 
-			actionCode = menuInstance->AddDepartmentMenu();
+			menuInstance->SetAllFieldData(record);
+			actionCode = menuInstance->UpdateDepartmentMenu();;
 
+			system("pause");
             //department->show(14);
 		}
 	}
