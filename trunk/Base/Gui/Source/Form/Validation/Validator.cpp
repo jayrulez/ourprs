@@ -53,7 +53,7 @@ bool Validator::CheckDepartmentExistence(string DeptCode)
     int intCode;
     istringstream MyStream(DeptCode);
     MyStream>>intCode;
-    if(DepartmentObj.findByCode(intCode))
+    if(DepartmentObj.model()->findByCode(intCode))
     {
         ScreenObj.SetScreenTextColour(RedTextColour);
         cout<<"<Department already exist>";
