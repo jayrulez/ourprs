@@ -37,7 +37,9 @@ int DepartmentController::actionAdd()
 
     this->getServicesObj()->BasicRunLevel();
 	actionCode = menuInstance->AddDepartmentMenu();
-
+	Field * data = menuInstance->GetAllFieldData();
+	menuInstance = this->getMenuObj(true); // returns a new instance of menu
+	
 	// cout << actionCode; fgetc(stdin);
 	if(actionCode == MAIN_CODE || actionCode == DEPARTMENT_CODE || actionCode == DEPARTMENT_ADD_CODE)
 	{
@@ -45,8 +47,6 @@ int DepartmentController::actionAdd()
 	}
 	if(actionCode == DEPARTMENT_ADD_SAVE_CODE)
 	{
-        Field * data = menuInstance->GetAllFieldData();
-
         istringstream deptCodeString((data)->GetFieldData());
         istringstream regularRateString((data+2)->GetFieldData());
         istringstream overtimeRateString((data+3)->GetFieldData());

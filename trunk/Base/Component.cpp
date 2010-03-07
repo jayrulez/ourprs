@@ -13,6 +13,15 @@ MasterFormMenuController* Component::getMenuObj()
     return this->menu;
 }
 
+MasterFormMenuController* Component::getMenuObj(bool resetInstance = true)
+{
+    if(resetInstance)
+	{
+		this->menu = new MasterFormMenuController();
+	}
+	return this->menu;
+}
+
 Services* Component::getServicesObj()
 {
     return this->services;
