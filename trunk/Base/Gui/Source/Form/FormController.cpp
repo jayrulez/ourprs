@@ -249,7 +249,7 @@ bool FormController::ValidateForm()
         }
         if(TempField.GetFieldName()=="Dept. Code")
         {
-            if(FormCode!=DEPARTMENT_SEARCH_FORM_CODE)
+            if(FormCode!=DEPARTMENT_SEARCH_FORM_CODE&&FormCode!=DEPARTMENT_UPDATE_FORM_CODE)
             {
                 if(ValidatorObj.CheckDepartmentExistence(TempField.GetFieldData())==true)
                 {
@@ -260,7 +260,7 @@ bool FormController::ValidateForm()
             if(FormCode==DEPARTMENT_UPDATE_FORM_CODE)
             {
 
-                if(ValidatorObj.CheckOtherDepartmentExistence(UpdateFormOldKey,TempField.GetFieldData())==true)
+                if(ValidatorObj.CheckOtherDepartmentExistence(TempField.GetFieldData(),UpdateFormOldKey)==true)
                 {
                     CompleteState=false;
                     return false;
