@@ -106,7 +106,7 @@ int DepartmentController::actionUpdate()
     this->getServicesObj()->BasicRunLevel();
     do
     {
-        actionCode = menuInstance->SearchDepartmentMenu();
+        actionCode = menuInstance->UpdateSearchDepartmentMenu();
         Field * data = menuInstance->GetAllFieldData();
 
         istringstream deptCodeString((data)->GetFieldData());
@@ -219,7 +219,7 @@ int DepartmentController::actionView()
     this->getServicesObj()->BasicRunLevel();
 	do
 	{
-        actionCode = menuInstance->SearchDepartmentMenu();
+        actionCode = menuInstance->ViewSearchDepartmentMenu();
 
         Field * data = menuInstance->GetAllFieldData();
         istringstream deptCodeString((data)->GetFieldData());
@@ -230,6 +230,7 @@ int DepartmentController::actionView()
         {
             if(department!=NULL)
             {
+                this->getServicesObj()->BasicRunLevel();
                 department->show(14);
                 return this->getMenuObj()->DepartmentAfterViewMenu();
             }

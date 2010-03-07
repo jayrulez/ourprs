@@ -406,21 +406,22 @@ Item* MenuSet::DepartmentMenu()
     DepartmentItem[4].SetItem(35,29,MAIN_CODE,"Main Menu");
     return &DepartmentItem[0];
 }
-Item* MenuSet::ViewDepartmentMenu()
+Item* MenuSet::ViewSearchDepartmentFormMenu()
 {
     this->MenuCode = DEPARTMENT_VIEW_CODE;
-    this->MenuSize = 2;
+    this->MenuSize = 3;
     MenuTitle="View Department";
-    static Item ViewDepartmentMenuItem[2];
-    ViewDepartmentMenuItem[0].SetItem(25,28,DEPARTMENT_CODE,"<--Department");
-    ViewDepartmentMenuItem[1].SetItem(45,28,MAIN_CODE,"Main Menu");
-    return ViewDepartmentMenuItem;
+    static Item ViewSearchDepartmentFormMenuItem[3];
+    ViewSearchDepartmentFormMenuItem[0].SetItem(15,28,DEPARTMENT_SEARCH_CODE,"Search");
+    ViewSearchDepartmentFormMenuItem[1].SetItem(32,28,DEPARTMENT_CODE,"<--Department");
+    ViewSearchDepartmentFormMenuItem[2].SetItem(55,28,MAIN_CODE,"Main Menu");
+    return ViewSearchDepartmentFormMenuItem;
 }
 Item* MenuSet::DepartmentAfterViewMenu()
 {
     this->MenuCode = 8;
     this->MenuSize = 3;
-    MenuTitle="Add Department - Success";
+    MenuTitle="View Department - Success";
     static Item DepartmentAfterViewMenuItem[3];
     DepartmentAfterViewMenuItem[0].SetItem(15,32,DEPARTMENT_VIEW_CODE,"View More");
     DepartmentAfterViewMenuItem[1].SetItem(32,32,DEPARTMENT_CODE,"<--Department");
@@ -465,7 +466,7 @@ void MenuSet::ViewDepartmentMenuExtension(int state)
     LineObj.vSLine();
     ScreenObj.SetScreenTextColour(48);
 }
-Item* MenuSet::SearchDepartmentFormMenu()
+Item* MenuSet::UpdateSearchDepartmentFormMenu()
 {
     this->MenuCode = DEPARTMENT_UPDATE_CODE;
     this->MenuSize = 3;
