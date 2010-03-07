@@ -246,10 +246,10 @@ void Department::update()
 	if(streamObj.is_open())
 	{
 		Department department(0,"",0,0);
-	    std::getline( streamObj, line );
-		while(streamObj!=NULL)
+	    //std::getline( streamObj, line );
+		while(streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate)
 		{
-			streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate;
+			//streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate;
 			if(this->deptCode == department.deptCode)
 			{
 				found = true;
