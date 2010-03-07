@@ -164,11 +164,13 @@ bool Department::findByCode(int keyCode)
 	string line;
 	if(streamObj.is_open())
 	{
+		Department department(0,"",0,0);
 	    std::getline( streamObj, line );
 		while(streamObj!=NULL)
 		{
-		    streamObj >>deptCode >>deptName >>regularRate >>overtimeRate;
-			if(deptCode == keyCode)
+		    //streamObj >>deptCode >>deptName >>regularRate >>overtimeRate;
+			streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate;
+			if(department.deptCode == keyCode)
 			{
 			    streamObj.close();
 				return true;
