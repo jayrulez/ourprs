@@ -4,6 +4,11 @@
 #ifndef _DEPARTMENT_H
 #include "../Models/Department.h"
 #endif
+#ifdef _WIN32
+    #include "../../Base/Gui/Win32/Core/Console.h"
+#endif
+#include "../../Base/Gui/Source/Screen/Screen.h"
+#include "../../Base/Gui/Source/Tools/Colour.h"
 #include <sstream>
 
 DepartmentController::DepartmentController()
@@ -69,9 +74,20 @@ int DepartmentController::actionAdd()
 
 		this->getServicesObj()->BasicRunLevel();
 		if(department->getIsNewRecord())
-			cout << "Error" << endl;
+		{
+            ConsoleObj.xyCoord(20,9);
+            ScreenObj.SetScreenTextColour(RedTextColour);
+			cout << "Error: Could not save department info to file" << endl;
+			ScreenObj.SetScreenTextColour(DefaultTextColour);
+		}
 		else
-			cout << "Success" << endl;
+		{
+            ConsoleObj.xyCoord(20,9);
+            ScreenObj.SetScreenTextColour(GreenTextColour);
+			cout << "Department Added Successfuly" << endl;
+			ScreenObj.SetScreenTextColour(DefaultTextColour);
+
+		}
         department->show(14);
 
         return this->run(menuInstance->AddDepartmentAfterSaveMenu());
