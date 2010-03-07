@@ -51,7 +51,7 @@ Field* FormSet::SearchDepartmentForm()
     this->FormCode=DEPARTMENT_SEARCH_FORM_CODE;
     this->FormSize=1;
     static Field SearchDepartmentFormField[1];
-    SearchDepartmentFormField[0].SetField("Dept. Code",20,19,1,STRICTNUMERICTYPE,NO_SPACING,4);
+    SearchDepartmentFormField[0].SetField("Dept. Code",20,21,1,STRICTNUMERICTYPE,NO_SPACING,4);
     return SearchDepartmentFormField;
 }
 Field* FormSet::UpdateDepartmentForm()
