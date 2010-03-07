@@ -21,7 +21,7 @@ Department::Department()
 {
 	this->next = NULL;
 	this->setFilename(DEPARTMENT_RATES_FILE);
-	this->isNewRecord = true;
+	this->operationState = true;
 }
 
 Department::~Department()
@@ -36,7 +36,7 @@ Department::Department(int deptCode = 0, string deptName = "", float regularRate
 	this->overtimeRate = overtimeRate;
 	this->next = next;
 	this->setFilename(DEPARTMENT_RATES_FILE);
-	this->isNewRecord = true;
+	this->operationState = true;
 }
 
 bool Department::getOperationState()
@@ -171,7 +171,7 @@ bool Department::recordExists(int keyCode)
 	return false;
 }
 
-Department Department::findByCode(int keyCode)
+Department* Department::findByCode(int keyCode)
 {
 	ifstream streamObj(this->getFilename());
 	string line;
@@ -186,7 +186,9 @@ Department Department::findByCode(int keyCode)
 			if(department.deptCode == keyCode)
 			{
 			    streamObj.close();
-				return &department;
+			    Department * record = &department;
+				return record;
+				//return NULL;
 			}
 		}
 		streamObj.close();
@@ -200,7 +202,7 @@ void Department::save()
 	if(streamObj.is_open())
 	{
 		if(streamObj << this->deptCode << "\t" << this->deptName << "\t" << this->regularRate << "\t" << this->overtimeRate << "\n")
-			this->operationState = STATE_SUCCESS;
+			this->operationState = OPERATIONSTATE_SUCCESS;
 		streamObj.close();
 	}
 }
@@ -218,7 +220,7 @@ void Department::update()
 		while(streamObj!=NULL)
 		{
 			streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate;
-			if(department.deptCode == keyCode)
+			if(this->deptCode == department.deptCode)
 			{
 				found = true;
 				position = streamObj.tellg();
@@ -227,9 +229,9 @@ void Department::update()
 		}
 		if(found)
 		{
-			streamObj.seekp(position-1,ios::curr);
+			streamObj.seekp(position-1,ios::cur);
 			if(streamObj << this->deptCode << "\t" << this->deptName << "\t" << this->regularRate << "\t" << this->overtimeRate << "\n")
-				this->operationState = STATE_SUCCESS;
+				this->operationState = OPERATIONSTATE_SUCCESS;
 		}
 		streamObj.close();
 	}
