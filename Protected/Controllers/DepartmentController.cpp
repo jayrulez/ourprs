@@ -100,12 +100,12 @@ int DepartmentController::actionUpdate()
 	int actionCode;
 	MasterFormMenuController* menuInstance = this->getMenuObj();
 
-
-
     this->getServicesObj()->BasicRunLevel();
 	actionCode = menuInstance->SearchDepartmentMenu();
+
 	Field * data = menuInstance->GetAllFieldData();
 	int deptCode;
+
 	istringstream deptCodeString((data)->GetFieldData());
 	deptCodeString >> deptCode;
 
@@ -119,7 +119,7 @@ int DepartmentController::actionUpdate()
 	}
 	fgetc(stdin);
 
-    return DEPARTMENT_CODE;
+    return actionCode;
 }
 
 int DepartmentController::actionView()
