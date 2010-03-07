@@ -504,11 +504,11 @@ Item* MenuSet::UpdateDepartmentAfterSaveMenu()
 {
     this->MenuCode = 8;
     this->MenuSize = 3;
-    MenuTitle="Update Department - Sucess";
+    MenuTitle="Update Department - Success";
     static Item UpdateDepartmentAfterSaveMenuItem[3];
     UpdateDepartmentAfterSaveMenuItem[0].SetItem(15,32,DEPARTMENT_SEARCH_CODE,"Update More");
-    UpdateDepartmentAfterSaveMenuItem[1].SetItem(32,32,DEPARTMENT_CODE,"<--Department");
-    UpdateDepartmentAfterSaveMenuItem[2].SetItem(50,32,MAIN_CODE,"Main Menu");
+    UpdateDepartmentAfterSaveMenuItem[1].SetItem(34,32,DEPARTMENT_CODE,"<--Department");
+    UpdateDepartmentAfterSaveMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");
     return UpdateDepartmentAfterSaveMenuItem;
 }
 Item* MenuSet::UpdateDepartmentFailSaveMenu()
