@@ -18,6 +18,10 @@ Field* MasterFormMenuController::GetAllFieldData()
 {
     return FieldObj;
 }
+void MasterFormMenuController::SetAllFieldData(Field *NewField)
+{
+    FormControllerObj.UpdateAllFieldInfo(NewField);
+}
 int MasterFormMenuController::GetFormSize()
 {
     return FormSize;

@@ -26,6 +26,7 @@ public:
 	int GetFormSize();
     Field* GetAllFieldData();
     void ClearAllFieldData();
+    void SetAllFieldData(Field*);
 
 	//Main Menu
 	int MainMenu();
