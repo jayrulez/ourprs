@@ -142,16 +142,59 @@ int DepartmentController::actionUpdate()
 			this->getServicesObj()->BasicRunLevel();
 
 			menuInstance->SetAllFieldData(record);
+			
+			actionCode = menuInstance->UpdateDepartmentMenu();
+			Field * newData = menuInstance->GetAllFieldData();
 
-			actionCode = menuInstance->UpdateDepartmentMenu();;
+			int _deptCodeInt;
+			string _deptName;
+			float _regularRateFloat;
+			float _overtimeRateFloat;
 
+			istringstream _deptCodeString((newData)->GetFieldData());
+			istringstream _regularRateString((newData+2)->GetFieldData());
+			istringstream _overtimeRateString((newData+3)->GetFieldData());
 
-            //department->show(14);
+			_deptCodeString >> _deptCodeInt;
+			_deptName = (newData+1)->GetFieldData();
+			_regularRateString >> _regularRateFloat;
+			_overtimeRateString >> _overtimeRateFloat;
+
+			Department * updatedDepartment = new Department(_deptCodeInt,_deptName,_regularRateFloat,_overtimeRateFloat,NULL);
+			if(actionCode == MAIN_CODE || actionCode == DEPARTMENT_CODE)
+			{
+				return this->run(actionCode);
+			}
+			if(actionCode == DEPARTMENT_UPDATE_SAVE_CODE)
+			{
+				//updatedDepartment->setOldDeptCode(department->getDeptCode());
+				updatedDepartment->update();
+				menuInstance->ClearAllFieldData();
+
+				this->getServicesObj()->BasicRunLevel();
+				if(updatedDepartment->getOperationState() == OPERATIONSTATE_FAILURE)
+				{
+					ConsoleObj.xyCoord(20,9);
+					ScreenObj.SetScreenTextColour(RedTextColour);
+					cout << "Error: Could not update department record" << endl;
+					ScreenObj.SetScreenTextColour(DefaultTextColour);
+				}
+				else
+				{
+					ConsoleObj.xyCoord(24,9);
+					ScreenObj.SetScreenTextColour(GreenTextColour);
+					cout << "Department Updated Successfuly" << endl;
+					ScreenObj.SetScreenTextColour(DefaultTextColour);
+
+				}
+				updatedDepartment->show(14);
+                system("pause");
+				//return this->run(menuInstance->UpdateDepartmentAfterSaveMenu());
+			}
 		}
 	}
-	//fgetc(stdin);
 
-    return actionCode;
+    return MAIN_CODE;
 }
 
 int DepartmentController::actionView()
