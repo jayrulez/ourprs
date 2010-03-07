@@ -2,6 +2,7 @@
 #include "./BaseModel.h"
 #endif
 #include <string>
+#include <sstream>
 using namespace std;
 
 BaseModel::BaseModel()
@@ -29,11 +30,11 @@ void BaseModel::setFilename(string filename)
 
 const char* BaseModel::getFilename()
 {
-    /*
-	char* filenameCharS;
+
+	/*char* filenameCharS;
 	istringstream filenameString(this->filename);
-	system("pause");
+	//system("pause");
 	filenameString >> filenameCharS;
-	*/
-	return filename.c_str();
+	return (const)filenameCharS;*/
+	return this->filename.c_str();
 }

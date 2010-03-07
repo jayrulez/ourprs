@@ -33,16 +33,17 @@ int DepartmentController::actionIndex()
 int DepartmentController::actionAdd()
 {
 	int actionCode;
-	MasterFormMenuController* menuInstance = this->getMenuObj();
+	MasterFormMenuController *menuInstance = this->getMenuObj();
 
     this->getServicesObj()->BasicRunLevel();
 	actionCode = menuInstance->AddDepartmentMenu();
 	Field * data = menuInstance->GetAllFieldData();
-	menuInstance->ClearAllFieldData();
-	
+	this->getMenuObj(true);
+
 	// cout << actionCode; fgetc(stdin);
 	if(actionCode == MAIN_CODE || actionCode == DEPARTMENT_CODE || actionCode == DEPARTMENT_ADD_CODE)
 	{
+	    // menuInstance->ClearAllFieldData();
 		return this->run(actionCode);
 	}
 	if(actionCode == DEPARTMENT_ADD_SAVE_CODE)
@@ -64,12 +65,13 @@ int DepartmentController::actionAdd()
         Department * department = new Department(deptCode, deptName, regularRate, overtimeRate, NULL);
 
         department->save();
+        menuInstance->ClearAllFieldData();
 
 		this->getServicesObj()->BasicRunLevel();
 
         department->show(14);
 
-        return menuInstance->AddDepartmentAfterSaveMenu();
+        return this->run(menuInstance->AddDepartmentAfterSaveMenu());
 	}
 	return MAIN_CODE;
 }
@@ -110,8 +112,10 @@ int DepartmentController::actionList(int page = 0)
 int DepartmentController::run(int actionCode)
 {
     int call;
+
 	if(actionCode == MAIN_CODE)
 		return actionCode;
+
     switch(actionCode)
     {
 		case DEPARTMENT_ADD_CODE:
