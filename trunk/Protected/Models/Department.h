@@ -8,8 +8,8 @@
 #endif
 #include "../../Base/Gui/Source/Tools/Frame.h"
 #include <string>
-#define STATE_SUCCESS true
-#define STATE_FAILURE false
+#define OPERATIONSTATE_SUCCESS true
+#define OPERATIONSTATE_FAILURE false
 
 class Department: public BaseModel
 {

@@ -73,7 +73,7 @@ int DepartmentController::actionAdd()
         menuInstance->ClearAllFieldData();
 
 		this->getServicesObj()->BasicRunLevel();
-		if(department->getOperationState() == STATE_FAILURE)
+		if(department->getOperationState() == OPERATIONSTATE_FAILURE)
 		{
             ConsoleObj.xyCoord(20,9);
             ScreenObj.SetScreenTextColour(RedTextColour);
@@ -100,14 +100,25 @@ int DepartmentController::actionUpdate()
 	int actionCode;
 	MasterFormMenuController* menuInstance = this->getMenuObj();
 
+
+
     this->getServicesObj()->BasicRunLevel();
 	actionCode = menuInstance->SearchDepartmentMenu();
-	/*
-	if(Department *department = Department::model()->findByCode())
+	Field * data = menuInstance->GetAllFieldData();
+	int deptCode;
+	istringstream deptCodeString((data)->GetFieldData());
+	deptCodeString >> deptCode;
+
+	if(actionCode == DEPARTMENT_SEARCH_CODE)
 	{
-	
+	    Department *department = Department::model()->findByCode(deptCode);
+		if(department!= NULL)
+		{
+			cout << "found";
+		}
 	}
-	*/
+	fgetc(stdin);
+
     return DEPARTMENT_CODE;
 }
 
