@@ -506,9 +506,9 @@ Item* MenuSet::UpdateDepartmentAfterSaveMenu()
     this->MenuSize = 3;
     MenuTitle="Update Department - Sucess";
     static Item UpdateDepartmentAfterSaveMenuItem[3];
-    UpdateDepartmentAfterSaveMenuItem[0].SetItem(25,28,DEPARTMENT_SEARCH_CODE,"Update More");
-    UpdateDepartmentAfterSaveMenuItem[1].SetItem(25,48,DEPARTMENT_CODE,"<--Department");
-    UpdateDepartmentAfterSaveMenuItem[2].SetItem(45,28,MAIN_CODE,"Main Menu");
+    UpdateDepartmentAfterSaveMenuItem[0].SetItem(15,32,DEPARTMENT_SEARCH_CODE,"Update More");
+    UpdateDepartmentAfterSaveMenuItem[1].SetItem(32,32,DEPARTMENT_CODE,"<--Department");
+    UpdateDepartmentAfterSaveMenuItem[2].SetItem(45,32,MAIN_CODE,"Main Menu");
     return UpdateDepartmentAfterSaveMenuItem;
 }
 Item* MenuSet::UpdateDepartmentFailSaveMenu()
@@ -517,9 +517,9 @@ Item* MenuSet::UpdateDepartmentFailSaveMenu()
     this->MenuSize = 3;
     MenuTitle="Update Department - Failed";
     static Item UpdateDepartmentFailSaveMenuItem[3];
-    UpdateDepartmentFailSaveMenuItem[0].SetItem(25,28,DEPARTMENT_UPDATE_FORM_MENU_CODE,"<--Update Form");
-    UpdateDepartmentFailSaveMenuItem[1].SetItem(25,48,DEPARTMENT_CODE,"Department");
-    UpdateDepartmentFailSaveMenuItem[2].SetItem(45,28,MAIN_CODE,"Main Menu");
+    UpdateDepartmentFailSaveMenuItem[0].SetItem(15,32,DEPARTMENT_UPDATE_FORM_MENU_CODE,"<--Update Form");
+    UpdateDepartmentFailSaveMenuItem[1].SetItem(32,32,DEPARTMENT_CODE,"Department");
+    UpdateDepartmentFailSaveMenuItem[2].SetItem(45,32,MAIN_CODE,"Main Menu");
     return UpdateDepartmentFailSaveMenuItem;
 }
 
