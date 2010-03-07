@@ -33,5 +33,6 @@ public:
     bool CheckNumberValue(string);
     bool CheckDataExistence(string);
     bool CheckDepartmentExistence(string);
+    bool CheckOtherDepartmentExistence(string,string);
 };
 #endif
