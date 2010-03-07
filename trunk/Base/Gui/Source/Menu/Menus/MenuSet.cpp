@@ -416,6 +416,17 @@ Item* MenuSet::ViewDepartmentMenu()
     ViewDepartmentMenuItem[1].SetItem(45,28,MAIN_CODE,"Main Menu");
     return ViewDepartmentMenuItem;
 }
+Item* MenuSet::DepartmentAfterViewMenu()
+{
+    this->MenuCode = 8;
+    this->MenuSize = 3;
+    MenuTitle="Add Department - Success";
+    static Item DepartmentAfterViewMenuItem[3];
+    DepartmentAfterViewMenuItem[0].SetItem(15,32,DEPARTMENT_VIEW_CODE,"View More");
+    DepartmentAfterViewMenuItem[1].SetItem(32,32,DEPARTMENT_CODE,"<--Department");
+    DepartmentAfterViewMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");
+    return DepartmentAfterViewMenuItem;
+}
 Item* MenuSet::ViewAllDepartmentMenu()
 {
     this->MenuCode = DEPARTMENT_LIST_CODE;

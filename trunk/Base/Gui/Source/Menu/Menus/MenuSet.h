@@ -75,6 +75,7 @@ public:
     Item* SearchDepartmentFormMenu();
     void SearchDepartmentFormMenuExtension(int);
     Item* ViewDepartmentMenu();
+    Item* DepartmentAfterViewMenu();
     Item* ViewAllDepartmentMenu();
     void ViewAllDepartmentMenuExtension(int);
     void ViewDepartmentMenuExtension(int);
