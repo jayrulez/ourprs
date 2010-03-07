@@ -73,7 +73,7 @@ int DepartmentController::actionAdd()
         menuInstance->ClearAllFieldData();
 
 		this->getServicesObj()->BasicRunLevel();
-		if(department->getIsNewRecord())
+		if(department->getOperationState() == STATE_FAILURE)
 		{
             ConsoleObj.xyCoord(20,9);
             ScreenObj.SetScreenTextColour(RedTextColour);
@@ -102,6 +102,12 @@ int DepartmentController::actionUpdate()
 
     this->getServicesObj()->BasicRunLevel();
 	actionCode = menuInstance->SearchDepartmentMenu();
+	/*
+	if(Department *department = Department::model()->findByCode())
+	{
+	
+	}
+	*/
     return DEPARTMENT_CODE;
 }
 
