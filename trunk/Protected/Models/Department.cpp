@@ -155,11 +155,11 @@ bool Department::recordExists(int keyCode)
 	if(streamObj.is_open())
 	{
 		Department department(0,"",0,0);
-	    std::getline( streamObj, line );
-		while(streamObj!=NULL)
+	    //std::getline( streamObj, line );
+		while(streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate)
 		{
 		    //streamObj >>deptCode >>deptName >>regularRate >>overtimeRate;
-			streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate;
+			//streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate;
 			if(department.deptCode == keyCode)
 			{
 			    streamObj.close();
@@ -178,11 +178,11 @@ bool Department::recordExists(int keyCode, int ignore)
 	if(streamObj.is_open())
 	{
 		Department department(0,"",0,0);
-	    std::getline( streamObj, line );
-		while(streamObj!=NULL)
+	    //std::getline( streamObj, line );
+		while(streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate)
 		{
 		    //streamObj >>deptCode >>deptName >>regularRate >>overtimeRate;
-			streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate;
+			//streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate;
 			if(department.deptCode == keyCode)
 			{
 				continue;
@@ -206,11 +206,11 @@ Department* Department::findByCode(int keyCode)
 	if(streamObj.is_open())
 	{
 		Department department(0,"",0,0);
-	    std::getline( streamObj, line );
-		while(streamObj!=NULL)
+	    //std::getline( streamObj, line );
+		while(streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate)
 		{
 		    //streamObj >>deptCode >>deptName >>regularRate >>overtimeRate;
-			streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate;
+			//streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate;
 			if(department.deptCode == keyCode)
 			{
 			    streamObj.close();
