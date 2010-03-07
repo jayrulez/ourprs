@@ -59,6 +59,7 @@ public:
 	bool GetFormCompletionState();
     Field* GetAllFieldInfo();
     void UpdateAllFieldInfo(Field*);
+    void ClearAllFieldData();
     bool SetForm(Field*,int,int);
     void ShowForm();
     int BrowseForm();

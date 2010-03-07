@@ -269,3 +269,10 @@ void FormController::UpdateAllFieldInfo(Field *fptr)
 {
     this->fptr=fptr;
 }
+void FormController::ClearAllFieldData()
+{
+    for(int x=0;x<FormSize;x++)
+    {
+        (fptr+x)->SetFieldData(NULL);
+    }
+}
