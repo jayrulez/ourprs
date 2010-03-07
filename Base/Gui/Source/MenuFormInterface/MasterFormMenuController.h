@@ -25,6 +25,7 @@ public:
 	~MasterFormMenuController();
 	int GetFormSize();
     Field* GetAllFieldData();
+    void ClearAllFieldData();
 
 	//Main Menu
 	int MainMenu();

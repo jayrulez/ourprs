@@ -22,6 +22,11 @@ int MasterFormMenuController::GetFormSize()
 {
     return FormSize;
 }
+void MasterFormMenuController::ClearAllFieldData()
+{
+    FormControllerObj.ClearAllFieldData();
+}
+
 /*
  * Main Menu
 */
