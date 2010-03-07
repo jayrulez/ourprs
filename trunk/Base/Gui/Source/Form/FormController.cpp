@@ -238,12 +238,21 @@ bool FormController::ValidateForm()
     {
         TempField=*(fptr+x);
         ConsoleObj.xyCoord(TempField.GetFieldX(),TempField.GetFieldY()-1);
-        if(ValidatorObj.CheckDataExistence(TempField.GetFieldData())==_FAIL||(
-        TempField.GetFieldName()=="Dept. Code"&&this->FormCode!=DEPARTMENT_SEARCH_FORM_CODE
-        &&ValidatorObj.CheckDepartmentExistence(TempField.GetFieldData())==true))
+        if(ValidatorObj.CheckDataExistence(TempField.GetFieldData())==_FAIL)
         {
             CompleteState=false;
             return false;
+        }
+        if(TempField.GetFieldName()=="Dept. Code")
+        {
+            if(FormCode!=DEPARTMENT_SEARCH_FORM_CODE)
+            {
+                if(ValidatorObj.CheckDepartmentExistence(TempField.GetFieldData())==true)
+                {
+                    CompleteState=false;
+                    return false;
+                }
+            }
         }
     }
     CompleteState=true;
