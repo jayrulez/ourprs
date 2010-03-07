@@ -13,6 +13,7 @@ public:
 	Component();
 	virtual ~Component();
 	MasterFormMenuController* getMenuObj();
+	MasterFormMenuController* getMenuObj(bool);
 	Services* getServicesObj();
 	void setComponent(Component*);
 	Component* getComponent();
