@@ -4,10 +4,19 @@
 #include "../../Base/BaseController.h"
 #endif
 #include <iostream>
+
+#ifdef _WIN32
+    #include "../../Base/Gui/Win32/Core/Console.h"
+#endif
+#include "../../Base/Gui/Source/Screen/Screen.h"
+
 using namespace std;
 
 class DepartmentController: public BaseController
 {
+private:
+    Screen ScreenObj;
+    Console ConsoleObj;
 public:
 	DepartmentController();
 	~DepartmentController();
