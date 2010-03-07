@@ -146,15 +146,18 @@ string TextInput::FormTextInput(string input)
                 }
                 break;
             case SPACEBAR_KEY:
-                switch(this->SpaceType)
+                if(position==0)
                 {
-                    case SPACING:
-                        input+=" ";
-                        position+=1;
-                        cout<<" ";
-                        break;
-                    case NO_SPACING:
-                        break;
+                    switch(this->SpaceType)
+                    {
+                        case SPACING:
+                            input+=" ";
+                            position+=1;
+                            cout<<" ";
+                            break;
+                        case NO_SPACING:
+                            break;
+                    }
                 }
                 break;
         }
