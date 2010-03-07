@@ -225,7 +225,7 @@ int DepartmentController::actionView()
         istringstream deptCodeString((data)->GetFieldData());
         deptCodeString >> deptCode;
 
-        department = Department::model()->find(deptCode);
+        department = Department::model()->findByCode(deptCode);
         if(actionCode==DEPARTMENT_SEARCH_CODE)
         {
             if(department!=NULL)
