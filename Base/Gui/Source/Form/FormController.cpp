@@ -220,7 +220,7 @@ bool FormController::ValidateField()
     }
     else if(PreviousField.GetFieldName()=="Dept. Code")
     {
-        if(this->FormCode!=DEPARTMENT_SEARCH_FORM_CODE)
+        if(this->FormCode!=DEPARTMENT_SEARCH_FORM_CODE&&this->FormCode!=DEPARTMENT_UPDATE_FORM_CODE)
         {
             if(ValidatorObj.CheckDepartmentExistence(PreviousField.GetFieldData()))
             {
