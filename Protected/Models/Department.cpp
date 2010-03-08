@@ -243,7 +243,7 @@ void Department::update()
 	ifstream iStreamObj(this->getFilename());
 
     Department * start = NULL;
-	Department * temp = Department::model();
+	Department * temp;
 	Department * temp2;
 
 	if(iStreamObj.is_open())
