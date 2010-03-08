@@ -251,6 +251,7 @@ int DepartmentController::actionView()
 
 int DepartmentController::actionList(int page = 0)
 {
+
     return DEPARTMENT_CODE;
 }
 
@@ -271,6 +272,10 @@ int DepartmentController::run(int actionCode)
         break;
         case DEPARTMENT_VIEW_CODE:
             call = this->actionView();
+        break;
+        case DEPARTMENT_LIST_CODE:
+            call = this->actionList();
+        break;
         case DEPARTMENT_CODE:
         default:
             call = this->actionIndex();
