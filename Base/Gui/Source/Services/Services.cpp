@@ -31,10 +31,8 @@ void Services::SystemTitle()
 void Services::SystemClearScreen()
 {
     ScreenObj.ClearScreen();
-    FrameObj.ResetScreenFrame();
     ScreenObj.SetScreenTextColour(DefaultTextColour);
-    ConsoleObj.xyCoord(2,1);
-    cout<<"SSN Payroll Management System";
+    this->SystemTitle();
 }
 void Services::SystemChangeScreenSound()
 {
@@ -52,7 +50,15 @@ void Services::SystemChangeScreen()
 void Services::SizeConsoleWindow()
 {
     ConsoleObj.CenterConsole(680,680);
+    this->DefaultScreenBufferSize();
+}
+void Services::DefaultScreenBufferSize()
+{
     ConsoleObj.SetConsoleBufferHeigth(STANDARD_FRAME_HEIGHT+2);
+}
+void Services::MaximumScreenBufferSize()
+{
+    ConsoleObj.SetConsoleBufferHeigth(MAX_SCREEN_BUFFER);
 }
 void Services::Title(string Title)
 {
@@ -74,10 +80,9 @@ void Services::BasicRunLevel()
 }
 int Services::DynamicRunLevel()
 {
-    ScreenObj.SetScreenColour(DefaultBgColour);
     ScreenObj.SetScreenTextColour(DefaultTextColour);
-    SystemTitle();
     FrameObj.ResetScreenFrame();
     ConsoleObj.xyCoord(0,0);
+    ConsoleObj.SetConsoleBufferHeigth(FrameObj.GetFrameHeigth()+1);
     return FrameObj.GetFrameHeigth();
 }

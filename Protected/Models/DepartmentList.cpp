@@ -61,7 +61,7 @@ void DepartmentList::ShowDepartmentList()
         CacheDepartment=CacheDepartment->getNext();
         y+=2;
     }
-    ConsoleObj.xyCoord(x,y+2);
+    ConsoleObj.xyCoord(x,y+6);
 }
 
 Department* DepartmentList::getHead()
