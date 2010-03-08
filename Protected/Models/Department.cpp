@@ -238,62 +238,36 @@ void Department::save()
 	}
 }
 
-void Department::update()
+void Department::update(Department * listHead)
 {
 	ifstream iStreamObj(this->getFilename());
+	Department * tempDepartment = listHead;
 
-    Department * start = NULL;
-	Department * temp = Department::model();
-	Department * temp2 = Department::model();
-
-	if(iStreamObj.is_open())
-	{
-		while(iStreamObj >> temp->deptCode >> temp->deptName >> temp->regularRate >> temp->overtimeRate)
-		{
-            if(temp->deptCode == this->deptCode)
-            {
-                temp->deptCode = this->deptCode;
-                temp->deptName = this->deptCode;
-                temp->regularRate = this->regularRate;
-                temp->overtimeRate = this->overtimeRate;
-            }
-            temp->next = NULL;
-
-            if(start == NULL)
-            {
-                start = temp;
-            }else{
-                temp2 = start;
-
-                while(temp2->next != NULL)
-                {
-                    temp2 = temp2->next;
-                }
-                temp2->next = temp;
-            }
-        }
-        iStreamObj.close();
-
-        ofstream oStreamObj(this->getFilename(), ios::trunc);
-        if(oStreamObj.is_open())
+    ofstream oStreamObj(this->getFilename(), ios::trunc);
+    if(oStreamObj.is_open())
+    {
+        do
         {
-            temp = start;
-            do
+            if(tempDepartment != NULL)
             {
-                if(temp != NULL)
+                if(tempDepartment->getDeptCode() == this->getDeptCode())
                 {
-                    oStreamObj << temp->deptCode << "\t" << temp->deptName << "\t" << temp->regularRate << "\t" << temp->overtimeRate << "\n";
-                    temp = temp->next;
+                    tempDepartment->setDeptCode(this->getDeptCode());
+                    tempDepartment->setDeptName(this->getDeptName());
+                    tempDepartment->setRegularRate(this->getRegularRate());
+                    tempDepartment->setOvertimeRate(this->getOvertimeRate());
                 }
-            }while(temp!=NULL);
-            oStreamObj.close();
-        }
-        if(Department::model()->recordExists(this->deptCode))
-            this->operationState = OPERATIONSTATE_SUCCESS;
-        else
-            this->operationState = OPERATIONSTATE_FAILURE;
-	}else{
-	    this->operationState = OPERATIONSTATE_FAILURE;
+                oStreamObj << tempDepartment->getDeptCode() << "\t" << tempDepartment->getDeptName() << "\t" << tempDepartment->getRegularRate() << "\t" << tempDepartment->getOvertimeRate() << "\n";
+                tempDepartment = tempDepartment->getNext();
+            }
+        }while(tempDepartment!=NULL);
+        oStreamObj.close();
+    }
+    if(Department::model()->recordExists(this->deptCode))
+    {
+        this->operationState = OPERATIONSTATE_SUCCESS;
+    }else{
+        this->operationState = OPERATIONSTATE_FAILURE;
 	}
 }
 

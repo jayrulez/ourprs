@@ -63,6 +63,12 @@ void DepartmentList::ShowDepartmentList()
     }
     ConsoleObj.xyCoord(x,y+2);
 }
+
+Department* DepartmentList::getHead()
+{
+	return Head;
+}
+
 void DepartmentList::BuildListFromFile()
 {
     int deptCode;
