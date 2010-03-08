@@ -15,5 +15,6 @@ public:
 	Department* GetDepartment(Department);
 	void ShowDepartmentList();
 	void BuildListFromFile();
+	Department * getHead();
 };
 #endif

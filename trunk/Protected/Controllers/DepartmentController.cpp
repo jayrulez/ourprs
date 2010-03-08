@@ -173,7 +173,10 @@ int DepartmentController::actionUpdate()
                 if(actionCode == DEPARTMENT_UPDATE_SAVE_CODE)
                 {
                     //updatedDepartment->setOldDeptCode(department->getDeptCode());
-                    updatedDepartment->update();
+					DepartmentList ListObj;
+					ListObj.BuildListFromFile();
+					//updatedDepartment->setList(ListObj.getHead());
+                    updatedDepartment->update(ListObj.getHead());
                     menuInstance->ClearAllFieldData();
 
                     this->getServicesObj()->BasicRunLevel();

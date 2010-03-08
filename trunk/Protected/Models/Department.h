@@ -53,6 +53,6 @@ public:
 	int getOldDeptCode();
 	Department * findByCode(int);
 	void save();
-	void update();
+	void update(Department *);
 };
 #endif
