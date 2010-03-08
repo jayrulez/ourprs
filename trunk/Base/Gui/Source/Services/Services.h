@@ -33,6 +33,8 @@ public:
 	void SystemClearScreen();
 	void SystemChangeScreen();
 	void SizeConsoleWindow();
+	void DefaultScreenBufferSize();
+	void MaximumScreenBufferSize();
 	void SystemChangeScreenSound();
 	void Title(string);
 };
