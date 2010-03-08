@@ -238,37 +238,61 @@ void Department::save()
 
 void Department::update()
 {
-	fstream streamObj(this->getFilename(), ios::in|ios::out);
-	string line;
-	string lineContent;
-	int position;
-	bool found = false;
-	if(streamObj.is_open())
+	ifstream iStreamObj(this->getFilename());
+
+    Department * start = NULL;
+	Department * temp = Department::model();
+	Department * temp2;
+
+	if(iStreamObj.is_open())
 	{
-		Department department(0,"",0,0);
-	    //std::getline( streamObj, line );
-		while(streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate)
+		while(iStreamObj >> temp->deptCode >> temp->deptName >> temp->regularRate >> temp->overtimeRate)
 		{
-			//streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate;
-			streamObj << lineContent;
-			if(this->deptCode == department.deptCode)
-			{
-				found = true;
-				position = streamObj.tellg();
-				break;
-			}
-		}
-		if(found)
-		{
-			streamObj.seekp(position-1,ios::beg);
-			int x = streamObj.tellg();
-			cout << position<<":"<< x<<endl;system("pause");
-			if(streamObj << "\n" << this->deptCode << "\t" << this->deptName << "\t" << this->regularRate << "\t" << this->overtimeRate << "\n")
-				this->operationState = OPERATIONSTATE_SUCCESS;
-			else
-				this->operationState = OPERATIONSTATE_FAILURE;
-		}
-		streamObj.close();
+            if(temp->deptCode == this->deptCode)
+            {
+                temp->deptCode = this->deptCode;
+                temp->deptName = this->deptCode;
+                temp->regularRate = this->regularRate;
+                temp->overtimeRate = this->overtimeRate;
+            }
+            temp->next = NULL;
+
+            if(start == NULL)
+            {
+                start = temp;
+            }else{
+                temp2 = start;
+
+                while(temp2->next != NULL)
+                {
+                    temp2 = temp2->next;
+                }
+                temp2->next = temp;
+            }
+            cout << start->deptCode << endl;system("pause");
+        }
+        iStreamObj.close();
+
+        ofstream oStreamObj(this->getFilename(), ios::trunc);
+        if(oStreamObj.is_open())
+        {
+            temp = start;
+            do
+            {
+                if(temp != NULL)
+                {
+                    oStreamObj << temp->deptCode << "\t" << temp->deptName << "\t" << temp->regularRate << "\t" << temp->overtimeRate << "\n";
+                    temp = temp->next;
+                }
+            }while(temp!=NULL);
+            oStreamObj.close();
+        }
+        if(Department::model()->recordExists(this->deptCode))
+            this->operationState = OPERATIONSTATE_SUCCESS;
+        else
+            this->operationState = OPERATIONSTATE_FAILURE;
+	}else{
+	    this->operationState = OPERATIONSTATE_FAILURE;
 	}
 }
 
