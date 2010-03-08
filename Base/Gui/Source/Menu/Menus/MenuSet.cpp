@@ -35,6 +35,10 @@ string MenuSet::GetMenuTitle()
 {
     return this->MenuTitle;
 }
+void MenuSet::SetYRelativeSystemFrame(int y)
+{
+    this->YRelativeSystemFrame=y;
+}
 void MenuSet::ShowMenuTitle(int status)
 {
     if(!status)
@@ -434,8 +438,8 @@ Item* MenuSet::ViewAllDepartmentMenu()
     this->MenuSize = 2;
     MenuTitle="View all Departments";
     static Item ViewAllDepartmentMenuItem[2];
-    ViewAllDepartmentMenuItem[0].SetItem(25,48,DEPARTMENT_CODE,"<--Department");
-    ViewAllDepartmentMenuItem[1].SetItem(45,48,MAIN_CODE,"Main Menu");
+    ViewAllDepartmentMenuItem[0].SetItem(25,this->YRelativeSystemFrame-4,DEPARTMENT_CODE,"<--Department");
+    ViewAllDepartmentMenuItem[1].SetItem(45,this->YRelativeSystemFrame-4,MAIN_CODE,"Main Menu");
     return ViewAllDepartmentMenuItem;
 }
 void MenuSet::ViewAllDepartmentMenuExtension(int state)
@@ -444,11 +448,11 @@ void MenuSet::ViewAllDepartmentMenuExtension(int state)
     {
         ScreenObj.SetScreenTextColour(ConsoleObj.GetConsoleScreenColour()+3);
     }
-    LineObj.setVCoord(47,49,22);
+    LineObj.setVCoord(YRelativeSystemFrame-4-1,YRelativeSystemFrame-4+1,22);
     LineObj.vSLine();
-    LineObj.setVCoord(47,49,41);
+    LineObj.setVCoord(YRelativeSystemFrame-4-1,YRelativeSystemFrame-4+1,41);
     LineObj.vSLine();
-    LineObj.setVCoord(47,49,55);
+    LineObj.setVCoord(YRelativeSystemFrame-4-1,YRelativeSystemFrame-4+1,55);
     LineObj.vSLine();
     ScreenObj.SetScreenTextColour(48);
 }

@@ -72,3 +72,12 @@ void Services::BasicRunLevel()
 
     ConsoleObj.xyCoord(0,0);
 }
+int Services::DynamicRunLevel()
+{
+    ScreenObj.SetScreenColour(DefaultBgColour);
+    ScreenObj.SetScreenTextColour(DefaultTextColour);
+    SystemTitle();
+    FrameObj.ResetScreenFrame();
+    ConsoleObj.xyCoord(0,0);
+    return FrameObj.GetFrameHeigth();
+}

@@ -54,6 +54,7 @@ class MenuSet
 private:
     int MenuCode;
     int MenuSize;
+    int YRelativeSystemFrame;
     string MenuTitle;
     Line LineObj;
     Screen ScreenObj;
@@ -67,6 +68,7 @@ public:
     string GetMenuTitle();
     void ShowMenuTitle(int);
     void SetMenuTitle(string);
+    void SetYRelativeSystemFrame(int);
 
     Item* MainMenu();
 

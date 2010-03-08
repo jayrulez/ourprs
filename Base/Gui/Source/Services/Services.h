@@ -28,6 +28,7 @@ public:
 	Services();
 	~Services();
 	void BasicRunLevel();
+	int DynamicRunLevel();
 	void SystemTitle();
 	void SystemClearScreen();
 	void SystemChangeScreen();

@@ -39,6 +39,8 @@ using namespace std;
 
 #define ESC_KEY VK_ESCAPE
 
+#define MAX_SCREEN_BUFFER 9999
+
 typedef INPUT_RECORD MY_INPUT_RECORD;
 
 class Console

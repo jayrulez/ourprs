@@ -7,11 +7,13 @@ class DepartmentList
 private:
 	Department *Head;
 	unsigned long int Amount;
+
 public:
 	DepartmentList();
 	~DepartmentList();
 	void AddDepartment(Department);
 	Department* GetDepartment(Department);
 	void ShowDepartmentList();
+	void BuildListFromFile();
 };
 #endif
