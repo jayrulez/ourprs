@@ -243,8 +243,8 @@ void Department::update()
 	ifstream iStreamObj(this->getFilename());
 
     Department * start = NULL;
-	Department * temp;
-	Department * temp2;
+	Department * temp = Department::model();
+	Department * temp2 = Department::model();
 
 	if(iStreamObj.is_open())
 	{
@@ -271,7 +271,6 @@ void Department::update()
                 }
                 temp2->next = temp;
             }
-            cout << start->deptCode << endl;system("pause");
         }
         iStreamObj.close();
 
