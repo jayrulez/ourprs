@@ -21,8 +21,6 @@ private:
 	float overtimeRate;
 	Department * next;
 	bool operationState;
-	Console ConsoleObj;
-	Frame FrameObj;
 public:
 	Department();
 	~Department();

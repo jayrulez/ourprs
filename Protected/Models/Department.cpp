@@ -117,6 +117,8 @@ Department* Department::model()
 
 void Department::show(int y)
 {
+    Console ConsoleObj;
+	Frame FrameObj;
     ConsoleObj.xyCoord(10,y+2);
     cout<<"Dept. Code        : "<<deptCode;
     ConsoleObj.xyCoord(10,y+4);
