@@ -4,6 +4,9 @@
 #ifndef _DEPARTMENT_H
 #include "../Models/Department.h"
 #endif
+#ifndef DEPARTMENTLIST_H
+#include "../Models/DepartmentList.h"
+#endif
 #ifdef _WIN32
     #include "../../Base/Gui/Win32/Core/Console.h"
 #endif
@@ -251,7 +254,12 @@ int DepartmentController::actionView()
 
 int DepartmentController::actionList(int page = 0)
 {
-
+    int actionCode;
+	MasterFormMenuController* menuInstance = this->getMenuObj();
+    DepartmentList  ListObj;
+    ListObj.ShowDepartmentList();
+    menuInstance->SetYRelativeSystemFrame(this->getServicesObj()->DynamicRunLevel());
+    actionCode = menuInstance->ViewAllDepartmentMenu();
     return DEPARTMENT_CODE;
 }
 

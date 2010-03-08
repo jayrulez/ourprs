@@ -47,6 +47,10 @@ Frame::~Frame()
     *
     *
 */
+int Frame::GetFrameHeigth()
+{
+    return this->y2;
+}
 bool Frame::SetFrame(int x1,int x2,int y1,int y2,string type)
 {
     if(x1>=0&&x2>=0&&y1>=0&&y2>=0){

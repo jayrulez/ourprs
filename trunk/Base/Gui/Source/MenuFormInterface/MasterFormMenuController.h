@@ -20,6 +20,7 @@ private:
     List ListObj;
     Field* FieldObj;
     int FormSize;
+    int YRelativeSystemFrame;
 public:
 	MasterFormMenuController();
 	~MasterFormMenuController();
@@ -27,6 +28,7 @@ public:
     Field* GetAllFieldData();
     void ClearAllFieldData();
     void SetAllFieldData(Field*);
+    void SetYRelativeSystemFrame(int);
 
 	//Main Menu
 	int MainMenu();

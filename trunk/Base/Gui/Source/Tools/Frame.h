@@ -92,6 +92,7 @@ public:
     Frame(int,int,int,int,string);
     ~Frame();
     bool SetFrame(int,int,int,int,string);
+    int GetFrameHeigth();
     void dFraming();
     void sFraming();
     void ResetScreenFrame();

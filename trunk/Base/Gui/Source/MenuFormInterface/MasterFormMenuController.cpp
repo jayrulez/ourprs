@@ -30,6 +30,10 @@ void MasterFormMenuController::ClearAllFieldData()
 {
     FormControllerObj.ClearAllFieldData();
 }
+void MasterFormMenuController::SetYRelativeSystemFrame(int y)
+{
+    this->YRelativeSystemFrame=y;
+}
 
 /*
  * Main Menu
@@ -314,28 +318,18 @@ int MasterFormMenuController::DepartmentAfterViewMenu()
 }
 int MasterFormMenuController::ViewAllDepartmentMenu()
 {
-    bool Flag;
     int MenuCall;
+    MenuSetObj.SetYRelativeSystemFrame(YRelativeSystemFrame);
     if(MenuControllerObj.SetMenu(MenuSetObj.ViewAllDepartmentMenu(),MenuSetObj.GetMenuSize(MenuSetObj.ViewAllDepartmentMenu()),
     MenuSetObj.GetMenuCode(MenuSetObj.ViewAllDepartmentMenu())))
+        //cout<<"["<<YRelativeSystemFrame<<"]";
+        //system("pause");
         MenuControllerObj.ShowMenu();
         MenuSetObj.ViewAllDepartmentMenuExtension(ON);
         MenuSetObj.ShowMenuTitle(ON);
         do
         {
-            do
-            {
-                Flag=false;
-                ListObj.BrowseList();
                 MenuCall=MenuControllerObj.BrowseMenu();
-                if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuCall,MenuControllerObj.GetMenuCode()))
-                {
-                    MenuControllerObj.ShowMenu();
-                    MenuSetObj.ViewAllDepartmentMenuExtension(ON);
-                    MenuSetObj.ShowMenuTitle(ON);
-                    Flag=true;
-                }
-            }while(Flag);
         }while(MenuCall==0);
     return MenuCall;
 }
