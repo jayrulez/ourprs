@@ -47,10 +47,10 @@ void DepartmentList::ShowDepartmentList()
 {
     Console ConsoleObj;
     Department *CacheDepartment = Head;
+
     int count=0;
     int x=5;
     int y=8;
-    this->BuildListFromFile();
     while(CacheDepartment!=NULL)
     {
 
@@ -60,7 +60,6 @@ void DepartmentList::ShowDepartmentList()
         setw(10) << CacheDepartment->getOvertimeRate() << endl;
         CacheDepartment=CacheDepartment->getNext();
         y+=2;
-        system("pause");
     }
     ConsoleObj.xyCoord(x,y+2);
 }

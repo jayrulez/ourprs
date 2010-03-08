@@ -256,10 +256,12 @@ int DepartmentController::actionList(int page = 0)
 {
     int actionCode;
 	MasterFormMenuController* menuInstance = this->getMenuObj();
-    DepartmentList  ListObj;
+    DepartmentList ListObj;
+    ListObj.BuildListFromFile();
     ListObj.ShowDepartmentList();
-    menuInstance->SetYRelativeSystemFrame(this->getServicesObj()->DynamicRunLevel());
+    //menuInstance->SetYRelativeSystemFrame(this->getServicesObj()->DynamicRunLevel());
     actionCode = menuInstance->ViewAllDepartmentMenu();
+    //system("pause");
     return DEPARTMENT_CODE;
 }
 

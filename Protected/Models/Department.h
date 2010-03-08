@@ -33,9 +33,9 @@ public:
 	void setDeptName(string);
 	void setRegularRate(float);
 	void setOvertimeRate(float);
-	void setNext(Department*);
 	bool getOperationState();
 	void setOperationState(bool);
+	void setNext(Department*);
 	Department* getNext();
 	void read();
 	void write();

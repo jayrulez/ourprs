@@ -272,7 +272,6 @@ void Department::update()
                 temp2->next = temp;
             }
         }
-        cout << start->deptCode << endl;system("pause");
         iStreamObj.close();
 
         ofstream oStreamObj(this->getFilename(), ios::trunc);
