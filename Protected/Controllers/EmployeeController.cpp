@@ -23,7 +23,7 @@ int EmployeeController::getDefaultActionCode()
 int EmployeeController::actionIndex()
 {
     this->getServicesObj()->BasicRunLevel();
-    return this->getMenuObj()->EmployeeMenu();
+    return this->run(this->getMenuObj()->EmployeeMenu());
 }
 
 int EmployeeController::actionAdd()
@@ -34,7 +34,7 @@ int EmployeeController::actionAdd()
     this->getServicesObj()->BasicRunLevel();
 	actionCode = menuInstance->AddEmployeeMenu();
 	Field * data = menuInstance->GetAllFieldData();
-	
+
 	/*if(actionCode == MAIN_CODE || actionCode == EMPLOYEE_CODE || actionCode == EMPLOYEE_ADD_CODE)
 	{
 		return this->run(actionCode);
@@ -61,10 +61,14 @@ int EmployeeController::run(int actionCode)
 		case EMPLOYEE_ADD_CODE:
 			call = this->actionAdd();
 		break;
+		case EMPLOYEE_UPDATE_CODE:
+			call = this->actionUpdate();
+		break;
         case EMPLOYEE_CODE:
         default:
             call = this->actionIndex();
         break;
     }
+	cout << call;system("pause");
     return call;
 }
