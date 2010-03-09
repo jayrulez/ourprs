@@ -91,23 +91,49 @@ Item* MenuSet::EmployeeMenu()
     this->MenuSize = 6;
     MenuTitle="Employee Menu";
     static Item EmployeeItem[6];
-    EmployeeItem[0].SetItem(15,24,1,"Add");
-    EmployeeItem[1].SetItem(28,24,2,"Update");
-    EmployeeItem[2].SetItem(43,24,3,"View");
-    EmployeeItem[3].SetItem(55,24,4,"View Sorted");
-    EmployeeItem[4].SetItem(28,29,4,"Delete");
+    EmployeeItem[0].SetItem(15,24,EMPLOYEE_ADD_CODE,"Add");
+    EmployeeItem[1].SetItem(28,24,EMPLOYEE_UPDATE_CODE,"Update");
+    EmployeeItem[2].SetItem(43,24,EMPLOYEE_VIEW_CODE,"View");
+    EmployeeItem[3].SetItem(55,24,EMPLOYEE_VIEW_SORTED_CODE,"View Sorted");
+    EmployeeItem[4].SetItem(28,29,EMPLOYEE_DELETE_CODE,"Delete");
     EmployeeItem[5].SetItem(43,29,MAIN_CODE,"Main Menu");
     return &EmployeeItem[0];
 }
-Item* MenuSet::UpdateEmployeeFormMenu()
+Item* MenuSet::UpdateSearchEmployeeFormMenu()
 {
     this->MenuCode = 8;
     this->MenuSize = 2;
-    MenuTitle="Update Department";
-    static Item UpdateEmployeeFormMenuItem[2];
-    UpdateEmployeeFormMenuItem[0].SetItem(25,28,1,"Submit");
-    UpdateEmployeeFormMenuItem[1].SetItem(45,28,MAIN_CODE,"Main Menu");
-    return UpdateEmployeeFormMenuItem;
+    MenuTitle="Update Employee - Search";
+    static Item UpdateSearchEmployeeFormMenuItem[2];
+    UpdateSearchEmployeeFormMenuItem[0].SetItem(25,28,EMPLOYEE_SEARCH_CODE,"Search");
+    UpdateSearchEmployeeFormMenuItem[1].SetItem(45,28,MAIN_CODE,"Main Menu");
+    return UpdateSearchEmployeeFormMenuItem;
+}
+void MenuSet::SearchEmployeeFormMenuExtension(int state)
+{
+        if(state==OFF)
+    {
+        ScreenObj.SetScreenTextColour(ConsoleObj.GetConsoleScreenColour()+3);
+    }
+    LineObj.setVCoord(27,29,11);
+    LineObj.vSLine();
+    LineObj.setVCoord(27,29,26);
+    LineObj.vSLine();
+    LineObj.setVCoord(27,29,50);
+    LineObj.vSLine();
+    LineObj.setVCoord(27,29,67);
+    LineObj.vSLine();
+    ScreenObj.SetScreenTextColour(48);
+}
+Item* MenuSet::ViewSearchEmployeeFormMenu()
+{
+    this->MenuCode = 8;
+    this->MenuSize = 2;
+    MenuTitle="View Employee - Search";
+    static Item ViewSearchEmployeeFormMenuItem[2];
+    ViewSearchEmployeeFormMenuItem[0].SetItem(25,28,EMPLOYEE_SEARCH_CODE,"Search");
+    ViewSearchEmployeeFormMenuItem[1].SetItem(45,28,MAIN_CODE,"Main Menu");
+    return ViewSearchEmployeeFormMenuItem;
 }
 Item* MenuSet::ViewEmployeeMenu()
 {
@@ -115,7 +141,7 @@ Item* MenuSet::ViewEmployeeMenu()
     this->MenuSize = 2;
     MenuTitle="View Employee";
     static Item ViewEmployeeMenuItem[2];
-    ViewEmployeeMenuItem[0].SetItem(26,28,PAYROLL_CODE,"<--Employee");
+    ViewEmployeeMenuItem[0].SetItem(26,28,EMPLOYEE_CODE,"<--Employee");
     ViewEmployeeMenuItem[1].SetItem(44,28,MAIN_CODE,"Main Menu");
     return ViewEmployeeMenuItem;
 }
@@ -125,7 +151,7 @@ Item* MenuSet::ViewAllEmployeeMenu()
     this->MenuSize = 2;
     MenuTitle="View all Employees";
     static Item ViewAllEmployeeMenuItem[2];
-    ViewAllEmployeeMenuItem[0].SetItem(25,48,PAYROLL_CODE,"<--Employee");
+    ViewAllEmployeeMenuItem[0].SetItem(25,48,EMPLOYEE_CODE,"<--Employee");
     ViewAllEmployeeMenuItem[1].SetItem(45,48,MAIN_CODE,"Main Menu");
     return ViewAllEmployeeMenuItem;
 }
@@ -292,7 +318,7 @@ Item* MenuSet::AddDepartmentFormMenu()
 {
     this->MenuCode = DEPARTMENT_ADD_CODE;
     this->MenuSize = 4;
-    MenuTitle="Add Member Menu";
+    MenuTitle="Add Department Menu";
     static Item AddDepartmentFormItem[4];
     AddDepartmentFormItem[0].SetItem(13,35,DEPARTMENT_ADD_SAVE_CODE,"Save");
     AddDepartmentFormItem[1].SetItem(26,35,DEPARTMENT_ADD_CODE,"Reset Fields");
@@ -322,7 +348,7 @@ Item* MenuSet::UpdateDepartmentFormMenu()
 {
     this->MenuCode = DEPARTMENT_UPDATE_FORM_MENU_CODE;
     this->MenuSize = 4;
-    MenuTitle="Add Member Menu";
+    MenuTitle="Update Department Menu";
     static Item UpdateDepartmentFormItem[4];
     UpdateDepartmentFormItem[0].SetItem(13,35,DEPARTMENT_UPDATE_SAVE_CODE,"Save");
     UpdateDepartmentFormItem[1].SetItem(26,35,DEPARTMENT_UPDATE_FORM_MENU_CODE,"Reset Fields");
@@ -352,7 +378,7 @@ Item* MenuSet::AddEmployeeFormMenu()
 {
     this->MenuCode = EMPLOYEE_ADD_CODE;
     this->MenuSize = 4;
-    MenuTitle="Add Member Menu";
+    MenuTitle="Add Employee Menu";
     static Item AddEmployeeFormMenuItem[4];
     AddEmployeeFormMenuItem[0].SetItem(13,35,1,"Save");
     AddEmployeeFormMenuItem[1].SetItem(26,35,EMPLOYEE_ADD_CODE,"Reset Fields");
@@ -378,17 +404,37 @@ void MenuSet::AddEmployeeFormMenuExtension(int state)
     LineObj.vSLine();
     ScreenObj.SetScreenTextColour(48);
 }
-Item* MenuSet::EditFormMenu()
+Item* MenuSet::UpdateEmployeeFormMenu()
 {
-    this->MenuCode = 7;
-    this->MenuSize = 3;
-    MenuTitle="Add Member Menu";
-    static Item EditFormMenuItem[3];
-    EditFormMenuItem[0].SetItem(25,35,1,"Save");
-    EditFormMenuItem[1].SetItem(45,35,1,"Cancel");
-    EditFormMenuItem[2].SetItem(58,35,MAIN_CODE,"Main Menu");
-    return EditFormMenuItem;
+    this->MenuCode = DEPARTMENT_UPDATE_FORM_MENU_CODE;
+    this->MenuSize = 4;
+    MenuTitle="Update Employee Menu";
+    static Item UpdateEmployeeFormItem[4];
+    UpdateEmployeeFormItem[0].SetItem(13,35,EMPLOYEE_UPDATE_SAVE_CODE,"Save");
+    UpdateEmployeeFormItem[1].SetItem(26,35,1,"Reset Fields");
+    UpdateEmployeeFormItem[2].SetItem(45,35,EMPLOYEE_CODE,"Cancel");
+    UpdateEmployeeFormItem[3].SetItem(58,35,MAIN_CODE,"Main Menu");
+    return UpdateEmployeeFormItem;
 }
+void MenuSet::UpdateEmployeeFormMenuExtension(int state)
+{
+    if(state==OFF)
+    {
+        ScreenObj.SetScreenTextColour(ConsoleObj.GetConsoleScreenColour()+3);
+    }
+    LineObj.setVCoord(34,36,9);
+    LineObj.vSLine();
+    LineObj.setVCoord(34,36,22);
+    LineObj.vSLine();
+    LineObj.setVCoord(34,36,41);
+    LineObj.vSLine();
+    LineObj.setVCoord(34,36,54);
+    LineObj.vSLine();
+    LineObj.setVCoord(34,36,69);
+    LineObj.vSLine();
+    ScreenObj.SetScreenTextColour(48);
+}
+
 
 
 

@@ -510,14 +510,14 @@ int MasterFormMenuController::AddEmployeeMenu()
     }
     return MenuCall;
 }
-int MasterFormMenuController::SearchEmployeeMenu()
+int MasterFormMenuController::UpdateSearchEmployeeMenu()
 {
     bool Flag;
     int MenuCall;
     if(FormControllerObj.SetForm(FormSetObj.SearchEmployeeForm(),FormSetObj.GetFormSize(FormSetObj.SearchEmployeeForm()),
     FormSetObj.GetFormCode(FormSetObj.SearchEmployeeForm()))&&
-    MenuControllerObj.SetMenu(MenuSetObj.UpdateEmployeeFormMenu(),MenuSetObj.GetMenuSize(MenuSetObj.UpdateEmployeeFormMenu()),
-    MenuSetObj.GetMenuCode(MenuSetObj.UpdateEmployeeFormMenu())))
+    MenuControllerObj.SetMenu(MenuSetObj.UpdateSearchEmployeeFormMenu(),MenuSetObj.GetMenuSize(MenuSetObj.UpdateSearchEmployeeFormMenu()),
+    MenuSetObj.GetMenuCode(MenuSetObj.UpdateSearchEmployeeFormMenu())))
     {
         FormControllerObj.ShowForm();
         MenuControllerObj.ShowMenu();
@@ -532,6 +532,7 @@ int MasterFormMenuController::SearchEmployeeMenu()
                     FormControllerObj.ShowForm();
                     MenuControllerObj.ShowMenu();
                     MenuSetObj.ShowMenuTitle(ON);
+                    MenuSetObj.SearchEmployeeFormMenuExtension(ON);
                     Flag=true;
                 }
             }while(Flag);
@@ -544,6 +545,7 @@ int MasterFormMenuController::SearchEmployeeMenu()
                     FormControllerObj.ShowForm();
                     MenuControllerObj.ShowMenu();
                     MenuSetObj.ShowMenuTitle(ON);
+                    MenuSetObj.SearchEmployeeFormMenuExtension(ON);
                     Flag=true;
                 }
             }while(Flag);
@@ -553,7 +555,52 @@ int MasterFormMenuController::SearchEmployeeMenu()
 }
 int MasterFormMenuController::UpdateEmployeeMenu()
 {
+    bool Flag;
     int MenuCall;
+    if(FormControllerObj.SetForm(FormSetObj.UpdateEmployeeForm(),FormSetObj.GetFormSize(FormSetObj.UpdateEmployeeForm()),
+    FormSetObj.GetFormCode(FormSetObj.UpdateEmployeeForm()))&&
+    MenuControllerObj.SetMenu(MenuSetObj.UpdateEmployeeFormMenu(),MenuSetObj.GetMenuSize(MenuSetObj.UpdateEmployeeFormMenu()),
+    MenuSetObj.GetMenuCode(MenuSetObj.UpdateEmployeeFormMenu())))
+    {
+        FormControllerObj.ShowForm();
+        MenuControllerObj.ShowMenu();
+        MenuSetObj.ShowMenuTitle(ON);
+        MenuSetObj.UpdateDepartmentFormMenuExtension(ON);
+        do
+        {
+            do
+            {
+                Flag=false;
+                if(ExtendedMenuControllerObj.ExtendedMenuCalls(FormControllerObj.BrowseForm(),FormControllerObj.GetFormCode()))
+                {
+                    FormControllerObj.ShowForm();
+                    MenuControllerObj.ShowMenu();
+                    MenuSetObj.ShowMenuTitle(ON);
+                    MenuSetObj.UpdateDepartmentFormMenuExtension(ON);
+                    Flag=true;
+                }
+            }while(Flag);
+            do
+            {
+                Flag=false;
+                MenuCall=MenuControllerObj.BrowseMenu();
+                if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuCall,MenuControllerObj.GetMenuCode()))
+                {
+                    FormControllerObj.ShowForm();
+                    MenuControllerObj.ShowMenu();
+                    MenuSetObj.ShowMenuTitle(ON);
+                    MenuSetObj.UpdateDepartmentFormMenuExtension(ON);
+                    Flag=true;
+                }
+                if(MenuCall==EMPLOYEE_UPDATE_SAVE_CODE&&FormControllerObj.GetFormCompletionState()==_FAIL)
+                {
+                    Flag=true;
+                }
+            }while(Flag);
+        }while(MenuCall==0);
+    }
+    this->FieldObj=FormControllerObj.GetAllFieldInfo();
+    this->FormSize=FormControllerObj.GetFormSize();
     return MenuCall;
 }
 int MasterFormMenuController::ViewEmployeeMenu()
