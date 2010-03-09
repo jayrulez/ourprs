@@ -14,8 +14,12 @@
 #include "../Field.h"
 #define INVALID_FORMSET 0x8001
 #define DEPARTMENT_ADD_FORM_CODE 2010
-#define DEPARTMENT_UPDATE_FORM_CODE 220
+#define DEPARTMENT_UPDATE_FORM_CODE 2220
 #define DEPARTMENT_SEARCH_FORM_CODE 2030
+
+#define EMPLOYEE_ADD_FORM_CODE 3010
+#define EMPLOYEE_UPDATE_FORM_CODE 3220
+#define EMPLOYEE_SEARCH_FORM_CODE 3030
 class FormSet
 {
 private:
@@ -32,6 +36,7 @@ public:
     Field* SearchDepartmentForm();
     Field* UpdateDepartmentForm();
     Field* AddEmployeeForm();
+    Field* UpdateEmployeeForm();
     Field* SearchEmployeeForm();
 
 };

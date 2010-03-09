@@ -47,7 +47,8 @@ public:
     //Employee
 	int EmployeeMenu();
 	int AddEmployeeMenu();
-	int SearchEmployeeMenu();
+	int UpdateSearchEmployeeMenu();
+	int ViewSearchEmployeeMenu();
     int UpdateEmployeeMenu();
     int ViewEmployeeMenu();
     int ViewSortedEmployeeMenu();
