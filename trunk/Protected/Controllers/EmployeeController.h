@@ -13,5 +13,7 @@ public:
 	int actionIndex();
 	int run(int);
 	int getDefaultActionCode();
+	int actionAdd();
+	int actionUpdate();
 };
 #endif

@@ -35,14 +35,21 @@ int EmployeeController::actionAdd()
 	actionCode = menuInstance->AddEmployeeMenu();
 	Field * data = menuInstance->GetAllFieldData();
 	
-	if(actionCode == MAIN_CODE || actionCode == EMPLOYEE_CODE || actionCode == EMPLOYEE_ADD_CODE)
+	/*if(actionCode == MAIN_CODE || actionCode == EMPLOYEE_CODE || actionCode == EMPLOYEE_ADD_CODE)
 	{
 		return this->run(actionCode);
 	}
 	if(actionCode == EMPLOYEE_ADD_SAVE_CODE)
 	{
         return this->run(menuInstance->AddEmployeeAfterSaveMenu());
-	}
+	}*/
+	system("pause");
+	return MAIN_CODE;
+}
+
+int EmployeeController::actionUpdate()
+{
+	system("pause");
 	return MAIN_CODE;
 }
 
