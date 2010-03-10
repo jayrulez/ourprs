@@ -218,9 +218,9 @@ void Department::save()
 	if(streamObj.is_open())
 	{
 		if(streamObj << this->deptCode << "\t" << this->deptName << "\t" << this->regularRate << "\t" << this->overtimeRate << "\n")
-			this->operationState = OPERATIONSTATE_SUCCESS;
+			this->setOperationState(OPERATIONSTATE_SUCCESS);
 		else
-			this->operationState = OPERATIONSTATE_FAILURE;
+			this->setOperationState(OPERATIONSTATE_FAILURE);
 		streamObj.close();
 	}
 }
@@ -252,9 +252,9 @@ void Department::update(Department * listHead)
     }
     if(Department::model()->recordExists(this->deptCode))
     {
-        this->operationState = OPERATIONSTATE_SUCCESS;
+        this->setOperationState(OPERATIONSTATE_SUCCESS);
     }else{
-        this->operationState = OPERATIONSTATE_FAILURE;
+        this->setOperationState(OPERATIONSTATE_FAILURE);
 	}
 }
 
