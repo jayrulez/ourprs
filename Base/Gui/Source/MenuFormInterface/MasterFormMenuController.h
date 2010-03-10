@@ -32,6 +32,7 @@ public:
 
 	//Main Menu
 	int MainMenu();
+
     //Department
 	int DepartmentMenu();
 	int AddDepartmentMenu();
@@ -44,20 +45,29 @@ public:
 	int AddDepartmentFailSaveMenu();
 	int UpdateDepartmentAfterSaveMenu();
 	int UpdateDepartmentFailSaveMenu();
+
     //Employee
 	int EmployeeMenu();
 	int AddEmployeeMenu();
+	int AddEmployeeAfterSaveMenu();
+	int AddEmployeeFailSaveMenu();
 	int UpdateSearchEmployeeMenu();
-	int ViewSearchEmployeeMenu();
     int UpdateEmployeeMenu();
+    int UpdateEmployeeAfterSaveMenu();
+	int UpdateEmployeeFailSaveMenu();
+	int ViewSearchEmployeeMenu();
     int ViewEmployeeMenu();
+    int EmployeeAfterViewMenu();
     int ViewSortedEmployeeMenu();
+    int EmployeeAfterViewSortedMenu();
+
     //Payroll
 	int PayrollMenu();
 	int ProcessPayrollMenu();
 	int ViewPayrollMenu();
     int ViewSortedPayrollMenu();
 
+    //Exit
 	int ExitMenu();
 };
 #endif

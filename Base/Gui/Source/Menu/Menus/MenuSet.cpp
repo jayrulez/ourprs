@@ -93,17 +93,39 @@ Item* MenuSet::EmployeeMenu()
     static Item EmployeeItem[6];
     EmployeeItem[0].SetItem(15,24,EMPLOYEE_ADD_CODE,"Add");
     EmployeeItem[1].SetItem(28,24,EMPLOYEE_UPDATE_CODE,"Update");
-    EmployeeItem[2].SetItem(43,24,EMPLOYEE_VIEW_CODE,"View");
+    EmployeeItem[2].SetItem(43,24,EMPLOYEE_VIEW_SEARCH_CODE,"View");
     EmployeeItem[3].SetItem(55,24,EMPLOYEE_VIEW_SORTED_CODE,"View Sorted");
-    EmployeeItem[4].SetItem(28,29,EMPLOYEE_DELETE_CODE,"Delete");
+    EmployeeItem[4].SetItem(28,29,EMPLOYEE_DELETE_SEARCH_CODE,"Delete");
     EmployeeItem[5].SetItem(43,29,MAIN_CODE,"Main Menu");
     return &EmployeeItem[0];
+}
+Item* MenuSet::AddEmployeeAfterSaveMenu()
+{
+    this->MenuCode = 8;
+    this->MenuSize = 3;
+    MenuTitle="Add Employee - Success";
+    static Item AddEmployeeAfterSaveMenuItem[3];
+    AddEmployeeAfterSaveMenuItem[0].SetItem(15,32,EMPLOYEE_ADD_CODE,"Add More");
+    AddEmployeeAfterSaveMenuItem[1].SetItem(32,32,EMPLOYEE_CODE,"<--Employee");
+    AddEmployeeAfterSaveMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");
+    return AddEmployeeAfterSaveMenuItem;
+}
+Item* MenuSet::AddEmployeeFailSaveMenu()
+{
+    this->MenuCode = 8;
+    this->MenuSize = 3;
+    MenuTitle="Add Employee - Failed";
+    static Item AddEmployeeFailSaveMenuItem[3];
+    AddEmployeeFailSaveMenuItem[0].SetItem(15,32,EMPLOYEE_ADD_CODE,"<--Add Form");
+    AddEmployeeFailSaveMenuItem[1].SetItem(32,32,EMPLOYEE_CODE,"Employee");
+    AddEmployeeFailSaveMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");
+    return AddEmployeeFailSaveMenuItem;
 }
 Item* MenuSet::UpdateSearchEmployeeFormMenu()
 {
     this->MenuCode = 8;
     this->MenuSize = 2;
-    MenuTitle="Update Employee - Search";
+    MenuTitle="Update Employee Menu - Search";
     static Item UpdateSearchEmployeeFormMenuItem[2];
     UpdateSearchEmployeeFormMenuItem[0].SetItem(25,28,EMPLOYEE_SEARCH_CODE,"Search");
     UpdateSearchEmployeeFormMenuItem[1].SetItem(45,28,MAIN_CODE,"Main Menu");
@@ -125,64 +147,37 @@ void MenuSet::SearchEmployeeFormMenuExtension(int state)
     LineObj.vSLine();
     ScreenObj.SetScreenTextColour(48);
 }
+Item* MenuSet::UpdateEmployeeAfterSaveMenu()
+{
+    this->MenuCode = 8;
+    this->MenuSize = 3;
+    MenuTitle="Update Employee - Success";
+    static Item UpdateEmployeeAfterSaveMenuItem[3];
+    UpdateEmployeeAfterSaveMenuItem[0].SetItem(15,32,EMPLOYEE_UPDATE_CODE,"Update More");
+    UpdateEmployeeAfterSaveMenuItem[1].SetItem(32,32,EMPLOYEE_CODE,"<--Employee");
+    UpdateEmployeeAfterSaveMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");
+    return UpdateEmployeeAfterSaveMenuItem;
+}
+Item* MenuSet::UpdateEmployeeFailSaveMenu()
+{
+    this->MenuCode = 8;
+    this->MenuSize = 3;
+    MenuTitle="Update Employee - Failed";
+    static Item UpdateEmployeeFailSaveMenuItem[3];
+    UpdateEmployeeFailSaveMenuItem[0].SetItem(15,32,EMPLOYEE_UPDATE_CODE,"<--Update Form");
+    UpdateEmployeeFailSaveMenuItem[1].SetItem(32,32,EMPLOYEE_CODE,"Employee");
+    UpdateEmployeeFailSaveMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");
+    return UpdateEmployeeFailSaveMenuItem;
+}
 Item* MenuSet::ViewSearchEmployeeFormMenu()
 {
     this->MenuCode = 8;
     this->MenuSize = 2;
-    MenuTitle="View Employee - Search";
+    MenuTitle="View Employee Menu - Search";
     static Item ViewSearchEmployeeFormMenuItem[2];
-    ViewSearchEmployeeFormMenuItem[0].SetItem(25,28,EMPLOYEE_SEARCH_CODE,"Search");
+    ViewSearchEmployeeFormMenuItem[0].SetItem(25,28,EMPLOYEE_VIEW_SEARCH_CODE,"Search");
     ViewSearchEmployeeFormMenuItem[1].SetItem(45,28,MAIN_CODE,"Main Menu");
     return ViewSearchEmployeeFormMenuItem;
-}
-Item* MenuSet::ViewEmployeeMenu()
-{
-    this->MenuCode = 8;
-    this->MenuSize = 2;
-    MenuTitle="View Employee";
-    static Item ViewEmployeeMenuItem[2];
-    ViewEmployeeMenuItem[0].SetItem(26,28,EMPLOYEE_CODE,"<--Employee");
-    ViewEmployeeMenuItem[1].SetItem(44,28,MAIN_CODE,"Main Menu");
-    return ViewEmployeeMenuItem;
-}
-Item* MenuSet::ViewAllEmployeeMenu()
-{
-    this->MenuCode = 8;
-    this->MenuSize = 2;
-    MenuTitle="View all Employees";
-    static Item ViewAllEmployeeMenuItem[2];
-    ViewAllEmployeeMenuItem[0].SetItem(25,48,EMPLOYEE_CODE,"<--Employee");
-    ViewAllEmployeeMenuItem[1].SetItem(45,48,MAIN_CODE,"Main Menu");
-    return ViewAllEmployeeMenuItem;
-}
-Item* MenuSet::ViewSortedEmployeeMenu()
-{
-    this->MenuCode = 4;
-    this->MenuSize = 7;
-    MenuTitle="Employee Menu - View Sorted";
-    static Item ViewSortedEmployeeItem[7];
-    ViewSortedEmployeeItem[0].SetItem(9,22,1,"ID. No");
-    ViewSortedEmployeeItem[1].SetItem(20,22,2,"Last Name");
-    ViewSortedEmployeeItem[2].SetItem(34,22,3,"Dept. Code");
-    ViewSortedEmployeeItem[3].SetItem(48,22,4,"Position");
-    ViewSortedEmployeeItem[4].SetItem(60,22,4,"Hours Worked");
-    ViewSortedEmployeeItem[5].SetItem(25,32,PAYROLL_CODE,"<--Employee");
-    ViewSortedEmployeeItem[6].SetItem(45,32,MAIN_CODE,"Main Menu");
-    return &ViewSortedEmployeeItem[0];
-}
-void MenuSet::ViewAllEmployeeMenuExtension(int state)
-{
-    if(state==OFF)
-    {
-        ScreenObj.SetScreenTextColour(ConsoleObj.GetConsoleScreenColour()+3);
-    }
-    LineObj.setVCoord(47,49,22);
-    LineObj.vSLine();
-    LineObj.setVCoord(47,49,41);
-    LineObj.vSLine();
-    LineObj.setVCoord(47,49,55);
-    LineObj.vSLine();
-    ScreenObj.SetScreenTextColour(48);
 }
 void MenuSet::ViewEmployeeMenuExtension(int state)
 {
@@ -197,6 +192,32 @@ void MenuSet::ViewEmployeeMenuExtension(int state)
     LineObj.setVCoord(27,29,55);
     LineObj.vSLine();
     ScreenObj.SetScreenTextColour(48);
+}
+Item* MenuSet::EmployeeAfterViewMenu()
+{
+    this->MenuCode = EMPLOYEE_VIEW_CODE;
+    this->MenuSize = 3;
+    MenuTitle="View Employee - success";
+    static Item EmployeeAfterViewMenuItem[2];
+    EmployeeAfterViewMenuItem[0].SetItem(15,32,EMPLOYEE_VIEW_SEARCH_CODE,"View More");
+    EmployeeAfterViewMenuItem[1].SetItem(32,32,EMPLOYEE_CODE,"<--Employee");
+    EmployeeAfterViewMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");
+    return EmployeeAfterViewMenuItem;
+}
+Item* MenuSet::ViewSortedEmployeeMenu()
+{
+    this->MenuCode = EMPLOYEE_VIEW_SORTED_CODE;
+    this->MenuSize = 7;
+    MenuTitle="Employee Menu - View Sorted";
+    static Item ViewSortedEmployeeItem[7];
+    ViewSortedEmployeeItem[0].SetItem(9,22,1,"ID. No");
+    ViewSortedEmployeeItem[1].SetItem(20,22,2,"Last Name");
+    ViewSortedEmployeeItem[2].SetItem(34,22,3,"Dept. Code");
+    ViewSortedEmployeeItem[3].SetItem(48,22,4,"Position");
+    ViewSortedEmployeeItem[4].SetItem(60,22,4,"Hours Worked");
+    ViewSortedEmployeeItem[5].SetItem(25,32,PAYROLL_CODE,"<--Employee");
+    ViewSortedEmployeeItem[6].SetItem(45,32,MAIN_CODE,"Main Menu");
+    return ViewSortedEmployeeItem;
 }
 void MenuSet::ViewSortedEmployeeMenuExtension(int state)
 {
@@ -224,7 +245,17 @@ void MenuSet::ViewSortedEmployeeMenuExtension(int state)
     }
     ScreenObj.SetScreenTextColour(48);
 }
-
+Item* MenuSet::EmployeeAfterViewSortedMenu()
+{
+    this->MenuCode = EMPLOYEE_VIEW_CODE;
+    this->MenuSize = 3;
+    MenuTitle="View Employee - success";
+    static Item EmployeeAfterViewSortedMenuItem[2];
+    EmployeeAfterViewSortedMenuItem[0].SetItem(15,32,EMPLOYEE_VIEW_SORTED_CODE,"<--View Sorted");
+    EmployeeAfterViewSortedMenuItem[1].SetItem(32,32,EMPLOYEE_CODE,"Employee");
+    EmployeeAfterViewSortedMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");
+    return EmployeeAfterViewSortedMenuItem;
+}
 
 
 

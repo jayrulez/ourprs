@@ -50,15 +50,18 @@
 #define EMPLOYEE_ADD_CODE 3100
 #define EMPLOYEE_ADD_SAVE_CODE 3110
     //update
-#define EMPLOYEE_UPDATE_CODE 3200
-#define EMPLOYEE_UPDATE_FORM_MENU_CODE 3210
-#define EMPLOYEE_UPDATE_SAVE_CODE 3220
+#define EMPLOYEE_UPDATE_SEARCH_CODE 3200
+#define EMPLOYEE_UPDATE_CODE 3210
+#define EMPLOYEE_UPDATE_FORM_MENU_CODE 3220
+#define EMPLOYEE_UPDATE_SAVE_CODE 3230
     //view
-#define EMPLOYEE_VIEW_CODE 3300
+#define EMPLOYEE_VIEW_SEARCH_CODE 3300
+#define EMPLOYEE_VIEW_CODE 3310
     //view sorted
 #define EMPLOYEE_VIEW_SORTED_CODE 3400
     //delete
-#define EMPLOYEE_DELETE_CODE 3500
+#define EMPLOYEE_DELETE_SEARCH_CODE 3500
+#define EMPLOYEE_DELETE_CODE 3510
 
 #define EMPLOYEE_SEARCH_CODE 3600
 
@@ -106,15 +109,19 @@ public:
 
     //Employee Menu Set
     Item* EmployeeMenu();
+    Item* AddEmployeeAfterSaveMenu();
+    Item* AddEmployeeFailSaveMenu();
     Item* UpdateSearchEmployeeFormMenu();
     void SearchEmployeeFormMenuExtension(int);
+    Item* UpdateEmployeeAfterSaveMenu();
+    Item* UpdateEmployeeFailSaveMenu();
     Item* ViewSearchEmployeeFormMenu();
-    Item* ViewEmployeeMenu();
-    Item* ViewAllEmployeeMenu();
-    void ViewAllEmployeeMenuExtension(int);
     void ViewEmployeeMenuExtension(int);
+    Item* EmployeeAfterViewMenu();
     Item* ViewSortedEmployeeMenu();
     void ViewSortedEmployeeMenuExtension(int);
+    Item* EmployeeAfterViewSortedMenu();
+
 
     //Payroll Menu Set
     Item* PayrollMenu();
