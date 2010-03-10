@@ -815,6 +815,118 @@ int MasterFormMenuController::EmployeeAfterViewSortedMenu()
     }
     return MenuCall;
 }
+int MasterFormMenuController::DeleteSearchEmployeeMenu()
+{
+    bool Flag;
+    int MenuCall;
+    if(MenuControllerObj.SetMenu(MenuSetObj.DeleteSearchEmployeeFormMenu(),MenuSetObj.GetMenuSize(MenuSetObj.DeleteSearchEmployeeFormMenu()),
+    MenuSetObj.GetMenuCode(MenuSetObj.DeleteSearchEmployeeFormMenu())))
+    {
+        MenuControllerObj.ShowMenu();
+        MenuSetObj.ShowMenuTitle(ON);
+        MenuSetObj.ViewEmployeeMenuExtension(ON);
+        do
+        {
+            do
+            {
+                Flag=false;
+                MenuCall=MenuControllerObj.BrowseMenu();
+                if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuCall,MenuControllerObj.GetMenuCode()))
+                {
+                    MenuControllerObj.ShowMenu();
+                    MenuSetObj.ShowMenuTitle(ON);
+                    MenuSetObj.ViewEmployeeMenuExtension(ON);
+                    Flag=true;
+                }
+            }while(Flag);
+        }while(MenuCall==0);
+    }
+    return MenuCall;
+}
+int MasterFormMenuController::EmployeeDeleteConfirmMenu()
+{
+    bool Flag;
+    int MenuCall;
+    if(MenuControllerObj.SetMenu(MenuSetObj.DeleteConfirmEmployeeMenu(),MenuSetObj.GetMenuSize(MenuSetObj.DeleteConfirmEmployeeMenu()),
+    MenuSetObj.GetMenuCode(MenuSetObj.DeleteConfirmEmployeeMenu())))
+    {
+        MenuControllerObj.ShowMenu();
+        MenuSetObj.ShowMenuTitle(ON);
+        MenuSetObj.ViewEmployeeMenuExtension(ON);
+        do
+        {
+            do
+            {
+                Flag=false;
+                MenuCall=MenuControllerObj.BrowseMenu();
+                if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuCall,MenuControllerObj.GetMenuCode()))
+                {
+                    MenuControllerObj.ShowMenu();
+                    MenuSetObj.ShowMenuTitle(ON);
+                    MenuSetObj.ViewEmployeeMenuExtension(ON);
+                    Flag=true;
+                }
+            }while(Flag);
+        }while(MenuCall==0);
+    }
+    return MenuCall;
+}
+int MasterFormMenuController::EmployeeAfterDeleteMenu()
+{
+    bool Flag;
+    int MenuCall;
+    if(MenuControllerObj.SetMenu(MenuSetObj.EmployeeAfterDeleteMenu(),MenuSetObj.GetMenuSize(MenuSetObj.EmployeeAfterDeleteMenu()),
+    MenuSetObj.GetMenuCode(MenuSetObj.EmployeeAfterDeleteMenu())))
+    {
+        MenuControllerObj.ShowMenu();
+        MenuSetObj.ShowMenuTitle(ON);
+        MenuSetObj.ViewEmployeeMenuExtension(ON);
+        do
+        {
+            do
+            {
+                Flag=false;
+                MenuCall=MenuControllerObj.BrowseMenu();
+                if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuCall,MenuControllerObj.GetMenuCode()))
+                {
+                    MenuControllerObj.ShowMenu();
+                    MenuSetObj.ShowMenuTitle(ON);
+                    MenuSetObj.ViewEmployeeMenuExtension(ON);
+                    Flag=true;
+                }
+            }while(Flag);
+        }while(MenuCall==0);
+    }
+    return MenuCall;
+}
+int MasterFormMenuController::EmployeeFailDeleteMenu()
+{
+    bool Flag;
+    int MenuCall;
+    if(MenuControllerObj.SetMenu(MenuSetObj.EmployeeFailDeleteMenu(),MenuSetObj.GetMenuSize(MenuSetObj.EmployeeFailDeleteMenu()),
+    MenuSetObj.GetMenuCode(MenuSetObj.EmployeeFailDeleteMenu())))
+    {
+        MenuControllerObj.ShowMenu();
+        MenuSetObj.ShowMenuTitle(ON);
+        MenuSetObj.ViewEmployeeMenuExtension(ON);
+        do
+        {
+            do
+            {
+                Flag=false;
+                MenuCall=MenuControllerObj.BrowseMenu();
+                if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuCall,MenuControllerObj.GetMenuCode()))
+                {
+                    MenuControllerObj.ShowMenu();
+                    MenuSetObj.ShowMenuTitle(ON);
+                    MenuSetObj.ViewEmployeeMenuExtension(ON);
+                    Flag=true;
+                }
+            }while(Flag);
+        }while(MenuCall==0);
+    }
+    return MenuCall;
+}
 /*
  * Payroll Menu
 */
@@ -905,6 +1017,7 @@ int MasterFormMenuController::ViewSortedPayrollMenu()
     }
     return MenuCall;
 }
+
 /*
  * Exit Menu
 */

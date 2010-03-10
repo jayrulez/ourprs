@@ -121,6 +121,10 @@ public:
     Item* ViewSortedEmployeeMenu();
     void ViewSortedEmployeeMenuExtension(int);
     Item* EmployeeAfterViewSortedMenu();
+    Item* DeleteSearchEmployeeFormMenu();
+    Item* DeleteConfirmEmployeeMenu();
+    Item* EmployeeAfterDeleteMenu();
+    Item* EmployeeFailDeleteMenu();
 
 
     //Payroll Menu Set

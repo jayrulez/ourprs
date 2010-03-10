@@ -60,6 +60,10 @@ public:
     int EmployeeAfterViewMenu();
     int ViewSortedEmployeeMenu();
     int EmployeeAfterViewSortedMenu();
+    int DeleteSearchEmployeeMenu();
+    int EmployeeDeleteConfirmMenu();
+    int EmployeeAfterDeleteMenu();
+    int EmployeeFailDeleteMenu();
 
     //Payroll
 	int PayrollMenu();
