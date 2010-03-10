@@ -60,5 +60,9 @@ public:
 	{
 		return !(*this == employee);
 	}
+	void Employee::save();
+	bool recordExists(int);
+	bool recordExists(int, int);
+	Employee * findById(int);
 };
 #endif

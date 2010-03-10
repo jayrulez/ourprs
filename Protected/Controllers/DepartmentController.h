@@ -14,9 +14,6 @@ using namespace std;
 
 class DepartmentController: public BaseController
 {
-private:
-    Screen ScreenObj;
-    Console ConsoleObj;
 public:
 	DepartmentController();
 	~DepartmentController();

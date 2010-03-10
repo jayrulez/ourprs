@@ -12,6 +12,7 @@ class BaseModel
 {
 private:
 	string filename;
+	bool operationState;
 public:
 	BaseModel();
     virtual ~BaseModel();
@@ -19,5 +20,7 @@ public:
 	const char* getFilename();
 	virtual void write();
 	virtual void read();
+	bool getOperationState();
+	void setOperationState(bool);
 };
 #endif

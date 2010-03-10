@@ -1,6 +1,7 @@
 #ifndef _EMPLOYEECONTROLLER_H
 #include "./EmployeeController.h"
 #endif
+#include <sstream>
 
 EmployeeController::EmployeeController()
 {
@@ -35,15 +36,55 @@ int EmployeeController::actionAdd()
 	actionCode = menuInstance->AddEmployeeMenu();
 	Field * data = menuInstance->GetAllFieldData();
 
-	/*if(actionCode == MAIN_CODE || actionCode == EMPLOYEE_CODE || actionCode == EMPLOYEE_ADD_CODE)
+	if(actionCode == MAIN_CODE || actionCode == EMPLOYEE_CODE || actionCode == EMPLOYEE_ADD_CODE)
 	{
 		return this->run(actionCode);
 	}
 	if(actionCode == EMPLOYEE_ADD_SAVE_CODE)
 	{
-        return this->run(menuInstance->AddEmployeeAfterSaveMenu());
-	}*/
-	system("pause");
+		istringstream idString((data)->GetFieldData());
+		istringstream deptCodeString((data+3)->GetFieldData());
+		istringstream hoursWorkedString((data+5)->GetFieldData());
+
+		int id;
+		int deptCode;
+		int hoursWorked;
+		string firstname;
+		string lastname;
+		string position;
+
+		idString >> id;
+		deptCodeString >> deptCode;
+		hoursWorkedString >> hoursWorked;
+		firstname = (data+1)->GetFieldData();
+		lastname = (data+2)->GetFieldData();
+		position = (data+4)->GetFieldData();
+
+		Employee * employee = new Employee(id, firstname, lastname, deptCode, position, hoursWorked, NULL);
+
+		employee->save();
+
+		this->getServicesObj()->BasicRunLevel();
+		if(employee->getOperationState() == OPERATIONSTATE_FAILURE)
+		{
+            ConsoleObj.xyCoord(20,9);
+            ScreenObj.SetScreenTextColour(RedTextColour);
+			cout << "Error: Could not save employee info to file" << endl;
+			ScreenObj.SetScreenTextColour(DefaultTextColour);
+			return this->run(menuInstance->AddDepartmentFailSaveMenu());
+		}
+		else
+		{
+            ConsoleObj.xyCoord(24,9);
+            ScreenObj.SetScreenTextColour(GreenTextColour);
+			cout << "Employee Added Successfuly" << endl;
+			ScreenObj.SetScreenTextColour(DefaultTextColour);
+			employee->show(14);
+		}
+
+        //return this->run(menuInstance->AddEmployeeAfterSaveMenu());
+        system("pause");
+	}
 	return MAIN_CODE;
 }
 

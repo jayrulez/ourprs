@@ -3,6 +3,9 @@
 #ifndef _BASECONTROLLER_H
 #include "../../Base/BaseController.h"
 #endif
+#ifndef _EMPLOYEE_H
+#include "../Models/Employee.h"
+#endif
 
 class EmployeeController: public BaseController
 {

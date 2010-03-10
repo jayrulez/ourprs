@@ -21,7 +21,6 @@ Department::Department()
 {
 	this->next = NULL;
 	this->setFilename(DEPARTMENT_RATES_FILE);
-	this->operationState = true;
 }
 
 Department::~Department()
@@ -36,17 +35,6 @@ Department::Department(int deptCode = 0, string deptName = "", float regularRate
 	this->overtimeRate = overtimeRate;
 	this->next = next;
 	this->setFilename(DEPARTMENT_RATES_FILE);
-	this->operationState = true;
-}
-
-bool Department::getOperationState()
-{
-	return this->operationState;
-}
-
-void Department::setOperationState(bool operationState)
-{
-	this->operationState = operationState;
 }
 
 Department* Department::getNext()
@@ -184,10 +172,9 @@ bool Department::recordExists(int keyCode, int ignore)
 		{
 		    //streamObj >>deptCode >>deptName >>regularRate >>overtimeRate;
 			//streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate;
-			if(department.deptCode == keyCode)
+			if(department.deptCode == ignore)
 			{
-				continue;
-				// consider breaking intead of continue
+				break;
 			}
 			if(department.deptCode == keyCode)
 			{

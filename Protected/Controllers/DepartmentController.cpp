@@ -90,9 +90,8 @@ int DepartmentController::actionAdd()
             ScreenObj.SetScreenTextColour(GreenTextColour);
 			cout << "Department Added Successfuly" << endl;
 			ScreenObj.SetScreenTextColour(DefaultTextColour);
-
+			department->show(14);
 		}
-        department->show(14);
 
         return this->run(menuInstance->AddDepartmentAfterSaveMenu());
 	}

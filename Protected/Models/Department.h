@@ -20,7 +20,6 @@ private:
 	float regularRate;
 	float overtimeRate;
 	Department * next;
-	bool operationState;
 public:
 	Department();
 	~Department();
@@ -33,8 +32,6 @@ public:
 	void setDeptName(string);
 	void setRegularRate(float);
 	void setOvertimeRate(float);
-	bool getOperationState();
-	void setOperationState(bool);
 	void setNext(Department*);
 	Department* getNext();
 	void read();
