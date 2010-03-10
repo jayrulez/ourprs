@@ -1,7 +1,13 @@
 #ifndef _EMPLOYEE_H
 #include "./Employee.h"
 #endif
+#ifdef _WIN32
+    #include "../../Base/Gui/Win32/Core/Console.h"
+#endif
+#include "../../Base/Gui/Source/Tools/Frame.h"
 #include <fstream>
+#include <iostream>
+#include <string>
 
 Employee::Employee()
 {
@@ -94,7 +100,27 @@ void Employee::setHoursWorked(float hoursWorked)
 {
 	this->hoursWorked = hoursWorked;
 }
-
+void Employee::show(int y)
+{
+    Console ConsoleObj;
+	Frame FrameObj;
+    ConsoleObj.xyCoord(10,y+2);
+    cout<<"Employee Id     : "<<this->id;
+    ConsoleObj.xyCoord(10,y+4);
+    cout<<"First Name      : "<<this->firstname;
+    ConsoleObj.xyCoord(10,y+6);
+    cout<<"Last Name       : "<<this->lastname;
+    ConsoleObj.xyCoord(10,y+8);
+    cout<<"Department Code : "<<this->deptCode;
+    ConsoleObj.xyCoord(10,y+10);
+    cout<<"Position: "<<this->position;
+    ConsoleObj.xyCoord(10,y+12);
+    cout<<"Hours Worked    : "<<this->hoursWorked;
+    if(FrameObj.SetFrame(5,STANDARD_FRAME_WIDTH-5,y,y+14,NORMAL_FRAME))
+    {
+        FrameObj.sFraming();
+    }
+}
 void Employee::write()
 {
 
