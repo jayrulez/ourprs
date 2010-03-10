@@ -36,6 +36,7 @@ public:
 	void setHoursWorked(float);
 	void setNext(Employee*);
 	Employee* getNext();
+	void show(int);
 	void read();
 	void write();
 	Employee & Employee::operator=(const Employee &employee)
