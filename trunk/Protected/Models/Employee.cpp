@@ -1,6 +1,7 @@
 #ifndef _EMPLOYEE_H
 #include "./Employee.h"
 #endif
+#include <fstream>
 
 Employee::Employee()
 {
@@ -104,7 +105,7 @@ void Employee::read()
 
 }
 
-bool Department::recordExists(int keyCode)
+bool Employee::recordExists(int keyCode)
 {
 	ifstream streamObj(this->getFilename());
 	string line;
@@ -178,9 +179,9 @@ void Employee::save()
 	if(streamObj.is_open())
 	{
 		if(streamObj << this->id << "\t" << this->firstname << "\t" << this->lastname << "\t" << this->deptCode << "\t" << this->position << "\t" << this->hoursWorked << "\n")
-			this->operationState = OPERATIONSTATE_SUCCESS;
+			this->setOperationState(OPERATIONSTATE_SUCCESS);
 		else
-			this->operationState = OPERATIONSTATE_FAILURE;
+			this->setOperationState(OPERATIONSTATE_FAILURE);
 		streamObj.close();
 	}
 }

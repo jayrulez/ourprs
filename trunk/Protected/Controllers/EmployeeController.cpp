@@ -79,7 +79,7 @@ int EmployeeController::actionAdd()
             ScreenObj.SetScreenTextColour(GreenTextColour);
 			cout << "Employee Added Successfuly" << endl;
 			ScreenObj.SetScreenTextColour(DefaultTextColour);
-			employee->show(14);
+			//employee->show(14);
 		}
 
         //return this->run(menuInstance->AddEmployeeAfterSaveMenu());

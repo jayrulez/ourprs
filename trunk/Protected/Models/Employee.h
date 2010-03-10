@@ -1,8 +1,12 @@
 #ifndef _EMPLOYEE_H
 #define _EMPLOYEE_H
+#ifndef _CONFIG_H
+#include "../../config.h"
+#endif
 #ifndef _BASEMODEL_H
 #include "../../Base/BaseModel.h"
 #endif
+
 
 class Employee: public BaseModel
 {

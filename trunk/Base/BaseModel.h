@@ -4,6 +4,8 @@
 #include"./Component.h"
 #endif*/
 #include <string>
+#define OPERATIONSTATE_SUCCESS true
+#define OPERATIONSTATE_FAILURE false
 
 using namespace std;
 
