@@ -38,3 +38,13 @@ const char* BaseModel::getFilename()
 	return (const)filenameCharS;*/
 	return this->filename.c_str();
 }
+
+bool BaseModel::getOperationState()
+{
+	return this->operationState;
+}
+
+void BaseModel::setOperationState(bool operationState)
+{
+	this->operationState = operationState;
+}

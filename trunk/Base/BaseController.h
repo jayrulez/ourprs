@@ -6,6 +6,9 @@
 
 class BaseController: public Component
 {
+protected:
+    Screen ScreenObj;
+    Console ConsoleObj;
 public:
 	BaseController();
 	~BaseController();
