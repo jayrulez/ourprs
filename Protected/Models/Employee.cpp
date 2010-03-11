@@ -31,6 +31,11 @@ Employee::Employee(int id = 0, string firstname = "", string lastname = "", int 
 	this->setFilename(EMPLOYEE_PAYROLL_DATA_FILE);
 }
 
+Employee* Employee::model()
+{
+	return new Employee(0,"","",0,"",0,NULL);
+}
+
 Employee* Employee::getNext()
 {
 	return this->next;
