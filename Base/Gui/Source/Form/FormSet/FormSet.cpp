@@ -91,9 +91,9 @@ Field* FormSet::UpdateEmployeeForm()
     UpdateEmployeeFormField[5].SetField("Hours Worked",5,25,9,FREENUMERICTYPE,NO_SPACING,20);
     return UpdateEmployeeFormField;
 }
-Field* FormSet::SearchEmployeeForm()
+Field* FormSet::UpdateSearchEmployeeForm()
 {
-    this->FormCode=EMPLOYEE_SEARCH_FORM_CODE;
+    this->FormCode=EMPLOYEE_UPDATE_SEARCH_FORM_CODE;
     this->FormSize=1;
     static Field SearchEmployeeFormField[1];
     SearchEmployeeFormField[0].SetField("ID. No",20,19,1,STRICTNUMERICTYPE,NO_SPACING,4);
