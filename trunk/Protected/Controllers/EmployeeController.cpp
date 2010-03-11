@@ -35,7 +35,6 @@ int EmployeeController::actionAdd()
     this->getServicesObj()->BasicRunLevel();
 	actionCode = menuInstance->AddEmployeeMenu();
 	Field * data = menuInstance->GetAllFieldData();
-	for(int i = 0; i < data->
 
 	if(actionCode == MAIN_CODE || actionCode == EMPLOYEE_CODE || actionCode == EMPLOYEE_ADD_CODE)
 	{
