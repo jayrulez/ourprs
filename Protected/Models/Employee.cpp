@@ -167,14 +167,13 @@ bool Employee::recordExists(int keyCode, int ignore)
 	    //std::getline( streamObj, line );
 		while(streamObj >> employee.id >> employee.firstname >> employee.lastname >> employee.deptCode >> employee.position >> employee.hoursWorked)
 		{
-			if(employee.id == ignore)
+			if(employee.id != ignore)
 			{
-				break;
-			}
-			if(employee.id == keyCode)
-			{
-				streamObj.close();
-				return true;
+				if(employee.id == keyCode)
+				{
+					streamObj.close();
+					return true;
+				}
 			}
 		}
 		streamObj.close();
