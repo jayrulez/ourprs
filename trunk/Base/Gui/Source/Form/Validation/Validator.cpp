@@ -92,7 +92,7 @@ bool Validator::CheckEmployeeExistence(string ID)
     int intCode;
     istringstream MyStream(ID);
     MyStream>>intCode;
-    if(EmployeeObj.recordExists(intCode))
+    if(Employee::model()->recordExists(intCode))
     {
         ScreenObj.SetScreenTextColour(RedTextColour);
         cout<<"<Employee already exist>";

@@ -44,6 +44,7 @@ bool FormController::SetForm(Field* FormObj,int FormSize,int FormCode)
         this->fptr=FormObj;
         this->FormCode=FormCode;
         CurrentField=DefaultStartingField();
+        PreviousField=CurrentField;
         CompleteState=true;
         VerticalFormRangeCheck=IN_FORM_RANGE;
         if(this->FormCode==DEPARTMENT_UPDATE_FORM_CODE)
@@ -227,6 +228,13 @@ bool FormController::ValidateField()
         if(this->FormCode!=DEPARTMENT_SEARCH_FORM_CODE&&this->FormCode!=DEPARTMENT_UPDATE_FORM_CODE)
         {
             if(ValidatorObj.CheckDepartmentExistence(PreviousField.GetFieldData()))
+            {
+                return false;
+            }
+        }
+        else if(FormCode==DEPARTMENT_UPDATE_FORM_CODE)
+        {
+            if(ValidatorObj.CheckOtherDepartmentExistence(PreviousField.GetFieldData(),UpdateFormOldKey)==true)
             {
                 return false;
             }
