@@ -147,8 +147,6 @@ bool Department::recordExists(int keyCode)
 	    //std::getline( streamObj, line );
 		while(streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate)
 		{
-		    //streamObj >>deptCode >>deptName >>regularRate >>overtimeRate;
-			//streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate;
 			if(department.deptCode == keyCode)
 			{
 			    streamObj.close();
@@ -170,16 +168,13 @@ bool Department::recordExists(int keyCode, int ignore)
 	    //std::getline( streamObj, line );
 		while(streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate)
 		{
-		    //streamObj >>deptCode >>deptName >>regularRate >>overtimeRate;
-			//streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate;
-			if(department.deptCode == ignore)
+			if(department.deptCode != ignore)
 			{
-				break;
-			}
-			if(department.deptCode == keyCode)
-			{
-				streamObj.close();
-				return true;
+				if(department.deptCode == keyCode)
+				{
+					streamObj.close();
+					return true;
+				}
 			}
 		}
 		streamObj.close();
@@ -197,14 +192,11 @@ Department* Department::findByCode(int keyCode)
 	    //std::getline( streamObj, line );
 		while(streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate)
 		{
-		    //streamObj >>deptCode >>deptName >>regularRate >>overtimeRate;
-			//streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate;
 			if(department.deptCode == keyCode)
 			{
 			    streamObj.close();
 			    Department * record = new Department(department.deptCode,department.deptName,department.regularRate,department.overtimeRate);
 				return record;
-				//return NULL;
 			}
 		}
 		streamObj.close();
