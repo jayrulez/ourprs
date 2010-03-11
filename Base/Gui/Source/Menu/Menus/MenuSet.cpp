@@ -411,7 +411,7 @@ Item* MenuSet::AddEmployeeFormMenu()
     this->MenuSize = 4;
     MenuTitle="Add Employee Menu";
     static Item AddEmployeeFormMenuItem[4];
-    AddEmployeeFormMenuItem[0].SetItem(13,35,1,"Save");
+    AddEmployeeFormMenuItem[0].SetItem(13,35,EMPLOYEE_ADD_SAVE_CODE,"Save");
     AddEmployeeFormMenuItem[1].SetItem(26,35,EMPLOYEE_ADD_CODE,"Reset Fields");
     AddEmployeeFormMenuItem[2].SetItem(45,35,EMPLOYEE_CODE,"Cancel");
     AddEmployeeFormMenuItem[3].SetItem(58,35,MAIN_CODE,"Main Menu");
@@ -621,7 +621,7 @@ Item* MenuSet::UpdateDepartmentFailSaveMenu()
 
 
 
-
+//Delete menu
 Item* MenuSet::DeleteSearchEmployeeFormMenu()
 {
     this->MenuCode = EMPLOYEE_DELETE_SEARCH_CODE;
