@@ -30,11 +30,12 @@ int EmployeeController::actionIndex()
 int EmployeeController::actionAdd()
 {
 	int actionCode;
-	MasterFormMenuController *menuInstance = this->getMenuObj(true);
+	MasterFormMenuController *menuInstance = this->getMenuObj();
 
     this->getServicesObj()->BasicRunLevel();
 	actionCode = menuInstance->AddEmployeeMenu();
 	Field * data = menuInstance->GetAllFieldData();
+	for(int i = 0; i < data->
 
 	if(actionCode == MAIN_CODE || actionCode == EMPLOYEE_CODE || actionCode == EMPLOYEE_ADD_CODE)
 	{
@@ -79,11 +80,10 @@ int EmployeeController::actionAdd()
             ScreenObj.SetScreenTextColour(GreenTextColour);
 			cout << "Employee Added Successfuly" << endl;
 			ScreenObj.SetScreenTextColour(DefaultTextColour);
-			//employee->show(14);
+			employee->show(14);
 		}
 
-        //return this->run(menuInstance->AddEmployeeAfterSaveMenu());
-        system("pause");
+        return this->run(menuInstance->AddEmployeeAfterSaveMenu());
 	}
 	return MAIN_CODE;
 }
