@@ -505,9 +505,16 @@ int MasterFormMenuController::AddEmployeeMenu()
                     MenuSetObj.AddEmployeeFormMenuExtension(ON);
                     Flag=true;
                 }
+                if(MenuCall==EMPLOYEE_UPDATE_SAVE_CODE&&FormControllerObj.GetFormCompletionState()==_FAIL)
+                {
+                    // change back to true
+                    Flag=false;
+                }
             }while(Flag);
         }while(MenuCall==0);
     }
+    this->FieldObj=FormControllerObj.GetAllFieldInfo();
+    this->FormSize=FormControllerObj.GetFormSize();
     return MenuCall;
 }
 int MasterFormMenuController::AddEmployeeAfterSaveMenu()
