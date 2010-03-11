@@ -573,8 +573,8 @@ int MasterFormMenuController::UpdateSearchEmployeeMenu()
 {
     bool Flag;
     int MenuCall;
-    if(FormControllerObj.SetForm(FormSetObj.SearchEmployeeForm(),FormSetObj.GetFormSize(FormSetObj.SearchEmployeeForm()),
-    FormSetObj.GetFormCode(FormSetObj.SearchEmployeeForm()))&&
+    if(FormControllerObj.SetForm(FormSetObj.UpdateSearchEmployeeForm(),FormSetObj.GetFormSize(FormSetObj.UpdateSearchEmployeeForm()),
+    FormSetObj.GetFormCode(FormSetObj.UpdateSearchEmployeeForm()))&&
     MenuControllerObj.SetMenu(MenuSetObj.UpdateSearchEmployeeFormMenu(),MenuSetObj.GetMenuSize(MenuSetObj.UpdateSearchEmployeeFormMenu()),
     MenuSetObj.GetMenuCode(MenuSetObj.UpdateSearchEmployeeFormMenu())))
     {

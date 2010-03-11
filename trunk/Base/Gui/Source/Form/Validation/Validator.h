@@ -16,6 +16,7 @@
 	#include "../../../Win32/Core/Console.h"
 #endif
 #include "../../../../../Protected/Models/Department.h"
+#include "../../../../../Protected/Models/Employee.h"
 #include <string>
 
 using namespace std;
@@ -26,6 +27,7 @@ private:
     Screen ScreenObj;
     Console ConsoleObj;
     Department DepartmentObj;
+    Employee EmployeeObj;
 public:
     Validator();
     ~Validator();
@@ -34,5 +36,7 @@ public:
     bool CheckDataExistence(string);
     bool CheckDepartmentExistence(string);
     bool CheckOtherDepartmentExistence(string,string);
+    bool CheckEmployeeExistence(string);
+    bool CheckOtherEnployeeExistence(string,string);
 };
 #endif

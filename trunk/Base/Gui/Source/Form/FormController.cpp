@@ -267,6 +267,26 @@ bool FormController::ValidateForm()
                 }
             }
         }
+        if(TempField.GetFieldName()=="ID. No")
+        {
+            if(FormCode!=EMPLOYEE_UPDATE_SEARCH_FORM_CODE&&FormCode!=EMPLOYEE_UPDATE_FORM_CODE)
+            {
+                if(ValidatorObj.CheckEmployeeExistence(TempField.GetFieldData())==true)
+                {
+                    CompleteState=false;
+                    return false;
+                }
+            }
+            if(FormCode==EMPLOYEE_UPDATE_FORM_CODE)
+            {
+
+                if(ValidatorObj.CheckOtherEnployeeExistence(TempField.GetFieldData(),UpdateFormOldKey)==true)
+                {
+                    CompleteState=false;
+                    return false;
+                }
+            }
+        }
     }
     CompleteState=true;
     return true;

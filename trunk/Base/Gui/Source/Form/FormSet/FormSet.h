@@ -19,7 +19,7 @@
 
 #define EMPLOYEE_ADD_FORM_CODE 3010
 #define EMPLOYEE_UPDATE_FORM_CODE 3220
-#define EMPLOYEE_SEARCH_FORM_CODE 3030
+#define EMPLOYEE_UPDATE_SEARCH_FORM_CODE 3030
 class FormSet
 {
 private:
@@ -37,7 +37,7 @@ public:
     Field* UpdateDepartmentForm();
     Field* AddEmployeeForm();
     Field* UpdateEmployeeForm();
-    Field* SearchEmployeeForm();
+    Field* UpdateSearchEmployeeForm();
 
 };
 #endif
