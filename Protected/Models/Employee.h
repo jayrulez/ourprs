@@ -69,6 +69,6 @@ public:
 	bool recordExists(int);
 	bool recordExists(int, int);
 	Employee * findById(int);
-	Employee * model();
+	static Employee * model();
 };
 #endif
