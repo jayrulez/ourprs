@@ -89,7 +89,6 @@ int EmployeeController::actionAdd()
 
 int EmployeeController::actionUpdate()
 {
-	system("pause");
 	return MAIN_CODE;
 }
 
@@ -109,6 +108,5 @@ int EmployeeController::run(int actionCode)
             call = this->actionIndex();
         break;
     }
-	cout << call;system("pause");
     return call;
 }
