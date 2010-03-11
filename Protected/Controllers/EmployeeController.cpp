@@ -87,8 +87,20 @@ int EmployeeController::actionAdd()
 	return MAIN_CODE;
 }
 
+int EmployeeController::search()
+{
+	return MAIN_CODE;
+}
+
 int EmployeeController::actionUpdate()
 {
+	system("pause");
+	return MAIN_CODE;
+}
+
+int EmployeeController::actionView()
+{
+	system("pause");
 	return MAIN_CODE;
 }
 
@@ -102,6 +114,9 @@ int EmployeeController::run(int actionCode)
 		break;
 		case EMPLOYEE_UPDATE_CODE:
 			call = this->actionUpdate();
+		break;
+		case EMPLOYEE_VIEW_CODE:
+			call = this->actionView();
 		break;
         case EMPLOYEE_CODE:
         default:
