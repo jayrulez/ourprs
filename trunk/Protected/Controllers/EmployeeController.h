@@ -18,5 +18,7 @@ public:
 	int getDefaultActionCode();
 	int actionAdd();
 	int actionUpdate();
+	int actionView();
+	int search();
 };
 #endif

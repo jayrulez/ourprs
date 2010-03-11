@@ -93,7 +93,7 @@ Item* MenuSet::EmployeeMenu()
     static Item EmployeeItem[6];
     EmployeeItem[0].SetItem(15,24,EMPLOYEE_ADD_CODE,"Add");
     EmployeeItem[1].SetItem(28,24,EMPLOYEE_UPDATE_CODE,"Update");
-    EmployeeItem[2].SetItem(43,24,EMPLOYEE_VIEW_SEARCH_CODE,"View");
+    EmployeeItem[2].SetItem(43,24,EMPLOYEE_VIEW_CODE,"View");
     EmployeeItem[3].SetItem(55,24,EMPLOYEE_VIEW_SORTED_CODE,"View Sorted");
     EmployeeItem[4].SetItem(28,29,EMPLOYEE_DELETE_SEARCH_CODE,"Delete");
     EmployeeItem[5].SetItem(43,29,MAIN_CODE,"Main Menu");
@@ -127,7 +127,7 @@ Item* MenuSet::UpdateSearchEmployeeFormMenu()
     this->MenuSize = 2;
     MenuTitle="Update Employee Menu - Search";
     static Item UpdateSearchEmployeeFormMenuItem[2];
-    UpdateSearchEmployeeFormMenuItem[0].SetItem(25,28,EMPLOYEE_UPDATE_CODE,"Search");
+    UpdateSearchEmployeeFormMenuItem[0].SetItem(25,28,EMPLOYEE_UPDATE_SEARCH_CODE,"Search");
     UpdateSearchEmployeeFormMenuItem[1].SetItem(45,28,MAIN_CODE,"Main Menu");
     return UpdateSearchEmployeeFormMenuItem;
 }
@@ -171,7 +171,7 @@ Item* MenuSet::UpdateEmployeeFailSaveMenu()
 }
 Item* MenuSet::ViewSearchEmployeeFormMenu()
 {
-    this->MenuCode = 8;
+    this->MenuCode = EMPLOYEE_VIEW_SEARCH_CODE;
     this->MenuSize = 2;
     MenuTitle="View Employee Menu - Search";
     static Item ViewSearchEmployeeFormMenuItem[2];
