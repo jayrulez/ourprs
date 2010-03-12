@@ -179,6 +179,7 @@ int EmployeeController::actionUpdate()
                         actionCode=menuInstance->UpdateEmployeeFailSaveMenu();
                         if(actionCode==EMPLOYEE_SEARCH_SUBMIT_CODE)
                         {
+                            continue;
                         }
                         else
                             return this->run(actionCode);
