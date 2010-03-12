@@ -35,8 +35,10 @@ public:
     bool CheckNumberValue(string);
     bool CheckDataExistence(string);
     bool CheckDepartmentExistence(string);
+    bool CheckDepartmentExistenceInEmployeeForm(string);
     bool CheckOtherDepartmentExistence(string,string);
     bool CheckEmployeeExistence(string);
     bool CheckOtherEnployeeExistence(string,string);
+
 };
 #endif
