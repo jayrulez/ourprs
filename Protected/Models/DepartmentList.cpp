@@ -36,8 +36,6 @@ void DepartmentList::AddDepartment(Department NewDepartment)
             CacheDepartment->setNext(TempDepartment);
         }
     }
-    else
-        throw 1;
 }
 Department* DepartmentList::GetDepartment(Department Dept)
 {
