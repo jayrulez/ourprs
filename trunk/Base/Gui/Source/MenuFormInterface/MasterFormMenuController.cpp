@@ -581,7 +581,7 @@ int MasterFormMenuController::SearchEmployeeMenu()
         FormControllerObj.ShowForm();
         MenuControllerObj.ShowMenu();
         MenuSetObj.ShowMenuTitle(ON);
-        MenuSetObj.SearchDepartmentFormMenuExtension(ON);
+        MenuSetObj.SearchEmployeeFormMenuExtension(ON);
         do
         {
             do
@@ -592,7 +592,7 @@ int MasterFormMenuController::SearchEmployeeMenu()
                     FormControllerObj.ShowForm();
                     MenuControllerObj.ShowMenu();
                     MenuSetObj.ShowMenuTitle(ON);
-                    MenuSetObj.SearchDepartmentFormMenuExtension(ON);
+                    MenuSetObj.SearchEmployeeFormMenuExtension(ON);
                     Flag=true;
                 }
             }while(Flag);
@@ -605,7 +605,7 @@ int MasterFormMenuController::SearchEmployeeMenu()
                     FormControllerObj.ShowForm();
                     MenuControllerObj.ShowMenu();
                     MenuSetObj.ShowMenuTitle(ON);
-                    MenuSetObj.SearchDepartmentFormMenuExtension(ON);
+                    MenuSetObj.SearchEmployeeFormMenuExtension(ON);
                     Flag=true;
                 }
             }while(Flag);
