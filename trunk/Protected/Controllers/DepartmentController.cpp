@@ -185,6 +185,7 @@ int DepartmentController::actionUpdate()
                         ScreenObj.SetScreenTextColour(RedTextColour);
                         cout << "Error: Could not update department record" << endl;
                         ScreenObj.SetScreenTextColour(DefaultTextColour);
+                        return this->run(menuInstance->UpdateDepartmentFailSaveMenu());
                     }
                     else if(updatedDepartment->getOperationState() == OPERATIONSTATE_SUCCESS)
                     {
@@ -192,10 +193,9 @@ int DepartmentController::actionUpdate()
                         ScreenObj.SetScreenTextColour(GreenTextColour);
                         cout << "Department Updated Successfuly" << endl;
                         ScreenObj.SetScreenTextColour(DefaultTextColour);
+                        updatedDepartment->show(14);
+                        return this->run(menuInstance->UpdateDepartmentAfterSaveMenu());
                     }
-                    updatedDepartment->show(14);
-
-                    return this->run(menuInstance->UpdateDepartmentAfterSaveMenu());
                 }
             }
             else

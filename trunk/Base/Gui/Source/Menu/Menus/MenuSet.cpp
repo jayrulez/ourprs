@@ -162,8 +162,8 @@ Item* MenuSet::UpdateEmployeeFailSaveMenu()
     this->MenuSize = 3;
     MenuTitle="Update Employee - Failed";
     static Item UpdateEmployeeFailSaveMenuItem[3];
-    UpdateEmployeeFailSaveMenuItem[0].SetItem(15,32,EMPLOYEE_UPDATE_CODE,"<--Update Form");
-    UpdateEmployeeFailSaveMenuItem[1].SetItem(32,32,EMPLOYEE_CODE,"Employee");
+    UpdateEmployeeFailSaveMenuItem[0].SetItem(15,32,EMPLOYEE_SEARCH_SUBMIT_CODE,"<--Update Form");
+    UpdateEmployeeFailSaveMenuItem[1].SetItem(37,32,EMPLOYEE_CODE,"Employee");
     UpdateEmployeeFailSaveMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");
     return UpdateEmployeeFailSaveMenuItem;
 }
