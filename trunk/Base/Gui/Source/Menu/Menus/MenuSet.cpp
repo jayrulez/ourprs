@@ -187,8 +187,8 @@ Item* MenuSet::EmployeeAfterViewMenu()
     this->MenuCode = EMPLOYEE_VIEW_CODE;
     this->MenuSize = 3;
     MenuTitle="View Employee - success";
-    static Item EmployeeAfterViewMenuItem[2];
-    EmployeeAfterViewMenuItem[0].SetItem(15,32,EMPLOYEE_SEARCH_SUBMIT_CODE,"View More");
+    static Item EmployeeAfterViewMenuItem[3];
+    EmployeeAfterViewMenuItem[0].SetItem(15,32,EMPLOYEE_VIEW_CODE,"View More");
     EmployeeAfterViewMenuItem[1].SetItem(32,32,EMPLOYEE_CODE,"<--Employee");
     EmployeeAfterViewMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");
     return EmployeeAfterViewMenuItem;
