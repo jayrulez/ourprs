@@ -204,8 +204,7 @@ int EmployeeController::actionUpdate()
 
 int EmployeeController::actionView()
 {
-	system("pause");
-	return MAIN_CODE;
+
 }
 
 int EmployeeController::run(int actionCode)
