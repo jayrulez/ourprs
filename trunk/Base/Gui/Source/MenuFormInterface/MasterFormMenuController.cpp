@@ -569,7 +569,7 @@ int MasterFormMenuController::AddEmployeeFailSaveMenu()
     }
     return MenuCall;
 }
-int MasterFormMenuController::UpdateSearchEmployeeMenu()
+int MasterFormMenuController::SearchEmployeeMenu()
 {
     bool Flag;
     int MenuCall;
@@ -717,52 +717,6 @@ int MasterFormMenuController::UpdateEmployeeFailSaveMenu()
     }
     return MenuCall;
 }
-int MasterFormMenuController::ViewSearchEmployeeMenu()
-{
-    bool Flag;
-    int MenuCall;
-    if(FormControllerObj.SetForm(FormSetObj.SearchEmployeeForm(),FormSetObj.GetFormSize(FormSetObj.SearchEmployeeForm()),
-    FormSetObj.GetFormCode(FormSetObj.SearchEmployeeForm()))&&
-    MenuControllerObj.SetMenu(MenuSetObj.SearchEmployeeFormMenu(),MenuSetObj.GetMenuSize(MenuSetObj.SearchEmployeeFormMenu()),
-    MenuSetObj.GetMenuCode(MenuSetObj.SearchEmployeeFormMenu())))
-    {
-        FormControllerObj.ShowForm();
-        MenuControllerObj.ShowMenu();
-        MenuSetObj.ShowMenuTitle(ON);
-        MenuSetObj.SearchDepartmentFormMenuExtension(ON);
-        do
-        {
-            do
-            {
-                Flag=false;
-                if(ExtendedMenuControllerObj.ExtendedMenuCalls(FormControllerObj.BrowseForm(),FormControllerObj.GetFormCode()))
-                {
-                    FormControllerObj.ShowForm();
-                    MenuControllerObj.ShowMenu();
-                    MenuSetObj.ShowMenuTitle(ON);
-                    MenuSetObj.SearchDepartmentFormMenuExtension(ON);
-                    Flag=true;
-                }
-            }while(Flag);
-            do
-            {
-                Flag=false;
-                MenuCall=MenuControllerObj.BrowseMenu();
-                if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuCall,MenuControllerObj.GetMenuCode()))
-                {
-                    FormControllerObj.ShowForm();
-                    MenuControllerObj.ShowMenu();
-                    MenuSetObj.ShowMenuTitle(ON);
-                    MenuSetObj.SearchDepartmentFormMenuExtension(ON);
-                    Flag=true;
-                }
-            }while(Flag);
-        }while(MenuCall==0);
-    }
-    this->FieldObj=FormControllerObj.GetAllFieldInfo();
-    this->FormSize=FormControllerObj.GetFormSize();
-    return MenuCall;
-}
 int MasterFormMenuController::EmployeeAfterViewMenu()
 {
     int MenuCall;
@@ -841,52 +795,6 @@ int MasterFormMenuController::EmployeeAfterViewSortedMenu()
             }while(Flag);
         }while(MenuCall==0);
     }
-    return MenuCall;
-}
-int MasterFormMenuController::DeleteSearchEmployeeMenu()
-{
-    bool Flag;
-    int MenuCall;
-    if(FormControllerObj.SetForm(FormSetObj.SearchEmployeeForm(),FormSetObj.GetFormSize(FormSetObj.SearchEmployeeForm()),
-    FormSetObj.GetFormCode(FormSetObj.SearchEmployeeForm()))&&
-    MenuControllerObj.SetMenu(MenuSetObj.SearchEmployeeFormMenu(),MenuSetObj.GetMenuSize(MenuSetObj.SearchEmployeeFormMenu()),
-    MenuSetObj.GetMenuCode(MenuSetObj.SearchEmployeeFormMenu())))
-    {
-        FormControllerObj.ShowForm();
-        MenuControllerObj.ShowMenu();
-        MenuSetObj.ShowMenuTitle(ON);
-        MenuSetObj.SearchDepartmentFormMenuExtension(ON);
-        do
-        {
-            do
-            {
-                Flag=false;
-                if(ExtendedMenuControllerObj.ExtendedMenuCalls(FormControllerObj.BrowseForm(),FormControllerObj.GetFormCode()))
-                {
-                    FormControllerObj.ShowForm();
-                    MenuControllerObj.ShowMenu();
-                    MenuSetObj.ShowMenuTitle(ON);
-                    MenuSetObj.SearchDepartmentFormMenuExtension(ON);
-                    Flag=true;
-                }
-            }while(Flag);
-            do
-            {
-                Flag=false;
-                MenuCall=MenuControllerObj.BrowseMenu();
-                if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuCall,MenuControllerObj.GetMenuCode()))
-                {
-                    FormControllerObj.ShowForm();
-                    MenuControllerObj.ShowMenu();
-                    MenuSetObj.ShowMenuTitle(ON);
-                    MenuSetObj.SearchDepartmentFormMenuExtension(ON);
-                    Flag=true;
-                }
-            }while(Flag);
-        }while(MenuCall==0);
-    }
-    this->FieldObj=FormControllerObj.GetAllFieldInfo();
-    this->FormSize=FormControllerObj.GetFormSize();
     return MenuCall;
 }
 int MasterFormMenuController::EmployeeDeleteConfirmMenu()

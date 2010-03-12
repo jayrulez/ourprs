@@ -51,16 +51,14 @@ public:
 	int AddEmployeeMenu();
 	int AddEmployeeAfterSaveMenu();
 	int AddEmployeeFailSaveMenu();
-	int UpdateSearchEmployeeMenu();
+	int SearchEmployeeMenu();
     int UpdateEmployeeMenu();
     int UpdateEmployeeAfterSaveMenu();
 	int UpdateEmployeeFailSaveMenu();
-	int ViewSearchEmployeeMenu();
     int ViewEmployeeMenu();
     int EmployeeAfterViewMenu();
     int ViewSortedEmployeeMenu();
     int EmployeeAfterViewSortedMenu();
-    int DeleteSearchEmployeeMenu();
     int EmployeeDeleteConfirmMenu();
     int EmployeeAfterDeleteMenu();
     int EmployeeFailDeleteMenu();
