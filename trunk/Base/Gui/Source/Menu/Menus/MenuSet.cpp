@@ -617,10 +617,10 @@ Item* MenuSet::DeleteConfirmEmployeeMenu()
     this->MenuSize = 4;
     MenuTitle="Delete Employee Menu - Confirmation";
     static Item DeleteConfirmEmployeeMenuItem[4];
-    DeleteConfirmEmployeeMenuItem[0].SetItem(32,28,EMPLOYEE_DELETE_CODE,"Yes");
-    DeleteConfirmEmployeeMenuItem[1].SetItem(40,28,EMPLOYEE_SEARCH_CODE,"No");
-    DeleteConfirmEmployeeMenuItem[2].SetItem(25,32,EMPLOYEE_CODE,"Employee");
-    DeleteConfirmEmployeeMenuItem[3].SetItem(45,32,MAIN_CODE,"Main Menu");
+    DeleteConfirmEmployeeMenuItem[0].SetItem(32,32,EMPLOYEE_DELETE_CODE,"Yes");
+    DeleteConfirmEmployeeMenuItem[1].SetItem(40,32,EMPLOYEE_SEARCH_CODE,"No");
+    DeleteConfirmEmployeeMenuItem[2].SetItem(25,36,EMPLOYEE_CODE,"Employee");
+    DeleteConfirmEmployeeMenuItem[3].SetItem(45,36,MAIN_CODE,"Main Menu");
     return DeleteConfirmEmployeeMenuItem;
 }
 

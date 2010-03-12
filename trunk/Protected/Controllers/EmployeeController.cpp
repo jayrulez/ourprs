@@ -269,7 +269,7 @@ int EmployeeController::actionDelete()
             if(employee!=NULL)
             {
                 this->getServicesObj()->BasicRunLevel();
-                employee->show(14);
+                employee->show(10);
                 return this->run(this->getMenuObj()->EmployeeDeleteConfirmMenu());
             }
             else
