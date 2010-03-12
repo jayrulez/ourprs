@@ -19,6 +19,7 @@ public:
 	int actionAdd();
 	int actionUpdate();
 	int actionView();
+	int actionDelete();
 	int search();
 };
 #endif
