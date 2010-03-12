@@ -40,10 +40,10 @@ Field* FormSet::AddDepartmentForm()
     this->FormCode=DEPARTMENT_ADD_FORM_CODE;
     this->FormSize=4;
     static Field AddDepartmentFormField[4];
-    AddDepartmentFormField[0].SetField("Dept. Code",5,10,1,STRICTNUMERICTYPE,NO_SPACING,4);
-    AddDepartmentFormField[1].SetField("Dept. Name",5,13,2,ALPHABETICALTYPE,SPACING,50);
-    AddDepartmentFormField[2].SetField("Regular Rate ($)",5,16,3,CURRENCYTYPE,NO_SPACING,20);
-    AddDepartmentFormField[3].SetField("Overtime Rate ($)",5,19,4,CURRENCYTYPE,NO_SPACING,20);
+    AddDepartmentFormField[0].SetField("Dept. Code",5,10,1,STRICTNUMERICTYPE,NO_SPACING,4,false);
+    AddDepartmentFormField[1].SetField("Dept. Name",5,13,2,ALPHABETICALTYPE,SPACING,50,false);
+    AddDepartmentFormField[2].SetField("Regular Rate ($)",5,16,3,CURRENCYTYPE,NO_SPACING,20,false);
+    AddDepartmentFormField[3].SetField("Overtime Rate ($)",5,19,4,CURRENCYTYPE,NO_SPACING,20,false);
     return AddDepartmentFormField;
 }
 Field* FormSet::SearchDepartmentForm()
@@ -51,7 +51,7 @@ Field* FormSet::SearchDepartmentForm()
     this->FormCode=DEPARTMENT_SEARCH_FORM_CODE;
     this->FormSize=1;
     static Field SearchDepartmentFormField[1];
-    SearchDepartmentFormField[0].SetField("Dept. Code",20,21,1,STRICTNUMERICTYPE,NO_SPACING,4);
+    SearchDepartmentFormField[0].SetField("Dept. Code",20,21,1,STRICTNUMERICTYPE,NO_SPACING,4,false);
     return SearchDepartmentFormField;
 }
 Field* FormSet::UpdateDepartmentForm()
@@ -59,10 +59,10 @@ Field* FormSet::UpdateDepartmentForm()
     this->FormCode=DEPARTMENT_UPDATE_FORM_CODE;
     this->FormSize=4;
     static Field UpdateDepartmentFormField[4];
-    UpdateDepartmentFormField[0].SetField("Dept. Code",5,10,1,STRICTNUMERICTYPE,NO_SPACING,4);
-    UpdateDepartmentFormField[1].SetField("Dept. Name",5,13,2,ALPHABETICALTYPE,SPACING,50);
-    UpdateDepartmentFormField[2].SetField("Regular Rate ($)",5,16,3,CURRENCYTYPE,NO_SPACING,20);
-    UpdateDepartmentFormField[3].SetField("Overtime Rate ($)",5,19,4,CURRENCYTYPE,NO_SPACING,20);
+    UpdateDepartmentFormField[0].SetField("Dept. Code",5,10,1,STRICTNUMERICTYPE,NO_SPACING,4,true);
+    UpdateDepartmentFormField[1].SetField("Dept. Name",5,13,2,ALPHABETICALTYPE,SPACING,50,true);
+    UpdateDepartmentFormField[2].SetField("Regular Rate ($)",5,16,3,CURRENCYTYPE,NO_SPACING,20,true);
+    UpdateDepartmentFormField[3].SetField("Overtime Rate ($)",5,19,4,CURRENCYTYPE,NO_SPACING,20,true);
     return UpdateDepartmentFormField;
 }
 Field* FormSet::AddEmployeeForm()
@@ -70,12 +70,12 @@ Field* FormSet::AddEmployeeForm()
     this->FormCode=EMPLOYEE_ADD_FORM_CODE;
     this->FormSize=6;
     static Field AddEmployeeFormField[6];
-    AddEmployeeFormField[0].SetField("ID. No",5,10,5,STRICTNUMERICTYPE,NO_SPACING,4);
-    AddEmployeeFormField[1].SetField("First Name",5,13,6,ALPHABETICALTYPE,SPACING,50);
-    AddEmployeeFormField[2].SetField("Last Name",5,16,7,ALPHABETICALTYPE,SPACING,50);
-    AddEmployeeFormField[3].SetField("Dept. Code",5,19,1,STRICTNUMERICTYPE,NO_SPACING,4);
-    AddEmployeeFormField[4].SetField("Position",5,22,8,ALPHANUMERICTYPE,SPACING,50);
-    AddEmployeeFormField[5].SetField("Hours Worked",5,25,9,FREENUMERICTYPE,NO_SPACING,20);
+    AddEmployeeFormField[0].SetField("ID. No",5,10,5,STRICTNUMERICTYPE,NO_SPACING,4,false);
+    AddEmployeeFormField[1].SetField("First Name",5,13,6,ALPHABETICALTYPE,SPACING,50,false);
+    AddEmployeeFormField[2].SetField("Last Name",5,16,7,ALPHABETICALTYPE,SPACING,50,false);
+    AddEmployeeFormField[3].SetField("Dept. Code",5,19,1,STRICTNUMERICTYPE,NO_SPACING,4,false);
+    AddEmployeeFormField[4].SetField("Position",5,22,8,ALPHANUMERICTYPE,SPACING,50,false);
+    AddEmployeeFormField[5].SetField("Hours Worked",5,25,9,FREENUMERICTYPE,NO_SPACING,20,false);
     return AddEmployeeFormField;
 }
 Field* FormSet::UpdateEmployeeForm()
@@ -83,12 +83,12 @@ Field* FormSet::UpdateEmployeeForm()
     this->FormCode=EMPLOYEE_UPDATE_FORM_CODE;
     this->FormSize=6;
     static Field UpdateEmployeeFormField[6];
-    UpdateEmployeeFormField[0].SetField("ID. No",5,10,5,STRICTNUMERICTYPE,NO_SPACING,4);
-    UpdateEmployeeFormField[1].SetField("First Name",5,13,6,ALPHABETICALTYPE,SPACING,50);
-    UpdateEmployeeFormField[2].SetField("Last Name",5,16,7,ALPHABETICALTYPE,SPACING,50);
-    UpdateEmployeeFormField[3].SetField("Dept. Code",5,19,1,STRICTNUMERICTYPE,NO_SPACING,4);
-    UpdateEmployeeFormField[4].SetField("Position",5,22,8,ALPHANUMERICTYPE,SPACING,50);
-    UpdateEmployeeFormField[5].SetField("Hours Worked",5,25,9,FREENUMERICTYPE,NO_SPACING,20);
+    UpdateEmployeeFormField[0].SetField("ID. No",5,10,5,STRICTNUMERICTYPE,NO_SPACING,4,true);
+    UpdateEmployeeFormField[1].SetField("First Name",5,13,6,ALPHABETICALTYPE,SPACING,50,true);
+    UpdateEmployeeFormField[2].SetField("Last Name",5,16,7,ALPHABETICALTYPE,SPACING,50,true);
+    UpdateEmployeeFormField[3].SetField("Dept. Code",5,19,1,STRICTNUMERICTYPE,NO_SPACING,4,true);
+    UpdateEmployeeFormField[4].SetField("Position",5,22,8,ALPHANUMERICTYPE,SPACING,50,true);
+    UpdateEmployeeFormField[5].SetField("Hours Worked",5,25,9,FREENUMERICTYPE,NO_SPACING,20,true);
     return UpdateEmployeeFormField;
 }
 Field* FormSet::SearchEmployeeForm()
@@ -96,6 +96,6 @@ Field* FormSet::SearchEmployeeForm()
     this->FormCode=EMPLOYEE_SEARCH_FORM_CODE;
     this->FormSize=1;
     static Field SearchEmployeeFormField[1];
-    SearchEmployeeFormField[0].SetField("ID. No",20,19,EMPLOYEE_SEARCH_FORM_CODE,STRICTNUMERICTYPE,NO_SPACING,4);
+    SearchEmployeeFormField[0].SetField("ID. No",20,19,EMPLOYEE_SEARCH_FORM_CODE,STRICTNUMERICTYPE,NO_SPACING,4,false);
     return SearchEmployeeFormField;
 }

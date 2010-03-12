@@ -36,7 +36,7 @@ Field::Field(string FieldName,int x,int y,int FieldCode,int InputType,int SpaceT
         throw INVALID_FIELD;
 
 }
-bool Field::SetField(string FieldName,int x,int y,int FieldCode,int InputType,int SpaceType,int InputLength)
+bool Field::SetField(string FieldName,int x,int y,int FieldCode,int InputType,int SpaceType,int InputLength,bool ValidData)
 {
     if(x>0 && y>0 && InputLength>0)
     {
@@ -47,7 +47,7 @@ bool Field::SetField(string FieldName,int x,int y,int FieldCode,int InputType,in
         this->SpaceType=SpaceType;
         this->x=x;
         this->y=y;
-        this->ValidData=false;
+        this->ValidData=ValidData;
         return true;
     }
     return false;

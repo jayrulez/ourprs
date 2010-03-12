@@ -226,16 +226,25 @@ void FormController::FieldInput()
 
 bool FormController::ValidateEmployeeFields()
 {
-    if(!ValidatorObj.CheckDataExistence(PreviousField.GetFieldData()))
+    if(FormCode==EMPLOYEE_ADD_FORM_CODE)
     {
-        SetFieldState(false);
-        return false;
-    }
-    if(FormCode==EMPLOYEE_UPDATE_FORM_CODE)
-    {
-        if(PreviousField.GetFieldName()=="ID. No")
+        if(!ValidatorObj.CheckDataExistence(PreviousField.GetFieldData()))
+        {
+            SetFieldState(false);
+            return false;
+        }
+        if(PreviousField.GetFieldName()=="Dept. Code")
         {
             if(ValidatorObj.CheckDepartmentExistenceInEmployeeForm(PreviousField.GetFieldData())==false)
+            {
+                SetFieldState(false);
+                return false;
+            }
+        }
+        if(PreviousField.GetFieldName()=="ID. No")
+        {
+
+            if(ValidatorObj.CheckEmployeeExistence(PreviousField.GetFieldData()))
             {
                 SetFieldState(false);
                 return false;
@@ -244,6 +253,11 @@ bool FormController::ValidateEmployeeFields()
     }
     if(FormCode==EMPLOYEE_UPDATE_FORM_CODE)
     {
+        if(!ValidatorObj.CheckDataExistence(PreviousField.GetFieldData()))
+        {
+            SetFieldState(false);
+            return false;
+        }
         if(PreviousField.GetFieldName()=="ID. No")
         {
             if(ValidatorObj.CheckOtherEnployeeExistence(PreviousField.GetFieldData(),UpdateFormOldKey)==true)
@@ -261,18 +275,26 @@ bool FormController::ValidateEmployeeFields()
             }
         }
     }
+    if(FormCode==EMPLOYEE_SEARCH_FORM_CODE)
+    {
+        if(!ValidatorObj.CheckDataExistence(PreviousField.GetFieldData()))
+        {
+            SetFieldState(false);
+            return false;
+        }
+    }
     SetFieldState(true);
     return true;
 }
 bool FormController::ValidateDepartmentFields()
 {
-    if(!ValidatorObj.CheckDataExistence(PreviousField.GetFieldData()))
-    {
-        SetFieldState(false);
-        return false;
-    }
     if(this->FormCode==DEPARTMENT_ADD_FORM_CODE)
     {
+        if(!ValidatorObj.CheckDataExistence(PreviousField.GetFieldData()))
+        {
+            SetFieldState(false);
+            return false;
+        }
         if(PreviousField.GetFieldName()=="Dept. Code")
         {
             if(ValidatorObj.CheckDepartmentExistence(PreviousField.GetFieldData()))
@@ -284,6 +306,11 @@ bool FormController::ValidateDepartmentFields()
     }
     if(FormCode==DEPARTMENT_UPDATE_FORM_CODE)
     {
+        if(!ValidatorObj.CheckDataExistence(PreviousField.GetFieldData()))
+        {
+            SetFieldState(false);
+            return false;
+        }
         if(PreviousField.GetFieldName()=="Dept. Code")
         {
             if(ValidatorObj.CheckOtherDepartmentExistence(PreviousField.GetFieldData(),UpdateFormOldKey)==true)
@@ -291,6 +318,14 @@ bool FormController::ValidateDepartmentFields()
                 SetFieldState(false);
                 return false;
             }
+        }
+    }
+    if(FormCode==DEPARTMENT_SEARCH_FORM_CODE)
+    {
+        if(!ValidatorObj.CheckDataExistence(PreviousField.GetFieldData()))
+        {
+            SetFieldState(false);
+            return false;
         }
     }
     SetFieldState(true);
@@ -303,6 +338,8 @@ bool FormController::ValidateForm()
     {
         if(!(fptr+x)->GetValidData())
         {
+            //cout<<"["<<x+1<<"]"<<(fptr+x)->GetFieldName()<<endl;system("pause");
+            CompleteState=false;
             return false;
         }
     }

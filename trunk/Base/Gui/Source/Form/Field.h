@@ -39,7 +39,7 @@ public:
     Field();
     ~Field();
     Field(string,int,int,int,int,int,int);
-    bool SetField(string,int,int,int,int,int,int);
+    bool SetField(string,int,int,int,int,int,int,bool);
     string GetFieldName();
     void SetValidData(bool);
     bool GetValidData();

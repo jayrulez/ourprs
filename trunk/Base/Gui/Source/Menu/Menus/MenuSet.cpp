@@ -133,7 +133,7 @@ Item* MenuSet::SearchEmployeeFormMenu()
 }
 void MenuSet::SearchEmployeeFormMenuExtension(int state)
 {
-        if(state==OFF)
+    if(state==OFF)
     {
         ScreenObj.SetScreenTextColour(ConsoleObj.GetConsoleScreenColour()+3);
     }
