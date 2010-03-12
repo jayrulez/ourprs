@@ -617,13 +617,26 @@ Item* MenuSet::DeleteConfirmEmployeeMenu()
     this->MenuSize = 4;
     MenuTitle="Delete Employee Menu - Confirmation";
     static Item DeleteConfirmEmployeeMenuItem[4];
-    DeleteConfirmEmployeeMenuItem[0].SetItem(32,32,EMPLOYEE_DELETE_CODE,"Yes");
-    DeleteConfirmEmployeeMenuItem[1].SetItem(40,32,EMPLOYEE_SEARCH_CODE,"No");
-    DeleteConfirmEmployeeMenuItem[2].SetItem(25,36,EMPLOYEE_CODE,"Employee");
-    DeleteConfirmEmployeeMenuItem[3].SetItem(45,36,MAIN_CODE,"Main Menu");
+    DeleteConfirmEmployeeMenuItem[0].SetItem(33,36,EMPLOYEE_DELETE_CODE,"Yes");
+    DeleteConfirmEmployeeMenuItem[1].SetItem(41,36,EMPLOYEE_SEARCH_CODE,"No");
+    DeleteConfirmEmployeeMenuItem[2].SetItem(25,40,EMPLOYEE_CODE,"Employee");
+    DeleteConfirmEmployeeMenuItem[3].SetItem(45,40,MAIN_CODE,"Main Menu");
     return DeleteConfirmEmployeeMenuItem;
 }
-
+void MenuSet::DeleteConfirmEmployeeMenuExtension(int state)
+{
+    if(state==OFF)
+    {
+        ScreenObj.SetScreenTextColour(ConsoleObj.GetConsoleScreenColour()+3);
+    }
+    LineObj.setVCoord(35,37,30);
+    LineObj.vSLine();
+    LineObj.setVCoord(35,37,38);
+    LineObj.vSLine();
+    LineObj.setVCoord(35,37,45);
+    LineObj.vSLine();
+    ScreenObj.SetScreenTextColour(48);
+}
 Item* MenuSet::EmployeeAfterDeleteMenu()
 {
     this->MenuCode = EMPLOYEE_VIEW_CODE;

@@ -121,6 +121,7 @@ public:
     void ViewSortedEmployeeMenuExtension(int);
     Item* EmployeeAfterViewSortedMenu();
     Item* DeleteConfirmEmployeeMenu();
+    void DeleteConfirmEmployeeMenuExtension(int);
     Item* EmployeeAfterDeleteMenu();
     Item* EmployeeFailDeleteMenu();
 

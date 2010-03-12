@@ -805,7 +805,7 @@ int MasterFormMenuController::EmployeeDeleteConfirmMenu()
     {
         MenuControllerObj.ShowMenu();
         MenuSetObj.ShowMenuTitle(ON);
-        MenuSetObj.ViewEmployeeMenuExtension(ON);
+        MenuSetObj.DeleteConfirmEmployeeMenuExtension(ON);
         do
         {
             do
@@ -816,7 +816,7 @@ int MasterFormMenuController::EmployeeDeleteConfirmMenu()
                 {
                     MenuControllerObj.ShowMenu();
                     MenuSetObj.ShowMenuTitle(ON);
-                    MenuSetObj.ViewEmployeeMenuExtension(ON);
+                    MenuSetObj.DeleteConfirmEmployeeMenuExtension(ON);
                     Flag=true;
                 }
             }while(Flag);
