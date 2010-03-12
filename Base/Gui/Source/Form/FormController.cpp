@@ -307,7 +307,8 @@ bool FormController::ValidateForm()
         }
         if(TempField.GetFieldName()=="ID. No")
         {
-            if(FormCode!=EMPLOYEE_SEARCH_FORM_CODE&&FormCode!=EMPLOYEE_UPDATE_FORM_CODE)
+            if(FormCode!=EMPLOYEE_SEARCH_FORM_CODE&&FormCode!=EMPLOYEE_UPDATE_FORM_CODE
+            &&this->FormCode!=EMPLOYEE_UPDATE_FORM_CODE&&this->FormCode!=EMPLOYEE_UPDATE_FORM_CODE)
             {
                 if(ValidatorObj.CheckEmployeeExistence(TempField.GetFieldData())==true)
                 {
