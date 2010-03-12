@@ -507,8 +507,7 @@ int MasterFormMenuController::AddEmployeeMenu()
                 }
                 if(MenuCall==EMPLOYEE_ADD_SAVE_CODE&&FormControllerObj.GetFormCompletionState()==_FAIL)
                 {
-                    // change back to true
-                    Flag=false;
+                    Flag=true;
                 }
             }while(Flag);
         }while(MenuCall==0);

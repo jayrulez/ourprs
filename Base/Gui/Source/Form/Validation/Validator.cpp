@@ -60,9 +60,32 @@ bool Validator::CheckDepartmentExistence(string DeptCode)
         ScreenObj.SetScreenTextColour(DefaultTextColour);
         return true;
     }
-    ScreenObj.SetScreenTextColour(DefaultBgColour);
-    cout<<"<Department already exist>";
-    ScreenObj.SetScreenTextColour(DefaultTextColour);
+    else
+    {
+        ScreenObj.SetScreenTextColour(DefaultBgColour);
+        cout<<"<Department already exist>";
+        ScreenObj.SetScreenTextColour(DefaultTextColour);
+    }
+    return false;
+}
+bool Validator::CheckDepartmentExistenceInEmployeeForm(string DeptCode)
+{
+    int intCode;
+    istringstream MyStream(DeptCode);
+    MyStream>>intCode;
+    if(DepartmentObj.model()->recordExists(intCode))
+    {
+        ScreenObj.SetScreenTextColour(DefaultBgColour);
+        cout<<"<Department Does Not exist>";
+        ScreenObj.SetScreenTextColour(DefaultTextColour);
+        return true;
+    }
+    else
+    {
+        ScreenObj.SetScreenTextColour(RedTextColour);
+        cout<<"<Department Does Not exist>";
+        ScreenObj.SetScreenTextColour(DefaultTextColour);
+    }
     return false;
 }
 bool Validator::CheckOtherDepartmentExistence(string CurrentDeptCode,string OldDeptCode)
