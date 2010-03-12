@@ -118,7 +118,7 @@ void Employee::show(int y)
     ConsoleObj.xyCoord(10,y+8);
     cout<<"Department Code : "<<this->deptCode;
     ConsoleObj.xyCoord(10,y+10);
-    cout<<"Position: "<<this->position;
+    cout<<"Position        : "<<this->position;
     ConsoleObj.xyCoord(10,y+12);
     cout<<"Hours Worked    : "<<this->hoursWorked;
     if(FrameObj.SetFrame(5,STANDARD_FRAME_WIDTH-5,y,y+14,NORMAL_FRAME))
