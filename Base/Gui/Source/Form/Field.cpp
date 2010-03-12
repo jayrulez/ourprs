@@ -47,6 +47,7 @@ bool Field::SetField(string FieldName,int x,int y,int FieldCode,int InputType,in
         this->SpaceType=SpaceType;
         this->x=x;
         this->y=y;
+        this->ValidData=false;
         return true;
     }
     return false;
@@ -110,4 +111,12 @@ bool Field::operator==(const Field Rhs)
         return true;
     }
     return false;
+}
+void Field::SetValidData(bool ValidData)
+{
+    this->ValidData=ValidData;
+}
+bool Field::GetValidData()
+{
+    return this->ValidData;
 }

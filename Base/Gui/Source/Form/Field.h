@@ -33,6 +33,7 @@ private:
     int SpaceType;
     int x;
     int y;
+    bool ValidData;
     Console ConsoleObj;
 public:
     Field();
@@ -40,6 +41,8 @@ public:
     Field(string,int,int,int,int,int,int);
     bool SetField(string,int,int,int,int,int,int);
     string GetFieldName();
+    void SetValidData(bool);
+    bool GetValidData();
     int GetFieldCode();
     int GetInputType();
     int GetSpaceType();

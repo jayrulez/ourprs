@@ -75,14 +75,16 @@ int FormController::BrowseForm()
             case UP_KEY:
                 CurrentField=SearchField(_PREV);
                 ConsoleObj.xyCoord(PreviousField.GetFieldX(),PreviousField.GetFieldY()-1);
-                ValidateField();
+                ValidateDepartmentFields();
+                ValidateEmployeeFields();
             break;
             case TAB_KEY:
             case DOWN_KEY:
             case ENTER_KEY:
                 CurrentField=SearchField(_NEXT);
                 ConsoleObj.xyCoord(PreviousField.GetFieldX(),PreviousField.GetFieldY()-1);
-                ValidateField();
+                ValidateDepartmentFields();
+                ValidateEmployeeFields();
             break;
             case F1_KEY:
                 return F1_KEY;
@@ -221,114 +223,101 @@ void FormController::FieldInput()
     TextInputObj.SetFormTextInput(CurrentField.GetInputType(),CurrentField.GetInputLength(),CurrentField.GetSpaceType());
     CurrentField.SetFieldData(TextInputObj.FormTextInput(CurrentField.GetFieldData()));
 }
-bool FormController::ValidateField()
+
+bool FormController::ValidateEmployeeFields()
 {
     if(!ValidatorObj.CheckDataExistence(PreviousField.GetFieldData()))
     {
+        SetFieldState(false);
         return false;
     }
-    if(PreviousField.GetFieldName()=="Dept. Code")
+    if(FormCode==EMPLOYEE_UPDATE_FORM_CODE)
     {
-        if(this->FormCode!=DEPARTMENT_SEARCH_FORM_CODE&&this->FormCode!=DEPARTMENT_UPDATE_FORM_CODE
-        &&this->FormCode!=EMPLOYEE_UPDATE_FORM_CODE&&this->FormCode!=EMPLOYEE_UPDATE_FORM_CODE)
-        {
-            if(ValidatorObj.CheckDepartmentExistence(PreviousField.GetFieldData()))
-            {
-                return false;
-            }
-        }
-        else if(FormCode==DEPARTMENT_UPDATE_FORM_CODE)
-        {
-            if(ValidatorObj.CheckOtherDepartmentExistence(PreviousField.GetFieldData(),UpdateFormOldKey)==true)
-            {
-                return false;
-            }
-        }
-        else if(FormCode==EMPLOYEE_UPDATE_FORM_CODE)
+        if(PreviousField.GetFieldName()=="ID. No")
         {
             if(ValidatorObj.CheckDepartmentExistenceInEmployeeForm(PreviousField.GetFieldData())==false)
             {
+                SetFieldState(false);
                 return false;
             }
         }
     }
-    if(PreviousField.GetFieldName()=="ID. No")
+    if(FormCode==EMPLOYEE_UPDATE_FORM_CODE)
     {
-        if(this->FormCode!=EMPLOYEE_SEARCH_FORM_CODE&&this->FormCode!=EMPLOYEE_UPDATE_FORM_CODE)
-        {
-            if(ValidatorObj.CheckEmployeeExistence(PreviousField.GetFieldData()))
-            {
-                return false;
-            }
-        }
-        else if(FormCode==EMPLOYEE_UPDATE_FORM_CODE)
+        if(PreviousField.GetFieldName()=="ID. No")
         {
             if(ValidatorObj.CheckOtherEnployeeExistence(PreviousField.GetFieldData(),UpdateFormOldKey)==true)
             {
+                SetFieldState(false);
+                return false;
+            }
+        }
+        if(PreviousField.GetFieldName()=="Dept. Code")
+        {
+            if(!ValidatorObj.CheckDepartmentExistenceInEmployeeForm(PreviousField.GetFieldData()))
+            {
+                SetFieldState(false);
                 return false;
             }
         }
     }
-	return true;
+    SetFieldState(true);
+    return true;
+}
+bool FormController::ValidateDepartmentFields()
+{
+    if(!ValidatorObj.CheckDataExistence(PreviousField.GetFieldData()))
+    {
+        SetFieldState(false);
+        return false;
+    }
+    if(this->FormCode==DEPARTMENT_ADD_FORM_CODE)
+    {
+        if(PreviousField.GetFieldName()=="Dept. Code")
+        {
+            if(ValidatorObj.CheckDepartmentExistence(PreviousField.GetFieldData()))
+            {
+                SetFieldState(false);
+                return false;
+            }
+        }
+    }
+    if(FormCode==DEPARTMENT_UPDATE_FORM_CODE)
+    {
+        if(PreviousField.GetFieldName()=="Dept. Code")
+        {
+            if(ValidatorObj.CheckOtherDepartmentExistence(PreviousField.GetFieldData(),UpdateFormOldKey)==true)
+            {
+                SetFieldState(false);
+                return false;
+            }
+        }
+    }
+    SetFieldState(true);
+    return true;
 }
 bool FormController::ValidateForm()
 {
     int x;
-    Field TempField;
-    for(x=0;x<this->FormSize;x++)
+    for(x=0;x<FormSize;x++)
     {
-        TempField=*(fptr+x);
-        ConsoleObj.xyCoord(TempField.GetFieldX(),TempField.GetFieldY()-1);
-        if(ValidatorObj.CheckDataExistence(TempField.GetFieldData())==_FAIL)
+        if(!(fptr+x)->GetValidData())
         {
-            CompleteState=false;
             return false;
         }
-        if(TempField.GetFieldName()=="Dept. Code")
+    }
+    return true;
+}
+void FormController::SetFieldState(bool state)
+{
+    int x;
+    for(x=0;x<FormSize;x++)
+    {
+        if(PreviousField==*(fptr+x))
         {
-            if(FormCode!=DEPARTMENT_SEARCH_FORM_CODE&&FormCode!=DEPARTMENT_UPDATE_FORM_CODE
-            &&this->FormCode!=EMPLOYEE_UPDATE_FORM_CODE&&this->FormCode!=EMPLOYEE_UPDATE_FORM_CODE)
-            {
-                if(ValidatorObj.CheckDepartmentExistence(TempField.GetFieldData())==true)
-                {
-                    CompleteState=false;
-                    return false;
-                }
-            }
-            if(FormCode==DEPARTMENT_UPDATE_FORM_CODE)
-            {
-
-                if(ValidatorObj.CheckOtherDepartmentExistence(TempField.GetFieldData(),UpdateFormOldKey)==true)
-                {
-                    CompleteState=false;
-                    return false;
-                }
-            }
-        }
-        if(TempField.GetFieldName()=="ID. No")
-        {
-            if(FormCode!=EMPLOYEE_SEARCH_FORM_CODE&&FormCode!=EMPLOYEE_UPDATE_FORM_CODE
-            &&this->FormCode!=EMPLOYEE_UPDATE_FORM_CODE&&this->FormCode!=EMPLOYEE_UPDATE_FORM_CODE)
-            {
-                if(ValidatorObj.CheckEmployeeExistence(TempField.GetFieldData())==true)
-                {
-                    CompleteState=false;
-                    return false;
-                }
-            }
-            if(FormCode==EMPLOYEE_UPDATE_FORM_CODE)
-            {
-
-                if(ValidatorObj.CheckOtherEnployeeExistence(TempField.GetFieldData(),UpdateFormOldKey)==true)
-                {
-                    CompleteState=false;
-                    return false;
-                }
-            }
+            (fptr+x)->SetValidData(state);
         }
     }
-    CompleteState=true;
-    return true;
 }
 void FormController::ShowForm()
 {
@@ -339,7 +328,8 @@ void FormController::ShowForm()
         (fptr+x)->ShowField();
         TempField=*(fptr+x);
         ConsoleObj.xyCoord(TempField.GetFieldX(),TempField.GetFieldY()-1);
-        ValidateField();
+        ValidateEmployeeFields();
+        ValidateDepartmentFields();
     }
 }
 Field* FormController::GetAllFieldInfo()
