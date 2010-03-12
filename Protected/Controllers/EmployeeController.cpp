@@ -210,7 +210,42 @@ int EmployeeController::actionUpdate()
 
 int EmployeeController::actionView()
 {
+    int actionCode;
+    int id;
+    Employee *employee;
+	MasterFormMenuController* menuInstance = this->getMenuObj();
 
+    this->getServicesObj()->BasicRunLevel();
+	do
+	{
+        actionCode = menuInstance->SearchEmployeeMenu();
+
+        Field * data = menuInstance->GetAllFieldData();
+        istringstream idString((data)->GetFieldData());
+        idString >> id;
+
+        employee = Employee::model()->findById(id);
+        if(actionCode==EMPLOYEE_SEARCH_SUBMIT_CODE)
+        {
+            if(employee!=NULL)
+            {
+                this->getServicesObj()->BasicRunLevel();
+                employee->show(14);
+                return this->run(this->getMenuObj()->EmployeeAfterViewMenu());
+            }
+            else
+            {
+                this->getServicesObj()->BasicRunLevel();
+                ConsoleObj.xyCoord(20,9);
+                ScreenObj.SetScreenTextColour(RedTextColour);
+                cout << "Error: Could not find employee record" << endl;
+                ScreenObj.SetScreenTextColour(DefaultTextColour);
+            }
+        }
+        else
+            break;
+	}while(employee==NULL);
+    return this->run(actionCode);
 }
 
 int EmployeeController::run(int actionCode)
