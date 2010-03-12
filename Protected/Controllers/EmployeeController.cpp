@@ -269,7 +269,11 @@ int EmployeeController::actionDelete()
             if(employee!=NULL)
             {
                 this->getServicesObj()->BasicRunLevel();
-                employee->show(10);
+                employee->show(9);
+                ConsoleObj.xyCoord(25,30);
+                ScreenObj.SetScreenTextColour(WhiteColour);
+                cout << "Do you really want to delete?" << endl;
+                ScreenObj.SetScreenTextColour(DefaultTextColour);
                 return this->run(this->getMenuObj()->EmployeeDeleteConfirmMenu());
             }
             else
