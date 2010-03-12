@@ -70,7 +70,9 @@ public:
     void FieldInput();
     void UpdateField();
     bool FormRangeCheck(int);
-    bool ValidateField();
+    bool ValidateEmployeeFields();
+    bool ValidateDepartmentFields();
     bool ValidateForm();
+    void SetFieldState(bool);
 };
 #endif // FORMCONTROLLER_H
