@@ -51,6 +51,10 @@ bool FormController::SetForm(Field* FormObj,int FormSize,int FormCode)
         {
             this->UpdateFormOldKey=(this->fptr)->GetFieldData();
         }
+        if(this->FormCode==EMPLOYEE_UPDATE_FORM_CODE)
+        {
+            this->UpdateFormOldKey=(this->fptr)->GetFieldData();
+        }
         return true;
     }
     else
@@ -223,7 +227,7 @@ bool FormController::ValidateField()
     {
         return false;
     }
-    else if(PreviousField.GetFieldName()=="Dept. Code")
+    if(PreviousField.GetFieldName()=="Dept. Code")
     {
         if(this->FormCode!=DEPARTMENT_SEARCH_FORM_CODE&&this->FormCode!=DEPARTMENT_UPDATE_FORM_CODE)
         {
@@ -233,6 +237,30 @@ bool FormController::ValidateField()
             }
         }
         else if(FormCode==DEPARTMENT_UPDATE_FORM_CODE)
+        {
+            if(ValidatorObj.CheckOtherDepartmentExistence(PreviousField.GetFieldData(),UpdateFormOldKey)==true)
+            {
+                return false;
+            }
+        }
+        else if(FormCode==EMPLOYEE_UPDATE_FORM_CODE)
+        {
+            if(ValidatorObj.CheckDepartmentExistence(PreviousField.GetFieldData())==false)
+            {
+                return false;
+            }
+        }
+    }
+    if(PreviousField.GetFieldName()=="ID. No")
+    {
+        if(this->FormCode!=EMPLOYEE_SEARCH_FORM_CODE&&this->FormCode!=EMPLOYEE_UPDATE_FORM_CODE)
+        {
+            if(ValidatorObj.CheckDepartmentExistence(PreviousField.GetFieldData()))
+            {
+                return false;
+            }
+        }
+        else if(FormCode==EMPLOYEE_UPDATE_FORM_CODE)
         {
             if(ValidatorObj.CheckOtherDepartmentExistence(PreviousField.GetFieldData(),UpdateFormOldKey)==true)
             {
@@ -277,7 +305,7 @@ bool FormController::ValidateForm()
         }
         if(TempField.GetFieldName()=="ID. No")
         {
-            if(FormCode!=EMPLOYEE_UPDATE_SEARCH_FORM_CODE&&FormCode!=EMPLOYEE_UPDATE_FORM_CODE)
+            if(FormCode!=EMPLOYEE_SEARCH_FORM_CODE&&FormCode!=EMPLOYEE_UPDATE_FORM_CODE)
             {
                 if(ValidatorObj.CheckEmployeeExistence(TempField.GetFieldData())==true)
                 {

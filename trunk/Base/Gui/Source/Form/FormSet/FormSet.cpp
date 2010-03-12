@@ -93,9 +93,9 @@ Field* FormSet::UpdateEmployeeForm()
 }
 Field* FormSet::SearchEmployeeForm()
 {
-    this->FormCode=EMPLOYEE_UPDATE_SEARCH_FORM_CODE;
+    this->FormCode=EMPLOYEE_SEARCH_FORM_CODE;
     this->FormSize=1;
     static Field SearchEmployeeFormField[1];
-    SearchEmployeeFormField[0].SetField("ID. No",20,19,1,STRICTNUMERICTYPE,NO_SPACING,4);
+    SearchEmployeeFormField[0].SetField("ID. No",20,19,EMPLOYEE_SEARCH_FORM_CODE,STRICTNUMERICTYPE,NO_SPACING,4);
     return SearchEmployeeFormField;
 }
