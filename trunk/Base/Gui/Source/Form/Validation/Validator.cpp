@@ -127,8 +127,25 @@ bool Validator::CheckEmployeeExistence(string ID)
     ScreenObj.SetScreenTextColour(DefaultTextColour);
     return false;
 }
-bool Validator::CheckOtherEnployeeExistence(string CurrentID,string OldID)
+bool Validator::CheckOtherEmployeeExistence(string CurrentID,string OldID)
 {
+    int OldCode;
+    int CurrentCode;
 
-    return true;
+    istringstream MyStream(OldID);
+    MyStream>>OldCode;
+    istringstream MyStream1(CurrentID);
+    MyStream1>>CurrentCode;
+
+    if(DepartmentObj.model()->recordExists(CurrentCode,OldCode))
+    {
+        ScreenObj.SetScreenTextColour(RedTextColour);
+        cout<<"<Employee already exist>";
+        ScreenObj.SetScreenTextColour(DefaultTextColour);
+        return true;
+    }
+    ScreenObj.SetScreenTextColour(DefaultBgColour);
+    cout<<"<Employee already exist>";
+    ScreenObj.SetScreenTextColour(DefaultTextColour);
+    return false;
 }

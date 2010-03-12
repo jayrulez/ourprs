@@ -38,7 +38,7 @@ public:
     bool CheckDepartmentExistenceInEmployeeForm(string);
     bool CheckOtherDepartmentExistence(string,string);
     bool CheckEmployeeExistence(string);
-    bool CheckOtherEnployeeExistence(string,string);
+    bool CheckOtherEmployeeExistence(string,string);
 
 };
 #endif

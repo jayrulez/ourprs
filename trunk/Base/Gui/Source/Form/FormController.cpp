@@ -261,8 +261,9 @@ bool FormController::ValidateEmployeeFields()
         }
         if(PreviousField.GetFieldName()=="ID. No")
         {
-            if(ValidatorObj.CheckOtherEnployeeExistence(PreviousField.GetFieldData(),UpdateFormOldKey)==true)
+            if(ValidatorObj.CheckOtherEmployeeExistence(PreviousField.GetFieldData(),UpdateFormOldKey)==true)
             {
+                //cout<<PreviousField.GetFieldName()<<endl;system("pause");
                 SetFieldState(false);
                 return false;
             }
