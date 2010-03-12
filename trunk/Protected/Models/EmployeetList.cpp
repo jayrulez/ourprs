@@ -65,14 +65,16 @@ void EmployeeList::BuildListFromFile()
 
 	if(iStreamObj.is_open())
 	{
-		/*while(iStreamObj >> deptCode >> deptName >> regularRate >> overtimeRate)
+		while(iStreamObj >> id >> firstname >> lastname >> deptCode >> position >> hoursWorked)
 		{
+		    EmployeeObj.setId(id);
+		    EmployeeObj.setFirstname(firstname);
+		    EmployeeObj.setLastname(lastname);
 		    EmployeeObj.setDeptCode(deptCode);
-		    EmployeeObj.setDeptName(deptName);
-		    EmployeeObj.setRegularRate(regularRate);
-		    EmployeeObj.setOvertimeRate(overtimeRate);
+		    EmployeeObj.setPosition(position);
+		    EmployeeObj.setHoursWorked(hoursWorked);
             this->AddEmployee(EmployeeObj);
-        }*/
+        }
         iStreamObj.close();
 	}
 }

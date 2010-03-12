@@ -13,5 +13,7 @@ public:
 	void AddEmployee(Employee);
 	Employee* GetEmployee(Employee);
 	void ShowEmployeeList();
+	Employee* getHead();
+	void BuildListFromFile();
 };
 #endif
