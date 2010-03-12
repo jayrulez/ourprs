@@ -94,8 +94,33 @@ int EmployeeController::search()
 
 int EmployeeController::actionUpdate()
 {
-	system("pause");
-	return MAIN_CODE;
+	int actionCode;
+	Employee * employee;
+	MasterFormMenuController *menuInstance = this->getMenuObj();
+
+    this->getServicesObj()->BasicRunLevel();
+	actionCode = menuInstance->SearchEmployeeMenu();
+	do
+	{
+		Field * data = menuInstance->GetAllFieldData();
+		istringstream idString((data)->GetFieldData());
+		int idInt;
+		idString >> idInt;
+		if(actionCode == EMPLOYEE_SEARCH_SUBMIT_CODE)
+		{
+			employee = Employee::model()->findById(idInt);
+
+			if(employee != NULL)
+			{
+
+			}else{
+
+			}
+		}
+		else
+			break;
+	}while(employee != NULL);
+	return this->run(actionCode);
 }
 
 int EmployeeController::actionView()

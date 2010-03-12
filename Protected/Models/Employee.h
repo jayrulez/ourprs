@@ -70,5 +70,6 @@ public:
 	bool recordExists(int, int);
 	Employee * findById(int);
 	static Employee * model();
+	void update(Employee*);
 };
 #endif
