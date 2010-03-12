@@ -37,7 +37,8 @@
     //update
 #define DEPARTMENT_UPDATE_CODE 2200
 #define DEPARTMENT_UPDATE_FORM_MENU_CODE 2210
-#define DEPARTMENT_UPDATE_SAVE_CODE 2220
+#define DEPARTMENT_UPDATE_FORM_RESET_CODE 2220
+#define DEPARTMENT_UPDATE_SAVE_CODE 2230
     //view
 #define DEPARTMENT_VIEW_CODE 2300
 #define DEPARTMENT_LIST_CODE 2400
@@ -49,21 +50,20 @@
 #define EMPLOYEE_CODE 3000
 #define EMPLOYEE_ADD_CODE 3100
 #define EMPLOYEE_ADD_SAVE_CODE 3110
-    //update
-#define EMPLOYEE_UPDATE_SEARCH_CODE 3200
-#define EMPLOYEE_UPDATE_CODE 3210
-#define EMPLOYEE_UPDATE_FORM_MENU_CODE 3220
-#define EMPLOYEE_UPDATE_SAVE_CODE 3230
+//update
+#define EMPLOYEE_UPDATE_CODE 3200
+#define EMPLOYEE_UPDATE_FORM_RESET_CODE 3210
+#define EMPLOYEE_UPDATE_SAVE_CODE 3220
     //view
-#define EMPLOYEE_VIEW_SEARCH_CODE 3300
-#define EMPLOYEE_VIEW_CODE 3310
+#define EMPLOYEE_VIEW_CODE 3300
     //view sorted
 #define EMPLOYEE_VIEW_SORTED_CODE 3400
     //delete
-#define EMPLOYEE_DELETE_SEARCH_CODE 3500
-#define EMPLOYEE_DELETE_CODE 3510
+#define EMPLOYEE_DELETE_CODE 3500
+#define EMPLOYEE_DELETE_CONFIRM_MENU_CODE 3510
 
 #define EMPLOYEE_SEARCH_CODE 3600
+#define EMPLOYEE_SEARCH_SUBMIT_CODE 3610
 
 
 #define PAYROLL_CODE 4000
@@ -111,17 +111,15 @@ public:
     Item* EmployeeMenu();
     Item* AddEmployeeAfterSaveMenu();
     Item* AddEmployeeFailSaveMenu();
-    Item* UpdateSearchEmployeeFormMenu();
+    Item* SearchEmployeeFormMenu();
     void SearchEmployeeFormMenuExtension(int);
     Item* UpdateEmployeeAfterSaveMenu();
     Item* UpdateEmployeeFailSaveMenu();
-    Item* ViewSearchEmployeeFormMenu();
     void ViewEmployeeMenuExtension(int);
     Item* EmployeeAfterViewMenu();
     Item* ViewSortedEmployeeMenu();
     void ViewSortedEmployeeMenuExtension(int);
     Item* EmployeeAfterViewSortedMenu();
-    Item* DeleteSearchEmployeeFormMenu();
     Item* DeleteConfirmEmployeeMenu();
     Item* EmployeeAfterDeleteMenu();
     Item* EmployeeFailDeleteMenu();
