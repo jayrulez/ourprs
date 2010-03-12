@@ -172,10 +172,16 @@ int EmployeeController::actionUpdate()
                     this->getServicesObj()->BasicRunLevel();
                     if(updatedEmployee->getOperationState() == OPERATIONSTATE_FAILURE)
                     {
-                        ConsoleObj.xyCoord(20,9);
+                        ConsoleObj.xyCoord(20,15);
                         ScreenObj.SetScreenTextColour(RedTextColour);
                         cout << "Error: Could not update employee record" << endl;
                         ScreenObj.SetScreenTextColour(DefaultTextColour);
+                        actionCode=menuInstance->UpdateEmployeeFailSaveMenu();
+                        if(actionCode==EMPLOYEE_SEARCH_SUBMIT_CODE)
+                        {
+                        }
+                        else
+                            return this->run(actionCode);
                     }
                     else if(updatedEmployee->getOperationState() == OPERATIONSTATE_SUCCESS)
                     {
@@ -183,10 +189,9 @@ int EmployeeController::actionUpdate()
                         ScreenObj.SetScreenTextColour(GreenTextColour);
                         cout << "Employee updated successfuly" << endl;
                         ScreenObj.SetScreenTextColour(DefaultTextColour);
+                        updatedEmployee->show(14);
+                        return this->run(menuInstance->UpdateEmployeeAfterSaveMenu());
                     }
-                    updatedEmployee->show(14);
-
-                    return this->run(menuInstance->UpdateEmployeeAfterSaveMenu());
                 }
 			}else{
                 this->getServicesObj()->BasicRunLevel();
