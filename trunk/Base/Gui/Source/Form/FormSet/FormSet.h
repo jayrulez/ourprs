@@ -37,7 +37,7 @@ public:
     Field* UpdateDepartmentForm();
     Field* AddEmployeeForm();
     Field* UpdateEmployeeForm();
-    Field* UpdateSearchEmployeeForm();
+    Field* SearchEmployeeForm();
 
 };
 #endif
