@@ -127,8 +127,8 @@ Item* MenuSet::SearchEmployeeFormMenu()
     this->MenuSize = 2;
     MenuTitle="Employee Menu - Search";
     static Item UpdateSearchEmployeeFormMenuItem[2];
-    UpdateSearchEmployeeFormMenuItem[0].SetItem(25,28,EMPLOYEE_SEARCH_SUBMIT_CODE,"Search");
-    UpdateSearchEmployeeFormMenuItem[1].SetItem(45,28,MAIN_CODE,"Main Menu");
+    UpdateSearchEmployeeFormMenuItem[0].SetItem(30,28,EMPLOYEE_SEARCH_SUBMIT_CODE,"Search");
+    UpdateSearchEmployeeFormMenuItem[1].SetItem(43,28,MAIN_CODE,"Main Menu");
     return UpdateSearchEmployeeFormMenuItem;
 }
 void MenuSet::SearchEmployeeFormMenuExtension(int state)
@@ -137,13 +137,11 @@ void MenuSet::SearchEmployeeFormMenuExtension(int state)
     {
         ScreenObj.SetScreenTextColour(ConsoleObj.GetConsoleScreenColour()+3);
     }
-    LineObj.setVCoord(27,29,11);
-    LineObj.vSLine();
     LineObj.setVCoord(27,29,26);
     LineObj.vSLine();
-    LineObj.setVCoord(27,29,50);
+    LineObj.setVCoord(27,29,39);
     LineObj.vSLine();
-    LineObj.setVCoord(27,29,67);
+    LineObj.setVCoord(27,29,53);
     LineObj.vSLine();
     ScreenObj.SetScreenTextColour(48);
 }
