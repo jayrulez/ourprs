@@ -2,6 +2,9 @@
 #include "./EmployeeController.h"
 #endif
 #include <sstream>
+#ifndef EMPLOYEELIST_H
+#include "../Models/EmployeetList.h"
+#endif
 
 EmployeeController::EmployeeController()
 {
@@ -112,9 +115,85 @@ int EmployeeController::actionUpdate()
 
 			if(employee != NULL)
 			{
+				ostringstream id;
+				ostringstream deptCode;
+				ostringstream hoursWorked;
 
+				id << employee->getId();
+				string firstname = employee->getFirstname();
+				string lastname = employee->getLastname();
+				deptCode << employee->getDeptCode();
+				string position = employee->getPosition();
+				hoursWorked << employee->getHoursWorked();
+
+				FormSet FormSetObj;
+                Field *record=FormSetObj.UpdateEmployeeForm();
+
+				(record+0)->SetFieldData(id.str());
+				(record+1)->SetFieldData(firstname);
+				(record+2)->SetFieldData(lastname);
+				(record+3)->SetFieldData(deptCode.str());
+				(record+4)->SetFieldData(position);
+				(record+5)->SetFieldData(hoursWorked.str());
+
+                this->getServicesObj()->BasicRunLevel();
+
+                menuInstance->SetAllFieldData(record);
+
+                actionCode = menuInstance->UpdateEmployeeMenu();
+                Field * newData = menuInstance->GetAllFieldData();
+
+				istringstream _idString((newData+0)->GetFieldData());
+				istringstream _deptCodeString((newData+3)->GetFieldData());
+				istringstream _hoursWorkedString((newData+5)->GetFieldData());
+
+				int _id;
+				int _deptCode;
+				float _hoursWorked;
+
+				_idString >> _id;
+				string _firstname = (newData+1)->GetFieldData();
+				string _lastname = (newData+2)->GetFieldData();
+				_deptCodeString >> _deptCode;
+				string _position = (newData+4)->GetFieldData();
+				_hoursWorkedString >> _hoursWorked;
+
+                Employee * updatedEmployee = new Employee(_id,_firstname,_lastname,_deptCode,_position,_hoursWorked, NULL);
+                if(actionCode == MAIN_CODE || actionCode == DEPARTMENT_CODE)
+                {
+                    return this->run(actionCode);
+                }
+                if(actionCode == EMPLOYEE_UPDATE_SAVE_CODE)
+                {
+					EmployeeList ListObj;
+					ListObj.BuildListFromFile();
+                    updatedEmployee->update(ListObj.getHead());
+
+                    this->getServicesObj()->BasicRunLevel();
+                    if(updatedEmployee->getOperationState() == OPERATIONSTATE_FAILURE)
+                    {
+                        ConsoleObj.xyCoord(20,9);
+                        ScreenObj.SetScreenTextColour(RedTextColour);
+                        cout << "Error: Could not update employee record" << endl;
+                        ScreenObj.SetScreenTextColour(DefaultTextColour);
+                    }
+                    else if(updatedEmployee->getOperationState() == OPERATIONSTATE_SUCCESS)
+                    {
+                        ConsoleObj.xyCoord(24,9);
+                        ScreenObj.SetScreenTextColour(GreenTextColour);
+                        cout << "Employee updated successfuly" << endl;
+                        ScreenObj.SetScreenTextColour(DefaultTextColour);
+                    }
+                    updatedEmployee->show(14);
+
+                    return this->run(menuInstance->UpdateEmployeeAfterSaveMenu());
+                }
 			}else{
-
+                this->getServicesObj()->BasicRunLevel();
+                ConsoleObj.xyCoord(20,9);
+                ScreenObj.SetScreenTextColour(RedTextColour);
+                cout << "Error: Could not find employee record" << endl;
+                ScreenObj.SetScreenTextColour(DefaultTextColour);
 			}
 		}
 		else
