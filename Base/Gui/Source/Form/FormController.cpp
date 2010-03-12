@@ -246,6 +246,7 @@ bool FormController::ValidateEmployeeFields()
 
             if(ValidatorObj.CheckEmployeeExistence(PreviousField.GetFieldData()))
             {
+                //cout<<PreviousField.GetFieldName()<<endl;system("pause");
                 SetFieldState(false);
                 return false;
             }
