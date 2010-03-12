@@ -1,4 +1,6 @@
 #include "./EmployeetList.h"
+#include <fstream>
+#include <sstream>
 
 EmployeeList::EmployeeList()
 {
@@ -58,7 +60,7 @@ void EmployeeList::BuildListFromFile()
 	int deptCode;
 	string position;
 	float hoursWorked;
-	
+
 	ifstream iStreamObj(Employee::model()->getFilename());
 
     Employee EmployeeObj(0,"","",0,"",0,NULL);
