@@ -137,7 +137,7 @@ bool Validator::CheckOtherEmployeeExistence(string CurrentID,string OldID)
     istringstream MyStream1(CurrentID);
     MyStream1>>CurrentCode;
 
-    if(DepartmentObj.model()->recordExists(CurrentCode,OldCode))
+    if(Employee::model()->recordExists(CurrentCode,OldCode))
     {
         ScreenObj.SetScreenTextColour(RedTextColour);
         cout<<"<Employee already exist>";
