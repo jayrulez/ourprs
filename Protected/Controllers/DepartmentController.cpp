@@ -167,6 +167,9 @@ int DepartmentController::actionUpdate()
                 Department * updatedDepartment = new Department(_deptCodeInt,_deptName,_regularRateFloat,_overtimeRateFloat,NULL);
                 if(actionCode == MAIN_CODE || actionCode == DEPARTMENT_CODE)
                 {
+                    //clear search field
+                    FormSet FormSetObj;
+                    FormSetObj.FlushFieldData(FormSetObj.SearchDepartmentForm());
                     return this->run(actionCode);
                 }
                 if(actionCode == DEPARTMENT_UPDATE_SAVE_CODE)
@@ -181,7 +184,7 @@ int DepartmentController::actionUpdate()
                     this->getServicesObj()->BasicRunLevel();
                     if(updatedDepartment->getOperationState() == OPERATIONSTATE_FAILURE)
                     {
-                        ConsoleObj.xyCoord(20,9);
+                        ConsoleObj.xyCoord(20,14);
                         ScreenObj.SetScreenTextColour(RedTextColour);
                         cout << "Error: Could not update department record" << endl;
                         ScreenObj.SetScreenTextColour(DefaultTextColour);
@@ -194,6 +197,11 @@ int DepartmentController::actionUpdate()
                         cout << "Department Updated Successfuly" << endl;
                         ScreenObj.SetScreenTextColour(DefaultTextColour);
                         updatedDepartment->show(14);
+
+                        //clear search field
+                        FormSet FormSetObj;
+                        FormSetObj.FlushFieldData(FormSetObj.SearchDepartmentForm());
+
                         return this->run(menuInstance->UpdateDepartmentAfterSaveMenu());
                     }
                 }

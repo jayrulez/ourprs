@@ -11,6 +11,9 @@
 */
 #include "FormSet.h"
 #include "../Input/TextInput.h"
+#include <string>
+#include <iostream>
+using namespace std;
 FormSet::FormSet()
 {
 }
@@ -34,6 +37,14 @@ int FormSet::GetFormCode(Field *FieldObj)
 int FormSet::GetFormSize(Field *FieldObj)
 {
     return this->FormSize;
+}
+void FormSet::FlushFieldData(Field *FieldObj)
+{
+    string Dummy;
+    for(int x=0;x<this->FormSize;x++)
+    {
+        (FieldObj+x)->SetFieldData(Dummy.erase());
+    }
 }
 Field* FormSet::AddDepartmentForm()
 {

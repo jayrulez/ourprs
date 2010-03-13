@@ -367,13 +367,12 @@ void MenuSet::AddDepartmentFormMenuExtension(int state)
 Item* MenuSet::UpdateDepartmentFormMenu()
 {
     this->MenuCode = DEPARTMENT_UPDATE_FORM_MENU_CODE;
-    this->MenuSize = 4;
+    this->MenuSize = 3;
     MenuTitle="Update Department Menu";
-    static Item UpdateDepartmentFormItem[4];
-    UpdateDepartmentFormItem[0].SetItem(13,35,DEPARTMENT_UPDATE_SAVE_CODE,"Save");
-    UpdateDepartmentFormItem[1].SetItem(26,35,DEPARTMENT_UPDATE_FORM_RESET_CODE,"Reset Fields");
-    UpdateDepartmentFormItem[2].SetItem(45,35,DEPARTMENT_CODE,"Cancel");
-    UpdateDepartmentFormItem[3].SetItem(58,35,MAIN_CODE,"Main Menu");
+    static Item UpdateDepartmentFormItem[3];
+    UpdateDepartmentFormItem[0].SetItem(24,35,DEPARTMENT_UPDATE_SAVE_CODE,"Save");
+    UpdateDepartmentFormItem[1].SetItem(35,35,DEPARTMENT_UPDATE_CODE,"Cancel");
+    UpdateDepartmentFormItem[2].SetItem(48,35,MAIN_CODE,"Main Menu");
     return UpdateDepartmentFormItem;
 }
 void MenuSet::UpdateDepartmentFormMenuExtension(int state)
@@ -382,15 +381,13 @@ void MenuSet::UpdateDepartmentFormMenuExtension(int state)
     {
         ScreenObj.SetScreenTextColour(ConsoleObj.GetConsoleScreenColour()+3);
     }
-    LineObj.setVCoord(34,36,9);
+    LineObj.setVCoord(34,36,20);
     LineObj.vSLine();
-    LineObj.setVCoord(34,36,22);
+    LineObj.setVCoord(34,36,31);
     LineObj.vSLine();
-    LineObj.setVCoord(34,36,41);
+    LineObj.setVCoord(34,36,44);
     LineObj.vSLine();
-    LineObj.setVCoord(34,36,54);
-    LineObj.vSLine();
-    LineObj.setVCoord(34,36,69);
+    LineObj.setVCoord(34,36,60);
     LineObj.vSLine();
     ScreenObj.SetScreenTextColour(48);
 }
@@ -427,13 +424,12 @@ void MenuSet::AddEmployeeFormMenuExtension(int state)
 Item* MenuSet::UpdateEmployeeFormMenu()
 {
     this->MenuCode = DEPARTMENT_UPDATE_FORM_MENU_CODE;
-    this->MenuSize = 4;
+    this->MenuSize = 3;
     MenuTitle="Update Employee Menu";
-    static Item UpdateEmployeeFormItem[4];
-    UpdateEmployeeFormItem[0].SetItem(13,35,EMPLOYEE_UPDATE_SAVE_CODE,"Save");
-    UpdateEmployeeFormItem[1].SetItem(26,35,1,"Reset Fields");
-    UpdateEmployeeFormItem[2].SetItem(45,35,EMPLOYEE_CODE,"Cancel");
-    UpdateEmployeeFormItem[3].SetItem(58,35,MAIN_CODE,"Main Menu");
+    static Item UpdateEmployeeFormItem[3];
+    UpdateEmployeeFormItem[0].SetItem(24,35,EMPLOYEE_UPDATE_SAVE_CODE,"Save");
+    UpdateEmployeeFormItem[1].SetItem(35,35,EMPLOYEE_CODE,"Cancel");
+    UpdateEmployeeFormItem[2].SetItem(48,35,MAIN_CODE,"Main Menu");
     return UpdateEmployeeFormItem;
 }
 void MenuSet::UpdateEmployeeFormMenuExtension(int state)
@@ -442,15 +438,13 @@ void MenuSet::UpdateEmployeeFormMenuExtension(int state)
     {
         ScreenObj.SetScreenTextColour(ConsoleObj.GetConsoleScreenColour()+3);
     }
-    LineObj.setVCoord(34,36,9);
+    LineObj.setVCoord(34,36,20);
     LineObj.vSLine();
-    LineObj.setVCoord(34,36,22);
+    LineObj.setVCoord(34,36,31);
     LineObj.vSLine();
-    LineObj.setVCoord(34,36,41);
+    LineObj.setVCoord(34,36,44);
     LineObj.vSLine();
-    LineObj.setVCoord(34,36,54);
-    LineObj.vSLine();
-    LineObj.setVCoord(34,36,69);
+    LineObj.setVCoord(34,36,60);
     LineObj.vSLine();
     ScreenObj.SetScreenTextColour(48);
 }
@@ -589,7 +583,7 @@ Item* MenuSet::UpdateDepartmentAfterSaveMenu()
     this->MenuSize = 3;
     MenuTitle="Update Department - Success";
     static Item UpdateDepartmentAfterSaveMenuItem[3];
-    UpdateDepartmentAfterSaveMenuItem[0].SetItem(15,32,DEPARTMENT_SEARCH_CODE,"Update More");
+    UpdateDepartmentAfterSaveMenuItem[0].SetItem(15,32,DEPARTMENT_UPDATE_CODE,"Update More");
     UpdateDepartmentAfterSaveMenuItem[1].SetItem(34,32,DEPARTMENT_CODE,"<--Department");
     UpdateDepartmentAfterSaveMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");
     return UpdateDepartmentAfterSaveMenuItem;
@@ -600,9 +594,9 @@ Item* MenuSet::UpdateDepartmentFailSaveMenu()
     this->MenuSize = 3;
     MenuTitle="Update Department - Failed";
     static Item UpdateDepartmentFailSaveMenuItem[3];
-    UpdateDepartmentFailSaveMenuItem[0].SetItem(15,32,DEPARTMENT_UPDATE_FORM_MENU_CODE,"<--Update Form");
-    UpdateDepartmentFailSaveMenuItem[1].SetItem(32,32,DEPARTMENT_CODE,"Department");
-    UpdateDepartmentFailSaveMenuItem[2].SetItem(50,32,MAIN_CODE,"Main Menu");
+    UpdateDepartmentFailSaveMenuItem[0].SetItem(15,30,DEPARTMENT_UPDATE_CODE,"<--Update Form");
+    UpdateDepartmentFailSaveMenuItem[1].SetItem(34,30,DEPARTMENT_CODE,"Department");
+    UpdateDepartmentFailSaveMenuItem[2].SetItem(50,30,MAIN_CODE,"Main Menu");
     return UpdateDepartmentFailSaveMenuItem;
 }
 

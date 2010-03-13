@@ -8,10 +8,12 @@
 #include "../Form/FormSet/FormSet.h"
 #include "../List/List.h"
 #include "../Menu/Menus/Extended/ExtendedMenuController.h"
+#include "../Services/Services.h"
 
 class MasterFormMenuController
 {
 private:
+    Services ServicesObj;
     MenuController MenuControllerObj;
     MenuSet MenuSetObj;
     FormController FormControllerObj;

@@ -379,11 +379,11 @@ void FormController::UpdateAllFieldInfo(Field *fptr)
 }
 void FormController::ClearAllFieldData()
 {
-    /*
+    string Dummy;
     for(int x=0;x<FormSize;x++)
     {
-        (fptr+x)->SetFieldData(NULL);
+        ((this->fptr)+x)->SetFieldData(Dummy.erase());
     }
-    */
-    fptr=NULL;
+    CurrentField.SetFieldData(Dummy.erase());
+    PreviousField.SetFieldData(Dummy.erase());
 }
