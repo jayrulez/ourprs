@@ -257,6 +257,10 @@ int MasterFormMenuController::UpdateDepartmentMenu()
                 {
                     Flag=true;
                 }
+                if(MenuCall==MAIN_CODE)
+                {
+                    FormSetObj.FlushFieldData(FormSetObj.SearchDepartmentForm());
+                }
             }while(Flag);
         }while(MenuCall==0);
     }
