@@ -159,7 +159,7 @@ int EmployeeController::actionUpdate()
 				_hoursWorkedString >> _hoursWorked;
 
                 Employee * updatedEmployee = new Employee(_id,_firstname,_lastname,_deptCode,_position,_hoursWorked, NULL);
-                if(actionCode == MAIN_CODE || actionCode == DEPARTMENT_CODE)
+                if(actionCode == MAIN_CODE || actionCode == EMPLOYEE_CODE)
                 {
                     return this->run(actionCode);
                 }

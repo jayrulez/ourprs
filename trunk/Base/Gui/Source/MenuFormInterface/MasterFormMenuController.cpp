@@ -6,6 +6,7 @@
 #include "../Form/FormController.h"
 #include "../Form/FormSet/FormSet.h"
 #include "../Menu/Menus/Extended/ExtendedMenuController.h"
+#include "../Services/Services.h"
 
 MasterFormMenuController::MasterFormMenuController()
 {
@@ -124,6 +125,7 @@ int MasterFormMenuController::AddDepartmentMenu()
             {
                 Flag=false;
                 MenuCall=MenuControllerObj.BrowseMenu();
+                //system("pause");
                 if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuCall,MenuControllerObj.GetMenuCode()))
                 {
                     FormControllerObj.ShowForm();
@@ -134,6 +136,20 @@ int MasterFormMenuController::AddDepartmentMenu()
                 }
                 if(MenuCall==DEPARTMENT_ADD_SAVE_CODE&&FormControllerObj.GetFormCompletionState()==_FAIL)
                 {
+                    Flag=true;
+                }
+                if(MenuCall==DEPARTMENT_CODE||MenuCall==MAIN_CODE)
+                {
+                    this->ClearAllFieldData();
+                }
+                if(MenuCall==DEPARTMENT_ADD_RESET_CODE)
+                {
+                    this->ClearAllFieldData();
+                    ServicesObj.BasicRunLevel();
+                    FormControllerObj.ShowForm();
+                    MenuControllerObj.ShowMenu();
+                    MenuSetObj.ShowMenuTitle(ON);
+                    MenuSetObj.AddDepartmentFormMenuExtension(ON);
                     Flag=true;
                 }
             }while(Flag);
@@ -181,6 +197,10 @@ int MasterFormMenuController::UpdateSearchDepartmentMenu()
                     MenuSetObj.ShowMenuTitle(ON);
                     MenuSetObj.SearchDepartmentFormMenuExtension(ON);
                     Flag=true;
+                }
+                if(MenuCall==DEPARTMENT_CODE||MenuCall==MAIN_CODE)
+                {
+                    this->ClearAllFieldData();
                 }
             }while(Flag);
         }while(MenuCall==0);
@@ -283,6 +303,10 @@ int MasterFormMenuController::ViewSearchDepartmentMenu()
                     MenuSetObj.SearchDepartmentFormMenuExtension(ON);
                     Flag=true;
                 }
+                if(MenuCall==MAIN_CODE || MenuCall==DEPARTMENT_CODE)
+                {
+                    FormSetObj.FlushFieldData(FormSetObj.SearchDepartmentForm());
+                }
             }while(Flag);
         }while(MenuCall==0);
     }
@@ -314,6 +338,7 @@ int MasterFormMenuController::DepartmentAfterViewMenu()
             }while(Flag);
         }while(MenuCall==0);
     }
+    FormSetObj.FlushFieldData(FormSetObj.SearchDepartmentForm());
     return MenuCall;
 }
 int MasterFormMenuController::ViewAllDepartmentMenu()

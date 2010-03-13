@@ -27,7 +27,7 @@ private:
 public:
 	Services();
 	~Services();
-	void BasicRunLevel();
+    void BasicRunLevel();
 	int DynamicRunLevel();
 	void SystemTitle();
 	void SystemClearScreen();

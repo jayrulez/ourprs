@@ -33,6 +33,7 @@ public:
     FormSet(int,int);
     int GetFormCode(Field*);
     int GetFormSize(Field*);
+    void FlushFieldData(Field*);
     Field* AddDepartmentForm();
     Field* SearchDepartmentForm();
     Field* UpdateDepartmentForm();
