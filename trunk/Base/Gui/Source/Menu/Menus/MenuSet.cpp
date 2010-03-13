@@ -341,7 +341,7 @@ Item* MenuSet::AddDepartmentFormMenu()
     MenuTitle="Add Department Menu";
     static Item AddDepartmentFormItem[4];
     AddDepartmentFormItem[0].SetItem(13,35,DEPARTMENT_ADD_SAVE_CODE,"Save");
-    AddDepartmentFormItem[1].SetItem(26,35,DEPARTMENT_ADD_CODE,"Reset Fields");
+    AddDepartmentFormItem[1].SetItem(26,35,DEPARTMENT_ADD_RESET_CODE,"Reset Fields");
     AddDepartmentFormItem[2].SetItem(45,35,DEPARTMENT_CODE,"Cancel");
     AddDepartmentFormItem[3].SetItem(58,35,MAIN_CODE,"Main Menu");
     return AddDepartmentFormItem;
