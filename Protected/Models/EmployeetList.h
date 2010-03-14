@@ -15,5 +15,6 @@ public:
 	void ShowEmployeeList();
 	Employee* getHead();
 	void BuildListFromFile();
+	void DestroyList();
 };
 #endif
