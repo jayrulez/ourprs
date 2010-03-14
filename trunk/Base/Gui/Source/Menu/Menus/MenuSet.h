@@ -52,7 +52,7 @@
 #define EMPLOYEE_ADD_CODE 3100
 #define EMPLOYEE_ADD_SAVE_CODE 3110
 #define EMPLOYEE_ADD_RESET_CODE 3120
-//update
+    //update
 #define EMPLOYEE_UPDATE_CODE 3200
 #define EMPLOYEE_UPDATE_FORM_RESET_CODE 3210
 #define EMPLOYEE_UPDATE_SAVE_CODE 3220
@@ -63,12 +63,22 @@
     //delete
 #define EMPLOYEE_DELETE_CODE 3500
 #define EMPLOYEE_DELETE_CONFIRM_MENU_CODE 3510
-
+    //search
 #define EMPLOYEE_SEARCH_CODE 3600
 #define EMPLOYEE_SEARCH_SUBMIT_CODE 3610
 
 
+//Payroll
 #define PAYROLL_CODE 4000
+    //process
+#define PAYROLL_PROCESS_CODE 4100
+    //view
+#define PAYROLL_VIEW_CODE 4200
+    //view sorted
+#define PAYROLL_VIEW_SORTED_CODE 4300
+
+
+//exit
 #define EXIT_CODE 5000
 //End Codes
 

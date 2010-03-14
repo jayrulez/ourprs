@@ -11,6 +11,9 @@ public:
 	~PayrollController();
 	PayrollController(Component*);
 	int actionIndex();
+    int actionProcess();
+    int actionView();
+    int actionViewSorted();
 	int run(int);
 	int getDefaultActionCode();
 };
