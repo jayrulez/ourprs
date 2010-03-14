@@ -21,7 +21,7 @@ int PayrollController::getDefaultActionCode()
 int PayrollController::actionIndex()
 {
     this->getServicesObj()->BasicRunLevel();
-    return this->getMenuObj()->PayrollMenu();
+    return this->run(this->getMenuObj()->PayrollMenu());
 }
 int PayrollController::actionProcess()
 {
@@ -29,12 +29,12 @@ int PayrollController::actionProcess()
 int PayrollController::actionView()
 {
     this->getServicesObj()->BasicRunLevel();
-    return this->getMenuObj()->ViewPayrollMenu();
+    return this->run(this->getMenuObj()->ViewPayrollMenu());
 }
 int PayrollController::actionViewSorted()
 {
     this->getServicesObj()->BasicRunLevel();
-    return this->getMenuObj()->ViewSortedPayrollMenu();
+    return this->run(this->getMenuObj()->ViewSortedPayrollMenu());
 }
 int PayrollController::run(int actionCode)
 {
