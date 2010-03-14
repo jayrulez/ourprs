@@ -262,9 +262,9 @@ Item* MenuSet::PayrollMenu()
     this->MenuSize = 4;
     MenuTitle="Payroll Menu";
     static Item PayrollItem[4];
-    PayrollItem[0].SetItem(10,23,1,"Process Payroll");
-    PayrollItem[1].SetItem(34,23,2,"View Payroll");
-    PayrollItem[2].SetItem(52,23,3,"View Sorted Payroll");
+    PayrollItem[0].SetItem(10,23,PAYROLL_PROCESS_CODE,"Process Payroll");
+    PayrollItem[1].SetItem(34,23,PAYROLL_VIEW_CODE,"View Payroll");
+    PayrollItem[2].SetItem(52,23,PAYROLL_VIEW_SORTED_CODE,"View Sorted Payroll");
     PayrollItem[3].SetItem(36,27,MAIN_CODE,"Main Menu");
     return &PayrollItem[0];
 }
