@@ -243,7 +243,7 @@ int DepartmentController::actionView()
             if(department!=NULL)
             {
                 this->getServicesObj()->BasicRunLevel();
-                department->show(14);
+                department->show(16);
                 return this->run(this->getMenuObj()->DepartmentAfterViewMenu());
             }
             else
