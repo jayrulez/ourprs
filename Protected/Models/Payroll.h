@@ -24,7 +24,7 @@ public:
     float GetRegularPay();
     float GetOvertimePay();
     float GetGrossPay();
-    void SetNext(Payroll*);
-    Payroll* GetNext();
+    void setNext(Payroll*);
+    Payroll* getNext();
 };
 #endif
