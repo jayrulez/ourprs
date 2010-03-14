@@ -136,7 +136,7 @@ int EmployeeController::actionUpdate()
 				(record+3)->SetFieldData(deptCode.str());
 				(record+4)->SetFieldData(position);
 				(record+5)->SetFieldData(hoursWorked.str());
-
+                BackToForm:
                 this->getServicesObj()->BasicRunLevel();
 
                 menuInstance->SetAllFieldData(record);
@@ -180,7 +180,7 @@ int EmployeeController::actionUpdate()
                         actionCode=menuInstance->UpdateEmployeeFailSaveMenu();
                         if(actionCode==EMPLOYEE_SEARCH_SUBMIT_CODE)
                         {
-                            continue;
+                            goto BackToForm;
                         }
                         else
                             return this->run(actionCode);
