@@ -398,7 +398,7 @@ Item* MenuSet::AddEmployeeFormMenu()
     MenuTitle="Add Employee Menu";
     static Item AddEmployeeFormMenuItem[4];
     AddEmployeeFormMenuItem[0].SetItem(13,35,EMPLOYEE_ADD_SAVE_CODE,"Save");
-    AddEmployeeFormMenuItem[1].SetItem(26,35,EMPLOYEE_UPDATE_FORM_RESET_CODE,"Reset Fields");
+    AddEmployeeFormMenuItem[1].SetItem(26,35,EMPLOYEE_ADD_RESET_CODE,"Reset Fields");
     AddEmployeeFormMenuItem[2].SetItem(45,35,EMPLOYEE_CODE,"Cancel");
     AddEmployeeFormMenuItem[3].SetItem(58,35,MAIN_CODE,"Main Menu");
     return AddEmployeeFormMenuItem;

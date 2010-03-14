@@ -294,6 +294,10 @@ int EmployeeController::actionDelete()
 int EmployeeController::run(int actionCode)
 {
     int call;
+
+    if(actionCode == MAIN_CODE)
+        return actionCode;
+
     switch(actionCode)
     {
 		case EMPLOYEE_ADD_CODE:

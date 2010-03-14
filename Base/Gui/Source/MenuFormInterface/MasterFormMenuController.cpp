@@ -538,8 +538,22 @@ int MasterFormMenuController::AddEmployeeMenu()
                 {
                     Flag=true;
                 }
+                if(MenuCall==EMPLOYEE_ADD_RESET_CODE)
+                {
+                    this->ClearAllFieldData();
+                    ServicesObj.BasicRunLevel();
+                    FormControllerObj.ShowForm();
+                    MenuControllerObj.ShowMenu();
+                    MenuSetObj.ShowMenuTitle(ON);
+                    MenuSetObj.AddEmployeeFormMenuExtension(ON);
+                    Flag=true;
+                }
             }while(Flag);
         }while(MenuCall==0);
+    }
+    if(MenuCall==EMPLOYEE_CODE || MenuCall==MAIN_CODE)
+    {
+        FormSetObj.FlushFieldData(FormSetObj.AddEmployeeForm());
     }
     this->FieldObj=FormControllerObj.GetAllFieldInfo();
     this->FormSize=FormControllerObj.GetFormSize();
