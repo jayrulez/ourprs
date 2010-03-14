@@ -15,6 +15,7 @@ DepartmentList::DepartmentList()
 }
 DepartmentList::~DepartmentList()
 {
+    this->DestroyList();
 }
 void DepartmentList::AddDepartment(Department NewDepartment)
 {
@@ -88,5 +89,15 @@ void DepartmentList::BuildListFromFile()
             this->AddDepartment(DepartmentObj);
         }
         iStreamObj.close();
+	}
+}
+void DepartmentList::DestroyList()
+{
+	Department *CacheDepartment;
+	while (Head != NULL)
+	{
+		CacheDepartment = this->Head;
+		CacheDepartment = (this->Head)->getNext();
+		delete CacheDepartment;
 	}
 }

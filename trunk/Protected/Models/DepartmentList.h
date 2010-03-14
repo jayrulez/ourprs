@@ -16,5 +16,6 @@ public:
 	void ShowDepartmentList();
 	void BuildListFromFile();
 	Department * getHead();
+	void DestroyList();
 };
 #endif
