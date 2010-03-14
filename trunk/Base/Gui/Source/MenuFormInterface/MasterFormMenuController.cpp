@@ -461,6 +461,10 @@ int MasterFormMenuController::UpdateDepartmentFailSaveMenu()
                     MenuControllerObj.ShowMenu();
                     Flag=true;
                 }
+                if(MenuCall==DEPARTMENT_CODE || MenuCall==MAIN_CODE)
+                {
+                    FormSetObj.FlushFieldData(FormSetObj.SearchDepartmentForm());
+                }
             }while(Flag);
         }while(MenuCall==0);
     }
@@ -650,6 +654,10 @@ int MasterFormMenuController::SearchEmployeeMenu()
                     MenuSetObj.SearchEmployeeFormMenuExtension(ON);
                     Flag=true;
                 }
+                if(MenuCall==MAIN_CODE || MenuCall==EMPLOYEE_CODE)
+                {
+                    this->ClearAllFieldData();
+                }
             }while(Flag);
         }while(MenuCall==0);
     }
@@ -753,6 +761,10 @@ int MasterFormMenuController::UpdateEmployeeFailSaveMenu()
                     MenuSetObj.ShowMenuTitle(ON);
                     MenuControllerObj.ShowMenu();
                     Flag=true;
+                }
+                if(MenuCall==EMPLOYEE_CODE || MenuCall==MAIN_CODE)
+                {
+                    FormSetObj.FlushFieldData(FormSetObj.SearchEmployeeForm());
                 }
             }while(Flag);
         }while(MenuCall==0);

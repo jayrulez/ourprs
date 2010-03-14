@@ -124,12 +124,14 @@ Item* MenuSet::AddEmployeeFailSaveMenu()
 Item* MenuSet::SearchEmployeeFormMenu()
 {
     this->MenuCode = EMPLOYEE_SEARCH_CODE;
-    this->MenuSize = 2;
+    this->MenuSize = 3;
     MenuTitle="Employee Menu - Search";
-    static Item UpdateSearchEmployeeFormMenuItem[2];
-    UpdateSearchEmployeeFormMenuItem[0].SetItem(30,28,EMPLOYEE_SEARCH_SUBMIT_CODE,"Search");
-    UpdateSearchEmployeeFormMenuItem[1].SetItem(43,28,MAIN_CODE,"Main Menu");
+    static Item UpdateSearchEmployeeFormMenuItem[3];
+    UpdateSearchEmployeeFormMenuItem[0].SetItem(19,28,EMPLOYEE_SEARCH_SUBMIT_CODE,"Search");
+    UpdateSearchEmployeeFormMenuItem[1].SetItem(33,28,EMPLOYEE_CODE,"<--Employee");
+    UpdateSearchEmployeeFormMenuItem[2].SetItem(52,28,MAIN_CODE,"Main Menu");
     return UpdateSearchEmployeeFormMenuItem;
+
 }
 void MenuSet::SearchEmployeeFormMenuExtension(int state)
 {
@@ -137,11 +139,13 @@ void MenuSet::SearchEmployeeFormMenuExtension(int state)
     {
         ScreenObj.SetScreenTextColour(ConsoleObj.GetConsoleScreenColour()+3);
     }
-    LineObj.setVCoord(27,29,26);
+    LineObj.setVCoord(27,29,15);
     LineObj.vSLine();
-    LineObj.setVCoord(27,29,39);
+    LineObj.setVCoord(27,29,29);
     LineObj.vSLine();
-    LineObj.setVCoord(27,29,53);
+    LineObj.setVCoord(27,29,48);
+    LineObj.vSLine();
+    LineObj.setVCoord(27,29,64);
     LineObj.vSLine();
     ScreenObj.SetScreenTextColour(48);
 }
@@ -152,7 +156,7 @@ Item* MenuSet::UpdateEmployeeAfterSaveMenu()
     MenuTitle="Update Employee - Success";
     static Item UpdateEmployeeAfterSaveMenuItem[3];
     UpdateEmployeeAfterSaveMenuItem[0].SetItem(15,32,EMPLOYEE_UPDATE_CODE,"Update More");
-    UpdateEmployeeAfterSaveMenuItem[1].SetItem(32,32,EMPLOYEE_CODE,"<--Employee");
+    UpdateEmployeeAfterSaveMenuItem[1].SetItem(34,32,EMPLOYEE_CODE,"<--Employee");
     UpdateEmployeeAfterSaveMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");
     return UpdateEmployeeAfterSaveMenuItem;
 }
@@ -428,7 +432,7 @@ Item* MenuSet::UpdateEmployeeFormMenu()
     MenuTitle="Update Employee Menu";
     static Item UpdateEmployeeFormItem[3];
     UpdateEmployeeFormItem[0].SetItem(24,35,EMPLOYEE_UPDATE_SAVE_CODE,"Save");
-    UpdateEmployeeFormItem[1].SetItem(35,35,EMPLOYEE_CODE,"Cancel");
+    UpdateEmployeeFormItem[1].SetItem(35,35,EMPLOYEE_UPDATE_CODE,"Cancel");
     UpdateEmployeeFormItem[2].SetItem(48,35,MAIN_CODE,"Main Menu");
     return UpdateEmployeeFormItem;
 }

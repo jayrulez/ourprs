@@ -179,7 +179,6 @@ int DepartmentController::actionUpdate()
 					ListObj.BuildListFromFile();
 					//updatedDepartment->setList(ListObj.getHead());
                     updatedDepartment->update(ListObj.getHead());
-                    menuInstance->ClearAllFieldData();
 
                     this->getServicesObj()->BasicRunLevel();
                     if(updatedDepartment->getOperationState() == OPERATIONSTATE_FAILURE)

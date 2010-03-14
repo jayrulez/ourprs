@@ -5,6 +5,7 @@
 #ifndef EMPLOYEELIST_H
 #include "../Models/EmployeetList.h"
 #endif
+#include "../../Base/Gui/Source/Form/FormSet/FormSet.h"
 
 EmployeeController::EmployeeController()
 {
@@ -159,7 +160,7 @@ int EmployeeController::actionUpdate()
 				_hoursWorkedString >> _hoursWorked;
 
                 Employee * updatedEmployee = new Employee(_id,_firstname,_lastname,_deptCode,_position,_hoursWorked, NULL);
-                if(actionCode == MAIN_CODE || actionCode == EMPLOYEE_CODE)
+                if(actionCode == MAIN_CODE || actionCode == EMPLOYEE_CODE || actionCode == EMPLOYEE_UPDATE_CODE)
                 {
                     return this->run(actionCode);
                 }
@@ -191,7 +192,12 @@ int EmployeeController::actionUpdate()
                         cout << "Employee updated successfuly" << endl;
                         ScreenObj.SetScreenTextColour(DefaultTextColour);
                         updatedEmployee->show(14);
-                        return this->run(menuInstance->UpdateEmployeeAfterSaveMenu());
+                        actionCode=menuInstance->UpdateEmployeeAfterSaveMenu();
+
+                        FormSet FormSetObj;
+                        FormSetObj.FlushFieldData(FormSetObj.SearchEmployeeForm());
+
+                        return this->run(actionCode);
                     }
                 }
 			}else{
