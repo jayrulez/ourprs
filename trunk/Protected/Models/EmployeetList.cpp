@@ -8,6 +8,7 @@ EmployeeList::EmployeeList()
 }
 EmployeeList::~EmployeeList()
 {
+    this->DestroyList();
 }
 void EmployeeList::AddEmployee(Employee NewEmployee)
 {
@@ -78,5 +79,15 @@ void EmployeeList::BuildListFromFile()
             this->AddEmployee(EmployeeObj);
         }
         iStreamObj.close();
+	}
+}
+void EmployeeList::DestroyList()
+{
+	Employee *CacheEmployee;
+	while (Head != NULL)
+	{
+		CacheEmployee = this->Head;
+		CacheEmployee = (this->Head)->getNext();
+		delete CacheEmployee;
 	}
 }
