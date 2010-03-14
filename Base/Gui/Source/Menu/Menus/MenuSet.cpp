@@ -193,7 +193,7 @@ Item* MenuSet::EmployeeAfterViewMenu()
     MenuTitle="View Employee - success";
     static Item EmployeeAfterViewMenuItem[3];
     EmployeeAfterViewMenuItem[0].SetItem(15,32,EMPLOYEE_VIEW_CODE,"View More");
-    EmployeeAfterViewMenuItem[1].SetItem(32,32,EMPLOYEE_CODE,"<--Employee");
+    EmployeeAfterViewMenuItem[1].SetItem(34,32,EMPLOYEE_CODE,"<--Employee");
     EmployeeAfterViewMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");
     return EmployeeAfterViewMenuItem;
 }
@@ -616,7 +616,7 @@ Item* MenuSet::DeleteConfirmEmployeeMenu()
     MenuTitle="Delete Employee Menu - Confirmation";
     static Item DeleteConfirmEmployeeMenuItem[4];
     DeleteConfirmEmployeeMenuItem[0].SetItem(33,36,EMPLOYEE_DELETE_CODE,"Yes");
-    DeleteConfirmEmployeeMenuItem[1].SetItem(41,36,EMPLOYEE_SEARCH_CODE,"No");
+    DeleteConfirmEmployeeMenuItem[1].SetItem(41,36,EMPLOYEE_DELETE_CODE,"No");
     DeleteConfirmEmployeeMenuItem[2].SetItem(25,40,EMPLOYEE_CODE,"Employee");
     DeleteConfirmEmployeeMenuItem[3].SetItem(45,40,MAIN_CODE,"Main Menu");
     return DeleteConfirmEmployeeMenuItem;
