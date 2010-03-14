@@ -253,6 +253,13 @@ int EmployeeController::actionView()
 	}while(employee==NULL);
     return this->run(actionCode);
 }
+int EmployeeController::actionViewSorted()
+{
+	MasterFormMenuController* menuInstance = this->getMenuObj();
+
+    this->getServicesObj()->BasicRunLevel();
+    return this->run(menuInstance->ViewSortedEmployeeMenu());
+}
 int EmployeeController::actionDelete()
 {
     int actionCode;
@@ -314,6 +321,9 @@ int EmployeeController::run(int actionCode)
 		break;
 		case EMPLOYEE_VIEW_CODE:
 			call = this->actionView();
+		break;
+		case EMPLOYEE_VIEW_SORTED_CODE:
+			call = this->actionViewSorted();
 		break;
 		case EMPLOYEE_DELETE_CODE:
 			call = this->actionDelete();

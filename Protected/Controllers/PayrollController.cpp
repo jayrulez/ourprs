@@ -39,6 +39,10 @@ int PayrollController::actionViewSorted()
 int PayrollController::run(int actionCode)
 {
     int call;
+
+    if(actionCode == MAIN_CODE)
+        return actionCode;
+
     switch(actionCode)
     {
         case PAYROLL_PROCESS_CODE:
