@@ -278,7 +278,7 @@ int DepartmentController::actionList(int page = 0)
 int DepartmentController::run(int actionCode)
 {
     int call;
-
+    //this if statement is causing the problem in ths controller and employee controller
 	if(actionCode == MAIN_CODE)
 		return actionCode;
 
