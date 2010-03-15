@@ -964,9 +964,60 @@ int MasterFormMenuController::PayrollMenu()
     }
     return MenuCall;
 }
-int MasterFormMenuController::ProcessPayrollMenu()
+int MasterFormMenuController::PayrollAfterProcessMenu()
 {
+    bool Flag;
     int MenuCall;
+    if(MenuControllerObj.SetMenu(MenuSetObj.PayrollAfterGenerateMenu(),MenuSetObj.GetMenuSize(MenuSetObj.PayrollAfterGenerateMenu()),
+    MenuSetObj.GetMenuCode(MenuSetObj.PayrollAfterGenerateMenu())))
+    {
+        MenuControllerObj.ShowMenu();
+        MenuSetObj.ShowMenuTitle(ON);
+        //MenuSetObj.ViewDepartmentMenuExtension(ON);
+        do
+        {
+            do
+            {
+                Flag=false;
+                MenuCall= MenuControllerObj.BrowseMenu();
+                if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuCall,MenuControllerObj.GetMenuCode()))
+                {
+                    MenuControllerObj.ShowMenu();
+                    MenuSetObj.ShowMenuTitle(ON);
+                    //MenuSetObj.ViewDepartmentMenuExtension(ON);
+                    Flag=true;
+                }
+            }while(Flag);
+        }while(MenuCall==0);
+    }
+    return MenuCall;
+}
+int MasterFormMenuController::PayrollFailProcessMenu()
+{
+    bool Flag;
+    int MenuCall;
+    if(MenuControllerObj.SetMenu(MenuSetObj.PayrollFailGenerateMenu(),MenuSetObj.GetMenuSize(MenuSetObj.PayrollFailGenerateMenu()),
+    MenuSetObj.GetMenuCode(MenuSetObj.PayrollFailGenerateMenu())))
+    {
+        MenuControllerObj.ShowMenu();
+        MenuSetObj.ShowMenuTitle(ON);
+        //MenuSetObj.ViewDepartmentMenuExtension(ON);
+        do
+        {
+            do
+            {
+                Flag=false;
+                MenuCall= MenuControllerObj.BrowseMenu();
+                if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuCall,MenuControllerObj.GetMenuCode()))
+                {
+                    MenuControllerObj.ShowMenu();
+                    MenuSetObj.ShowMenuTitle(ON);
+                    //MenuSetObj.ViewDepartmentMenuExtension(ON);
+                    Flag=true;
+                }
+            }while(Flag);
+        }while(MenuCall==0);
+    }
     return MenuCall;
 }
 int MasterFormMenuController::ViewPayrollMenu()
@@ -978,7 +1029,7 @@ int MasterFormMenuController::ViewPayrollMenu()
     {
         MenuControllerObj.ShowMenu();
         MenuSetObj.ShowMenuTitle(ON);
-        MenuSetObj.ViewDepartmentMenuExtension(ON);
+        //MenuSetObj.ViewDepartmentMenuExtension(ON);
         do
         {
             do
@@ -989,7 +1040,7 @@ int MasterFormMenuController::ViewPayrollMenu()
                 {
                     MenuControllerObj.ShowMenu();
                     MenuSetObj.ShowMenuTitle(ON);
-                    MenuSetObj.ViewDepartmentMenuExtension(ON);
+                    //MenuSetObj.ViewDepartmentMenuExtension(ON);
                     Flag=true;
                 }
             }while(Flag);
@@ -1025,7 +1076,62 @@ int MasterFormMenuController::ViewSortedPayrollMenu()
     }
     return MenuCall;
 }
-
+int MasterFormMenuController::PayrollAfterViewSortedMenu()
+{
+    bool Flag;
+    int MenuCall;
+    if(MenuControllerObj.SetMenu(MenuSetObj.PayrollAfterViewSortedMenu(),MenuSetObj.GetMenuSize(MenuSetObj.PayrollAfterViewSortedMenu()),
+    MenuSetObj.GetMenuCode(MenuSetObj.PayrollAfterViewSortedMenu())))
+    {
+        MenuSetObj.ShowMenuTitle(ON);
+        MenuSetObj.ViewSortedPayrollMenuExtension(ON);
+        MenuControllerObj.ShowMenu();
+        do
+        {
+            do
+            {
+                Flag=false;
+                MenuCall=MenuControllerObj.BrowseMenu();
+                if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuCall,MenuControllerObj.GetMenuCode()))
+                {
+                    MenuSetObj.ShowMenuTitle(ON);
+                    MenuSetObj.ViewSortedPayrollMenuExtension(ON);
+                    MenuControllerObj.ShowMenu();
+                    Flag=true;
+                }
+            }while(Flag);
+        }while(MenuCall==0);
+    }
+    return MenuCall;
+}
+int MasterFormMenuController::PayrollFailViewSortedMenu()
+{
+    bool Flag;
+    int MenuCall;
+    if(MenuControllerObj.SetMenu(MenuSetObj.PayrollFailViewSortedMenu(),MenuSetObj.GetMenuSize(MenuSetObj.PayrollFailViewSortedMenu()),
+    MenuSetObj.GetMenuCode(MenuSetObj.PayrollFailViewSortedMenu())))
+    {
+        MenuSetObj.ShowMenuTitle(ON);
+        MenuSetObj.ViewSortedPayrollMenuExtension(ON);
+        MenuControllerObj.ShowMenu();
+        do
+        {
+            do
+            {
+                Flag=false;
+                MenuCall=MenuControllerObj.BrowseMenu();
+                if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuCall,MenuControllerObj.GetMenuCode()))
+                {
+                    MenuSetObj.ShowMenuTitle(ON);
+                    MenuSetObj.ViewSortedPayrollMenuExtension(ON);
+                    MenuControllerObj.ShowMenu();
+                    Flag=true;
+                }
+            }while(Flag);
+        }while(MenuCall==0);
+    }
+    return MenuCall;
+}
 /*
  * Exit Menu
 */

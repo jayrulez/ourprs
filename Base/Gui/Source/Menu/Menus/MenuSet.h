@@ -140,8 +140,12 @@ public:
 
     //Payroll Menu Set
     Item* PayrollMenu();
+    Item* PayrollAfterGenerateMenu();
+    Item* PayrollFailGenerateMenu();
     Item* ViewSortedPayrollMenu();
     void ViewSortedPayrollMenuExtension(int);
+    Item* PayrollAfterViewSortedMenu();
+    Item* PayrollFailViewSortedMenu();
     Item* ViewPayrollMenu();
     void ViewPayrollMenuExtension(int);
     Item* AddDepartmentAfterSaveMenu();
