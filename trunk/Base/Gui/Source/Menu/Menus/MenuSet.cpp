@@ -268,9 +268,31 @@ Item* MenuSet::PayrollMenu()
     PayrollItem[3].SetItem(36,27,MAIN_CODE,"Main Menu");
     return &PayrollItem[0];
 }
+Item* MenuSet::PayrollAfterGenerateMenu()
+{
+    this->MenuCode = PAYROLL_PROCESS_CODE;
+    this->MenuSize = 3;
+    MenuTitle="Payroll Menu - Processing Successful";
+    static Item PayrollAfterGenerateMenuItem[3];
+    PayrollAfterGenerateMenuItem[0].SetItem(20,28,PAYROLL_PROCESS_CODE,"Process");
+    PayrollAfterGenerateMenuItem[1].SetItem(32,28,PAYROLL_CODE,"<--Payroll");
+    PayrollAfterGenerateMenuItem[2].SetItem(55,28,MAIN_CODE,"Main Menu");
+    return PayrollAfterGenerateMenuItem;
+}
+Item* MenuSet::PayrollFailGenerateMenu()
+{
+    this->MenuCode = PAYROLL_PROCESS_CODE;
+    this->MenuSize = 3;
+    MenuTitle="Payroll Menu - Processing Failed";
+    static Item PayrollAFailGenerateMenuItem[3];
+    PayrollAFailGenerateMenuItem[0].SetItem(20,28,PAYROLL_PROCESS_CODE,"Retry");
+    PayrollAFailGenerateMenuItem[1].SetItem(32,28,PAYROLL_CODE,"<--Payroll");
+    PayrollAFailGenerateMenuItem[2].SetItem(55,28,MAIN_CODE,"Main Menu");
+    return PayrollAFailGenerateMenuItem;
+}
 Item* MenuSet::ViewSortedPayrollMenu()
 {
-    this->MenuCode = 6;
+    this->MenuCode = PAYROLL_VIEW_SORTED_CODE;
     this->MenuSize = 6;
     MenuTitle="Payroll Menu - View Sorted";
     static Item ViewSortedPayrollItem[6];
@@ -305,6 +327,29 @@ void MenuSet::ViewSortedPayrollMenuExtension(int state)
         cout<<"Sort Payroll by:";
     }
     ScreenObj.SetScreenTextColour(48);
+}
+Item* MenuSet::PayrollAfterViewSortedMenu()
+{
+    this->MenuCode = PAYROLL_PROCESS_CODE;
+    this->MenuSize = 3;
+    MenuTitle="View Sorted Payroll - Successful";
+    static Item PayrollAfterViewSortedMenuItem[3];
+    PayrollAfterViewSortedMenuItem[0].SetItem(15,28,PAYROLL_VIEW_SORTED_CODE,"<--View Sorted");
+    PayrollAfterViewSortedMenuItem[1].SetItem(32,28,PAYROLL_CODE,"Payroll");
+    PayrollAfterViewSortedMenuItem[2].SetItem(55,28,MAIN_CODE,"Main Menu");
+    return PayrollAfterViewSortedMenuItem;
+}
+Item* MenuSet::PayrollFailViewSortedMenu()
+{
+    this->MenuCode = PAYROLL_PROCESS_CODE;
+    this->MenuSize = 4;
+    MenuTitle="View Sorted Payroll - Failed";
+    static Item PayrollFailViewSortedMenuItem[4];
+    PayrollFailViewSortedMenuItem[0].SetItem(10,28,PAYROLL_VIEW_SORTED_CODE,"Retry");
+    PayrollFailViewSortedMenuItem[1].SetItem(32,28,PAYROLL_VIEW_SORTED_CODE,"<--View Sorted");
+    PayrollFailViewSortedMenuItem[2].SetItem(45,28,PAYROLL_CODE,"Payroll");
+    PayrollFailViewSortedMenuItem[3].SetItem(60,28,MAIN_CODE,"Main Menu");
+    return PayrollFailViewSortedMenuItem;
 }
 Item* MenuSet::ViewPayrollMenu()
 {

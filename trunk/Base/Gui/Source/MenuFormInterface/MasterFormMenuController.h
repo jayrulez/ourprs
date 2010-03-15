@@ -67,9 +67,12 @@ public:
 
     //Payroll
 	int PayrollMenu();
-	int ProcessPayrollMenu();
+	int PayrollAfterProcessMenu();
+	int PayrollFailProcessMenu();
 	int ViewPayrollMenu();
     int ViewSortedPayrollMenu();
+    int PayrollAfterViewSortedMenu();
+    int PayrollFailViewSortedMenu();
 
     //Exit
 	int ExitMenu();

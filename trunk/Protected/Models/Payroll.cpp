@@ -55,9 +55,9 @@ float Payroll::GetGrossPay()
 {
     return this->GrossPay;
 }
-void Payroll::setNext(Payroll* Next)
+void Payroll::setNext(Payroll* next)
 {
-    this->Next=next;
+    this->next=next;
 }
 Payroll* Payroll::getNext()
 {
