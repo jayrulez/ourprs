@@ -71,5 +71,6 @@ public:
 	Employee * findById(int);
 	static Employee * model();
 	void update(Employee*);
+	void deleteRecord(Employee*);
 };
 #endif
