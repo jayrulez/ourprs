@@ -278,9 +278,6 @@ int DepartmentController::actionList(int page = 0)
 int DepartmentController::run(int actionCode)
 {
     int call;
-    //this if statement is causing the problem in ths controller and employee controller
-	if(actionCode == MAIN_CODE)
-		return actionCode;
 
     switch(actionCode)
     {
@@ -289,12 +286,18 @@ int DepartmentController::run(int actionCode)
 		break;
 		case DEPARTMENT_UPDATE_CODE:
             call = this->actionUpdate();
+
         break;
         case DEPARTMENT_VIEW_CODE:
             call = this->actionView();
+            //cout<<call;system("pause");
         break;
         case DEPARTMENT_LIST_CODE:
             call = this->actionList();
+        break;
+
+        case MAIN_CODE:
+            call = actionCode;
         break;
         case DEPARTMENT_CODE:
         default:
