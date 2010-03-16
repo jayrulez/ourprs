@@ -264,6 +264,7 @@ int EmployeeController::actionViewSorted()
     this->getServicesObj()->BasicRunLevel();
     return this->run(menuInstance->ViewSortedEmployeeMenu());
 }
+
 int EmployeeController::actionDelete()
 {
     int actionCode;
