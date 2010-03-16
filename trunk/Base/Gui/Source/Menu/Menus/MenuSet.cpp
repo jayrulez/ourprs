@@ -106,7 +106,7 @@ Item* MenuSet::AddEmployeeAfterSaveMenu()
     MenuTitle="Add Employee - Success";
     static Item AddEmployeeAfterSaveMenuItem[3];
     AddEmployeeAfterSaveMenuItem[0].SetItem(15,32,EMPLOYEE_ADD_CODE,"Add More");
-    AddEmployeeAfterSaveMenuItem[1].SetItem(32,32,EMPLOYEE_CODE,"<--Employee");
+    AddEmployeeAfterSaveMenuItem[1].SetItem(34,32,EMPLOYEE_CODE,"<--Employee");
     AddEmployeeAfterSaveMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");
     return AddEmployeeAfterSaveMenuItem;
 }
@@ -685,10 +685,10 @@ Item* MenuSet::EmployeeAfterDeleteMenu()
     this->MenuCode = EMPLOYEE_VIEW_CODE;
     this->MenuSize = 3;
     MenuTitle="Delete Employee - success";
-    static Item EmployeeAfterViewMenuItem[2];
-    EmployeeAfterViewMenuItem[0].SetItem(15,32,EMPLOYEE_SEARCH_CODE,"Delete More");
-    EmployeeAfterViewMenuItem[1].SetItem(32,32,EMPLOYEE_CODE,"Employee");
-    EmployeeAfterViewMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");
+    static Item EmployeeAfterViewMenuItem[3];
+    EmployeeAfterViewMenuItem[0].SetItem(15,28,EMPLOYEE_DELETE_CODE,"Delete More");
+    EmployeeAfterViewMenuItem[1].SetItem(37,28,EMPLOYEE_CODE,"Employee");
+    EmployeeAfterViewMenuItem[2].SetItem(55,28,MAIN_CODE,"Main Menu");
     return EmployeeAfterViewMenuItem;
 }
 Item* MenuSet::EmployeeFailDeleteMenu()
@@ -696,10 +696,10 @@ Item* MenuSet::EmployeeFailDeleteMenu()
     this->MenuCode = EMPLOYEE_VIEW_CODE;
     this->MenuSize = 3;
     MenuTitle="Delete Employee - Failed";
-    static Item EmployeeAfterViewMenuItem[2];
-    EmployeeAfterViewMenuItem[0].SetItem(15,32,EMPLOYEE_DELETE_CODE,"Retry");
-    EmployeeAfterViewMenuItem[1].SetItem(32,32,EMPLOYEE_CODE,"Employee");
-    EmployeeAfterViewMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");
+    static Item EmployeeAfterViewMenuItem[3];
+    EmployeeAfterViewMenuItem[0].SetItem(15,28,EMPLOYEE_DELETE_CODE,"Retry");
+    EmployeeAfterViewMenuItem[1].SetItem(32,28,EMPLOYEE_CODE,"Employee");
+    EmployeeAfterViewMenuItem[2].SetItem(55,28,MAIN_CODE,"Main Menu");
     return EmployeeAfterViewMenuItem;
 }
 

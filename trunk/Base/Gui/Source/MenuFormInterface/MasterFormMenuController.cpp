@@ -904,7 +904,6 @@ int MasterFormMenuController::EmployeeAfterDeleteMenu()
     {
         MenuControllerObj.ShowMenu();
         MenuSetObj.ShowMenuTitle(ON);
-        MenuSetObj.ViewEmployeeMenuExtension(ON);
         do
         {
             do
@@ -915,8 +914,11 @@ int MasterFormMenuController::EmployeeAfterDeleteMenu()
                 {
                     MenuControllerObj.ShowMenu();
                     MenuSetObj.ShowMenuTitle(ON);
-                    MenuSetObj.ViewEmployeeMenuExtension(ON);
                     Flag=true;
+                }
+                if(MenuCall==MAIN_CODE || MenuCall==EMPLOYEE_DELETE_CODE ||MenuCall==EMPLOYEE_CODE)
+                {
+                    FormSetObj.FlushFieldData(FormSetObj.SearchEmployeeForm());
                 }
             }while(Flag);
         }while(MenuCall==0);
@@ -945,6 +947,10 @@ int MasterFormMenuController::EmployeeFailDeleteMenu()
                     MenuSetObj.ShowMenuTitle(ON);
                     MenuSetObj.ViewEmployeeMenuExtension(ON);
                     Flag=true;
+                }
+                if(MenuCall==MAIN_CODE || MenuCall==EMPLOYEE_CODE)
+                {
+                    FormSetObj.FlushFieldData(FormSetObj.SearchEmployeeForm());
                 }
             }while(Flag);
         }while(MenuCall==0);

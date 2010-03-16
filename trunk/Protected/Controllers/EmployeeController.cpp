@@ -300,24 +300,25 @@ int EmployeeController::actionDelete()
                     ListObj.BuildListFromFile();
                     ListObj.DeleteNode(employee);
                     employee->deleteRecord(ListObj.getHead());
+                    this->getServicesObj()->BasicRunLevel();
                     if(employee->getOperationState()==OPERATIONSTATE_SUCCESS)
                     {
-                        ConsoleObj.xyCoord(32,32);
+                        ConsoleObj.xyCoord(32,16);
                         ScreenObj.SetScreenTextColour(GreenTextColour);
                         cout << "Employee deleted."<<endl;
                         ScreenObj.SetScreenTextColour(DefaultTextColour);
-                    }
+                        actionCode = this->getMenuObj()->EmployeeAfterDeleteMenu();
 
+                    }
                     if(employee->getOperationState()==OPERATIONSTATE_FAILURE)
                     {
-                        ConsoleObj.xyCoord(30,32);
+                        ConsoleObj.xyCoord(25,16);
                         ScreenObj.SetScreenTextColour(RedTextColour);
-                        cout << "Employee not deleted."<<endl;
+                        cout << "Error: Employee not deleted."<<endl;
                         ScreenObj.SetScreenTextColour(DefaultTextColour);
+                        actionCode = this->getMenuObj()->EmployeeFailDeleteMenu();
                     }
-                    // need an afterdelete menu
-                    system("pause");
-                    return MAIN_CODE;
+                    return this->run(actionCode);
                 }else{
                     return this->run(actionCode);
                 }
