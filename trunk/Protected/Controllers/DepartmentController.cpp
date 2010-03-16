@@ -290,7 +290,6 @@ int DepartmentController::run(int actionCode)
         break;
         case DEPARTMENT_VIEW_CODE:
             call = this->actionView();
-            //cout<<call;system("pause");
         break;
         case DEPARTMENT_LIST_CODE:
             call = this->actionList();
