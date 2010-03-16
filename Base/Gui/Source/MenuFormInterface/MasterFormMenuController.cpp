@@ -890,6 +890,10 @@ int MasterFormMenuController::EmployeeDeleteConfirmMenu()
                     MenuSetObj.DeleteConfirmEmployeeMenuExtension(ON);
                     Flag=true;
                 }
+                if(MenuCall==MAIN_CODE || MenuCall==EMPLOYEE_CODE)
+                {
+                    FormSetObj.FlushFieldData(FormSetObj.SearchEmployeeForm());
+                }
             }while(Flag);
         }while(MenuCall==0);
     }
