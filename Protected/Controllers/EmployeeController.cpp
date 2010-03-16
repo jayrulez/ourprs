@@ -291,11 +291,35 @@ int EmployeeController::actionDelete()
                 ScreenObj.SetScreenTextColour(WhiteColour);
                 cout << "Do you really want to delete?" << endl;
                 ScreenObj.SetScreenTextColour(DefaultTextColour);
-                EmployeeList ListObj;
-				ListObj.BuildListFromFile();
-				ListObj.DeleteNode(employee);
-                employee->deleteRecord(ListObj.getHead());
-                return this->run(this->getMenuObj()->EmployeeDeleteConfirmMenu());
+
+                actionCode = this->getMenuObj()->EmployeeDeleteConfirmMenu();
+                if(actionCode == EMPLOYEE_DELETE_CONFIRM_MENU_CODE)
+                {
+                    EmployeeList ListObj;
+                    ListObj.BuildListFromFile();
+                    ListObj.DeleteNode(employee);
+                    employee->deleteRecord(ListObj.getHead());
+                    if(employee->getOperationState()==OPERATIONSTATE_SUCCESS)
+                    {
+                        ConsoleObj.xyCoord(32,32);
+                        ScreenObj.SetScreenTextColour(GreenTextColour);
+                        cout << "Employee deleted."<<endl;
+                        ScreenObj.SetScreenTextColour(DefaultTextColour);
+                    }
+
+                    if(employee->getOperationState()==OPERATIONSTATE_FAILURE)
+                    {
+                        ConsoleObj.xyCoord(30,32);
+                        ScreenObj.SetScreenTextColour(RedTextColour);
+                        cout << "Employee not deleted."<<endl;
+                        ScreenObj.SetScreenTextColour(DefaultTextColour);
+                    }
+                    // need an afterdelete menu
+                    system("pause");
+                    return MAIN_CODE;
+                }else{
+                    return this->run(actionCode);
+                }
             }
             else
             {

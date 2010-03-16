@@ -113,10 +113,11 @@ void EmployeeList::DeleteNode(Employee * employee)
             Employee * temp = Head;
             while(temp != NULL)
             {
-                // if item is between start and end of list
+                // if not at the end of thelist
                 if(temp->getNext()!=NULL)
                 {
                     temp->getNext()->setPrev(temp);
+                    // if item is between start and end of list
                     if(employee->getId() == temp->getId())
                     {
                         temp->getPrev()->setNext(temp->getNext());
