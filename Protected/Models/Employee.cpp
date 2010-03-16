@@ -12,6 +12,7 @@
 Employee::Employee()
 {
 	this->next = NULL;
+	this->prev = NULL;
 	this->setFilename(EMPLOYEE_PAYROLL_DATA_FILE);
 }
 
@@ -19,7 +20,7 @@ Employee::~Employee()
 {
 }
 
-Employee::Employee(int id = 0, string firstname = "", string lastname = "", int deptCode = 0, string position = "", float hoursWorked = 0, Employee * next = NULL)
+Employee::Employee(int id = 0, string firstname = "", string lastname = "", int deptCode = 0, string position = "", float hoursWorked = 0)
 {
 	this->id = id;
 	this->firstname = firstname;
@@ -27,13 +28,14 @@ Employee::Employee(int id = 0, string firstname = "", string lastname = "", int 
 	this->deptCode = deptCode;
 	this->position = position;
 	this->hoursWorked = hoursWorked;
-	this->next = next;
+	this->next = NULL;
+	this->prev = NULL;
 	this->setFilename(EMPLOYEE_PAYROLL_DATA_FILE);
 }
 
 Employee* Employee::model()
 {
-	return new Employee(0,"","",0,"",0,NULL);
+	return new Employee(0,"","",0,"",0);
 }
 
 Employee* Employee::getNext()
@@ -142,7 +144,7 @@ bool Employee::recordExists(int keyCode)
 	string line;
 	if(streamObj.is_open())
 	{
-		Employee employee(0,"","",0,"",0,NULL);
+		Employee employee(0,"","",0,"",0);
 	    //std::getline( streamObj, line );
 		while(streamObj >> employee.id >> employee.firstname >> employee.lastname >> employee.deptCode >> employee.position >> employee.hoursWorked)
 		{
@@ -163,7 +165,7 @@ bool Employee::recordExists(int keyCode, int ignore)
 	string line;
 	if(streamObj.is_open())
 	{
-		Employee employee(0,"","",0,"",0,NULL);
+		Employee employee(0,"","",0,"",0);
 	    //std::getline( streamObj, line );
 		while(streamObj >> employee.id >> employee.firstname >> employee.lastname >> employee.deptCode >> employee.position >> employee.hoursWorked)
 		{
@@ -187,14 +189,14 @@ Employee* Employee::findById(int keyCode)
 	string line;
 	if(streamObj.is_open())
 	{
-		Employee employee(0,"","",0,"",0,NULL);
+		Employee employee(0,"","",0,"",0);
 	    //std::getline( streamObj, line );
 		while(streamObj >> employee.id >> employee.firstname >> employee.lastname >> employee.deptCode >> employee.position >> employee.hoursWorked)
 		{
 			if(employee.id == keyCode)
 			{
 			    streamObj.close();
-			    Employee * record = new Employee(employee.id, employee.firstname, employee.lastname, employee.deptCode, employee.position, employee.hoursWorked, NULL);
+			    Employee * record = new Employee(employee.id, employee.firstname, employee.lastname, employee.deptCode, employee.position, employee.hoursWorked);
 				return record;
 			}
 		}
@@ -252,7 +254,7 @@ void Employee::update(Employee * listHead)
 }
 
 
-void Employee::deleteRecord(Employee * listHead)
+void Employee::deleteRecord(Employee* listHead)
 {
 	ifstream iStreamObj(this->getFilename());
 	Employee * tempEmployee = listHead;
@@ -264,19 +266,26 @@ void Employee::deleteRecord(Employee * listHead)
         {
             if(tempEmployee != NULL)
             {
-                if(tempEmployee->getId() != this->getId())
-                {
-					oStreamObj << tempEmployee->getId() << "\t" << tempEmployee->getFirstname() << "\t" << tempEmployee->getLastname() << "\t" << tempEmployee->getDeptCode() << "\t" << tempEmployee->getPosition() << "\t" << tempEmployee->getHoursWorked() << "\n";
-                }
+                oStreamObj << tempEmployee->getId() << "\t" << tempEmployee->getFirstname() << "\t" << tempEmployee->getLastname() << "\t" << tempEmployee->getDeptCode() << "\t" << tempEmployee->getPosition() << "\t" << tempEmployee->getHoursWorked() << "\n";
                 tempEmployee = tempEmployee->getNext();
             }
         }while(tempEmployee!=NULL);
         oStreamObj.close();
     }
-    if(Employee::model()->recordExists(this->id))
+    if(!Employee::model()->recordExists(this->id))
     {
         this->setOperationState(OPERATIONSTATE_SUCCESS);
     }else{
         this->setOperationState(OPERATIONSTATE_FAILURE);
 	}
+}
+
+void Employee::setPrev(Employee* employee)
+{
+    this->prev = employee;
+}
+
+Employee* Employee::getPrev()
+{
+    return this->prev;
 }

@@ -16,5 +16,7 @@ public:
 	Employee* getHead();
 	void BuildListFromFile();
 	void DestroyList();
+	void DeleteNode(Employee*);
+	void UpdateNode(Employee*);
 };
 #endif
