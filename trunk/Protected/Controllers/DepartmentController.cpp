@@ -14,6 +14,9 @@
 #include "../../Base/Gui/Source/Tools/Colour.h"
 #include "../../Base/Gui/Source/Form/FormSet/FormSet.h"
 #include <sstream>
+#ifndef _DEFAULTCONTROLLER_H
+#include "./DefaultController.h"
+#endif
 
 DepartmentController::DepartmentController()
 {
@@ -278,6 +281,12 @@ int DepartmentController::actionList(int page = 0)
 int DepartmentController::run(int actionCode)
 {
     int call;
+<<<<<<< .mine
+
+	if(actionCode == MAIN_CODE)
+		return DefaultController::getInstance()->actionIndex();
+=======
+>>>>>>> .r242
 
     switch(actionCode)
     {
