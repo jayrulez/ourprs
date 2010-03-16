@@ -6,6 +6,9 @@
 #include "../Models/EmployeetList.h"
 #endif
 #include "../../Base/Gui/Source/Form/FormSet/FormSet.h"
+#ifndef _DEFAULTCONTROLLER_H
+#include "./DefaultController.h"
+#endif
 
 EmployeeController::EmployeeController()
 {
@@ -64,7 +67,7 @@ int EmployeeController::actionAdd()
 		lastname = (data+2)->GetFieldData();
 		position = (data+4)->GetFieldData();
 
-		Employee * employee = new Employee(id, firstname, lastname, deptCode, position, hoursWorked, NULL);
+		Employee * employee = new Employee(id, firstname, lastname, deptCode, position, hoursWorked);
 
 		employee->save();
 
@@ -159,7 +162,7 @@ int EmployeeController::actionUpdate()
 				string _position = (newData+4)->GetFieldData();
 				_hoursWorkedString >> _hoursWorked;
 
-                Employee * updatedEmployee = new Employee(_id,_firstname,_lastname,_deptCode,_position,_hoursWorked, NULL);
+                Employee * updatedEmployee = new Employee(_id,_firstname,_lastname,_deptCode,_position,_hoursWorked);
                 if(actionCode == MAIN_CODE || actionCode == EMPLOYEE_CODE || actionCode == EMPLOYEE_UPDATE_CODE)
                 {
                     return this->run(actionCode);
@@ -168,6 +171,7 @@ int EmployeeController::actionUpdate()
                 {
 					EmployeeList ListObj;
 					ListObj.BuildListFromFile();
+					//ListObj.UpdateNode(updatedEmployee);
                     updatedEmployee->update(ListObj.getHead());
 
                     this->getServicesObj()->BasicRunLevel();
@@ -287,6 +291,10 @@ int EmployeeController::actionDelete()
                 ScreenObj.SetScreenTextColour(WhiteColour);
                 cout << "Do you really want to delete?" << endl;
                 ScreenObj.SetScreenTextColour(DefaultTextColour);
+                EmployeeList ListObj;
+				ListObj.BuildListFromFile();
+				ListObj.DeleteNode(employee);
+                employee->deleteRecord(ListObj.getHead());
                 return this->run(this->getMenuObj()->EmployeeDeleteConfirmMenu());
             }
             else
@@ -309,29 +317,31 @@ int EmployeeController::run(int actionCode)
     int call;
 
     if(actionCode == MAIN_CODE)
-        return actionCode;
-
-    switch(actionCode)
     {
-		case EMPLOYEE_ADD_CODE:
-			call = this->actionAdd();
-		break;
-		case EMPLOYEE_UPDATE_CODE:
-			call = this->actionUpdate();
-		break;
-		case EMPLOYEE_VIEW_CODE:
-			call = this->actionView();
-		break;
-		case EMPLOYEE_VIEW_SORTED_CODE:
-			call = this->actionViewSorted();
-		break;
-		case EMPLOYEE_DELETE_CODE:
-			call = this->actionDelete();
-		break;
-        case EMPLOYEE_CODE:
-        default:
-            call = this->actionIndex();
-        break;
+        return DefaultController::getInstance()->actionIndex();
+    }else{
+        switch(actionCode)
+        {
+            case EMPLOYEE_ADD_CODE:
+                call = this->actionAdd();
+            break;
+            case EMPLOYEE_UPDATE_CODE:
+                call = this->actionUpdate();
+            break;
+            case EMPLOYEE_VIEW_CODE:
+                call = this->actionView();
+            break;
+            case EMPLOYEE_VIEW_SORTED_CODE:
+                call = this->actionViewSorted();
+            break;
+            case EMPLOYEE_DELETE_CODE:
+                call = this->actionDelete();
+            break;
+            case EMPLOYEE_CODE:
+            default:
+                call = this->actionIndex();
+            break;
+        }
+        return call;
     }
-    return call;
 }

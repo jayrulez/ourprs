@@ -18,10 +18,11 @@ private:
 	string position;
 	float hoursWorked;
 	Employee * next;
+	Employee * prev;
 public:
 	Employee();
 	~Employee();
-	Employee(int, string, string, int, string, float, Employee*);
+	Employee(int, string, string, int, string, float);
 	int getId();
 	string getFirstname();
 	string getLastname();
@@ -36,6 +37,8 @@ public:
 	void setHoursWorked(float);
 	void setNext(Employee*);
 	Employee* getNext();
+	void setPrev(Employee*);
+	Employee* getPrev();
 	void show(int);
 	void read();
 	void write();

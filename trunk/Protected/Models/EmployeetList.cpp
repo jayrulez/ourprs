@@ -1,10 +1,12 @@
 #include "./EmployeetList.h"
 #include <fstream>
 #include <sstream>
+#include <iostream>
 
 EmployeeList::EmployeeList()
 {
     Head=NULL;
+    //Head->setPrev(NULL);
 }
 EmployeeList::~EmployeeList()
 {
@@ -64,7 +66,7 @@ void EmployeeList::BuildListFromFile()
 
 	ifstream iStreamObj(Employee::model()->getFilename());
 
-    Employee EmployeeObj(0,"","",0,"",0,NULL);
+    Employee EmployeeObj(0,"","",0,"",0);
 
 	if(iStreamObj.is_open())
 	{
@@ -90,4 +92,44 @@ void EmployeeList::DestroyList()
 		CacheEmployee = (this->Head)->getNext();
 		delete CacheEmployee;
 	}
+}
+
+void EmployeeList::DeleteNode(Employee * employee)
+{
+    // if list is not empty
+    if(Head != NULL)
+    {
+        //
+        Head->setPrev(NULL);
+        // if record is found at the beginning of list
+        if(employee->getId() == Head->getId())
+        {
+            // if has more than one item
+            if(Head->getNext() != NULL)
+                Head = Head->getNext();
+            else
+                Head = NULL;
+        }else{
+            Employee * temp = Head;
+            while(temp != NULL)
+            {
+                // if item is between start and end of list
+                if(temp->getNext()!=NULL)
+                {
+                    temp->getNext()->setPrev(temp);
+                    if(employee->getId() == temp->getId())
+                    {
+                        temp->getPrev()->setNext(temp->getNext());
+                    }
+                }else{
+                    // If record is found at end of list
+                    if(employee->getId() == temp->getId())
+                    {
+                        temp->getPrev()->setNext(NULL);
+                    }
+                }
+                temp = temp->getNext();
+            }
+        }
+    }
 }

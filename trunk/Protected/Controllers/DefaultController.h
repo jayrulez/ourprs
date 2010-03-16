@@ -13,5 +13,6 @@ public:
 	int actionIndex();
 	int run(int);
 	int getDefaultActionCode();
+	static DefaultController* getInstance();
 };
 #endif

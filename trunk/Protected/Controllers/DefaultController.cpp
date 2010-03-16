@@ -30,6 +30,7 @@ int DefaultController::actionIndex()
 int DefaultController::run(int actionCode)
 {
     int call;
+
     switch(actionCode)
     {
         case MAIN_CODE:
@@ -38,4 +39,9 @@ int DefaultController::run(int actionCode)
         break;
     }
     return call;
+}
+
+DefaultController* DefaultController::getInstance()
+{
+    return new DefaultController;
 }
