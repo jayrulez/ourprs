@@ -18,5 +18,6 @@ public:
 	void DestroyList();
 	void DeleteNode(Employee*);
 	void UpdateNode(Employee*);
+	void SortList(string, int);
 };
 #endif

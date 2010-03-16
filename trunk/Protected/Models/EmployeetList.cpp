@@ -1,4 +1,5 @@
 #include "./EmployeetList.h"
+#include "../../config.h"
 #include <fstream>
 #include <sstream>
 #include <iostream>
@@ -133,4 +134,9 @@ void EmployeeList::DeleteNode(Employee * employee)
             }
         }
     }
+}
+
+void EmployeeList::SortList(string sortBy = "id", int direction = SORT_DIRECTION_ASC)
+{
+
 }

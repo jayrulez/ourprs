@@ -1,6 +1,9 @@
 #ifndef _PAYROLLCONTROLLER_H
 #include "./PayrollController.h"
 #endif
+#ifndef _DEFAULTCONTROLLER_H
+#include "./DefaultController.h"
+#endif
 
 PayrollController::PayrollController()
 {
@@ -25,6 +28,7 @@ int PayrollController::actionIndex()
 }
 int PayrollController::actionProcess()
 {
+    return MAIN_CODE;
 }
 int PayrollController::actionView()
 {
@@ -41,7 +45,7 @@ int PayrollController::run(int actionCode)
     int call;
 
     if(actionCode == MAIN_CODE)
-        return actionCode;
+        return DefaultController::getInstance()->actionIndex();
 
     switch(actionCode)
     {
