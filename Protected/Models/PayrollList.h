@@ -14,7 +14,7 @@ public:
     Payroll* GetPayroll(Payroll);
     void ShowPayrollList();
 	void BuildListFromFile();
-	void BuildFileFromList();
+	bool BuildFileFromList();
 	Payroll * getHead();
 	int ProcessPayroll();
 	void DestroyList();

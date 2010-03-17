@@ -4,6 +4,8 @@
 
 Payroll::Payroll()
 {
+    this->next = NULL;
+    this->setFilename(PROCESSED_PAYROLL_DATA_FILE);
 }
 Payroll::~Payroll()
 {
@@ -19,6 +21,8 @@ Payroll::Payroll(int id,string FirstName,string LastName,int DeptCode,string Pos
     this->RegularPay=RegularPay;
     this->OvertimePay=OvertimePay;
     this->GrossPay=GrossPay;
+    this->next = NULL;
+    this->setFilename(PROCESSED_PAYROLL_DATA_FILE);
 }
 void Payroll::SetPayroll(int id,string FirstName,string LastName,int DeptCode,string Position,float HoursWorked,float RegularPay,float OvertimePay,float GrossPay)
 {
@@ -31,6 +35,10 @@ void Payroll::SetPayroll(int id,string FirstName,string LastName,int DeptCode,st
     this->RegularPay=RegularPay;
     this->OvertimePay=OvertimePay;
     this->GrossPay=GrossPay;
+}
+Payroll* Payroll::model()
+{
+	return new Payroll;
 }
 void Payroll::SetRegularPay(float RegularPay)
 {

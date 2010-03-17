@@ -9,6 +9,9 @@
 #ifdef _WIN32
     #include "../../Base/Gui/Win32/Core/Console.h"
 #endif
+#include "../../Base/Gui/Source/Screen/Screen.h"
+#include "../../Base/Gui/Source/Tools/Colour.h"
+
 using namespace std;
 
 PayrollList::PayrollList()
@@ -97,21 +100,36 @@ void PayrollList::BuildListFromFile()
 	}
 	*/
 }
-void PayrollList::BuildFileFromList()
+bool PayrollList::BuildFileFromList()
 {
+    Console ConsoleObj;
+    Screen ScreenObj;
     Employee EmployeeObj;
     Payroll *PayrollPtr = Head;
     ofstream oStreamObj(Payroll::model()->getFilename());
     if(oStreamObj.is_open())
     {
-        while(PayrollPtr!=NULL)
+        if(Head!=NULL)
         {
-            EmployeeObj = PayrollPtr->GetEmployeeObj();
-            oStreamObj << EmployeeObj.getDeptCode() << "\t" << EmployeeObj.getFirstname() << "\t" << EmployeeObj.getLastname() <<
-            "\t" << EmployeeObj.getDeptCode() << "\t" << EmployeeObj.getPosition() << "\t" << EmployeeObj.getHoursWorked <<
-            "\t" << PayrollPtr->GetRegularPay << "\t" << PayrollPtr->GetOvertimePay() << "\t" << PayrollPtr->GetGrossPay() << "\n";
+            while(PayrollPtr!=NULL)
+            {
+                EmployeeObj = PayrollPtr->GetEmployeeObj();
+                oStreamObj << EmployeeObj.getDeptCode() << "\t" << EmployeeObj.getFirstname() << "\t" << EmployeeObj.getLastname() <<
+                "\t" << EmployeeObj.getDeptCode() << "\t" << EmployeeObj.getPosition() << "\t" << EmployeeObj.getHoursWorked() <<
+                "\t" << PayrollPtr->GetRegularPay() << "\t" << PayrollPtr->GetOvertimePay() << "\t" << PayrollPtr->GetGrossPay() << "\n";
+            }
+            return true;
+        }
+        else
+        {
+            ConsoleObj.xyCoord(20,9);
+            ScreenObj.SetScreenTextColour(WhiteColour);
+			cout << "No information is available to be processed." << endl;
+			ScreenObj.SetScreenTextColour(DefaultTextColour);
+			return true;
         }
     }
+    return false;
 }
 int PayrollList::ProcessPayroll()
 {
