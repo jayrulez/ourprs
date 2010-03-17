@@ -117,14 +117,19 @@ bool PayrollList::BuildFileFromList()
                 oStreamObj << EmployeeObj.getDeptCode() << "\t" << EmployeeObj.getFirstname() << "\t" << EmployeeObj.getLastname() <<
                 "\t" << EmployeeObj.getDeptCode() << "\t" << EmployeeObj.getPosition() << "\t" << EmployeeObj.getHoursWorked() <<
                 "\t" << PayrollPtr->GetRegularPay() << "\t" << PayrollPtr->GetOvertimePay() << "\t" << PayrollPtr->GetGrossPay() << "\n";
+                PayrollPtr = PayrollPtr->getNext();
             }
+            ConsoleObj.xyCoord(24,15);
+            ScreenObj.SetScreenTextColour(GreenTextColour);
+			cout << "Payroll Processed Successfully!" << endl;
+			ScreenObj.SetScreenTextColour(DefaultTextColour);
             return true;
         }
         else
         {
-            ConsoleObj.xyCoord(20,9);
+            ConsoleObj.xyCoord(13,15);
             ScreenObj.SetScreenTextColour(WhiteColour);
-			cout << "No information is available to be processed." << endl;
+			cout << "No Employee information is available to be processed." << endl;
 			ScreenObj.SetScreenTextColour(DefaultTextColour);
 			return true;
         }

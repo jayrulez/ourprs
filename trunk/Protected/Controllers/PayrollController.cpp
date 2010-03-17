@@ -31,6 +31,7 @@ int PayrollController::actionIndex()
 }
 int PayrollController::actionProcess()
 {
+    this->getServicesObj()->BasicRunLevel();
     PayrollList PayrollListObj;
     PayrollListObj.ProcessPayroll();
     if(PayrollListObj.BuildFileFromList())
@@ -38,7 +39,13 @@ int PayrollController::actionProcess()
         return this->run(this->getMenuObj()->PayrollAfterProcessMenu());
     }
     else
+    {
+        ConsoleObj.xyCoord(20,15);
+        ScreenObj.SetScreenTextColour(RedTextColour);
+        cout << "Error: Files could not be processed" << endl;
+        ScreenObj.SetScreenTextColour(DefaultTextColour);
         return this->run(this->getMenuObj()->PayrollFailProcessMenu());
+    }
     return MAIN_CODE;
 }
 int PayrollController::actionView()
