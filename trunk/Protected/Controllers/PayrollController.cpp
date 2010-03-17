@@ -4,6 +4,9 @@
 #ifndef _DEFAULTCONTROLLER_H
 #include "./DefaultController.h"
 #endif
+#ifndef _PAYROLLLIST_H
+#include "../Models/PayrollList.h"
+#endif
 
 PayrollController::PayrollController()
 {
@@ -28,6 +31,14 @@ int PayrollController::actionIndex()
 }
 int PayrollController::actionProcess()
 {
+    PayrollList PayrollListObj;
+    PayrollListObj.ProcessPayroll();
+    if(PayrollListObj.BuildFileFromList())
+    {
+        return this->run(this->getMenuObj()->PayrollAfterProcessMenu());
+    }
+    else
+        return this->run(this->getMenuObj()->PayrollFailProcessMenu());
     return MAIN_CODE;
 }
 int PayrollController::actionView()
