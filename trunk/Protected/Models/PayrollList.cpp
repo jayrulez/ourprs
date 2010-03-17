@@ -106,7 +106,7 @@ bool PayrollList::BuildFileFromList()
     Screen ScreenObj;
     Employee EmployeeObj;
     Payroll *PayrollPtr = Head;
-    ofstream oStreamObj(Payroll::model()->getFilename());
+    ofstream oStreamObj(Payroll::model()->getFilename(), ios::trunc);
     if(oStreamObj.is_open())
     {
         if(Head!=NULL)
