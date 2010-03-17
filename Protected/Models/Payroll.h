@@ -21,9 +21,11 @@ public:
     void SetRegularPay(float);
     void SetOvertimePay(float);
     void SetGrossPay(float);
+    void SetEmployeeObj(Employee);
     float GetRegularPay();
     float GetOvertimePay();
     float GetGrossPay();
+    Employee GetEmployeeObj();
     void setNext(Payroll*);
     Payroll* getNext();
 };
