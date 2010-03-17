@@ -275,7 +275,7 @@ Item* MenuSet::PayrollAfterGenerateMenu()
     MenuTitle="Payroll Menu - Processing Successful";
     static Item PayrollAfterGenerateMenuItem[3];
     PayrollAfterGenerateMenuItem[0].SetItem(20,28,PAYROLL_PROCESS_CODE,"Process");
-    PayrollAfterGenerateMenuItem[1].SetItem(32,28,PAYROLL_CODE,"<--Payroll");
+    PayrollAfterGenerateMenuItem[1].SetItem(36,28,PAYROLL_CODE,"<--Payroll");
     PayrollAfterGenerateMenuItem[2].SetItem(55,28,MAIN_CODE,"Main Menu");
     return PayrollAfterGenerateMenuItem;
 }
