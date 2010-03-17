@@ -1,4 +1,6 @@
 #include "Payroll.h"
+#include "Employee.h"
+#include "Department.h"
 #include "PayrollList.h"
 #include <iomanip>
 #include <iostream>
@@ -94,6 +96,77 @@ void PayrollList::BuildListFromFile()
         iStreamObj.close();
 	}
 	*/
+}
+void PayrollList::BuildFileFromList()
+{
+    Employee EmployeeObj;
+    Payroll *PayrollPtr = Head;
+    ofstream oStreamObj(Payroll::model()->getFilename());
+    if(oStreamObj.is_open())
+    {
+        while(PayrollPtr!=NULL)
+        {
+            EmployeeObj = PayrollPtr->GetEmployeeObj();
+            oStreamObj << EmployeeObj.getDeptCode() << "\t" << EmployeeObj.getFirstname() << "\t" << EmployeeObj.getLastname() <<
+            "\t" << EmployeeObj.getDeptCode() << "\t" << EmployeeObj.getPosition() << "\t" << EmployeeObj.getHoursWorked <<
+            "\t" << PayrollPtr->GetRegularPay << "\t" << PayrollPtr->GetOvertimePay() << "\t" << PayrollPtr->GetGrossPay() << "\n";
+        }
+    }
+}
+int PayrollList::ProcessPayroll()
+{
+    int id;
+	string firstname;
+	string lastname;
+	int deptCode;
+	string position;
+	float hoursWorked;
+
+    string deptName;
+    float regularRate;
+    float overtimeRate;
+
+    Employee EmployeeObj;
+    Payroll PayrollObj;
+
+    ifstream EmpStreamObj(Employee::model()->getFilename());
+
+	if(EmpStreamObj.is_open())
+	{
+		while(EmpStreamObj >> id >> firstname >> lastname >> deptCode >> position >> hoursWorked)
+		{
+            EmployeeObj.setId(id);
+            EmployeeObj.setFirstname(firstname);
+            EmployeeObj.setLastname(lastname);
+            EmployeeObj.setDeptCode(deptCode);
+            EmployeeObj.setPosition(position);
+            EmployeeObj.setHoursWorked(hoursWorked);
+
+            ifstream DeptStreamObj(Department::model()->getFilename());
+            if(DeptStreamObj.is_open())
+            {
+                while(DeptStreamObj >> deptCode >> deptName >> regularRate >> overtimeRate)
+                {
+                    if(EmployeeObj.getDeptCode()==deptCode)
+                    {
+                        PayrollObj.SetEmployeeObj(EmployeeObj);
+                        PayrollObj.SetRegularPay(regularRate * EmployeeObj.getHoursWorked());
+                        PayrollObj.SetOvertimePay(overtimeRate * EmployeeObj.getHoursWorked());
+                        PayrollObj.SetGrossPay(PayrollObj.GetRegularPay() + PayrollObj.GetOvertimePay());
+                        this->AddPayroll(PayrollObj);
+                        break;
+                    }
+                }
+            }
+            else
+                return 100;
+            DeptStreamObj.close();
+        }
+        EmpStreamObj.close();
+	}
+	else
+        return 200;
+    return 0;
 }
 void PayrollList::DestroyList()
 {

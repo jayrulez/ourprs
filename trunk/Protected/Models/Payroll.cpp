@@ -1,4 +1,5 @@
 #include "Payroll.h"
+#include "Employee.h"
 #include <string>
 
 Payroll::Payroll()
@@ -43,6 +44,10 @@ void Payroll::SetGrossPay(float GrossPay)
 {
     this->GrossPay=GrossPay;
 }
+void Payroll::SetEmployeeObj(Employee EmployeeObj)
+{
+    this->EmployeeObj=EmployeeObj;
+}
 float Payroll::GetRegularPay()
 {
     return this->RegularPay;
@@ -54,6 +59,10 @@ float Payroll::GetOvertimePay()
 float Payroll::GetGrossPay()
 {
     return this->GrossPay;
+}
+Employee Payroll::GetEmployeeObj()
+{
+    return this->EmployeeObj;
 }
 void Payroll::setNext(Payroll* next)
 {
