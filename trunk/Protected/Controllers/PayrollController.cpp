@@ -7,6 +7,11 @@
 #ifndef _PAYROLLLIST_H
 #include "../Models/PayrollList.h"
 #endif
+#ifndef _PAYROLL_H
+#include "../Models/Payroll.h"
+#endif
+
+#include <sstream>
 
 PayrollController::PayrollController()
 {
@@ -50,8 +55,42 @@ int PayrollController::actionProcess()
 }
 int PayrollController::actionView()
 {
+    int actionCode;
+    int id;
+    Payroll *payroll;
+	MasterFormMenuController* menuInstance = this->getMenuObj();
+
     this->getServicesObj()->BasicRunLevel();
-    return this->run(this->getMenuObj()->ViewPayrollMenu());
+	do
+	{
+        actionCode = menuInstance->SearchPayrollMenu();
+
+        Field * data = menuInstance->GetAllFieldData();
+        istringstream deptCodeString((data)->GetFieldData());
+        deptCodeString >> id;
+
+        payroll = Payroll::model()->findById(id);
+        if(actionCode==DEPARTMENT_SEARCH_CODE)
+        {
+            if(payroll!=NULL)
+            {
+                this->getServicesObj()->BasicRunLevel();
+                payroll->show(16);
+                return this->run(this->getMenuObj()->ViewPayrollMenu());
+            }
+            else
+            {
+                this->getServicesObj()->BasicRunLevel();
+                ConsoleObj.xyCoord(20,9);
+                ScreenObj.SetScreenTextColour(RedTextColour);
+                cout << "Error: Could not find Payroll record" << endl;
+                ScreenObj.SetScreenTextColour(DefaultTextColour);
+            }
+        }
+        else
+            break;
+	}while(payroll==NULL);
+    return this->run(actionCode);
 }
 int PayrollController::actionViewSorted()
 {

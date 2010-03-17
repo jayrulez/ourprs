@@ -110,3 +110,11 @@ Field* FormSet::SearchEmployeeForm()
     SearchEmployeeFormField[0].SetField("ID. No",20,19,EMPLOYEE_SEARCH_FORM_CODE,STRICTNUMERICTYPE,NO_SPACING,4,false);
     return SearchEmployeeFormField;
 }
+Field* FormSet::SearchPayrollForm()
+{
+    this->FormCode=PAYROLL_SEARCH_FORM_CODE;
+    this->FormSize=1;
+    static Field SearchPayrollFormField[1];
+    SearchPayrollFormField[0].SetField("ID. No",20,19,EMPLOYEE_SEARCH_FORM_CODE,STRICTNUMERICTYPE,NO_SPACING,4,false);
+    return SearchPayrollFormField;
+}

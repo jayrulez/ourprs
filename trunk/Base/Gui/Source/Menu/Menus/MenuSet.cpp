@@ -290,6 +290,34 @@ Item* MenuSet::PayrollFailGenerateMenu()
     PayrollAFailGenerateMenuItem[2].SetItem(55,28,MAIN_CODE,"Main Menu");
     return PayrollAFailGenerateMenuItem;
 }
+Item* MenuSet::SearchPayrollFormMenu()
+{
+    this->MenuCode = PAYROLL_VIEW_CODE;
+    this->MenuSize = 3;
+    MenuTitle="Payroll Menu - Search";
+    static Item SearchPayrollFormMenuItem[3];
+    SearchPayrollFormMenuItem[0].SetItem(19,28,PAYROLL_SEARCH_SUBMIT_CODE,"Search");
+    SearchPayrollFormMenuItem[1].SetItem(33,28,PAYROLL_CODE,"<--Payroll");
+    SearchPayrollFormMenuItem[2].SetItem(52,28,MAIN_CODE,"Main Menu");
+    return SearchPayrollFormMenuItem;
+
+}
+void MenuSet::SearchPayrollFormMenuExtension(int state)
+{
+    if(state==OFF)
+    {
+        ScreenObj.SetScreenTextColour(ConsoleObj.GetConsoleScreenColour()+3);
+    }
+    LineObj.setVCoord(27,29,15);
+    LineObj.vSLine();
+    LineObj.setVCoord(27,29,29);
+    LineObj.vSLine();
+    LineObj.setVCoord(27,29,48);
+    LineObj.vSLine();
+    LineObj.setVCoord(27,29,64);
+    LineObj.vSLine();
+    ScreenObj.SetScreenTextColour(48);
+}
 Item* MenuSet::ViewSortedPayrollMenu()
 {
     this->MenuCode = PAYROLL_VIEW_SORTED_CODE;
@@ -354,11 +382,12 @@ Item* MenuSet::PayrollFailViewSortedMenu()
 Item* MenuSet::ViewPayrollMenu()
 {
     this->MenuCode = 8;
-    this->MenuSize = 2;
-    MenuTitle="View Employee";
-    static Item ViewPayrollMenuItem[2];
-    ViewPayrollMenuItem[0].SetItem(25,28,PAYROLL_CODE,"<--Payroll");
-    ViewPayrollMenuItem[1].SetItem(45,28,MAIN_CODE,"Main Menu");
+    this->MenuSize = 3;
+    MenuTitle="View Payroll - success";
+    static Item ViewPayrollMenuItem[3];
+    ViewPayrollMenuItem[0].SetItem(15,28,PAYROLL_VIEW_CODE,"View More");
+    ViewPayrollMenuItem[1].SetItem(34,28,PAYROLL_CODE,"<--Payroll");
+    ViewPayrollMenuItem[2].SetItem(55,28,MAIN_CODE,"Main Menu");
     return ViewPayrollMenuItem;
 }
 void MenuSet::ViewPayrollMenuExtension(int state)

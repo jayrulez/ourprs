@@ -69,6 +69,8 @@ public:
 	int PayrollMenu();
 	int PayrollAfterProcessMenu();
 	int PayrollFailProcessMenu();
+	int SearchPayrollMenu();
+	void SearchPayrollFormMenuExtension(int);
 	int ViewPayrollMenu();
     int ViewSortedPayrollMenu();
     int PayrollAfterViewSortedMenu();

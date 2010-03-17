@@ -1073,9 +1073,63 @@ int MasterFormMenuController::ViewPayrollMenu()
                     //MenuSetObj.ViewDepartmentMenuExtension(ON);
                     Flag=true;
                 }
+                if(MenuCall==MAIN_CODE || MenuCall==PAYROLL_CODE || MenuCall==PAYROLL_VIEW_CODE)
+                {
+                    FormSetObj.FlushFieldData(FormSetObj.SearchEmployeeForm());
+                }
             }while(Flag);
         }while(MenuCall==0);
     }
+    return MenuCall;
+}
+int MasterFormMenuController::SearchPayrollMenu()
+{
+    bool Flag;
+    int MenuCall;
+    if(FormControllerObj.SetForm(FormSetObj.SearchPayrollForm(),FormSetObj.GetFormSize(FormSetObj.SearchPayrollForm()),
+    FormSetObj.GetFormCode(FormSetObj.SearchPayrollForm()))&&
+    MenuControllerObj.SetMenu(MenuSetObj.SearchPayrollFormMenu(),MenuSetObj.GetMenuSize(MenuSetObj.SearchPayrollFormMenu()),
+    MenuSetObj.GetMenuCode(MenuSetObj.SearchPayrollFormMenu())))
+    {
+        FormControllerObj.ShowForm();
+        MenuControllerObj.ShowMenu();
+        MenuSetObj.ShowMenuTitle(ON);
+        MenuSetObj.SearchPayrollFormMenuExtension(ON);
+        do
+        {
+            do
+            {
+                Flag=false;
+                if(ExtendedMenuControllerObj.ExtendedMenuCalls(FormControllerObj.BrowseForm(),FormControllerObj.GetFormCode()))
+                {
+                    FormControllerObj.ShowForm();
+                    MenuControllerObj.ShowMenu();
+                    MenuSetObj.ShowMenuTitle(ON);
+                    MenuSetObj.SearchPayrollFormMenuExtension(ON);
+                    Flag=true;
+                }
+            }while(Flag);
+            do
+            {
+                Flag=false;
+                MenuCall=MenuControllerObj.BrowseMenu();
+                if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuCall,MenuControllerObj.GetMenuCode()))
+                {
+                    FormControllerObj.ShowForm();
+                    MenuControllerObj.ShowMenu();
+                    MenuSetObj.ShowMenuTitle(ON);
+                    MenuSetObj.SearchPayrollFormMenuExtension(ON);
+                    Flag=true;
+                }
+                if(MenuCall==MAIN_CODE || MenuCall==PAYROLL_CODE)
+                {
+                    this->ClearAllFieldData();
+                }
+            }while(Flag);
+        }while(MenuCall==0);
+    }
+    this->FieldObj=FormControllerObj.GetAllFieldInfo();
+    this->FormSize=FormControllerObj.GetFormSize();
     return MenuCall;
 }
 int MasterFormMenuController::ViewSortedPayrollMenu()

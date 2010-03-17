@@ -286,6 +286,19 @@ bool FormController::ValidateEmployeeFields()
     SetFieldState(true);
     return true;
 }
+bool FormController::ValidatePayrollFields()
+{
+    if(FormCode==PAYROLL_SEARCH_FORM_CODE)
+    {
+        if(!ValidatorObj.CheckDataExistence(PreviousField.GetFieldData()))
+        {
+            SetFieldState(false);
+            return false;
+        }
+    }
+    SetFieldState(true);
+    return true;
+}
 bool FormController::ValidateDepartmentFields()
 {
     if(this->FormCode==DEPARTMENT_ADD_FORM_CODE)

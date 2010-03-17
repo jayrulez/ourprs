@@ -76,7 +76,8 @@
 #define PAYROLL_VIEW_CODE 4200
     //view sorted
 #define PAYROLL_VIEW_SORTED_CODE 4300
-
+    //search
+#define PAYROLL_SEARCH_SUBMIT_CODE 4400
 
 //exit
 #define EXIT_CODE 5000
@@ -142,6 +143,8 @@ public:
     Item* PayrollMenu();
     Item* PayrollAfterGenerateMenu();
     Item* PayrollFailGenerateMenu();
+    Item* SearchPayrollFormMenu();
+    void SearchPayrollFormMenuExtension(int);
     Item* ViewSortedPayrollMenu();
     void ViewSortedPayrollMenuExtension(int);
     Item* PayrollAfterViewSortedMenu();
