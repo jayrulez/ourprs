@@ -9,7 +9,7 @@
 #ifndef _DEFAULTCONTROLLER_H
 #include "./DefaultController.h"
 #endif
-
+#include "../../Base/Gui/Source/Services/Services.h"
 EmployeeController::EmployeeController()
 {
 }
@@ -223,9 +223,11 @@ int EmployeeController::actionView()
     int actionCode;
     int id;
     Employee *employee;
+    //Services ServicesObj;
 	MasterFormMenuController* menuInstance = this->getMenuObj();
 
     this->getServicesObj()->BasicRunLevel();
+    //ServicesObj.BasicRunLevel();
 	do
 	{
         actionCode = menuInstance->SearchEmployeeMenu();
@@ -240,6 +242,7 @@ int EmployeeController::actionView()
             if(employee!=NULL)
             {
                 this->getServicesObj()->BasicRunLevel();
+                //ServicesObj.BasicRunLevel();
                 employee->show(14);
                 return this->run(this->getMenuObj()->EmployeeAfterViewMenu());
             }
