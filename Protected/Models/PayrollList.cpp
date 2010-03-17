@@ -166,6 +166,7 @@ int PayrollList::ProcessPayroll()
             EmployeeObj.setHoursWorked(hoursWorked);
 
             ifstream DeptStreamObj(Department::model()->getFilename());
+
             if(DeptStreamObj.is_open())
             {
                 while(DeptStreamObj >> deptCode >> deptName >> regularRate >> overtimeRate)
