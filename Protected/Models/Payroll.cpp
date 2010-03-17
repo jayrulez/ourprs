@@ -107,11 +107,11 @@ void Payroll::show(int y)
     ConsoleObj.xyCoord(10,y+12);
     cout<<"Hours Worked    : "<<this->EmployeeObj.getHoursWorked();
     ConsoleObj.xyCoord(10,y+14);
-    cout<<"Regular Pay     : "<<this->GetRegularPay();
+    cout<<"Regular Pay ($) : "<<this->GetRegularPay();
     ConsoleObj.xyCoord(10,y+16);
-    cout<<"Overtime Pay    : "<<this->GetOvertimePay();
+    cout<<"Overtime Pay ($): "<<this->GetOvertimePay();
     ConsoleObj.xyCoord(10,y+18);
-    cout<<"Gross Pay       : "<<this->GetGrossPay();
+    cout<<"Gross Pay ($)   : "<<this->GetGrossPay();
     if(FrameObj.SetFrame(5,STANDARD_FRAME_WIDTH-5,y,y+20,NORMAL_FRAME))
     {
         FrameObj.sFraming();

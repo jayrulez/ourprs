@@ -1075,7 +1075,7 @@ int MasterFormMenuController::ViewPayrollMenu()
                 }
                 if(MenuCall==MAIN_CODE || MenuCall==PAYROLL_CODE || MenuCall==PAYROLL_VIEW_CODE)
                 {
-                    FormSetObj.FlushFieldData(FormSetObj.SearchEmployeeForm());
+                    FormSetObj.FlushFieldData(FormSetObj.SearchPayrollForm());
                 }
             }while(Flag);
         }while(MenuCall==0);
@@ -1123,7 +1123,7 @@ int MasterFormMenuController::SearchPayrollMenu()
                 }
                 if(MenuCall==MAIN_CODE || MenuCall==PAYROLL_CODE)
                 {
-                    this->ClearAllFieldData();
+                    FormSetObj.FlushFieldData(FormSetObj.SearchPayrollForm());
                 }
             }while(Flag);
         }while(MenuCall==0);

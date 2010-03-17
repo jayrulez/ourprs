@@ -300,7 +300,6 @@ Item* MenuSet::SearchPayrollFormMenu()
     SearchPayrollFormMenuItem[1].SetItem(33,28,PAYROLL_CODE,"<--Payroll");
     SearchPayrollFormMenuItem[2].SetItem(52,28,MAIN_CODE,"Main Menu");
     return SearchPayrollFormMenuItem;
-
 }
 void MenuSet::SearchPayrollFormMenuExtension(int state)
 {
@@ -385,9 +384,9 @@ Item* MenuSet::ViewPayrollMenu()
     this->MenuSize = 3;
     MenuTitle="View Payroll - success";
     static Item ViewPayrollMenuItem[3];
-    ViewPayrollMenuItem[0].SetItem(15,28,PAYROLL_VIEW_CODE,"View More");
-    ViewPayrollMenuItem[1].SetItem(34,28,PAYROLL_CODE,"<--Payroll");
-    ViewPayrollMenuItem[2].SetItem(55,28,MAIN_CODE,"Main Menu");
+    ViewPayrollMenuItem[0].SetItem(15,34,PAYROLL_VIEW_CODE,"View More");
+    ViewPayrollMenuItem[1].SetItem(35,34,PAYROLL_CODE,"<--Payroll");
+    ViewPayrollMenuItem[2].SetItem(55,34,MAIN_CODE,"Main Menu");
     return ViewPayrollMenuItem;
 }
 void MenuSet::ViewPayrollMenuExtension(int state)

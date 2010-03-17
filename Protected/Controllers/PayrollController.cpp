@@ -70,12 +70,12 @@ int PayrollController::actionView()
         deptCodeString >> id;
 
         payroll = Payroll::model()->findById(id);
-        if(actionCode==DEPARTMENT_SEARCH_CODE)
+        if(actionCode==PAYROLL_SEARCH_SUBMIT_CODE)
         {
             if(payroll!=NULL)
             {
                 this->getServicesObj()->BasicRunLevel();
-                payroll->show(16);
+                payroll->show(9);
                 return this->run(this->getMenuObj()->ViewPayrollMenu());
             }
             else
