@@ -101,3 +101,55 @@ void DepartmentList::DestroyList()
 		delete CacheDepartment;
 	}
 }
+
+void DepartmentList::UpdateNode(Department* oldNode, Department* newNode)
+{
+    // if list is not empty
+    if(Head != NULL)
+    {
+        //
+        Head->setPrev(NULL);
+        // if record is found at the beginning of list
+        if(*oldNode == *Head)
+        {
+            // if has more than one item
+            Department * hNext;
+            hNext = Head->getNext();
+            if(hNext!=NULL)
+            {
+                Head = newNode;
+                Head->setNext(hNext);
+                Head->getNext()->setPrev(NULL);
+                Head->setPrev(NULL);
+            }
+        }else{
+            Department * temp = Head;
+            while(temp != NULL)
+            {
+                // if not at the end of thelist
+                if(temp->getNext()!=NULL)
+                {
+                    temp->getNext()->setPrev(temp);
+                    // if item is between start and end of list
+                    if(*oldNode == *temp)
+                    {
+                        Department * tNext = temp->getNext();
+                        Department * tPrev = temp->getPrev();
+                        newNode->setNext(tNext);
+                        newNode->setPrev(tPrev);
+                        newNode->getNext()->setPrev(newNode);
+                        temp->getPrev()->setNext(newNode);
+                    }
+                }else{
+                    // If record is found at end of list
+                    if(*oldNode == *temp)
+                    {
+                        newNode->setPrev(temp->getPrev());
+                        temp->getPrev()->setNext(newNode);
+                    }
+                }
+                temp = temp->getNext();
+            }
+        }
+    }
+}

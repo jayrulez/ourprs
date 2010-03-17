@@ -52,7 +52,7 @@ void EmployeeList::ShowEmployeeList()
 }
 
 
-Employee* EmployeeList::getHead()
+Employee* EmployeeList::GetHead()
 {
 	return Head;
 }
@@ -98,6 +98,58 @@ void EmployeeList::DestroyList()
 		CacheEmployee = (this->Head)->getNext();
 		delete CacheEmployee;
 	}
+}
+
+void EmployeeList::UpdateNode(Employee* oldNode, Employee* newNode)
+{
+    // if list is not empty
+    if(Head != NULL)
+    {
+        //
+        Head->setPrev(NULL);
+        // if record is found at the beginning of list
+        if(*oldNode == *Head)
+        {
+            // if has more than one item
+            Employee * hNext;
+            hNext = Head->getNext();
+            if(hNext!=NULL)
+            {
+                Head = newNode;
+                Head->setNext(hNext);
+                Head->getNext()->setPrev(NULL);
+                Head->setPrev(NULL);
+            }
+        }else{
+            Employee * temp = Head;
+            while(temp != NULL)
+            {
+                // if not at the end of thelist
+                if(temp->getNext()!=NULL)
+                {
+                    temp->getNext()->setPrev(temp);
+                    // if item is between start and end of list
+                    if(*oldNode == *temp)
+                    {
+                        Employee * tNext = temp->getNext();
+                        Employee * tPrev = temp->getPrev();
+                        newNode->setNext(tNext);
+                        newNode->setPrev(tPrev);
+                        newNode->getNext()->setPrev(newNode);
+                        temp->getPrev()->setNext(newNode);
+                    }
+                }else{
+                    // If record is found at end of list
+                    if(*oldNode == *temp)
+                    {
+                        newNode->setPrev(temp->getPrev());
+                        temp->getPrev()->setNext(newNode);
+                    }
+                }
+                temp = temp->getNext();
+            }
+        }
+    }
 }
 
 void EmployeeList::DeleteNode(Employee * employee)
@@ -149,4 +201,75 @@ unsigned int EmployeeList::GetListSize()
 void EmployeeList::SetListSize(unsigned int size)
 {
     this->ListSize = size;
+}
+
+void EmployeeList::SortList(string sortBy = "id")
+{
+	Employee * a = NULL;
+	Employee * b = NULL;
+	Employee * c = NULL;
+	Employee * e = NULL;
+	Employee * temp = NULL;
+	while(e != Head->getNext())
+	{
+		c = a = Head;
+		b = a->getNext();
+		while(a != e)
+		{
+			if(this->CompareG(a,b,sortBy))
+			{
+				if(*a == *Head)
+				{
+					temp = b->getNext();
+					b->setNext(a);
+					a->setNext(temp);
+					Head = b;
+					c = b;
+				}else{
+					temp = b->getNext();
+					b->setNext(a);
+					a->setNext(temp);
+					c->setNext(b);
+					c = b;
+				}
+			}else{
+				c = a;
+				a = a->getNext();
+			}
+			b = a->getNext();
+			if(b==e)
+			{
+				e = a;
+			}
+		}
+	}
+}
+
+bool EmployeeList::CompareG(Employee* node1, Employee* node2, string compareBy)
+{
+	if(compareBy == "id")
+	{
+		return node1->getId() > node2->getId();
+	}
+	if(compareBy == "firstname")
+	{
+		return node1->getFirstname() > node2->getFirstname();
+	}
+	if(compareBy == "lastname")
+	{
+		return node1->getLastname() > node2->getLastname();
+	}
+	if(compareBy == "deptCode")
+	{
+		return node1->getDeptCode() > node2->getDeptCode();
+	}
+	if(compareBy == "position")
+	{
+		return node1->getPosition() > node2->getPosition();
+	}
+	if(compareBy == "hoursWorked")
+	{
+		return node1->getHoursWorked() > node2->getHoursWorked();
+	}
+	return false;
 }

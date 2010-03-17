@@ -78,7 +78,7 @@ public:
 	static Employee * model();
 	void update(Employee*);
 	void deleteRecord(Employee*);
-	void SortList(string, Employee*, unsigned int, int);
 	Employee* getHead();
+	void silentCascadeUpdateDeptRelation(int);
 };
 #endif
