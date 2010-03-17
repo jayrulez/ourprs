@@ -174,8 +174,8 @@ int EmployeeController::actionUpdate()
                 {
 					EmployeeList ListObj;
 					ListObj.BuildListFromFile();
-					//ListObj.UpdateNode(updatedEmployee);
-                    updatedEmployee->update(ListObj.getHead());
+					ListObj.UpdateNode(employee, updatedEmployee);
+                    updatedEmployee->update(ListObj.GetHead());
 
                     this->getServicesObj()->BasicRunLevel();
                     if(updatedEmployee->getOperationState() == OPERATIONSTATE_FAILURE)
@@ -270,15 +270,13 @@ int EmployeeController::actionViewSorted()
     this->getServicesObj()->BasicRunLevel();
     EmployeeList ListObj;
     ListObj.BuildListFromFile();
-    Employee * employee = new Employee;
-    employee->SortList("id", ListObj.getHead(), ListObj.GetListSize(), SORT_DIRECTION_ASC);
-    Employee* cache = employee->getHead();
-    while(cache != NULL)
-    {
-        cout << cache->getId()<< endl;
-        cache = cache->getNext();
-    }
-    system("pause");
+    ListObj.SortList("id");
+	Employee * cache = ListObj.GetHead();
+	while(cache!=NULL)
+	{
+		cout << cache->getFirstname() <<endl;system("pause");
+		cache = cache->getNext();
+	}
 
     return this->run(menuInstance->ViewSortedEmployeeMenu());
 }
@@ -317,7 +315,7 @@ int EmployeeController::actionDelete()
                     EmployeeList ListObj;
                     ListObj.BuildListFromFile();
                     ListObj.DeleteNode(employee);
-                    employee->deleteRecord(ListObj.getHead());
+                    employee->deleteRecord(ListObj.GetHead());
                     this->getServicesObj()->BasicRunLevel();
                     if(employee->getOperationState()==OPERATIONSTATE_SUCCESS)
                     {

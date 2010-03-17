@@ -17,5 +17,6 @@ public:
 	void BuildListFromFile();
 	Department * getHead();
 	void DestroyList();
+	void UpdateNode(Department*, Department*);
 };
 #endif

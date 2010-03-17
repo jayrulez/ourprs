@@ -18,6 +18,7 @@ private:
 	float regularRate;
 	float overtimeRate;
 	Department * next;
+	Department * prev;
 public:
 	Department();
 	~Department();
@@ -37,9 +38,9 @@ public:
 	static Department* model();
 	Department* find(int);
 	void show(int);
-	bool operator != (const Department);
+	/*bool operator != (const Department);
 	bool operator == (const Department);
-	Department operator = (const Department);
+	Department operator = (const Department);*/
 	/*fstream & operator >> (const fstream &, const Department &);
 	fstream & operator << (const fstream &, const Department &);*/
 	bool recordExists(int);
@@ -49,5 +50,29 @@ public:
 	Department * findByCode(int);
 	void save();
 	void update(Department *);
+	void setPrev(Department*);
+	Department* getPrev();
+	Department & Department::operator=(const Department &department)
+	{
+		if(this != &department)
+		{
+			this->deptCode = department.deptCode;
+			this->deptName = department.deptName;
+			this->regularRate = department.regularRate;
+			this->overtimeRate = department.overtimeRate;
+		}
+		return *this;
+	}
+	bool Department::operator==(const Department &department) const
+	{
+		return this->deptCode == department.deptCode &&
+		this->deptName == department.deptName &&
+		this->regularRate == department.regularRate &&
+		this->overtimeRate == department.overtimeRate;
+	}
+	bool Department::operator!=(const Department &department) const
+	{
+		return !(*this == department);
+	}
 };
 #endif

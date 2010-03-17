@@ -120,7 +120,8 @@ void Department::show(int y)
         FrameObj.sFraming();
     }
 }
-bool Department::operator == (const Department DepartmentObj)
+
+/*bool Department::operator == (const Department DepartmentObj)
 {
     if(DepartmentObj.deptCode==this->deptCode && DepartmentObj.deptName==this->deptName
     &&DepartmentObj.overtimeRate==this->overtimeRate&&DepartmentObj.regularRate==this->regularRate)
@@ -135,7 +136,7 @@ Department Department::operator = (const Department DepartmentObj)
     this->overtimeRate=DepartmentObj.overtimeRate;
     this->regularRate=DepartmentObj.regularRate;
     return *this;
-}
+}*/
 
 bool Department::recordExists(int keyCode)
 {
@@ -229,13 +230,6 @@ void Department::update(Department * listHead)
         {
             if(tempDepartment != NULL)
             {
-                if(tempDepartment->getDeptCode() == this->getDeptCode())
-                {
-                    tempDepartment->setDeptCode(this->getDeptCode());
-                    tempDepartment->setDeptName(this->getDeptName());
-                    tempDepartment->setRegularRate(this->getRegularRate());
-                    tempDepartment->setOvertimeRate(this->getOvertimeRate());
-                }
                 oStreamObj << tempDepartment->getDeptCode() << "\t" << tempDepartment->getDeptName() << "\t" << tempDepartment->getRegularRate() << "\t" << tempDepartment->getOvertimeRate() << "\n";
                 tempDepartment = tempDepartment->getNext();
             }
@@ -260,14 +254,12 @@ int Department::getOldDeptCode()
 	return this->oldDeptCode;
 }
 
-/*fstream & Department::operator >> (const fstream &mystream, Department &department)
+void Department::setPrev(Department* department)
 {
-	mystream << department.deptCode << "\t" << department.deptCode << "\t" << department.regularRate << "\t" << department.overtimeRate;
-	return NULL;
+    this->prev = department;
 }
 
-fstream & Department::operator << (const fstream &mystream, Department &department)
+Department* Department::getPrev()
 {
-	//department >>
-	return NULL;
-}*/
+    return this->prev;
+}

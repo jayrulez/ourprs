@@ -4,6 +4,11 @@
 #ifndef _DEPARTMENT_H
 #include "../Models/Department.h"
 #endif
+
+#ifndef _EMPLOYEE_H
+#include "../Models/Employee.h"
+#endif
+
 #ifndef DEPARTMENTLIST_H
 #include "../Models/DepartmentList.h"
 #endif
@@ -180,6 +185,7 @@ int DepartmentController::actionUpdate()
                     //updatedDepartment->setOldDeptCode(department->getDeptCode());
 					DepartmentList ListObj;
 					ListObj.BuildListFromFile();
+					ListObj.UpdateNode(department, updatedDepartment);
 					//updatedDepartment->setList(ListObj.getHead());
                     updatedDepartment->update(ListObj.getHead());
 
@@ -194,6 +200,7 @@ int DepartmentController::actionUpdate()
                     }
                     else if(updatedDepartment->getOperationState() == OPERATIONSTATE_SUCCESS)
                     {
+						Employee::model()->silentCascadeUpdateDeptRelation(department->getDeptCode());
                         ConsoleObj.xyCoord(24,9);
                         ScreenObj.SetScreenTextColour(GreenTextColour);
                         cout << "Department Updated Successfuly" << endl;
