@@ -72,6 +72,7 @@ public:
     bool FormRangeCheck(int);
     bool ValidateEmployeeFields();
     bool ValidateDepartmentFields();
+    bool ValidatePayrollFields();
     bool ValidateForm();
     void SetFieldState(bool);
 };

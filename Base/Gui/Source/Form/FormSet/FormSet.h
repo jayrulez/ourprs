@@ -21,6 +21,8 @@
 #define EMPLOYEE_UPDATE_FORM_CODE 3020
 
 #define EMPLOYEE_SEARCH_FORM_CODE 5000
+
+#define PAYROLL_SEARCH_FORM_CODE 6000
 class FormSet
 {
 private:
@@ -40,6 +42,7 @@ public:
     Field* AddEmployeeForm();
     Field* UpdateEmployeeForm();
     Field* SearchEmployeeForm();
+    Field* SearchPayrollForm();
 
 };
 #endif

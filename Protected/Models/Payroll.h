@@ -36,6 +36,8 @@ public:
     Employee GetEmployeeObj();
     void setNext(Payroll*);
     Payroll* getNext();
-    static Payroll * model();
+    static Payroll* model();
+    void show(int);
+    Payroll* findById(int);
 };
 #endif
