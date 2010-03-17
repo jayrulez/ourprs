@@ -7,6 +7,7 @@ class EmployeeList
 private:
 	Employee *Head;
 	unsigned long int Amount;
+	unsigned int ListSize;
 public:
 	EmployeeList();
 	~EmployeeList();
@@ -18,6 +19,7 @@ public:
 	void DestroyList();
 	void DeleteNode(Employee*);
 	void UpdateNode(Employee*);
-	void SortList(string, int);
+	unsigned int GetListSize();
+	void SetListSize(unsigned int);
 };
 #endif

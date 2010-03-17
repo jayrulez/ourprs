@@ -6,7 +6,8 @@
 
 EmployeeList::EmployeeList()
 {
-    Head=NULL;
+    Head = NULL;
+    ListSize = 0;
     //Head->setPrev(NULL);
 }
 EmployeeList::~EmployeeList()
@@ -69,6 +70,8 @@ void EmployeeList::BuildListFromFile()
 
     Employee EmployeeObj(0,"","",0,"",0);
 
+    unsigned int listSize = 0;
+
 	if(iStreamObj.is_open())
 	{
 		while(iStreamObj >> id >> firstname >> lastname >> deptCode >> position >> hoursWorked)
@@ -80,7 +83,9 @@ void EmployeeList::BuildListFromFile()
 		    EmployeeObj.setPosition(position);
 		    EmployeeObj.setHoursWorked(hoursWorked);
             this->AddEmployee(EmployeeObj);
+            listSize++;
         }
+        this->SetListSize(listSize);
         iStreamObj.close();
 	}
 }
@@ -136,7 +141,12 @@ void EmployeeList::DeleteNode(Employee * employee)
     }
 }
 
-void EmployeeList::SortList(string sortBy = "id", int direction = SORT_DIRECTION_ASC)
+unsigned int EmployeeList::GetListSize()
 {
+    return this->ListSize;
+}
 
+void EmployeeList::SetListSize(unsigned int size)
+{
+    this->ListSize = size;
 }

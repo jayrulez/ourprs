@@ -9,10 +9,13 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 Employee::Employee()
 {
 	this->next = NULL;
 	this->prev = NULL;
+	this->head = NULL;
 	this->setFilename(EMPLOYEE_PAYROLL_DATA_FILE);
 }
 
@@ -30,6 +33,7 @@ Employee::Employee(int id = 0, string firstname = "", string lastname = "", int 
 	this->hoursWorked = hoursWorked;
 	this->next = NULL;
 	this->prev = NULL;
+	this->head = NULL;
 	this->setFilename(EMPLOYEE_PAYROLL_DATA_FILE);
 }
 
@@ -288,4 +292,60 @@ void Employee::setPrev(Employee* employee)
 Employee* Employee::getPrev()
 {
     return this->prev;
+}
+
+void Employee::SortList(string sortBy = "id", Employee* listHead = NULL, unsigned int size = 0, int direction = SORT_DIRECTION_ASC)
+{
+    Employee * employeeList = listHead;
+    if(employeeList != NULL)
+    {
+        Employee * cache = employeeList;
+        cache->setPrev(NULL);
+        while(cache != NULL)
+        {
+            if(cache->getNext() != NULL)
+            {
+                cache->getNext()->setPrev(cache);
+            }
+            Employee * cache2 = cache;
+            while(cache2 != NULL && cache2->getId() > cache2->getNext()->getId())
+            {
+                if(cache2->getNext() != NULL)
+                {
+                    cache2->getNext()->setPrev(cache2);
+                }
+                if(cache2->getId() == listHead->getId())
+                {
+                    listHead = cache2->getNext();
+                    if(listHead != NULL)
+                    {
+                        listHead->setPrev(NULL);
+                        listHead->setNext(cache2);
+                    }
+                }
+                Employee * temp1 = cache2;
+                Employee * temp2 = cache2->getNext();
+
+                temp1 = temp2;
+                temp1->setNext(cache2->getNext());
+                temp2 = temp1;
+                temp2->setNext(temp1);
+                temp1->setPrev(temp2);
+                if(temp1->getNext()!=NULL)
+                    temp1->getNext()->setPrev(temp1);
+                if(temp2->getPrev()!=NULL)
+                    temp2->getPrev()->setNext(temp2);
+
+                cache2 = cache->getNext();
+            }
+            cache = cache->getNext();
+        }
+        this->head = listHead;
+    }
+}
+
+
+Employee* Employee::getHead()
+{
+    return this->head;
 }
