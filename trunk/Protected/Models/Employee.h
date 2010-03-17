@@ -6,7 +6,9 @@
 #ifndef _BASEMODEL_H
 #include "../../Base/BaseModel.h"
 #endif
+#include <string>
 
+using namespace std;
 
 class Employee: public BaseModel
 {
@@ -19,6 +21,7 @@ private:
 	float hoursWorked;
 	Employee * next;
 	Employee * prev;
+	Employee * head;
 public:
 	Employee();
 	~Employee();
@@ -75,5 +78,7 @@ public:
 	static Employee * model();
 	void update(Employee*);
 	void deleteRecord(Employee*);
+	void SortList(string, Employee*, unsigned int, int);
+	Employee* getHead();
 };
 #endif
