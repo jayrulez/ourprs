@@ -10,6 +10,9 @@
 #include "./DefaultController.h"
 #endif
 #include "../../Base/Gui/Source/Services/Services.h"
+
+using namespace std;
+
 EmployeeController::EmployeeController()
 {
 }
@@ -265,6 +268,18 @@ int EmployeeController::actionViewSorted()
 	MasterFormMenuController* menuInstance = this->getMenuObj();
 
     this->getServicesObj()->BasicRunLevel();
+    EmployeeList ListObj;
+    ListObj.BuildListFromFile();
+    Employee * employee = new Employee;
+    employee->SortList("id", ListObj.getHead(), ListObj.GetListSize(), SORT_DIRECTION_ASC);
+    Employee* cache = employee->getHead();
+    while(cache != NULL)
+    {
+        cout << cache->getId()<< endl;
+        cache = cache->getNext();
+    }
+    system("pause");
+
     return this->run(menuInstance->ViewSortedEmployeeMenu());
 }
 
