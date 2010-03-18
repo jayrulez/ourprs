@@ -620,7 +620,7 @@ int MasterFormMenuController::EmployeeAfterViewMenu()
             {
                 Flag=false;
                 MenuCall=MenuControllerObj.BrowseMenu();
-                if(MenuCall==MAIN_CODE || MenuCall==EMPLOYEE_SEARCH_CODE ||MenuCall==EMPLOYEE_CODE)
+                if(MenuCall==MAIN_CODE || MenuCall==EMPLOYEE_VIEW_CODE ||MenuCall==EMPLOYEE_CODE)
                 {
                     FormSetObj.FlushFieldData(FormSetObj.SearchEmployeeForm());
                 }
