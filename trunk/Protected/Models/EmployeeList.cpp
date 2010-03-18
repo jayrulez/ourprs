@@ -1,4 +1,4 @@
-#include "./EmployeetList.h"
+#include "./EmployeeList.h"
 #include "../../config.h"
 #include <fstream>
 #include <sstream>
@@ -300,4 +300,37 @@ void EmployeeList::Show(Employee* listHead)
         y+=2;
     }
     ConsoleObj.xyCoord(x,y+6);
+}
+
+void EmployeeList::silentCascadeUpdateDeptRelation(int deptCode, Employee* listHead)
+{
+    Employee * cache = listHead;
+    while(cache != NULL)
+    {
+        if(cache->getDeptCode() == deptCode)
+        {
+            cache->setDeptCode(deptCode);
+        }
+        cache = cache->getNext();
+    }
+}
+
+void EmployeeList::saveListToFile(Employee* listHead)
+{
+	ifstream iStreamObj(Employee::model()->getFilename());
+	Employee * tempEmployee = listHead;
+
+    ofstream oStreamObj(Employee::model()->getFilename(), ios::trunc);
+    if(oStreamObj.is_open())
+    {
+        do
+        {
+            if(tempEmployee != NULL)
+            {
+                oStreamObj << tempEmployee->getId() << "\t" << tempEmployee->getFirstname() << "\t" << tempEmployee->getLastname() << "\t" << tempEmployee->getDeptCode() << "\t" << tempEmployee->getPosition() << "\t" << tempEmployee->getHoursWorked() << "\n";
+                tempEmployee = tempEmployee->getNext();
+            }
+        }while(tempEmployee!=NULL);
+        oStreamObj.close();
+    }
 }

@@ -290,8 +290,3 @@ Employee* Employee::getHead()
 {
     return this->head;
 }
-
-void Employee::silentCascadeUpdateDeptRelation(int)
-{
-
-}

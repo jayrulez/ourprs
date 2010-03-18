@@ -12,6 +12,11 @@
 #ifndef DEPARTMENTLIST_H
 #include "../Models/DepartmentList.h"
 #endif
+
+#ifndef EMPLOYEELIST_H
+#include "../Models/EmployeeList.h"
+#endif
+
 #ifdef _WIN32
     #include "../../Base/Gui/Win32/Core/Console.h"
 #endif
@@ -200,7 +205,10 @@ int DepartmentController::actionUpdate()
                     }
                     else if(updatedDepartment->getOperationState() == OPERATIONSTATE_SUCCESS)
                     {
-						Employee::model()->silentCascadeUpdateDeptRelation(department->getDeptCode());
+						EmployeeList _list;
+						_list.BuildListFromFile();
+						_list.silentCascadeUpdateDeptRelation(department->getDeptCode(),_list.GetHead());
+						_list.saveListToFile(_list.GetHead());
                         ConsoleObj.xyCoord(24,9);
                         ScreenObj.SetScreenTextColour(GreenTextColour);
                         cout << "Department Updated Successfuly" << endl;

@@ -79,6 +79,5 @@ public:
 	void update(Employee*);
 	void deleteRecord(Employee*);
 	Employee* getHead();
-	void silentCascadeUpdateDeptRelation(int);
 };
 #endif
