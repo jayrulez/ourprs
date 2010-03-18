@@ -50,7 +50,7 @@ void DepartmentList::ShowDepartmentList()
     int count=0;
     int x=5;
     int y=8;
-    Department* department = Department::model();
+    //Department* department = Department::model();
     //department->setColumnHeaders();
     while(CacheDepartment!=NULL)
     {

@@ -801,7 +801,7 @@ int MasterFormMenuController::PayrollFailProcessMenu()
     int MenuCall;
     if(MenuControllerObj.SetMenu(MenuSetObj.PayrollFailGenerateMenu(),MenuSetObj.GetMenuSize(MenuSetObj.PayrollFailGenerateMenu()),
     MenuSetObj.GetMenuCode(MenuSetObj.PayrollFailGenerateMenu())))
-    {
+    {MenuSetObj.SetYRelativeSystemFrame(YRelativeSystemFrame);
         MenuControllerObj.ShowMenu();
         MenuSetObj.ShowMenuTitle(ON);
         do
@@ -895,6 +895,7 @@ int MasterFormMenuController::PayrollAfterViewSortedMenu()
 {
     bool Flag;
     int MenuCall;
+    MenuSetObj.SetYRelativeSystemFrame(YRelativeSystemFrame);
     if(MenuControllerObj.SetMenu(MenuSetObj.PayrollAfterViewSortedMenu(),MenuSetObj.GetMenuSize(MenuSetObj.PayrollAfterViewSortedMenu()),
     MenuSetObj.GetMenuCode(MenuSetObj.PayrollAfterViewSortedMenu())))
     {

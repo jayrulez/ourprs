@@ -94,8 +94,54 @@ int PayrollController::actionView()
 }
 int PayrollController::actionViewSorted()
 {
+	MasterFormMenuController* menuInstance = this->getMenuObj();
+
     this->getServicesObj()->BasicRunLevel();
-    return this->run(this->getMenuObj()->ViewSortedPayrollMenu());
+    PayrollList ListObj;
+    ListObj.BuildListFromFile();
+
+	int actionCode;
+
+    actionCode = menuInstance->ViewSortedEmployeeMenu();
+    switch(actionCode)
+    {
+        case PAYROLL_VIEW_SORTED_CODE_BY_ID:
+        {
+            ListObj.SortList("id");
+        }
+        break;
+        case EMPLOYEE_VIEW_SORTED_CODE_BY_LASTNAME:
+        {
+            ListObj.SortList("lastname");
+        }
+        break;
+        case EMPLOYEE_VIEW_SORTED_CODE_BY_DEPTCODE:
+        {
+            ListObj.SortList("deptCode");
+        }
+        break;
+        case EMPLOYEE_VIEW_SORTED_CODE_BY_POSITION:
+        {
+            ListObj.SortList("position");
+        }
+        break;
+    }
+    if(actionCode == PAYROLL_CODE || actionCode == MAIN_CODE)
+        return actionCode;
+    else
+        return this->actionViewSortedList(ListObj.GetHead());
+}
+int PayrollController::actionViewSortedList(Payroll* listHead)
+{
+	MasterFormMenuController* menuInstance = this->getMenuObj();
+    this->getServicesObj()->SystemClearScreen();
+    this->getServicesObj()->MaximumScreenBufferSize();
+
+    PayrollList ListObj;
+    ListObj.Show(listHead);
+
+    menuInstance->SetYRelativeSystemFrame(this->getServicesObj()->DynamicRunLevel());
+    return this->run(menuInstance->PayrollAfterViewSortedMenu());
 }
 int PayrollController::run(int actionCode)
 {

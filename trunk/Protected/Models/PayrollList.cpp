@@ -47,7 +47,7 @@ Payroll* PayrollList::GetPayroll(Payroll PayrollObj)
 {
     return &PayrollObj;
 }
-void PayrollList::ShowPayrollList()
+void PayrollList::Show(Payroll* listHead)
 {
     /*
     Console ConsoleObj;
@@ -70,35 +70,47 @@ void PayrollList::ShowPayrollList()
     */
 }
 
-Payroll* PayrollList::getHead()
+Payroll* PayrollList::GetHead()
 {
 	return Head;
 }
 
 void PayrollList::BuildListFromFile()
 {
-    /*
-    int deptCode;
-    string deptName;
-    float regularRate;
-    float overtimeRate;
+
+    int id;
+	string firstname;
+	string lastname;
+	int deptCode;
+	string position;
+	float hoursWorked;
+    float regularPay;
+    float overtimePay;
+    float grossPay;
+
 	ifstream iStreamObj(Payroll::model()->getFilename());
 
-    Payroll PayrollObj(0,"",0,0,NULL);
+    Payroll PayrollObj;
+    Employee EmployeeObj;
 
 	if(iStreamObj.is_open())
 	{
-		while(iStreamObj >> deptCode >> deptName >> regularRate >> overtimeRate)
+		while(iStreamObj >> id >> firstname >> lastname >> deptCode >> position >> hoursWorked >> regularPay >> overtimePay >> grossPay)
 		{
-		    PayrollObj.setDeptCode(deptCode);
-		    PayrollObj.setDeptName(deptName);
-		    PayrollObj.setRegularRate(regularRate);
-		    PayrollObj.setOvertimeRate(overtimeRate);
+		    EmployeeObj.setId(id);
+		    EmployeeObj.setFirstname(firstname);
+		    EmployeeObj.setLastname(lastname);
+		    EmployeeObj.setDeptCode(deptCode);
+		    EmployeeObj.setPosition(position);
+		    EmployeeObj.setHoursWorked(hoursWorked);
+		    PayrollObj.SetEmployeeObj(EmployeeObj);
+		    PayrollObj.SetRegularPay(regularPay);
+		    PayrollObj.SetOvertimePay(overtimePay);
+		    PayrollObj.SetGrossPay(grossPay);
             this->AddPayroll(PayrollObj);
         }
         iStreamObj.close();
 	}
-	*/
 }
 bool PayrollList::BuildFileFromList()
 {
@@ -191,6 +203,70 @@ int PayrollList::ProcessPayroll()
 	else
         return 200;
     return 0;
+}
+bool PayrollList::CompareG(Payroll* node1, Payroll* node2, string compareBy)
+{
+    Employee employee1 = node1->GetEmployeeObj();
+    Employee employee2 = node2->GetEmployeeObj();
+	if(compareBy == "id")
+	{
+		return employee1.getId() > employee2.getId();
+	}
+	if(compareBy == "lastname")
+	{
+		return employee1.getLastname() > employee2.getLastname();
+	}
+	if(compareBy == "deptCode")
+	{
+		return employee1.getDeptCode() > employee2.getDeptCode();
+	}
+	if(compareBy == "position")
+	{
+		return employee1.getPosition() > employee2.getPosition();
+	}
+	return false;
+}
+
+void PayrollList::SortList(string sortBy = "id")
+{
+	Payroll * a = NULL;
+	Payroll * b = NULL;
+	Payroll * c = NULL;
+	Payroll * e = NULL;
+	Payroll * temp = NULL;
+	while(e != Head->getNext())
+	{
+		c = a = Head;
+		b = a->getNext();
+		while(a != e)
+		{
+			if(this->CompareG(a,b,sortBy))
+			{
+				if(*a == *Head)
+				{
+					temp = b->getNext();
+					b->setNext(a);
+					a->setNext(temp);
+					Head = b;
+					c = b;
+				}else{
+					temp = b->getNext();
+					b->setNext(a);
+					a->setNext(temp);
+					c->setNext(b);
+					c = b;
+				}
+			}else{
+				c = a;
+				a = a->getNext();
+			}
+			b = a->getNext();
+			if(b==e)
+			{
+				e = a;
+			}
+		}
+	}
 }
 void PayrollList::DestroyList()
 {

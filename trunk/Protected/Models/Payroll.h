@@ -39,5 +39,31 @@ public:
     static Payroll* model();
     void show(int);
     Payroll* findById(int);
+    Payroll &  Payroll::operator=(const Payroll &payroll)
+	{
+		if(this != &payroll)
+		{
+			this->EmployeeObj.id = EmployeeObj.id;
+			this->EmployeeObj.firstname = payroll.EmployeeObj.firstname;
+			this->EmployeeObj.lastname = payroll.EmployeeObj.lastname;
+			this->EmployeeObj.deptCode = payroll.EmployeeObj.deptCode;
+			this->EmployeeObj.position = payroll.EmployeeObj.position;
+			this->EmployeeObj.hoursWorked = payroll.EmployeeObj.hoursWorked;
+		}
+		return *this;
+	}
+	bool  Payroll::operator==(const Payroll &payroll) const
+	{
+		return this->EmployeeObj.id == payroll.EmployeeObj.employee.id &&
+		this->EmployeeObj.firstname == payroll.EmployeeObj.firstname &&
+		this->EmployeeObj.lastname == payroll.EmployeeObj.lastname &&
+		this->EmployeeObj.deptCode == payroll.EmployeeObj.deptCode &&
+		this->EmployeeObj.position == payroll.EmployeeObj.position &&
+		this->EmployeeObj.hoursWorked == payroll.EmployeeObj.hoursWorked;
+	}
+	bool Payroll::operator!=(const Payroll &payroll) const
+	{
+		return !(*this == payroll);
+	}
 };
 #endif
