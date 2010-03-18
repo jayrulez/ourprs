@@ -86,12 +86,6 @@ int FormController::BrowseForm()
                 ValidateDepartmentFields();
                 ValidateEmployeeFields();
             break;
-            case F1_KEY:
-                return F1_KEY;
-            break;
-            case F3_KEY:
-                return F3_KEY;
-            break;
         }
         UpdateField();
         if(VerticalFormRangeCheck==OUT_OF_FORM_RANGE)

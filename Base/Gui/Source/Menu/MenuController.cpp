@@ -13,6 +13,7 @@
 #include "../Tools/Frame.h"
 #include "Item.h"
 #include "../Tools/Colour.h"
+#include "Menus/MenuSet.h"
 #include <iostream>
 
 using namespace std;
@@ -110,10 +111,14 @@ int MenuController::BrowseMenu()
                 return CurrentItem.GetItemCode();
             break;
             case F1_KEY:
-                return F1_KEY;
+                if(this->MenuCode==MAIN_CODE || this->MenuCode==DEPARTMENT_CODE || this->MenuCode==EMPLOYEE_CODE
+                || this->MenuCode==PAYROLL_CODE)
+                    return F1_KEY;
             break;
             case F3_KEY:
-				return F3_KEY;
+                if(this->MenuCode==MAIN_CODE || this->MenuCode==DEPARTMENT_CODE || this->MenuCode==EMPLOYEE_CODE
+                || this->MenuCode==PAYROLL_CODE)
+                    return F3_KEY;
             break;
         }
         if(VerticalRangeCheck==OUT_OF_MENU_RANGE)
