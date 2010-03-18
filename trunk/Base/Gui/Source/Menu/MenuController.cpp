@@ -34,6 +34,7 @@ MenuController::MenuController(Item *iptr, int size,int MenuCode)
         this->CurrentItem=DefaultStartingItem();
         this->VerticalRangeCheck=true;
         this->HorizontalRangeCheck=true;
+        this->NewInstance=true;
     }
 }
 /*
@@ -49,6 +50,7 @@ bool MenuController::SetMenu(Item *iptr, int size,int MenuCode)
         this->CurrentItem=DefaultStartingItem();
         this->VerticalRangeCheck=true;
         this->HorizontalRangeCheck=true;
+        this->NewInstance=true;
         return true;
     }
     return false;
@@ -107,7 +109,7 @@ int MenuController::BrowseMenu()
                 }
             break;
             case ENTER_KEY:
-                MediaObj.PlayWav(MenuSelectSound);
+                //MediaObj.PlayWav(MenuSelectSound);
                 return CurrentItem.GetItemCode();
             break;
             case F1_KEY:
@@ -143,14 +145,18 @@ int MenuController::BrowseMenu()
 */
 void MenuController::Browse()
 {
-    if(ScrollerObj.SetScroller(PreviousItem.GetItemX(),PreviousItem.GetItemY(),PreviousItem.GetItemLenght(),48))
+    if(!this->NewInstance)
     {
-        ScrollerObj.KillScroll();
+        if(ScrollerObj.SetScroller(PreviousItem.GetItemX(),PreviousItem.GetItemY(),PreviousItem.GetItemLenght(),48))
+        {
+            ScrollerObj.KillScroll();
+        }
     }
     if(ScrollerObj.SetScroller(CurrentItem.GetItemX(),CurrentItem.GetItemY(),CurrentItem.GetItemLenght(),48))
     {
         ScrollerObj.scroll();
     }
+    this->NewInstance=false;
 }
 /*
  *

@@ -247,7 +247,6 @@ int EmployeeController::actionView()
             if(employee!=NULL)
             {
                 this->getServicesObj()->BasicRunLevel();
-                //ServicesObj.BasicRunLevel();
                 employee->show(14);
                 return this->run(this->getMenuObj()->EmployeeAfterViewMenu());
             }

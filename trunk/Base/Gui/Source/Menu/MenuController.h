@@ -46,6 +46,7 @@ private:
     int MenuCode;
     bool VerticalRangeCheck;
     bool HorizontalRangeCheck;
+    bool NewInstance;
     Item CurrentItem;
     Item PreviousItem;
 public:
