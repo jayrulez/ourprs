@@ -321,9 +321,8 @@ int EmployeeController::actionViewSortedList(Employee* listHead)
 
     EmployeeList ListObj;
     ListObj.Show(listHead);
+
     menuInstance->SetYRelativeSystemFrame(this->getServicesObj()->DynamicRunLevel());
-    //int x = menuInstance->EmployeeAfterViewSortedMenu();
-    //cout <<x<<endl;system("pause");
     return this->run(menuInstance->EmployeeAfterViewSortedMenu());
 }
 

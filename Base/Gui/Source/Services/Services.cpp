@@ -69,7 +69,10 @@ void Services::BasicRunLevel()
     ScreenObj.SetScreenColour(DefaultBgColour);
     ScreenObj.SetScreenTextColour(DefaultTextColour);
 
-    FrameObj.ResetScreenFrame();
+    if(FrameObj.SetFrame(0,STANDARD_FRAME_WIDTH,0,STANDARD_FRAME_HEIGHT,SCREEN_FRAME))
+    {
+        FrameObj.dFraming();
+    }
 
     SystemTitle();
 
