@@ -71,8 +71,10 @@ int EmployeeController::actionAdd()
 		position = (data+4)->GetFieldData();
 
 		Employee * employee = new Employee(id, firstname, lastname, deptCode, position, hoursWorked);
-
-		employee->save();
+        EmployeeList ListObj;
+        ListObj.BuildListFromFile();
+        ListObj.AddEmployee(*employee);
+        employee->save(ListObj.GetHead());
 
 		this->getServicesObj()->BasicRunLevel();
 		if(employee->getOperationState() == OPERATIONSTATE_FAILURE)
@@ -175,7 +177,7 @@ int EmployeeController::actionUpdate()
 					EmployeeList ListObj;
 					ListObj.BuildListFromFile();
 					ListObj.UpdateNode(employee, updatedEmployee);
-                    updatedEmployee->update(ListObj.GetHead());
+                    updatedEmployee->save(ListObj.GetHead());
 
                     this->getServicesObj()->BasicRunLevel();
                     if(updatedEmployee->getOperationState() == OPERATIONSTATE_FAILURE)

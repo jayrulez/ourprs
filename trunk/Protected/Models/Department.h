@@ -48,8 +48,7 @@ public:
 	void setOldDeptCode(int);
 	int getOldDeptCode();
 	Department * findByCode(int);
-	void save();
-	void update(Department *);
+	void save(Department*);
 	void setPrev(Department*);
 	Department* getPrev();
 	Department & Department::operator=(const Department &department)

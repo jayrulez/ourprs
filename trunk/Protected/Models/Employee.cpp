@@ -17,6 +17,7 @@ Employee::Employee()
 	this->prev = NULL;
 	this->head = NULL;
 	this->setFilename(EMPLOYEE_PAYROLL_DATA_FILE);
+	this->setFileHeader("ID. No.\tFirst Name\tLast Name\tDept. Code\tPosition\tHours Worked\n");
 }
 
 Employee::~Employee()
@@ -35,11 +36,15 @@ Employee::Employee(int id = 0, string firstname = "", string lastname = "", int 
 	this->prev = NULL;
 	this->head = NULL;
 	this->setFilename(EMPLOYEE_PAYROLL_DATA_FILE);
+	this->setFileHeader("ID. No.\tFirst Name\tLast Name\tDept. Code\tPosition\tHours Worked\n");
 }
 
 Employee* Employee::model()
 {
-	return new Employee(0,"","",0,"",0);
+    static Employee * instance = NULL;
+    if(instance == NULL)
+        instance = new Employee(0,"","",0,"",0);
+    return instance;
 }
 
 Employee* Employee::getNext()
@@ -149,7 +154,7 @@ bool Employee::recordExists(int keyCode)
 	if(streamObj.is_open())
 	{
 		Employee employee(0,"","",0,"",0);
-	    //std::getline( streamObj, line );
+	    std::getline( streamObj, line );
 		while(streamObj >> employee.id >> employee.firstname >> employee.lastname >> employee.deptCode >> employee.position >> employee.hoursWorked)
 		{
 			if(employee.id == keyCode)
@@ -170,7 +175,7 @@ bool Employee::recordExists(int keyCode, int ignore)
 	if(streamObj.is_open())
 	{
 		Employee employee(0,"","",0,"",0);
-	    //std::getline( streamObj, line );
+	    std::getline( streamObj, line );
 		while(streamObj >> employee.id >> employee.firstname >> employee.lastname >> employee.deptCode >> employee.position >> employee.hoursWorked)
 		{
 			if(employee.id != ignore)
@@ -194,7 +199,7 @@ Employee* Employee::findById(int keyCode)
 	if(streamObj.is_open())
 	{
 		Employee employee(0,"","",0,"",0);
-	    //std::getline( streamObj, line );
+	    std::getline( streamObj, line );
 		while(streamObj >> employee.id >> employee.firstname >> employee.lastname >> employee.deptCode >> employee.position >> employee.hoursWorked)
 		{
 			if(employee.id == keyCode)
@@ -209,20 +214,7 @@ Employee* Employee::findById(int keyCode)
 	return NULL;
 }
 
-void Employee::save()
-{
-	ofstream streamObj(this->getFilename(),ios::app);
-	if(streamObj.is_open())
-	{
-		if(streamObj << this->id << "\t" << this->firstname << "\t" << this->lastname << "\t" << this->deptCode << "\t" << this->position << "\t" << this->hoursWorked << "\n")
-			this->setOperationState(OPERATIONSTATE_SUCCESS);
-		else
-			this->setOperationState(OPERATIONSTATE_FAILURE);
-		streamObj.close();
-	}
-}
-
-void Employee::update(Employee * listHead)
+void Employee::save(Employee * listHead)
 {
 	ifstream iStreamObj(this->getFilename());
 	Employee * tempEmployee = listHead;
@@ -230,6 +222,7 @@ void Employee::update(Employee * listHead)
     ofstream oStreamObj(this->getFilename(), ios::trunc);
     if(oStreamObj.is_open())
     {
+        oStreamObj << this->getFileHeader();
         do
         {
             if(tempEmployee != NULL)
@@ -258,6 +251,7 @@ void Employee::deleteRecord(Employee* listHead)
     ofstream oStreamObj(this->getFilename(), ios::trunc);
     if(oStreamObj.is_open())
     {
+        oStreamObj << this->getFileHeader();
         do
         {
             if(tempEmployee != NULL)

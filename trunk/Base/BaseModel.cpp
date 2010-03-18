@@ -48,3 +48,14 @@ void BaseModel::setOperationState(bool operationState)
 {
 	this->operationState = operationState;
 }
+
+
+string BaseModel::getFileHeader()
+{
+    return this->fileHeader;
+}
+
+void BaseModel::setFileHeader(string fileHeader)
+{
+    this->fileHeader = fileHeader;
+}
