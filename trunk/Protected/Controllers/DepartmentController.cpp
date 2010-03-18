@@ -207,7 +207,7 @@ int DepartmentController::actionUpdate()
                     {
 						EmployeeList _list;
 						_list.BuildListFromFile();
-						_list.silentCascadeUpdateDeptRelation(department->getDeptCode(),_list.GetHead());
+						_list.silentCascadeUpdateDeptRelation(department->getDeptCode(),updatedDepartment->getDeptCode(),_list.GetHead());
 						_list.saveListToFile(_list.GetHead());
                         ConsoleObj.xyCoord(24,9);
                         ScreenObj.SetScreenTextColour(GreenTextColour);
