@@ -394,6 +394,12 @@ int MasterFormMenuController::EmployeeMenu()
             {
                 Flag=false;
                 MenuCall=MenuControllerObj.BrowseMenu();
+                if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuCall,MenuControllerObj.GetMenuCode()))
+                {
+                    MenuSetObj.ShowMenuTitle(ON);
+                    MenuControllerObj.ShowMenu();
+                    Flag=true;
+                }
             }while(Flag);
         }while(MenuCall==0);
     }
@@ -758,6 +764,12 @@ int MasterFormMenuController::PayrollMenu()
             {
                 Flag=false;
                 MenuCall=MenuControllerObj.BrowseMenu();
+                if(ExtendedMenuControllerObj.ExtendedMenuCalls(MenuCall,MenuControllerObj.GetMenuCode()))
+                {
+                    MenuSetObj.ShowMenuTitle(ON);
+                    MenuControllerObj.ShowMenu();
+                    Flag=true;
+                }
             }while(Flag);
         }while(MenuCall==0);
     }
