@@ -24,5 +24,7 @@ public:
 	void SortList(string);
 	bool CompareG(Employee*, Employee*, string);
 	void Show(Employee*);
+	void silentCascadeUpdateDeptRelation(int, Employee*);
+	void saveListToFile(Employee*);
 };
 #endif
