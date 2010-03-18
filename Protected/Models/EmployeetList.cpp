@@ -3,6 +3,13 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#ifdef _WIN32
+    #include "../../Base/Gui/Win32/Core/Console.h"
+#endif
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
 
 EmployeeList::EmployeeList()
 {
@@ -272,4 +279,25 @@ bool EmployeeList::CompareG(Employee* node1, Employee* node2, string compareBy)
 		return node1->getHoursWorked() > node2->getHoursWorked();
 	}
 	return false;
+}
+
+
+void EmployeeList::Show(Employee* listHead)
+{
+    Console ConsoleObj;
+    Employee *CacheEmployee = listHead;
+
+    int count=0;
+    int x=5;
+    int y=8;
+    while(CacheEmployee!=NULL)
+    {
+
+        ConsoleObj.xyCoord(x,y);
+        cout << setw(3) << ++count<<". "<< setw(4) << CacheEmployee->getId() << "\t" <<
+        setw(30) << CacheEmployee->getFirstname()  << endl;
+        CacheEmployee=CacheEmployee->getNext();
+        y+=2;
+    }
+    ConsoleObj.xyCoord(x,y+6);
 }

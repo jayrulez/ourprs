@@ -203,12 +203,12 @@ Item* MenuSet::ViewSortedEmployeeMenu()
     this->MenuSize = 7;
     MenuTitle="Employee Menu - View Sorted";
     static Item ViewSortedEmployeeItem[7];
-    ViewSortedEmployeeItem[0].SetItem(9,22,1,"ID. No");
-    ViewSortedEmployeeItem[1].SetItem(20,22,2,"Last Name");
-    ViewSortedEmployeeItem[2].SetItem(34,22,3,"Dept. Code");
-    ViewSortedEmployeeItem[3].SetItem(48,22,4,"Position");
-    ViewSortedEmployeeItem[4].SetItem(60,22,4,"Hours Worked");
-    ViewSortedEmployeeItem[5].SetItem(25,32,PAYROLL_CODE,"<--Employee");
+    ViewSortedEmployeeItem[0].SetItem(9,22,EMPLOYEE_VIEW_SORTED_CODE_BY_ID,"ID. No");
+    ViewSortedEmployeeItem[1].SetItem(20,22,EMPLOYEE_VIEW_SORTED_CODE_BY_LASTNAME,"Last Name");
+    ViewSortedEmployeeItem[2].SetItem(34,22,EMPLOYEE_VIEW_SORTED_CODE_BY_DEPTCODE,"Dept. Code");
+    ViewSortedEmployeeItem[3].SetItem(48,22,EMPLOYEE_VIEW_SORTED_CODE_BY_POSITION,"Position");
+    ViewSortedEmployeeItem[4].SetItem(60,22,EMPLOYEE_VIEW_SORTED_CODE_BY_HOURSWORKED,"Hours Worked");
+    ViewSortedEmployeeItem[5].SetItem(25,32,EMPLOYEE_CODE,"<--Employee");
     ViewSortedEmployeeItem[6].SetItem(45,32,MAIN_CODE,"Main Menu");
     return ViewSortedEmployeeItem;
 }

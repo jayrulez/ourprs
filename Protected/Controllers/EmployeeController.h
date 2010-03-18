@@ -22,5 +22,6 @@ public:
 	int actionViewSorted();
 	int actionDelete();
 	int search();
+	int actionViewSortedList(Employee*);
 };
 #endif

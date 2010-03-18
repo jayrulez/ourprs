@@ -20,6 +20,7 @@ using namespace std;
 Department::Department()
 {
 	this->next = NULL;
+	this->prev = NULL;
 	this->setFilename(DEPARTMENT_RATES_FILE);
 }
 
@@ -27,13 +28,14 @@ Department::~Department()
 {
 }
 
-Department::Department(int deptCode = 0, string deptName = "", float regularRate = 0, float overtimeRate = 0, Department * next = NULL)
+Department::Department(int deptCode = 0, string deptName = "", float regularRate = 0, float overtimeRate = 0)
 {
 	this->deptCode = deptCode;
 	this->deptName = deptName;
 	this->regularRate = regularRate;
 	this->overtimeRate = overtimeRate;
-	this->next = next;
+	this->next = NULL;
+	this->prev = NULL;
 	this->setFilename(DEPARTMENT_RATES_FILE);
 }
 
@@ -100,7 +102,7 @@ void Department::read()
 
 Department* Department::model()
 {
-	return new Department(0,"",0,0,NULL);
+	return new Department(0,"",0,0);
 }
 
 void Department::show(int y)

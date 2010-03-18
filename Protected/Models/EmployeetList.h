@@ -23,5 +23,6 @@ public:
 	void SetListSize(unsigned int);
 	void SortList(string);
 	bool CompareG(Employee*, Employee*, string);
+	void Show(Employee*);
 };
 #endif
