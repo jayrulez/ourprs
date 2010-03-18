@@ -14,6 +14,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -258,3 +259,56 @@ Department* Department::getPrev()
 {
     return this->prev;
 }
+
+string Department::getFileHeaderFromFile()
+{
+	ifstream streamObj(this->getFilename());
+	string line = NULL;
+	if(streamObj.is_open())
+	{
+	    std::getline( streamObj, line );
+		streamObj.close();
+	}
+	return line;
+}
+
+string Department::getFileHeader()
+{
+    string _header = this->getFileHeaderFromFile();
+    if(_header.empty())
+    {
+        _header = this->_getFileHeader();
+    }
+    return _header;
+}
+
+void Department::setColumnHeaders()
+{
+	string segments[4];
+	string segment;
+	const char delim = '\t';
+	string header = this->getFileHeader();
+	istringstream _header(header);
+	if(!header.empty())
+	{
+		for(int i=0; i < 3; i++)
+		{
+			getline(_header, segment, delim);
+			segments[i] = segment;
+		}
+		this->setDeptCodeHeader(segments[0]);
+		this->setDeptNameHeader(segments[1]);
+		this->setRegularRateHeader(segments[2]);
+		system("pause");
+		this->setOvertimeRateHeader(segments[3]);
+	}
+}
+
+void Department::setDeptCodeHeader(string var) {this->deptCodeHeader = var;}
+void Department::setDeptNameHeader(string var) {this->deptNameHeader = var;}
+void Department::setRegularRateHeader(string var) {this->regularRateHeader = var;}
+void Department::setOvertimeRateHeader(string var) {this->overtimeRateHeader = var;}
+string Department::getDeptCodeHeader() {return this->deptCodeHeader;}
+string Department::getDeptNameHeader() {return this->deptNameHeader;}
+string Department::getRegularRateHeader() {return this->regularRateHeader;}
+string Department::getOvertimeRateHeader() {return this->overtimeRateHeader;}

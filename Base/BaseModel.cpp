@@ -50,7 +50,7 @@ void BaseModel::setOperationState(bool operationState)
 }
 
 
-string BaseModel::getFileHeader()
+string BaseModel::_getFileHeader()
 {
     return this->fileHeader;
 }
