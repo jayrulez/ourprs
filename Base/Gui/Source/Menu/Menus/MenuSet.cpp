@@ -338,10 +338,10 @@ Item* MenuSet::ViewSortedPayrollMenu()
     this->MenuSize = 6;
     MenuTitle="Payroll Menu - View Sorted";
     static Item ViewSortedPayrollItem[6];
-    ViewSortedPayrollItem[0].SetItem(13,22,1,"ID. No");
-    ViewSortedPayrollItem[1].SetItem(26,22,2,"Last Name");
-    ViewSortedPayrollItem[2].SetItem(41,22,3,"Dept. Code");
-    ViewSortedPayrollItem[3].SetItem(58,22,4,"Position");
+    ViewSortedPayrollItem[0].SetItem(13,22,PAYROLL_VIEW_SORTED_CODE_BY_ID,"ID. No");
+    ViewSortedPayrollItem[1].SetItem(26,22,PAYROLL_VIEW_SORTED_CODE_BY_LASTNAME,"Last Name");
+    ViewSortedPayrollItem[2].SetItem(41,22,PAYROLL_VIEW_SORTED_CODE_BY_DEPTCODE,"Dept. Code");
+    ViewSortedPayrollItem[3].SetItem(58,22,PAYROLL_VIEW_SORTED_CODE_BY_POSITION,"Position");
     ViewSortedPayrollItem[4].SetItem(25,32,PAYROLL_CODE,"<--Payroll");
     ViewSortedPayrollItem[5].SetItem(45,32,MAIN_CODE,"Main Menu");
     return &ViewSortedPayrollItem[0];

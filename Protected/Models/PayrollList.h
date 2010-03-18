@@ -12,11 +12,13 @@ public:
     ~PayrollList();
     void AddPayroll(Payroll);
     Payroll* GetPayroll(Payroll);
-    void ShowPayrollList();
+    void Show(Payroll*);
 	void BuildListFromFile();
 	bool BuildFileFromList();
-	Payroll * getHead();
+	Payroll * GetHead();
 	int ProcessPayroll();
 	void DestroyList();
+	void SortList(string);
+	bool CompareG(Payroll*, Payroll*, string);
 };
 #endif
