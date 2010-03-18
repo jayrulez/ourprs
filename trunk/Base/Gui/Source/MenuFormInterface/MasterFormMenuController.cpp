@@ -849,11 +849,13 @@ int MasterFormMenuController::EmployeeAfterViewSortedMenu()
 {
     int MenuCall;
     bool Flag;
+    MenuSetObj.SetYRelativeSystemFrame(YRelativeSystemFrame);
     if(MenuControllerObj.SetMenu(MenuSetObj.EmployeeAfterViewSortedMenu(),MenuSetObj.GetMenuSize(MenuSetObj.EmployeeAfterViewSortedMenu()),
     MenuSetObj.GetMenuCode(MenuSetObj.EmployeeAfterViewSortedMenu())))
     {
         MenuSetObj.ShowMenuTitle(ON);
         MenuControllerObj.ShowMenu();
+        MenuSetObj.EmployeeAfterViewSortedMenuExtension(ON);
         do
         {
             do
@@ -864,6 +866,7 @@ int MasterFormMenuController::EmployeeAfterViewSortedMenu()
                 {
                     MenuSetObj.ShowMenuTitle(ON);
                     MenuControllerObj.ShowMenu();
+                    MenuSetObj.EmployeeAfterViewSortedMenuExtension(ON);
                     Flag=true;
                 }
             }while(Flag);

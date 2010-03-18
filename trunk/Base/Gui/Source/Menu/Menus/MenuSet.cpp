@@ -244,12 +244,27 @@ Item* MenuSet::EmployeeAfterViewSortedMenu()
     this->MenuSize = 3;
     MenuTitle="View Employee - success";
     static Item EmployeeAfterViewSortedMenuItem[3];
-    EmployeeAfterViewSortedMenuItem[0].SetItem(15,32,EMPLOYEE_VIEW_SORTED_CODE,"<--View Sorted");
-    EmployeeAfterViewSortedMenuItem[1].SetItem(32,32,EMPLOYEE_CODE,"Employee");
-    EmployeeAfterViewSortedMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");
+    EmployeeAfterViewSortedMenuItem[0].SetItem(15,this->YRelativeSystemFrame-4,EMPLOYEE_VIEW_SORTED_CODE,"<--View Sorted");
+    EmployeeAfterViewSortedMenuItem[1].SetItem(38,this->YRelativeSystemFrame-4,EMPLOYEE_CODE,"Employee");
+    EmployeeAfterViewSortedMenuItem[2].SetItem(55,this->YRelativeSystemFrame-4,MAIN_CODE,"Main Menu");
     return EmployeeAfterViewSortedMenuItem;
 }
-
+void MenuSet::EmployeeAfterViewSortedMenuExtension(int state)
+{
+    if(state==OFF)
+    {
+        ScreenObj.SetScreenTextColour(ConsoleObj.GetConsoleScreenColour()+3);
+    }
+    LineObj.setVCoord(YRelativeSystemFrame-4-1,YRelativeSystemFrame-4+1,10);
+    LineObj.vSLine();
+    LineObj.setVCoord(YRelativeSystemFrame-4-1,YRelativeSystemFrame-4+1,34);
+    LineObj.vSLine();
+    LineObj.setVCoord(YRelativeSystemFrame-4-1,YRelativeSystemFrame-4+1,50);
+    LineObj.vSLine();
+    LineObj.setVCoord(YRelativeSystemFrame-4-1,YRelativeSystemFrame-4+1,67);
+    LineObj.vSLine();
+    ScreenObj.SetScreenTextColour(48);
+}
 
 
 
