@@ -319,13 +319,12 @@ int EmployeeController::actionViewSortedList(Employee* listHead)
     this->getServicesObj()->SystemClearScreen();
     this->getServicesObj()->MaximumScreenBufferSize();
 
-    menuInstance->SetYRelativeSystemFrame(this->getServicesObj()->DynamicRunLevel());
     EmployeeList ListObj;
     ListObj.Show(listHead);
+    menuInstance->SetYRelativeSystemFrame(this->getServicesObj()->DynamicRunLevel());
     //int x = menuInstance->EmployeeAfterViewSortedMenu();
     //cout <<x<<endl;system("pause");
-    system("pause");
-    return this->run(EMPLOYEE_CODE);
+    return this->run(menuInstance->EmployeeAfterViewSortedMenu());
 }
 
 int EmployeeController::actionDelete()
