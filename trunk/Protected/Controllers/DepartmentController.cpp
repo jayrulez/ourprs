@@ -78,7 +78,7 @@ int DepartmentController::actionAdd()
         regularRateString >> regularRate;
         overtimeRateString >> overtimeRate;
 
-        Department * department = new Department(deptCode, deptName, regularRate, overtimeRate, NULL);
+        Department * department = new Department(deptCode, deptName, regularRate, overtimeRate);
 
         department->save();
         menuInstance->ClearAllFieldData();
@@ -172,7 +172,7 @@ int DepartmentController::actionUpdate()
                 _regularRateString >> _regularRateFloat;
                 _overtimeRateString >> _overtimeRateFloat;
 
-                Department * updatedDepartment = new Department(_deptCodeInt,_deptName,_regularRateFloat,_overtimeRateFloat,NULL);
+                Department * updatedDepartment = new Department(_deptCodeInt,_deptName,_regularRateFloat,_overtimeRateFloat);
                 if(actionCode == MAIN_CODE || actionCode == DEPARTMENT_CODE)
                 {
                     //clear search field
@@ -273,7 +273,6 @@ int DepartmentController::actionView()
 
 int DepartmentController::actionList(int page = 0)
 {
-    int actionCode;
 	MasterFormMenuController* menuInstance = this->getMenuObj();
     DepartmentList ListObj;
     this->getServicesObj()->SystemClearScreen();
@@ -281,8 +280,7 @@ int DepartmentController::actionList(int page = 0)
     ListObj.BuildListFromFile();
     ListObj.ShowDepartmentList();
     menuInstance->SetYRelativeSystemFrame(this->getServicesObj()->DynamicRunLevel());
-    actionCode = menuInstance->ViewAllDepartmentMenu();
-    return DEPARTMENT_CODE;
+    return this->run(menuInstance->ViewAllDepartmentMenu());
 }
 
 int DepartmentController::run(int actionCode)

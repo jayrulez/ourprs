@@ -76,7 +76,7 @@ void DepartmentList::BuildListFromFile()
     float overtimeRate;
 	ifstream iStreamObj(Department::model()->getFilename());
 
-    Department DepartmentObj(0,"",0,0,NULL);
+    Department DepartmentObj(0,"",0,0);
 
 	if(iStreamObj.is_open())
 	{

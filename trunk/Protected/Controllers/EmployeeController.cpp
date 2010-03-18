@@ -270,15 +270,62 @@ int EmployeeController::actionViewSorted()
     this->getServicesObj()->BasicRunLevel();
     EmployeeList ListObj;
     ListObj.BuildListFromFile();
-    ListObj.SortList("id");
-	Employee * cache = ListObj.GetHead();
-	while(cache!=NULL)
-	{
-		cout << cache->getFirstname() <<endl;system("pause");
-		cache = cache->getNext();
-	}
 
-    return this->run(menuInstance->ViewSortedEmployeeMenu());
+	int actionCode;
+
+    actionCode = menuInstance->ViewSortedEmployeeMenu();
+    switch(actionCode)
+    {
+        case EMPLOYEE_VIEW_SORTED_CODE_BY_ID:
+        {
+            ListObj.SortList("id");
+        }
+        break;
+        case EMPLOYEE_VIEW_SORTED_CODE_BY_FIRSTNAME:
+        {
+            ListObj.SortList("firstname");
+        }
+        break;
+        case EMPLOYEE_VIEW_SORTED_CODE_BY_LASTNAME:
+        {
+            ListObj.SortList("lastname");
+        }
+        break;
+        case EMPLOYEE_VIEW_SORTED_CODE_BY_DEPTCODE:
+        {
+            ListObj.SortList("deptCode");
+        }
+        break;
+        case EMPLOYEE_VIEW_SORTED_CODE_BY_POSITION:
+        {
+            ListObj.SortList("position");
+        }
+        break;
+        case EMPLOYEE_VIEW_SORTED_CODE_BY_HOURSWORKED:
+        {
+            ListObj.SortList("hoursWorked");
+        }
+        break;
+    }
+    if(actionCode == EMPLOYEE_CODE || actionCode == MAIN_CODE)
+        return actionCode;
+    else
+        return this->actionViewSortedList(ListObj.GetHead());
+}
+
+int EmployeeController::actionViewSortedList(Employee* listHead)
+{
+	MasterFormMenuController* menuInstance = this->getMenuObj();
+    this->getServicesObj()->SystemClearScreen();
+    this->getServicesObj()->MaximumScreenBufferSize();
+
+    menuInstance->SetYRelativeSystemFrame(this->getServicesObj()->DynamicRunLevel());
+    EmployeeList ListObj;
+    ListObj.Show(listHead);
+    //int x = menuInstance->EmployeeAfterViewSortedMenu();
+    //cout <<x<<endl;system("pause");
+    system("pause");
+    return this->run(EMPLOYEE_CODE);
 }
 
 int EmployeeController::actionDelete()
