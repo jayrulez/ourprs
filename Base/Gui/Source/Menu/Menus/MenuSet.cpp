@@ -243,7 +243,7 @@ Item* MenuSet::EmployeeAfterViewSortedMenu()
     this->MenuCode = EMPLOYEE_VIEW_CODE;
     this->MenuSize = 3;
     MenuTitle="View Employee - success";
-    static Item EmployeeAfterViewSortedMenuItem[2];
+    static Item EmployeeAfterViewSortedMenuItem[3];
     EmployeeAfterViewSortedMenuItem[0].SetItem(15,32,EMPLOYEE_VIEW_SORTED_CODE,"<--View Sorted");
     EmployeeAfterViewSortedMenuItem[1].SetItem(32,32,EMPLOYEE_CODE,"Employee");
     EmployeeAfterViewSortedMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");

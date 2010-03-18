@@ -114,7 +114,7 @@ bool PayrollList::BuildFileFromList()
             while(PayrollPtr!=NULL)
             {
                 EmployeeObj = PayrollPtr->GetEmployeeObj();
-                oStreamObj << EmployeeObj.getDeptCode() << "\t" << EmployeeObj.getFirstname() << "\t" << EmployeeObj.getLastname() <<
+                oStreamObj << EmployeeObj.getId() << "\t" << EmployeeObj.getFirstname() << "\t" << EmployeeObj.getLastname() <<
                 "\t" << EmployeeObj.getDeptCode() << "\t" << EmployeeObj.getPosition() << "\t" << EmployeeObj.getHoursWorked() <<
                 "\t" << PayrollPtr->GetRegularPay() << "\t" << PayrollPtr->GetOvertimePay() << "\t" << PayrollPtr->GetGrossPay() << "\n";
                 PayrollPtr = PayrollPtr->getNext();
