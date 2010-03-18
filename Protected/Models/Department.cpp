@@ -22,6 +22,7 @@ Department::Department()
 	this->next = NULL;
 	this->prev = NULL;
 	this->setFilename(DEPARTMENT_RATES_FILE);
+	this->setFileHeader("Dept. Code\tDept. Name\tRegular Rate\tOvertime Rate\n");
 }
 
 Department::~Department()
@@ -37,6 +38,7 @@ Department::Department(int deptCode = 0, string deptName = "", float regularRate
 	this->next = NULL;
 	this->prev = NULL;
 	this->setFilename(DEPARTMENT_RATES_FILE);
+	this->setFileHeader("Dept. Code\tDept. Name\tRegular Rate\tOvertime Rate\n");
 }
 
 Department* Department::getNext()
@@ -102,7 +104,10 @@ void Department::read()
 
 Department* Department::model()
 {
-	return new Department(0,"",0,0);
+    static Department * instance = NULL;
+    if(instance == NULL)
+        instance = new Department(0,"",0,0);
+    return instance;
 }
 
 void Department::show(int y)
@@ -147,7 +152,7 @@ bool Department::recordExists(int keyCode)
 	if(streamObj.is_open())
 	{
 		Department department(0,"",0,0);
-	    //std::getline( streamObj, line );
+	    std::getline( streamObj, line );
 		while(streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate)
 		{
 			if(department.deptCode == keyCode)
@@ -168,7 +173,7 @@ bool Department::recordExists(int keyCode, int ignore)
 	if(streamObj.is_open())
 	{
 		Department department(0,"",0,0);
-	    //std::getline( streamObj, line );
+	    std::getline( streamObj, line );
 		while(streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate)
 		{
 			if(department.deptCode != ignore)
@@ -192,7 +197,7 @@ Department* Department::findByCode(int keyCode)
 	if(streamObj.is_open())
 	{
 		Department department(0,"",0,0);
-	    //std::getline( streamObj, line );
+	    std::getline( streamObj, line );
 		while(streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate)
 		{
 			if(department.deptCode == keyCode)
@@ -207,20 +212,7 @@ Department* Department::findByCode(int keyCode)
 	return NULL;
 }
 
-void Department::save()
-{
-	ofstream streamObj(this->getFilename(),ios::app);
-	if(streamObj.is_open())
-	{
-		if(streamObj << this->deptCode << "\t" << this->deptName << "\t" << this->regularRate << "\t" << this->overtimeRate << "\n")
-			this->setOperationState(OPERATIONSTATE_SUCCESS);
-		else
-			this->setOperationState(OPERATIONSTATE_FAILURE);
-		streamObj.close();
-	}
-}
-
-void Department::update(Department * listHead)
+void Department::save(Department * listHead)
 {
 	ifstream iStreamObj(this->getFilename());
 	Department * tempDepartment = listHead;
@@ -228,6 +220,7 @@ void Department::update(Department * listHead)
     ofstream oStreamObj(this->getFilename(), ios::trunc);
     if(oStreamObj.is_open())
     {
+        oStreamObj << this->getFileHeader();
         do
         {
             if(tempDepartment != NULL)

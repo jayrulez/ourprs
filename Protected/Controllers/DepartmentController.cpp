@@ -85,7 +85,10 @@ int DepartmentController::actionAdd()
 
         Department * department = new Department(deptCode, deptName, regularRate, overtimeRate);
 
-        department->save();
+        DepartmentList ListObj;
+        ListObj.BuildListFromFile();
+        ListObj.AddDepartment(*department);
+        department->save(ListObj.getHead());
         menuInstance->ClearAllFieldData();
 
 		this->getServicesObj()->BasicRunLevel();
@@ -192,7 +195,7 @@ int DepartmentController::actionUpdate()
 					ListObj.BuildListFromFile();
 					ListObj.UpdateNode(department, updatedDepartment);
 					//updatedDepartment->setList(ListObj.getHead());
-                    updatedDepartment->update(ListObj.getHead());
+                    updatedDepartment->save(ListObj.getHead());
 
                     this->getServicesObj()->BasicRunLevel();
                     if(updatedDepartment->getOperationState() == OPERATIONSTATE_FAILURE)

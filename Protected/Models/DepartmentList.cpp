@@ -74,12 +74,14 @@ void DepartmentList::BuildListFromFile()
     string deptName;
     float regularRate;
     float overtimeRate;
+    string line;
 	ifstream iStreamObj(Department::model()->getFilename());
 
     Department DepartmentObj(0,"",0,0);
 
 	if(iStreamObj.is_open())
 	{
+	    std::getline( iStreamObj, line );
 		while(iStreamObj >> deptCode >> deptName >> regularRate >> overtimeRate)
 		{
 		    DepartmentObj.setDeptCode(deptCode);

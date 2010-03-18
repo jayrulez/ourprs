@@ -72,6 +72,7 @@ void EmployeeList::BuildListFromFile()
 	int deptCode;
 	string position;
 	float hoursWorked;
+	string line;
 
 	ifstream iStreamObj(Employee::model()->getFilename());
 
@@ -81,6 +82,7 @@ void EmployeeList::BuildListFromFile()
 
 	if(iStreamObj.is_open())
 	{
+	    std::getline( iStreamObj, line );
 		while(iStreamObj >> id >> firstname >> lastname >> deptCode >> position >> hoursWorked)
 		{
 		    EmployeeObj.setId(id);
@@ -294,8 +296,7 @@ void EmployeeList::Show(Employee* listHead)
     {
 
         ConsoleObj.xyCoord(x,y);
-        cout << setw(3) << ++count<<". "<< setw(4) << CacheEmployee->getId() << "\t" <<
-        setw(30) << CacheEmployee->getFirstname()  << endl;
+        cout << setw(3) << ++count<<". "<< setw(4) << CacheEmployee->getId() << "\t" << setw(20) << CacheEmployee->getLastname() << "\t" << setw(4) << CacheEmployee->getDeptCode() << "\t" << setw(15) << CacheEmployee->getPosition() << "\t" << setw(10) << CacheEmployee->getHoursWorked()  << endl;
         CacheEmployee=CacheEmployee->getNext();
         y+=2;
     }
@@ -323,6 +324,7 @@ void EmployeeList::saveListToFile(Employee* listHead)
     ofstream oStreamObj(Employee::model()->getFilename(), ios::trunc);
     if(oStreamObj.is_open())
     {
+        oStreamObj << Employee::model()->getFileHeader();
         do
         {
             if(tempEmployee != NULL)

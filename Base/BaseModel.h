@@ -15,6 +15,7 @@ class BaseModel
 private:
 	string filename;
 	bool operationState;
+	string fileHeader;
 public:
 	BaseModel();
     virtual ~BaseModel();
@@ -24,5 +25,7 @@ public:
 	virtual void read();
 	bool getOperationState();
 	void setOperationState(bool);
+	void setFileHeader(string);
+	string getFileHeader();
 };
 #endif

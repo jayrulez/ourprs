@@ -71,12 +71,11 @@ public:
 	{
 		return !(*this == employee);
 	}
-	void Employee::save();
 	bool recordExists(int);
 	bool recordExists(int, int);
 	Employee * findById(int);
 	static Employee * model();
-	void update(Employee*);
+	void save(Employee*);
 	void deleteRecord(Employee*);
 	Employee* getHead();
 };
