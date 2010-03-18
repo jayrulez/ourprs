@@ -302,14 +302,14 @@ void EmployeeList::Show(Employee* listHead)
     ConsoleObj.xyCoord(x,y+6);
 }
 
-void EmployeeList::silentCascadeUpdateDeptRelation(int deptCode, Employee* listHead)
+void EmployeeList::silentCascadeUpdateDeptRelation(int deptCode, int newDeptCode, Employee* listHead)
 {
     Employee * cache = listHead;
     while(cache != NULL)
     {
         if(cache->getDeptCode() == deptCode)
         {
-            cache->setDeptCode(deptCode);
+            cache->setDeptCode(newDeptCode);
         }
         cache = cache->getNext();
     }
