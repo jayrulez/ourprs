@@ -284,3 +284,25 @@ Employee* Employee::getHead()
 {
     return this->head;
 }
+
+string Employee::getFileHeaderFromFile()
+{
+	ifstream streamObj(this->getFilename());
+	string line = NULL;
+	if(streamObj.is_open())
+	{
+	    std::getline( streamObj, line );
+		streamObj.close();
+	}
+	return line;
+}
+
+string Employee::getFileHeader()
+{
+    string _header = this->getFileHeaderFromFile();
+    if(_header.empty())
+    {
+        _header = this->_getFileHeader();
+    }
+    return _header;
+}

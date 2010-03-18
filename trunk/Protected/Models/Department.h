@@ -19,6 +19,10 @@ private:
 	float overtimeRate;
 	Department * next;
 	Department * prev;
+	string deptCodeHeader;
+	string deptNameHeader;
+	string regularRateHeader;
+	string overtimeRateHeader;
 public:
 	Department();
 	~Department();
@@ -51,6 +55,9 @@ public:
 	void save(Department*);
 	void setPrev(Department*);
 	Department* getPrev();
+	string getFileHeaderFromFile();
+	string getFileHeader();
+	void setColumnHeaders();
 	Department & Department::operator=(const Department &department)
 	{
 		if(this != &department)
@@ -73,5 +80,13 @@ public:
 	{
 		return !(*this == department);
 	}
+	void setDeptCodeHeader(string);
+	void setDeptNameHeader(string);
+	void setRegularRateHeader(string);
+	void setOvertimeRateHeader(string);
+	string getDeptCodeHeader();
+	string getDeptNameHeader();
+	string getRegularRateHeader();
+	string getOvertimeRateHeader();
 };
 #endif
