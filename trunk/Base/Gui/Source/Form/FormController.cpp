@@ -94,7 +94,7 @@ int FormController::BrowseForm()
             VerticalFormRangeCheck=IN_FORM_RANGE;
         }
     }
-    ValidateForm();
+    this->ValidateForm();
     return 0;
 }
 void FormController::Browse()
@@ -345,7 +345,7 @@ bool FormController::ValidateForm()
     {
         if(!(fptr+x)->GetValidData())
         {
-            //cout<<"["<<x+1<<"]"<<(fptr+x)->GetFieldName()<<endl;system("pause");
+            //cout<<"["<<(fptr+x)->GetValidData()<<"]"<<endl;system("pause");
             CompleteState=false;
             return false;
         }
@@ -357,6 +357,7 @@ void FormController::SetFieldState(bool state)
     int x;
     for(x=0;x<FormSize;x++)
     {
+        cout<<"["<<(fptr+x)->GetValidData()<<"]"<<endl;system("pause");
         if(PreviousField==*(fptr+x))
         {
             (fptr+x)->SetValidData(state);

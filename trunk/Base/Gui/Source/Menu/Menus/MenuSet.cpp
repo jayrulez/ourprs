@@ -376,9 +376,9 @@ Item* MenuSet::PayrollAfterViewSortedMenu()
     this->MenuSize = 3;
     MenuTitle="View Sorted Payroll - Successful";
     static Item PayrollAfterViewSortedMenuItem[3];
-    PayrollAfterViewSortedMenuItem[0].SetItem(15,28,PAYROLL_VIEW_SORTED_CODE,"<--View Sorted");
-    PayrollAfterViewSortedMenuItem[1].SetItem(32,28,PAYROLL_CODE,"Payroll");
-    PayrollAfterViewSortedMenuItem[2].SetItem(55,28,MAIN_CODE,"Main Menu");
+    PayrollAfterViewSortedMenuItem[0].SetItem(15,this->YRelativeSystemFrame-4,PAYROLL_VIEW_SORTED_CODE,"<--View Sorted");
+    PayrollAfterViewSortedMenuItem[1].SetItem(39,this->YRelativeSystemFrame-4,PAYROLL_CODE,"Payroll");
+    PayrollAfterViewSortedMenuItem[2].SetItem(55,this->YRelativeSystemFrame-4,MAIN_CODE,"Main Menu");
     return PayrollAfterViewSortedMenuItem;
 }
 Item* MenuSet::PayrollFailViewSortedMenu()

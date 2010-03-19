@@ -900,7 +900,6 @@ int MasterFormMenuController::PayrollAfterViewSortedMenu()
     MenuSetObj.GetMenuCode(MenuSetObj.PayrollAfterViewSortedMenu())))
     {
         MenuSetObj.ShowMenuTitle(ON);
-        MenuSetObj.ViewSortedPayrollMenuExtension(ON);
         MenuControllerObj.ShowMenu();
         do
         {
