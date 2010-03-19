@@ -135,7 +135,7 @@ void PayrollList::Show(Payroll* listHead)
         CachePayroll=CachePayroll->getNext();
         y+=2;
     }
-    ConsoleObj.xyCoord(x,y+6);
+    ConsoleObj.xyCoord(x,y+2);
     cout<<"--------------------------------------------------------------------------------";
 }
 
