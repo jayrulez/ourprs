@@ -103,7 +103,7 @@ void PayrollList::Show(Payroll* listHead)
         << headersB[6][0] << "  " << setw(7) << left
         << headersB[7][0] << "  " << setw(7) << left
         << headersB[8][0] << endl;
-        y+=1;
+        y+=3;
         ConsoleObj.xyCoord(x,y);
         cout << left << setw(4) << headersB[0][1] << "  " << setw(10) << left
         << headersB[1][1] << "  " << setw(10) << left
@@ -235,7 +235,6 @@ int PayrollList::ProcessPayroll()
     std::getline( EmpStreamObj, line );
 	if(EmpStreamObj.is_open())
 	{
-
 		while(EmpStreamObj >> id >> firstname >> lastname >> deptCode >> position >> hoursWorked)
 		{
             EmployeeObj.setDeptCode(deptCode);
