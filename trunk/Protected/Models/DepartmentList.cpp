@@ -81,8 +81,9 @@ void DepartmentList::ShowDepartmentList()
         cout << setw(10) << left << headers[0] << "  " <<
         setw(20) << left << headers[1] << "  " << setw(15) << left << headers[2] << "($)" << "  " <<
         setw(15) << left << headers[3] << "($)" << endl;
-
-        y+=2;
+        ConsoleObj.xyCoord(1,y+1);
+        cout<<"--------------------------------------------------------------------------------";
+        y+=4;
 
         while(CacheDepartment!=NULL)
         {
@@ -93,8 +94,10 @@ void DepartmentList::ShowDepartmentList()
             << left << CacheDepartment->getRegularRate() << "  " <<
             setw(15) << left <<fixed << setprecision (2) << CacheDepartment->getOvertimeRate() << endl;
             CacheDepartment=CacheDepartment->getNext();
-            y+=2;
+            y+=4;
         }
+        ConsoleObj.xyCoord(1,y-2);
+        cout<<"--------------------------------------------------------------------------------";
         ConsoleObj.xyCoord(x,y+6);
     }else{
         ConsoleObj.xyCoord(20,15);
