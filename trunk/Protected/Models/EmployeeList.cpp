@@ -46,10 +46,10 @@ void EmployeeList::AddEmployee(Employee NewEmployee)
     else
         throw 1;
 }
-Employee* EmployeeList::GetEmployee(Employee Emp)
+/*Employee* EmployeeList::GetEmployee(Employee Emp)
 {
     return &Emp;
-}
+}*/
 void EmployeeList::ShowEmployeeList()
 {
     Employee *CacheEmployee = Head;

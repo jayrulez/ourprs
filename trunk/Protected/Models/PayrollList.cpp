@@ -44,10 +44,10 @@ void PayrollList::AddPayroll(Payroll NewPayroll)
         }
     }
 }
-Payroll* PayrollList::GetPayroll(Payroll PayrollObj)
+/*Payroll* PayrollList::GetPayroll(Payroll PayrollObj)
 {
     return &PayrollObj;
-}
+}*/
 void PayrollList::Show(Payroll* listHead)
 {
 
