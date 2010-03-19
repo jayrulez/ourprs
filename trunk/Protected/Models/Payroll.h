@@ -50,6 +50,9 @@ public:
 			this->EmployeeObj.setDeptCode(payroll.EmployeeObj.getDeptCode());
 			this->EmployeeObj.setPosition(payroll.EmployeeObj.getPosition());
 			this->EmployeeObj.setHoursWorked(payroll.EmployeeObj.getHoursWorked());
+			this->RegularPay = payroll.RegularPay;
+			this->OvertimePay = payroll.OvertimePay;
+			this->GrossPay = payroll.GrossPay;
 		}
 		return *this;
 	}
@@ -60,7 +63,10 @@ public:
 		this->EmployeeObj.getLastname() == payroll.EmployeeObj.getLastname() &&
 		this->EmployeeObj.getDeptCode() == payroll.EmployeeObj.getDeptCode() &&
 		this->EmployeeObj.getPosition() == payroll.EmployeeObj.getPosition()  &&
-		this->EmployeeObj.getHoursWorked() == payroll.EmployeeObj.getHoursWorked();
+		this->EmployeeObj.getHoursWorked() == payroll.EmployeeObj.getHoursWorked() &&
+        this->RegularPay == payroll.RegularPay &&
+        this->OvertimePay == payroll.OvertimePay &&
+        this->GrossPay == payroll.GrossPay;
 	}
 	bool Payroll::operator!=(Payroll &payroll)
 	{
