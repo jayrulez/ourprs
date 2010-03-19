@@ -75,16 +75,28 @@ int FormController::BrowseForm()
             case UP_KEY:
                 CurrentField=SearchField(_PREV);
                 ConsoleObj.xyCoord(PreviousField.GetFieldX(),PreviousField.GetFieldY()-1);
-                ValidateDepartmentFields();
-                ValidateEmployeeFields();
+                if(this->FormCode==DEPARTMENT_ADD_FORM_CODE||this->FormCode==DEPARTMENT_SEARCH_FORM_CODE||this->FormCode==DEPARTMENT_UPDATE_FORM_CODE)
+                {
+                    ValidateDepartmentFields();
+                }
+                if(this->FormCode==EMPLOYEE_ADD_FORM_CODE||this->FormCode==EMPLOYEE_SEARCH_FORM_CODE||this->FormCode==EMPLOYEE_UPDATE_FORM_CODE)
+                {
+                    ValidateEmployeeFields();
+                }
             break;
             case TAB_KEY:
             case DOWN_KEY:
             case ENTER_KEY:
                 CurrentField=SearchField(_NEXT);
                 ConsoleObj.xyCoord(PreviousField.GetFieldX(),PreviousField.GetFieldY()-1);
-                ValidateDepartmentFields();
-                ValidateEmployeeFields();
+                if(this->FormCode==DEPARTMENT_ADD_FORM_CODE||this->FormCode==DEPARTMENT_SEARCH_FORM_CODE||this->FormCode==DEPARTMENT_UPDATE_FORM_CODE)
+                {
+                    ValidateDepartmentFields();
+                }
+                if(this->FormCode==EMPLOYEE_ADD_FORM_CODE||this->FormCode==EMPLOYEE_SEARCH_FORM_CODE||this->FormCode==EMPLOYEE_UPDATE_FORM_CODE)
+                {
+                    ValidateEmployeeFields();
+                }
             break;
         }
         UpdateField();
@@ -299,14 +311,14 @@ bool FormController::ValidateDepartmentFields()
     {
         if(!ValidatorObj.CheckDataExistence(PreviousField.GetFieldData()))
         {
-            SetFieldState(false);
+            this->SetFieldState(false);
             return false;
         }
         if(PreviousField.GetFieldName()=="Dept. Code")
         {
             if(ValidatorObj.CheckDepartmentExistence(PreviousField.GetFieldData()))
             {
-                SetFieldState(false);
+                this->SetFieldState(false);
                 return false;
             }
         }
@@ -315,14 +327,14 @@ bool FormController::ValidateDepartmentFields()
     {
         if(!ValidatorObj.CheckDataExistence(PreviousField.GetFieldData()))
         {
-            SetFieldState(false);
+            this->SetFieldState(false);
             return false;
         }
         if(PreviousField.GetFieldName()=="Dept. Code")
         {
             if(ValidatorObj.CheckOtherDepartmentExistence(PreviousField.GetFieldData(),UpdateFormOldKey)==true)
             {
-                SetFieldState(false);
+                this->SetFieldState(false);
                 return false;
             }
         }
@@ -331,7 +343,7 @@ bool FormController::ValidateDepartmentFields()
     {
         if(!ValidatorObj.CheckDataExistence(PreviousField.GetFieldData()))
         {
-            SetFieldState(false);
+            this->SetFieldState(false);
             return false;
         }
     }
@@ -345,7 +357,6 @@ bool FormController::ValidateForm()
     {
         if(!(fptr+x)->GetValidData())
         {
-            //cout<<"["<<(fptr+x)->GetValidData()<<"]"<<endl;system("pause");
             CompleteState=false;
             return false;
         }
@@ -357,7 +368,6 @@ void FormController::SetFieldState(bool state)
     int x;
     for(x=0;x<FormSize;x++)
     {
-        cout<<"["<<(fptr+x)->GetValidData()<<"]"<<endl;system("pause");
         if(PreviousField==*(fptr+x))
         {
             (fptr+x)->SetValidData(state);
