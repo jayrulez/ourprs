@@ -55,16 +55,15 @@ void PayrollList::Show(Payroll* listHead)
     this->Head = listHead;
     Payroll *CachePayroll = this->Head;
 
-    int count=0;
-    int x=5;
+    int x=2;
     int y=8;
     while(CachePayroll!=NULL)
     {
         EmployeeObj = CachePayroll->GetEmployeeObj();
         ConsoleObj.xyCoord(x,y);
-        cout << setw(3) << ++count<<". "<< setw(4) << EmployeeObj.getId() << "\t" << setw(20) << EmployeeObj.getLastname() << "\t" << setw(4) << EmployeeObj.getDeptCode() << "\t" << setw(15) << EmployeeObj.getPosition() << "\t" << setw(10) << EmployeeObj.getHoursWorked() << CachePayroll->GetRegularPay() << CachePayroll->GetOvertimePay() << CachePayroll->GetGrossPay() ;
+        cout << left << setw(4) << EmployeeObj.getId() << "  " << setw(10) << EmployeeObj.getFirstname() << "  " << setw(10) << EmployeeObj.getLastname() << "  " << setw(4) << EmployeeObj.getDeptCode() << "  " << setw(10) << EmployeeObj.getPosition() << "  " << setw(5) << fixed << setprecision (1)<< EmployeeObj.getHoursWorked() << "  " << setw(7) << fixed << setprecision (2)<< CachePayroll->GetRegularPay() << "  " << setw(7)<< CachePayroll->GetOvertimePay() << "  " << setw(7)<< CachePayroll->GetGrossPay() ;
         CachePayroll=CachePayroll->getNext();
-        y+=2;
+        y+=4;
     }
     ConsoleObj.xyCoord(x,y+6);
 }
@@ -151,6 +150,10 @@ int PayrollList::ProcessPayroll()
     float regularRate;
     float overtimeRate;
 
+    float overtimePay;
+    float regularPay;
+    float grossPay;
+
     Employee EmployeeObj;
     Payroll PayrollObj;
 
@@ -172,8 +175,13 @@ int PayrollList::ProcessPayroll()
                 {
                     if(EmployeeObj.getDeptCode()==deptCode)
                     {
-                        PayrollObj.SetPayroll(id,firstname,lastname,deptCode,position,hoursWorked,regularRate*hoursWorked,overtimeRate*hoursWorked,(regularRate*hoursWorked)+(overtimeRate*hoursWorked));
-                        //cout<<regularRate*hoursWorked;system("pause");
+                        regularPay = regularRate*hoursWorked;
+                        if(hoursWorked>40)
+                            overtimePay = overtimeRate*hoursWorked;
+                        else
+                            overtimePay = 0;
+                        grossPay = overtimePay + regularPay;
+                        PayrollObj.SetPayroll(id,firstname,lastname,deptCode,position,hoursWorked,regularPay,overtimePay,grossPay);
                         this->AddPayroll(PayrollObj);
                         break;
                     }
