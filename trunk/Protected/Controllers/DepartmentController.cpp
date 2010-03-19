@@ -107,7 +107,7 @@ int DepartmentController::actionAdd()
 
         return this->run(menuInstance->AddDepartmentAfterSaveMenu());
 	}
-	return MAIN_CODE;
+	return this->run(MAIN_CODE);
 }
 
 int DepartmentController::actionUpdate()
@@ -313,7 +313,7 @@ int DepartmentController::run(int actionCode)
         break;
         case DEPARTMENT_CODE:
         default:
-            call = this->actionIndex();
+            call = this->run(this->actionIndex());
         break;
     }
     return call;
