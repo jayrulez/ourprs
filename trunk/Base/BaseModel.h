@@ -26,6 +26,6 @@ public:
 	bool getOperationState();
 	void setOperationState(bool);
 	void setFileHeader(string);
-	string _getFileHeader();
+	string getFileHeader();
 };
 #endif
