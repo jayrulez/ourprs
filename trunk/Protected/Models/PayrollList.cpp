@@ -214,44 +214,47 @@ bool PayrollList::CompareG(Payroll* node1, Payroll* node2, string compareBy)
 
 void PayrollList::SortList(string sortBy = "id")
 {
-	Payroll * a = NULL;
-	Payroll * b = NULL;
-	Payroll * c = NULL;
-	Payroll * e = NULL;
-	Payroll * temp = NULL;
-	while(e != Head->getNext())
-	{
-		c = a = Head;
-		b = a->getNext();
-		while(a != e)
-		{
-			if(this->CompareG(a,b,sortBy))
-			{
-				if(*a == *Head)
-				{
-					temp = b->getNext();
-					b->setNext(a);
-					a->setNext(temp);
-					Head = b;
-					c = b;
-				}else{
-					temp = b->getNext();
-					b->setNext(a);
-					a->setNext(temp);
-					c->setNext(b);
-					c = b;
-				}
-			}else{
-				c = a;
-				a = a->getNext();
-			}
-			b = a->getNext();
-			if(b==e)
-			{
-				e = a;
-			}
-		}
-	}
+    if(Head != NULL)
+    {
+        Payroll * a = NULL;
+        Payroll * b = NULL;
+        Payroll * c = NULL;
+        Payroll * e = NULL;
+        Payroll * temp = NULL;
+        while(e != Head->getNext())
+        {
+            c = a = Head;
+            b = a->getNext();
+            while(a != e)
+            {
+                if(this->CompareG(a,b,sortBy))
+                {
+                    if(*a == *Head)
+                    {
+                        temp = b->getNext();
+                        b->setNext(a);
+                        a->setNext(temp);
+                        Head = b;
+                        c = b;
+                    }else{
+                        temp = b->getNext();
+                        b->setNext(a);
+                        a->setNext(temp);
+                        c->setNext(b);
+                        c = b;
+                    }
+                }else{
+                    c = a;
+                    a = a->getNext();
+                }
+                b = a->getNext();
+                if(b==e)
+                {
+                    e = a;
+                }
+            }
+        }
+    }
 }
 void PayrollList::DestroyList()
 {
