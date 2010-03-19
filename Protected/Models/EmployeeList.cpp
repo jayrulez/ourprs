@@ -214,44 +214,47 @@ void EmployeeList::SetListSize(unsigned int size)
 
 void EmployeeList::SortList(string sortBy = "id")
 {
-	Employee * a = NULL;
-	Employee * b = NULL;
-	Employee * c = NULL;
-	Employee * e = NULL;
-	Employee * temp = NULL;
-	while(e != Head->getNext())
-	{
-		c = a = Head;
-		b = a->getNext();
-		while(a != e)
-		{
-			if(this->CompareG(a,b,sortBy))
-			{
-				if(*a == *Head)
-				{
-					temp = b->getNext();
-					b->setNext(a);
-					a->setNext(temp);
-					Head = b;
-					c = b;
-				}else{
-					temp = b->getNext();
-					b->setNext(a);
-					a->setNext(temp);
-					c->setNext(b);
-					c = b;
-				}
-			}else{
-				c = a;
-				a = a->getNext();
-			}
-			b = a->getNext();
-			if(b==e)
-			{
-				e = a;
-			}
-		}
-	}
+    if(Head != NULL)
+    {
+        Employee * a = NULL;
+        Employee * b = NULL;
+        Employee * c = NULL;
+        Employee * e = NULL;
+        Employee * temp = NULL;
+        while(e != Head->getNext())
+        {
+            c = a = Head;
+            b = a->getNext();
+            while(a != e)
+            {
+                if(this->CompareG(a,b,sortBy))
+                {
+                    if(*a == *Head)
+                    {
+                        temp = b->getNext();
+                        b->setNext(a);
+                        a->setNext(temp);
+                        Head = b;
+                        c = b;
+                    }else{
+                        temp = b->getNext();
+                        b->setNext(a);
+                        a->setNext(temp);
+                        c->setNext(b);
+                        c = b;
+                    }
+                }else{
+                    c = a;
+                    a = a->getNext();
+                }
+                b = a->getNext();
+                if(b==e)
+                {
+                    e = a;
+                }
+            }
+        }
+    }
 }
 
 bool EmployeeList::CompareG(Employee* node1, Employee* node2, string compareBy)
