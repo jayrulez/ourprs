@@ -7,6 +7,8 @@
 #ifdef _WIN32
     #include "../../Base/Gui/Win32/Core/Console.h"
 #endif
+#include "../../Base/Gui/Source/Screen/Screen.h"
+#include "../../Base/Gui/Source/Tools/Colour.h"
 #include <sstream>
 using namespace std;
 
@@ -46,6 +48,7 @@ Department* DepartmentList::GetDepartment(Department Dept)
 void DepartmentList::ShowDepartmentList()
 {
     Console ConsoleObj;
+    Screen ScreenObj;
     Department *CacheDepartment = Head;
 
     int count=0;
@@ -64,25 +67,32 @@ void DepartmentList::ShowDepartmentList()
         headers[pos] = temp;
         pos++;
     }
-
-    ConsoleObj.xyCoord(x,y);
-    cout << setw(3) << left << " " << setw(10) << left << headers[0] << "\t" <<
-    setw(20) << left << headers[1] << "\t" << setw(10) << left << headers[2] << "\t" <<
-    setw(10) << left << headers[3] << endl;
-
-    y+=2;
-
-    while(CacheDepartment!=NULL)
+    if(Head!=NULL)
     {
-
         ConsoleObj.xyCoord(x,y);
-        cout << setw(3) << left << ++count << setw(10) << left << CacheDepartment->getDeptCode() << "\t" <<
-        setw(20) << left << CacheDepartment->getDeptName() << "\t" << setw(10) << left << CacheDepartment->getRegularRate() << "\t" <<
-        setw(10) << left << CacheDepartment->getOvertimeRate() << endl;
-        CacheDepartment=CacheDepartment->getNext();
+        cout << setw(3) << left << " " << setw(10) << left << headers[0] << "\t" <<
+        setw(20) << left << headers[1] << "\t" << setw(10) << left << headers[2] << "\t" <<
+        setw(10) << left << headers[3] << endl;
         y+=2;
+        while(CacheDepartment!=NULL)
+        {
+
+            ConsoleObj.xyCoord(x,y);
+            cout << setw(3) << left << ++count << setw(10) << left << CacheDepartment->getDeptCode() << "\t" <<
+            setw(20) << left << CacheDepartment->getDeptName() << "\t" << setw(10) << left << CacheDepartment->getRegularRate() << "\t" <<
+            setw(10) << left << CacheDepartment->getOvertimeRate() << endl;
+            CacheDepartment=CacheDepartment->getNext();
+            y+=2;
+        }
+        ConsoleObj.xyCoord(x,y+6);
     }
-    ConsoleObj.xyCoord(x,y+6);
+    else
+    {
+            ConsoleObj.xyCoord(20,15);
+            ScreenObj.SetScreenTextColour(WhiteColour);
+			cout << "No Department(s) information is available" << endl;
+			ScreenObj.SetScreenTextColour(DefaultTextColour);
+    }
 }
 
 Department* DepartmentList::getHead()

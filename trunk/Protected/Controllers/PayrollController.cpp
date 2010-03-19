@@ -10,7 +10,11 @@
 #ifndef _PAYROLL_H
 #include "../Models/Payroll.h"
 #endif
-
+#ifdef _WIN32
+    #include "../../Base/Gui/Win32/Core/Console.h"
+#endif
+#include "../../Base/Gui/Source/Screen/Screen.h"
+#include "../../Base/Gui/Source/Tools/Colour.h"
 #include <sstream>
 
 PayrollController::PayrollController()
