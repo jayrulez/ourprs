@@ -83,6 +83,10 @@ int FormController::BrowseForm()
                 {
                     ValidateEmployeeFields();
                 }
+                if(this->FormCode==PAYROLL_SEARCH_FORM_CODE)
+                {
+                    ValidatePayrollFields();
+                }
             break;
             case TAB_KEY:
             case DOWN_KEY:
@@ -96,6 +100,10 @@ int FormController::BrowseForm()
                 if(this->FormCode==EMPLOYEE_ADD_FORM_CODE||this->FormCode==EMPLOYEE_SEARCH_FORM_CODE||this->FormCode==EMPLOYEE_UPDATE_FORM_CODE)
                 {
                     ValidateEmployeeFields();
+                }
+                if(this->FormCode==PAYROLL_SEARCH_FORM_CODE)
+                {
+                    ValidatePayrollFields();
                 }
             break;
         }
