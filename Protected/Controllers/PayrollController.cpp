@@ -111,17 +111,17 @@ int PayrollController::actionViewSorted()
             ListObj.SortList("id");
         }
         break;
-        case EMPLOYEE_VIEW_SORTED_CODE_BY_LASTNAME:
+        case PAYROLL_VIEW_SORTED_CODE_BY_LASTNAME:
         {
             ListObj.SortList("lastname");
         }
         break;
-        case EMPLOYEE_VIEW_SORTED_CODE_BY_DEPTCODE:
+        case PAYROLL_VIEW_SORTED_CODE_BY_DEPTCODE:
         {
             ListObj.SortList("deptCode");
         }
         break;
-        case EMPLOYEE_VIEW_SORTED_CODE_BY_POSITION:
+        case PAYROLL_VIEW_SORTED_CODE_BY_POSITION:
         {
             ListObj.SortList("position");
         }

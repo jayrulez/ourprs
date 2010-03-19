@@ -11,6 +11,7 @@
 #endif
 #include "../../Base/Gui/Source/Screen/Screen.h"
 #include "../../Base/Gui/Source/Tools/Colour.h"
+#include <sstream>
 
 using namespace std;
 
@@ -57,11 +58,80 @@ void PayrollList::Show(Payroll* listHead)
 
     int x=2;
     int y=8;
+
+        string headerText;
+        Payroll* payroll = Payroll::model();
+        ifstream iStreamObj(payroll->getFilename());
+        if(iStreamObj.is_open())
+        {
+            std::getline( iStreamObj, headerText );
+            iStreamObj.close();
+        }
+        if(headerText.empty())
+            headerText = payroll->getFileHeader();
+
+        istringstream header(headerText);
+        string headers[9];
+        string temp;
+        int pos=0;
+        int pos2 = 0;
+        string headersB[9][2];
+        string tempB;
+        const char sdelim = ' ';
+        while(pos < 9 )
+        {
+            getline(header, temp, '\t');
+            headers[pos] = temp;
+            istringstream headerB(headers[pos]);
+            pos2 = 0;
+            while(pos2 < 2)
+            {
+                getline(headerB, tempB, sdelim);
+                headersB[pos][pos2] = tempB;
+                pos2++;
+            }
+            pos++;
+        }
+        ConsoleObj.xyCoord(x,y);
+
+        cout << left << setw(4) << headersB[0][0] << "  " << setw(10) << left
+        << headersB[1][0] << "  " << setw(10) << left
+        << headersB[2][0] << "  " << setw(4) << left
+        << headersB[3][0] << "  " << setw(10) << left
+        << headersB[4][0] << "  " << setw(5) << left
+        << headersB[5][0] << "  " << setw(7) << left
+        << headersB[6][0] << "  " << setw(7) << left
+        << headersB[7][0] << "  " << setw(7) << left
+        << headersB[8][0] << endl;
+        y+=1;
+        ConsoleObj.xyCoord(x,y);
+        cout << left << setw(4) << headersB[0][1] << "  " << setw(10) << left
+        << headersB[1][1] << "  " << setw(10) << left
+        << headersB[2][1] << "  " << setw(4) << left
+        << headersB[3][1] << "  " << setw(10) << left
+        << " " << "  " << setw(5) << left
+        << headersB[5][1] << "  " << setw(7) << left
+        << headersB[6][1] << "  " << setw(7) << left
+        << headersB[7][1] << "  " << setw(7) << left
+        << headersB[8][1] << endl;
+
+        ConsoleObj.xyCoord(1,y+2);
+        cout<<"--------------------------------------------------------------------------------";
+        y+=4;
     while(CachePayroll!=NULL)
     {
         EmployeeObj = CachePayroll->GetEmployeeObj();
         ConsoleObj.xyCoord(x,y);
-        cout << left << setw(4) << EmployeeObj.getId() << "  " << setw(10) << EmployeeObj.getFirstname() << "  " << setw(10) << EmployeeObj.getLastname() << "  " << setw(4) << EmployeeObj.getDeptCode() << "  " << setw(10) << EmployeeObj.getPosition() << "  " << setw(5) << fixed << setprecision (1)<< EmployeeObj.getHoursWorked() << "  " << setw(7) << fixed << setprecision (2)<< CachePayroll->GetRegularPay() << "  " << setw(7)<< CachePayroll->GetOvertimePay() << "  " << setw(7)<< CachePayroll->GetGrossPay() ;
+        cout << left << setw(4) << EmployeeObj.getId() << "  " << setw(10) << left
+        << EmployeeObj.getFirstname() << "  " << setw(10) << left
+        << EmployeeObj.getLastname() << "  " << setw(4) << left
+        << EmployeeObj.getDeptCode() << "  " << setw(10) << left
+        << EmployeeObj.getPosition() << "  " << setw(5) << right << fixed
+        << setprecision (1)<< EmployeeObj.getHoursWorked() << "  " << setw(7) << right << fixed
+        << setprecision (2)<< CachePayroll->GetRegularPay() << "  " << setw(7) << right << fixed
+        << CachePayroll->GetOvertimePay() << "  " << setw(7) << right << fixed
+        << CachePayroll->GetGrossPay() ;
+
         CachePayroll=CachePayroll->getNext();
         y+=4;
     }
@@ -85,6 +155,7 @@ void PayrollList::BuildListFromFile()
     float regularPay;
     float overtimePay;
     float grossPay;
+    string line;
 
 	ifstream iStreamObj(Payroll::model()->getFilename());
 
@@ -93,6 +164,7 @@ void PayrollList::BuildListFromFile()
 
 	if(iStreamObj.is_open())
 	{
+	    getline(iStreamObj,line);
 		while(iStreamObj >> id >> firstname >> lastname >> deptCode >> position >> hoursWorked >> regularPay >> overtimePay >> grossPay)
 		{
 		    PayrollObj.SetPayroll(id,firstname,lastname,deptCode,position,hoursWorked,regularPay,overtimePay,grossPay);
@@ -112,6 +184,7 @@ bool PayrollList::BuildFileFromList()
     {
         if(Head!=NULL)
         {
+            oStreamObj << Payroll::model()->getFileHeader();
             while(PayrollPtr!=NULL)
             {
                 EmployeeObj = PayrollPtr->GetEmployeeObj();
@@ -150,9 +223,9 @@ int PayrollList::ProcessPayroll()
     float regularRate;
     float overtimeRate;
 
-    float overtimePay;
-    float regularPay;
-    float grossPay;
+    float overtimePay = 0;
+    float regularPay = 0;
+    float grossPay = 0;
 
     Employee EmployeeObj;
     Payroll PayrollObj;
@@ -175,12 +248,15 @@ int PayrollList::ProcessPayroll()
                 {
                     if(EmployeeObj.getDeptCode()==deptCode)
                     {
-                        regularPay = regularRate*hoursWorked;
-                        if(hoursWorked>40)
-                            overtimePay = overtimeRate*hoursWorked;
-                        else
-                            overtimePay = 0;
+                        if(hoursWorked<=(float)40)
+                        {
+                            regularPay = regularRate*hoursWorked;
+                        }else{
+                            regularPay = (float)40 * regularRate;
+                            overtimePay = (hoursWorked - (float)40) * overtimeRate;
+                        }
                         grossPay = overtimePay + regularPay;
+
                         PayrollObj.SetPayroll(id,firstname,lastname,deptCode,position,hoursWorked,regularPay,overtimePay,grossPay);
                         this->AddPayroll(PayrollObj);
                         break;
