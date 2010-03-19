@@ -296,13 +296,3 @@ string Employee::getFileHeaderFromFile()
 	}
 	return line;
 }
-
-string Employee::getFileHeader()
-{
-    string _header = this->getFileHeaderFromFile();
-    if(_header.empty())
-    {
-        _header = this->_getFileHeader();
-    }
-    return _header;
-}
