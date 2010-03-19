@@ -354,7 +354,10 @@ void EmployeeList::Show(Employee* listHead)
         ScreenObj.SetScreenTextColour(DefaultTextColour);
     }
 }
-
+/*
+    *Used to update emoplyee records when it is depeneded on a
+     Department that has been changed/updated
+*/
 void EmployeeList::silentCascadeUpdateDeptRelation(int deptCode, int newDeptCode, Employee* listHead)
 {
     Employee * cache = listHead;
@@ -370,17 +373,24 @@ void EmployeeList::silentCascadeUpdateDeptRelation(int deptCode, int newDeptCode
 
 void EmployeeList::saveListToFile(Employee* listHead)
 {
+    //open input stream to "Employee Payroll Data.txt"
 	ifstream iStreamObj(Employee::model()->getFilename());
+
+	//store Head to tempEmployee
 	Employee * tempEmployee = listHead;
 
+    //open output stream to "Employee Payroll Data.txt"
     ofstream oStreamObj(Employee::model()->getFilename(), ios::trunc);
+
     if(oStreamObj.is_open())
     {
+        //write header row or coloumn headings to "Employee Payroll Data.txt"
         oStreamObj << Employee::model()->getFileHeader();
         do
         {
             if(tempEmployee != NULL)
             {
+                //write record to "Employee Payroll Data.txt"
                 oStreamObj << tempEmployee->getId() << "\t" << tempEmployee->getFirstname() << "\t" << tempEmployee->getLastname() << "\t" << tempEmployee->getDeptCode() << "\t" << tempEmployee->getPosition() << "\t" << tempEmployee->getHoursWorked() << "\n";
                 tempEmployee = tempEmployee->getNext();
             }
