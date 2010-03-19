@@ -322,7 +322,7 @@ void EmployeeList::Show(Employee* listHead)
     cout << setw(7) << left << headers[0] << "  " << setw(12) << left
     << headers[1] << "  " << setw(12) << left
     << headers[2] << "  " << setw(10) << left
-    << headers[3] << "  " << setw(15) << left
+    << headers[3] << "  " << setw(12) << left
     << headers[4] << "  " << setw(12) << left
     << headers[5];
 
@@ -334,7 +334,7 @@ void EmployeeList::Show(Employee* listHead)
         cout << setw(7) << left << CacheEmployee->getId() << "  " << setw(12) << left
         << CacheEmployee->getFirstname() << "  " << setw(12) << left
         << CacheEmployee->getLastname() << "  " << setw(10) << left
-        << CacheEmployee->getDeptCode() << "  " << setw(15) << left
+        << CacheEmployee->getDeptCode() << "  " << setw(12) << left
         << CacheEmployee->getPosition() << "  " << setw(12) << left
         << CacheEmployee->getHoursWorked();
         CacheEmployee=CacheEmployee->getNext();

@@ -7,6 +7,8 @@
 #ifdef _WIN32
     #include "../../Base/Gui/Win32/Core/Console.h"
 #endif
+#include "../../Base/Gui/Source/Screen/Screen.h"
+#include "../../Base/Gui/Source/Tools/Colour.h"
 #include <sstream>
 using namespace std;
 
@@ -46,52 +48,60 @@ Department* DepartmentList::GetDepartment(Department Dept)
 void DepartmentList::ShowDepartmentList()
 {
     Console ConsoleObj;
+    Screen ScreenObj;
     Department *CacheDepartment = Head;
-
-    int x=5;
-    int y=8;
-
-    string headerText;
-    Department* department = Department::model();
-    ifstream iStreamObj(department->getFilename());
-	if(iStreamObj.is_open())
-	{
-	    std::getline( iStreamObj, headerText );
-	    iStreamObj.close();
-	}
-    if(headerText.empty())
-        headerText = department->getFileHeader();
-
-    istringstream header(headerText);
-    string headers[4];
-    string temp;
-    int pos=0;
-    while(pos < 4 )
+    if(CacheDepartment!=NULL)
     {
-        getline(header, temp, '\t');
-        headers[pos] = temp;
-        pos++;
-    }
+        int x=5;
+        int y=8;
 
-    ConsoleObj.xyCoord(x,y);
-    cout << setw(10) << left << headers[0] << "  " <<
-    setw(20) << left << headers[1] << "  " << setw(15) << left << headers[2] << "  " <<
-    setw(15) << left << headers[3] << endl;
+        string headerText;
+        Department* department = Department::model();
+        ifstream iStreamObj(department->getFilename());
+        if(iStreamObj.is_open())
+        {
+            std::getline( iStreamObj, headerText );
+            iStreamObj.close();
+        }
+        if(headerText.empty())
+            headerText = department->getFileHeader();
 
-    y+=2;
-
-    while(CacheDepartment!=NULL)
-    {
+        istringstream header(headerText);
+        string headers[4];
+        string temp;
+        int pos=0;
+        while(pos < 4 )
+        {
+            getline(header, temp, '\t');
+            headers[pos] = temp;
+            pos++;
+        }
 
         ConsoleObj.xyCoord(x,y);
-        cout << setw(10) << left << CacheDepartment->getDeptCode() << "  " <<
-        setw(20) << left << CacheDepartment->getDeptName() << "  " << setw(15)
-        << left << CacheDepartment->getRegularRate() << "  " <<
-        setw(15) << left << CacheDepartment->getOvertimeRate() << endl;
-        CacheDepartment=CacheDepartment->getNext();
+        cout << setw(10) << left << headers[0] << "  " <<
+        setw(20) << left << headers[1] << "  " << setw(15) << left << headers[2] << "  " <<
+        setw(15) << left << headers[3] << endl;
+
         y+=2;
+
+        while(CacheDepartment!=NULL)
+        {
+
+            ConsoleObj.xyCoord(x,y);
+            cout << setw(10) << left << CacheDepartment->getDeptCode() << "  " <<
+            setw(20) << left << CacheDepartment->getDeptName() << "  " << setw(15)
+            << left << CacheDepartment->getRegularRate() << "  " <<
+            setw(15) << left << CacheDepartment->getOvertimeRate() << endl;
+            CacheDepartment=CacheDepartment->getNext();
+            y+=2;
+        }
+        ConsoleObj.xyCoord(x,y+6);
+    }else{
+        ConsoleObj.xyCoord(20,15);
+        ScreenObj.SetScreenTextColour(WhiteColour);
+        cout << "No Department(s) information is available" << endl;
+        ScreenObj.SetScreenTextColour(DefaultTextColour);
     }
-    ConsoleObj.xyCoord(x,y+6);
 }
 
 Department* DepartmentList::getHead()
