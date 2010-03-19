@@ -292,14 +292,51 @@ void EmployeeList::Show(Employee* listHead)
     Console ConsoleObj;
     Employee *CacheEmployee = listHead;
 
-    int count=0;
-    int x=5;
+    int x=3;
     int y=8;
+
+    string headerText;
+    Employee* employee = Employee::model();
+    ifstream iStreamObj(employee->getFilename());
+	if(iStreamObj.is_open())
+	{
+	    std::getline( iStreamObj, headerText );
+	    iStreamObj.close();
+	}
+    if(headerText.empty())
+        headerText = employee->getFileHeader();
+
+    istringstream header(headerText);
+    string headers[6];
+    string temp;
+    int pos=0;
+    while(pos < 6 )
+    {
+        getline(header, temp, '\t');
+        headers[pos] = temp;
+        pos++;
+    }
+
+    ConsoleObj.xyCoord(x,y);
+
+    cout << setw(7) << left << headers[0] << "  " << setw(12) << left
+    << headers[1] << "  " << setw(12) << left
+    << headers[2] << "  " << setw(10) << left
+    << headers[3] << "  " << setw(15) << left
+    << headers[4] << "  " << setw(12) << left
+    << headers[5];
+
+    y+=2;
+
     while(CacheEmployee!=NULL)
     {
-
         ConsoleObj.xyCoord(x,y);
-        cout << setw(3) << ++count<<". "<< setw(4) << CacheEmployee->getId() << "\t" << setw(20) << CacheEmployee->getLastname() << "\t" << setw(4) << CacheEmployee->getDeptCode() << "\t" << setw(15) << CacheEmployee->getPosition() << "\t" << setw(10) << CacheEmployee->getHoursWorked();
+        cout << setw(7) << left << CacheEmployee->getId() << "  " << setw(12) << left
+        << CacheEmployee->getFirstname() << "  " << setw(12) << left
+        << CacheEmployee->getLastname() << "  " << setw(10) << left
+        << CacheEmployee->getDeptCode() << "  " << setw(15) << left
+        << CacheEmployee->getPosition() << "  " << setw(12) << left
+        << CacheEmployee->getHoursWorked();
         CacheEmployee=CacheEmployee->getNext();
         y+=2;
     }
