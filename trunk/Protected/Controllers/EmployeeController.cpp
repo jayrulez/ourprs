@@ -101,14 +101,15 @@ int EmployeeController::search()
 
 int EmployeeController::actionUpdate()
 {
+    bool status=true;
 	int actionCode;
 	Employee * employee;
 	MasterFormMenuController *menuInstance = this->getMenuObj();
 
     this->getServicesObj()->BasicRunLevel();
-	actionCode = menuInstance->SearchEmployeeMenu();
 	do
 	{
+	    actionCode = menuInstance->SearchEmployeeMenu();
 		Field * data = menuInstance->GetAllFieldData();
 		istringstream idString((data)->GetFieldData());
 		int idInt;
@@ -214,7 +215,7 @@ int EmployeeController::actionUpdate()
 		}
 		else
 			break;
-	}while(employee != NULL);
+	}while(status);
 	return this->run(actionCode);
 }
 
