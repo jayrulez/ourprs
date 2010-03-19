@@ -9,7 +9,6 @@ class DefaultController: public BaseController
 public:
 	DefaultController();
 	~DefaultController();
-	DefaultController(Component*);
 	int actionIndex();
 	int run(int);
 	int getDefaultActionCode();

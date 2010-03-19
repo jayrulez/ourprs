@@ -11,7 +11,6 @@ class PayrollController: public BaseController
 public:
 	PayrollController();
 	~PayrollController();
-	PayrollController(Component*);
 	int actionIndex();
     int actionProcess();
     int actionView();

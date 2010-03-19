@@ -8,5 +8,5 @@ int main()
 {
 	Application *app = new Application();
 	int rVal = app->run();
-	return 0;
+	return rVal;
 }

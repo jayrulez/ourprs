@@ -6,11 +6,6 @@ DefaultController::DefaultController()
 {
 }
 
-DefaultController::DefaultController(Component * component)
-{
-    this->setComponent(component);
-}
-
 DefaultController::~DefaultController()
 {
 }
@@ -24,7 +19,9 @@ int DefaultController::actionIndex()
 {
     this->getServicesObj()->SizeConsoleWindow();
     this->getServicesObj()->BasicRunLevel();
-    return this->getMenuObj()->MainMenu();
+    int actionCode = this->run(this->getMenuObj()->MainMenu());
+	cout << actionCode << endl;system("pause");
+    return actionCode;
 }
 
 int DefaultController::run(int actionCode)
@@ -38,6 +35,7 @@ int DefaultController::run(int actionCode)
             call = this->actionIndex();
         break;
     }
+	cout << actionCode << endl;system("pause");
     return call;
 }
 

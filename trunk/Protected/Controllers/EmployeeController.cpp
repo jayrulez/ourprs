@@ -17,11 +17,6 @@ EmployeeController::EmployeeController()
 {
 }
 
-EmployeeController::EmployeeController(Component * component)
-{
-    this->setComponent(component);
-}
-
 EmployeeController::~EmployeeController()
 {
 }
