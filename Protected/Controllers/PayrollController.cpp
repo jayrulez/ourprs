@@ -128,7 +128,7 @@ int PayrollController::actionViewSorted()
         break;
     }
     if(actionCode == PAYROLL_CODE || actionCode == MAIN_CODE)
-        return actionCode;
+        return this->run(actionCode);
     else
         return this->actionViewSortedList(ListObj.GetHead());
 }
