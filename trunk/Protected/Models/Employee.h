@@ -72,7 +72,6 @@ public:
 		return !(*this == employee);
 	}
 	string getFileHeaderFromFile();
-	string getFileHeader();
 	bool recordExists(int);
 	bool recordExists(int, int);
 	Employee * findById(int);
