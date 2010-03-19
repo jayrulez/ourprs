@@ -17,7 +17,7 @@ Payroll::Payroll()
     this->next = NULL;
     this->prev = NULL;
     this->setFilename(PROCESSED_PAYROLL_DATA_FILE);
-    this->setFileHeader("ID. No.\tFirst Name\tLast Name\tDept. Code\tHours Worked\tRegular Pay\tOvertime Pay\tGross Pay\n");
+    this->setFileHeader("ID. No.\tFirst Name\tLast Name\tDept. Code\tPosition\tHours Worked\tRegular Pay\tOvertime Pay\tGross Pay\n");
 }
 Payroll::~Payroll()
 {
@@ -36,7 +36,7 @@ Payroll::Payroll(int id,string FirstName,string LastName,int DeptCode,string Pos
     this->next = NULL;
     this->prev = NULL;
     this->setFilename(PROCESSED_PAYROLL_DATA_FILE);
-    this->setFileHeader("ID. No.\tFirst Name\tLast Name\tDept. Code\tHours Worked\tRegular Pay\tOvertime Pay\tGross Pay\n");
+    this->setFileHeader("ID. No.\tFirst Name\tLast Name\tDept. Code\tPosition\tHours Worked\tRegular Pay\tOvertime Pay\tGross Pay\n");
 }
 void Payroll::SetPayroll(int id,string FirstName,string LastName,int DeptCode,string Position,float HoursWorked,float RegularPay,float OvertimePay,float GrossPay)
 {
@@ -135,7 +135,7 @@ Payroll* Payroll::findById(int keyCode)
 	if(streamObj.is_open())
 	{
 		Payroll payroll;
-	    //std::getline( streamObj, line );
+	    std::getline( streamObj, line );
 		while(streamObj >> id >> firstname >> lastname >> deptCode >> position >> hoursWorked >>
         payroll.RegularPay >>  payroll.OvertimePay >>  payroll.GrossPay)
 		{
