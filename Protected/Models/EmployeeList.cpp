@@ -320,7 +320,7 @@ void EmployeeList::Show(Employee* listHead)
         headers[pos] = temp;
         pos++;
     }
-    if(Head!=NULL)
+    if(Head!=listHead)
     {
         ConsoleObj.xyCoord(x,y);
         cout << setw(7) << left << headers[0] << "  " << setw(12) << left
