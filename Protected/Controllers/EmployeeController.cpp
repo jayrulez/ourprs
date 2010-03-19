@@ -53,7 +53,7 @@ int EmployeeController::actionAdd()
 
 		int id;
 		int deptCode;
-		int hoursWorked;
+		float hoursWorked;
 		string firstname;
 		string lastname;
 		string position;

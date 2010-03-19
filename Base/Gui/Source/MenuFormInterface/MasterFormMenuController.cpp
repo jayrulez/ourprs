@@ -938,6 +938,6 @@ int MasterFormMenuController::PayrollFailViewSortedMenu()
 */
 int MasterFormMenuController::ExitMenu()
 {
-    int MenuCall;
+    int MenuCall = EXIT_CODE;
     return MenuCall;
 }
