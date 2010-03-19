@@ -250,7 +250,7 @@ void Console::SetTextAttribute(unsigned long colour)
     /*gets the Console output handle ans stores it*/
     hOut=GetStdHandle(STD_OUTPUT_HANDLE);
     /*sets the colour of the Console text*/
-    SetConsoleTextAttribute(hOut,colour);
+    SetConsoleTextAttribute(hOut,(WORD)colour);
     this->colour=colour;
 }
 /*
@@ -293,9 +293,9 @@ void Console::SetConsoleScreenColour(unsigned long ScreenColour)
     y = GetConsoleBufferHeight();
     x = GetConsoleBufferWidth();
     size = x*y;
-    FillConsoleOutputCharacter ( hOut, TEXT ( ' ' ), size, coord, &n );
+    FillConsoleOutputCharacter ( hOut, TEXT ( ' ' ), size, coord, (LPDWORD)&n );
     GetConsoleScreenBufferInfo ( hOut, &ScreenBufferInfo );
-    FillConsoleOutputAttribute ( hOut, ScreenColour, size, coord, &n );
+    FillConsoleOutputAttribute ( hOut, (WORD)ScreenColour, size, coord, (LPDWORD)&n );
     SetConsoleCursorPosition ( hOut, coord );
     this->ScreenColour=ScreenColour;
 

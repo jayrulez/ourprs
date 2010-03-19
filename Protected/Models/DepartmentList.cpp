@@ -50,10 +50,10 @@ void DepartmentList::AddDepartment(Department NewDepartment)
         }
     }
 }
-Department* DepartmentList::GetDepartment(Department Dept)
+/*Department* DepartmentList::GetDepartment(Department Dept)
 {
     return &Dept;
-}
+}*/
 void DepartmentList::ShowDepartmentList()
 {
     //Create an instance of Console
