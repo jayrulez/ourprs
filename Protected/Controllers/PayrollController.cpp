@@ -102,7 +102,7 @@ int PayrollController::actionViewSorted()
 
 	int actionCode;
 
-    actionCode = menuInstance->ViewSortedEmployeeMenu();
+    actionCode = menuInstance->ViewSortedPayrollMenu();
     switch(actionCode)
     {
         case PAYROLL_VIEW_SORTED_CODE_BY_ID:

@@ -39,29 +39,29 @@ public:
     static Payroll* model();
     void show(int);
     Payroll* findById(int);
-    Payroll &  Payroll::operator=(const Payroll &payroll)
+    Payroll &  Payroll::operator=( Payroll &payroll)
 	{
 		if(this != &payroll)
 		{
-			this->EmployeeObj.id = EmployeeObj.id;
-			this->EmployeeObj.firstname = payroll.EmployeeObj.firstname;
-			this->EmployeeObj.lastname = payroll.EmployeeObj.lastname;
-			this->EmployeeObj.deptCode = payroll.EmployeeObj.deptCode;
-			this->EmployeeObj.position = payroll.EmployeeObj.position;
-			this->EmployeeObj.hoursWorked = payroll.EmployeeObj.hoursWorked;
+			this->EmployeeObj.setId(payroll.EmployeeObj.getId());
+			this->EmployeeObj.setFirstname(payroll.EmployeeObj.getFirstname());
+			this->EmployeeObj.setLastname(payroll.EmployeeObj.getLastname());
+			this->EmployeeObj.setDeptCode(payroll.EmployeeObj.getDeptCode());
+			this->EmployeeObj.setPosition(payroll.EmployeeObj.getPosition());
+			this->EmployeeObj.setHoursWorked(payroll.EmployeeObj.getHoursWorked());
 		}
 		return *this;
 	}
-	bool  Payroll::operator==(const Payroll &payroll) const
+	bool  Payroll::operator==( Payroll &payroll)
 	{
-		return this->EmployeeObj.id == payroll.EmployeeObj.employee.id &&
-		this->EmployeeObj.firstname == payroll.EmployeeObj.firstname &&
-		this->EmployeeObj.lastname == payroll.EmployeeObj.lastname &&
-		this->EmployeeObj.deptCode == payroll.EmployeeObj.deptCode &&
-		this->EmployeeObj.position == payroll.EmployeeObj.position &&
-		this->EmployeeObj.hoursWorked == payroll.EmployeeObj.hoursWorked;
+		return this->EmployeeObj.getId() == payroll.EmployeeObj.getId() &&
+		this->EmployeeObj.getFirstname() == payroll.EmployeeObj.getFirstname() &&
+		this->EmployeeObj.getLastname() == payroll.EmployeeObj.getLastname() &&
+		this->EmployeeObj.getDeptCode() == payroll.EmployeeObj.getDeptCode() &&
+		this->EmployeeObj.getPosition() == payroll.EmployeeObj.getPosition()  &&
+		this->EmployeeObj.getHoursWorked() == payroll.EmployeeObj.getHoursWorked();
 	}
-	bool Payroll::operator!=(const Payroll &payroll) const
+	bool Payroll::operator!=(Payroll &payroll)
 	{
 		return !(*this == payroll);
 	}

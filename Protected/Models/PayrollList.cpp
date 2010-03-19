@@ -49,8 +49,9 @@ Payroll* PayrollList::GetPayroll(Payroll PayrollObj)
 }
 void PayrollList::Show(Payroll* listHead)
 {
-    /*
+
     Console ConsoleObj;
+    Employee EmployeeObj;
     Payroll *CachePayroll = Head;
 
     int count=0;
@@ -58,16 +59,13 @@ void PayrollList::Show(Payroll* listHead)
     int y=8;
     while(CachePayroll!=NULL)
     {
-
+        EmployeeObj = CachePayroll->GetEmployeeObj();
         ConsoleObj.xyCoord(x,y);
-        cout << setw(3) << ++count<<". "<< setw(4) << CachePayroll->getDeptCode() << "\t" <<
-        setw(30) << CachePayroll->getDeptName() << "\t" << setw(10) << CachePayroll->getRegularRate() << "\t" <<
-        setw(10) << CachePayroll->getOvertimeRate() << endl;
+        cout << setw(3) << ++count<<". "<< setw(4) << EmployeeObj.getId() << "\t" << setw(20) << EmployeeObj.getLastname() << "\t" << setw(4) << EmployeeObj.getDeptCode() << "\t" << setw(15) << EmployeeObj.getPosition() << "\t" << setw(10) << EmployeeObj.getHoursWorked() << CachePayroll->GetRegularPay() << CachePayroll->GetOvertimePay() << CachePayroll->GetGrossPay() ;
         CachePayroll=CachePayroll->getNext();
         y+=2;
     }
     ConsoleObj.xyCoord(x,y+6);
-    */
 }
 
 Payroll* PayrollList::GetHead()
@@ -164,10 +162,12 @@ int PayrollList::ProcessPayroll()
     Employee EmployeeObj;
     Payroll PayrollObj;
 
+    string line;
     ifstream EmpStreamObj(Employee::model()->getFilename());
-
+    std::getline( EmpStreamObj, line );
 	if(EmpStreamObj.is_open())
 	{
+
 		while(EmpStreamObj >> id >> firstname >> lastname >> deptCode >> position >> hoursWorked)
 		{
             EmployeeObj.setId(id);
@@ -178,9 +178,9 @@ int PayrollList::ProcessPayroll()
             EmployeeObj.setHoursWorked(hoursWorked);
 
             ifstream DeptStreamObj(Department::model()->getFilename());
-
             if(DeptStreamObj.is_open())
             {
+                std::getline( DeptStreamObj, line );
                 while(DeptStreamObj >> deptCode >> deptName >> regularRate >> overtimeRate)
                 {
                     if(EmployeeObj.getDeptCode()==deptCode)

@@ -296,7 +296,7 @@ void EmployeeList::Show(Employee* listHead)
     {
 
         ConsoleObj.xyCoord(x,y);
-        cout << setw(3) << ++count<<". "<< setw(4) << CacheEmployee->getId() << "\t" << setw(20) << CacheEmployee->getLastname() << "\t" << setw(4) << CacheEmployee->getDeptCode() << "\t" << setw(15) << CacheEmployee->getPosition() << "\t" << setw(10) << CacheEmployee->getHoursWorked()  << endl;
+        cout << setw(3) << ++count<<". "<< setw(4) << CacheEmployee->getId() << "\t" << setw(20) << CacheEmployee->getLastname() << "\t" << setw(4) << CacheEmployee->getDeptCode() << "\t" << setw(15) << CacheEmployee->getPosition() << "\t" << setw(10) << CacheEmployee->getHoursWorked();
         CacheEmployee=CacheEmployee->getNext();
         y+=2;
     }
