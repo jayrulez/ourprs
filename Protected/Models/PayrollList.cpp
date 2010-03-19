@@ -64,6 +64,7 @@ void PayrollList::Show(Payroll* listHead)
         cout << setw(3) << ++count<<". "<< setw(4) << EmployeeObj.getId() << "\t" << setw(20) << EmployeeObj.getLastname() << "\t" << setw(4) << EmployeeObj.getDeptCode() << "\t" << setw(15) << EmployeeObj.getPosition() << "\t" << setw(10) << EmployeeObj.getHoursWorked() << CachePayroll->GetRegularPay() << CachePayroll->GetOvertimePay() << CachePayroll->GetGrossPay() ;
         CachePayroll=CachePayroll->getNext();
         y+=2;
+        system("pause");
     }
     ConsoleObj.xyCoord(x,y+6);
 }
