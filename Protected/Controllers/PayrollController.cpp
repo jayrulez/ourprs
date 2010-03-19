@@ -160,7 +160,7 @@ int PayrollController::run(int actionCode)
         break;
         case PAYROLL_CODE:
         default:
-            call = this->actionIndex();
+            call = this->run(this->actionIndex());
         break;
     }
     return call;
