@@ -422,7 +422,7 @@ int EmployeeController::run(int actionCode)
             break;
             case EMPLOYEE_CODE:
             default:
-                call = this->actionIndex();
+                call = this->run(this->actionIndex());
             break;
         }
         return call;
