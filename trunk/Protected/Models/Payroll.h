@@ -20,7 +20,8 @@ private:
     float OvertimePay;
     float GrossPay;
     Employee EmployeeObj;
-    Payroll *next;
+    Payroll * next;
+    Payroll * prev;
 public:
     Payroll();
     ~Payroll();
