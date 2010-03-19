@@ -96,16 +96,7 @@ void PayrollList::BuildListFromFile()
 	{
 		while(iStreamObj >> id >> firstname >> lastname >> deptCode >> position >> hoursWorked >> regularPay >> overtimePay >> grossPay)
 		{
-		    EmployeeObj.setId(id);
-		    EmployeeObj.setFirstname(firstname);
-		    EmployeeObj.setLastname(lastname);
-		    EmployeeObj.setDeptCode(deptCode);
-		    EmployeeObj.setPosition(position);
-		    EmployeeObj.setHoursWorked(hoursWorked);
-		    PayrollObj.SetEmployeeObj(EmployeeObj);
-		    PayrollObj.SetRegularPay(regularPay);
-		    PayrollObj.SetOvertimePay(overtimePay);
-		    PayrollObj.SetGrossPay(grossPay);
+		    PayrollObj.SetPayroll(id,firstname,lastname,deptCode,position,hoursWorked,regularPay,overtimePay,grossPay);
             this->AddPayroll(PayrollObj);
         }
         iStreamObj.close();
@@ -171,12 +162,7 @@ int PayrollList::ProcessPayroll()
 
 		while(EmpStreamObj >> id >> firstname >> lastname >> deptCode >> position >> hoursWorked)
 		{
-            EmployeeObj.setId(id);
-            EmployeeObj.setFirstname(firstname);
-            EmployeeObj.setLastname(lastname);
             EmployeeObj.setDeptCode(deptCode);
-            EmployeeObj.setPosition(position);
-            EmployeeObj.setHoursWorked(hoursWorked);
 
             ifstream DeptStreamObj(Department::model()->getFilename());
             if(DeptStreamObj.is_open())
@@ -186,10 +172,8 @@ int PayrollList::ProcessPayroll()
                 {
                     if(EmployeeObj.getDeptCode()==deptCode)
                     {
-                        PayrollObj.SetEmployeeObj(EmployeeObj);
-                        PayrollObj.SetRegularPay(regularRate * EmployeeObj.getHoursWorked());
-                        PayrollObj.SetOvertimePay(overtimeRate * EmployeeObj.getHoursWorked());
-                        PayrollObj.SetGrossPay(PayrollObj.GetRegularPay() + PayrollObj.GetOvertimePay());
+                        PayrollObj.SetPayroll(id,firstname,lastname,deptCode,position,hoursWorked,regularRate*hoursWorked,overtimeRate*hoursWorked,(regularRate*hoursWorked)+(overtimeRate*hoursWorked));
+                        //cout<<regularRate*hoursWorked;system("pause");
                         this->AddPayroll(PayrollObj);
                         break;
                     }
