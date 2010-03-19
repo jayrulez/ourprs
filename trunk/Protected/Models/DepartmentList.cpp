@@ -7,6 +7,7 @@
 #ifdef _WIN32
     #include "../../Base/Gui/Win32/Core/Console.h"
 #endif
+#include <sstream>
 using namespace std;
 
 DepartmentList::DepartmentList()
@@ -50,17 +51,34 @@ void DepartmentList::ShowDepartmentList()
     int count=0;
     int x=5;
     int y=8;
-	
+
     // Department* department = Department::model();
 
-    //department->setColumnHeaders();
+    istringstream header(Department::model()->getFileHeader());
+    string headers[4];
+    string temp;
+    int pos=0;
+    while(pos < 4 )
+    {
+        getline(header, temp, '\t');
+        headers[pos] = temp;
+        pos++;
+    }
+
+    ConsoleObj.xyCoord(x,y);
+    cout << setw(3) << left << " " << setw(10) << left << headers[0] << "\t" <<
+    setw(20) << left << headers[1] << "\t" << setw(10) << left << headers[2] << "\t" <<
+    setw(10) << left << headers[3] << endl;
+
+    y+=2;
+
     while(CacheDepartment!=NULL)
     {
 
         ConsoleObj.xyCoord(x,y);
-        cout << setw(3) << ++count<<". "<< setw(4) << CacheDepartment->getDeptCode() << "\t" <<
-        setw(30) << CacheDepartment->getDeptName() << "\t" << setw(10) << CacheDepartment->getRegularRate() << "\t" <<
-        setw(10) << CacheDepartment->getOvertimeRate() << endl;
+        cout << setw(3) << left << ++count << setw(10) << left << CacheDepartment->getDeptCode() << "\t" <<
+        setw(20) << left << CacheDepartment->getDeptName() << "\t" << setw(10) << left << CacheDepartment->getRegularRate() << "\t" <<
+        setw(10) << left << CacheDepartment->getOvertimeRate() << endl;
         CacheDepartment=CacheDepartment->getNext();
         y+=2;
     }
