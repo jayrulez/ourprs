@@ -102,8 +102,8 @@ void PayrollList::Show(Payroll* listHead)
         << headersB[5][0] << "  " << setw(7) << left
         << headersB[6][0] << "  " << setw(7) << left
         << headersB[7][0] << "  " << setw(7) << left
-        << headersB[8][0] << endl;
-        y+=2;
+        << headersB[8][0];
+        y+=1;
         ConsoleObj.xyCoord(x,y);
         cout << left << setw(4) << headersB[0][1] << "  " << setw(10) << left
         << headersB[1][1] << "  " << setw(10) << left
@@ -113,9 +113,9 @@ void PayrollList::Show(Payroll* listHead)
         << headersB[5][1] << "  " << setw(7) << left
         << headersB[6][1] << "  " << setw(7) << left
         << headersB[7][1] << "  " << setw(7) << left
-        << headersB[8][1] << endl;
+        << headersB[8][1];
 
-        ConsoleObj.xyCoord(1,y+2);
+        ConsoleObj.xyCoord(1,y+1);
         cout<<"--------------------------------------------------------------------------------";
         y+=4;
     while(CachePayroll!=NULL)
@@ -133,9 +133,10 @@ void PayrollList::Show(Payroll* listHead)
         << CachePayroll->GetGrossPay() ;
 
         CachePayroll=CachePayroll->getNext();
-        y+=4;
+        y+=2;
     }
     ConsoleObj.xyCoord(x,y+6);
+    cout<<"--------------------------------------------------------------------------------";
 }
 
 Payroll* PayrollList::GetHead()

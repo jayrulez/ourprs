@@ -103,9 +103,13 @@ void DepartmentList::ShowDepartmentList()
         //set cursor to positions x and y on the screen
         ConsoleObj.xyCoord(x,y);
         //display column headings
+		
+		headers[2] = headers[2] + " ($)";
+		headers[3] = headers[3] + " ($)";
+		
         cout << setw(10) << left << headers[0] << "  " <<
-        setw(20) << left << headers[1] << "  " << setw(15) << left << headers[2] << "($)" << "  " <<
-        setw(15) << left << headers[3] << "($)" << endl;
+        setw(20) << left << headers[1] << "  " << setw(16) << left << headers[2] << "  " <<
+        setw(17) << left << headers[3] << endl;
         //display under cloumn headings
         ConsoleObj.xyCoord(1,y+1);
         cout<<"--------------------------------------------------------------------------------";
@@ -116,9 +120,9 @@ void DepartmentList::ShowDepartmentList()
             //display records
             ConsoleObj.xyCoord(x,y);
             cout << setw(10) << left << CacheDepartment->getDeptCode() << "  " <<
-            setw(20) << left << CacheDepartment->getDeptName() << "  " << setw(15)
-            << left << CacheDepartment->getRegularRate() << "  " <<
-            setw(15) << left <<fixed << setprecision (2) << CacheDepartment->getOvertimeRate() << endl;
+            setw(20) << left << CacheDepartment->getDeptName() << "  " << setw(16)
+            << right << CacheDepartment->getRegularRate() << "  " <<
+            setw(17) << right <<fixed << setprecision (2) << CacheDepartment->getOvertimeRate() << endl;
             CacheDepartment=CacheDepartment->getNext();
             //increment position of record on screen
             y+=4;
