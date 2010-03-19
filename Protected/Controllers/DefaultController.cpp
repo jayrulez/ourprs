@@ -58,7 +58,8 @@ int DefaultController::run(int actionCode)
         break;
         case EXIT_CODE:
         {
-            menuCode = this->actionIndex();
+            exit(0);
+            menuCode = this->run(this->actionIndex());
         }
         break;
         case MAIN_CODE:
