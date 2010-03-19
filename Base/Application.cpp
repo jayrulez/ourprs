@@ -42,28 +42,28 @@ int Application::init()
 int Application::main()
 {
     int menuCode;
-	DefaultController defaultController(this);
-    menuCode = this->callMenu(&defaultController, defaultController.getDefaultActionCode());
+	DefaultController defaultController;
+    menuCode = defaultController.run(defaultController.getDefaultActionCode());
     while(menuCode!=EXIT_CODE)
     {
         switch(menuCode)
         {
             case DEPARTMENT_CODE:
             {
-                DepartmentController departmentController(this);
-                menuCode = this->callMenu(&departmentController, departmentController.getDefaultActionCode());
+                DepartmentController departmentController;
+                menuCode = departmentController.run(departmentController.getDefaultActionCode());
             }
             break;
             case EMPLOYEE_CODE:
             {
-                EmployeeController employeeController(this);
-                menuCode = this->callMenu(&employeeController, employeeController.getDefaultActionCode());
+                EmployeeController employeeController;
+                menuCode = employeeController.run(employeeController.getDefaultActionCode());
             }
             break;
             case PAYROLL_CODE:
             {
-                PayrollController payrollController(this);
-                menuCode = this->callMenu(&payrollController, payrollController.getDefaultActionCode());
+                PayrollController payrollController;
+                menuCode = payrollController.run(payrollController.getDefaultActionCode());
             }
             break;
             case EXIT_CODE:
@@ -73,7 +73,7 @@ int Application::main()
             break;
             case MAIN_CODE:
             default:
-                menuCode = this->callMenu(&defaultController, defaultController.getDefaultActionCode());
+                menuCode = defaultController.run(defaultController.getDefaultActionCode());
             break;
         }
     }

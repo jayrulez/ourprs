@@ -12,7 +12,6 @@ class EmployeeController: public BaseController
 public:
 	EmployeeController();
 	~EmployeeController();
-	EmployeeController(Component*);
 	int actionIndex();
 	int run(int);
 	int getDefaultActionCode();

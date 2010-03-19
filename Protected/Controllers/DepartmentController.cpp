@@ -32,11 +32,6 @@ DepartmentController::DepartmentController()
 {
 }
 
-DepartmentController::DepartmentController(Component * component)
-{
-    this->setComponent(component);
-}
-
 DepartmentController::~DepartmentController()
 {
 }

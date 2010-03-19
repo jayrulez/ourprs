@@ -16,10 +16,7 @@
 PayrollController::PayrollController()
 {
 }
-PayrollController::PayrollController(Component * component)
-{
-    this->setComponent(component);
-}
+
 PayrollController::~PayrollController()
 {
 }

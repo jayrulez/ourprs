@@ -17,7 +17,6 @@ class DepartmentController: public BaseController
 public:
 	DepartmentController();
 	~DepartmentController();
-	DepartmentController(Component*);
 	int actionIndex();
 	int actionAdd();
 	int actionUpdate();
