@@ -6,6 +6,8 @@
 #ifdef _WIN32
     #include "../../Base/Gui/Win32/Core/Console.h"
 #endif
+#include "../../Base/Gui/Source/Screen/Screen.h"
+#include "../../Base/Gui/Source/Tools/Colour.h"
 #include <iostream>
 #include <iomanip>
 
@@ -291,6 +293,7 @@ bool EmployeeList::CompareG(Employee* node1, Employee* node2, string compareBy)
 void EmployeeList::Show(Employee* listHead)
 {
     Console ConsoleObj;
+    Screen ScreenObj;
     Employee *CacheEmployee = listHead;
 
     int x=3;
@@ -317,31 +320,35 @@ void EmployeeList::Show(Employee* listHead)
         headers[pos] = temp;
         pos++;
     }
-
-    ConsoleObj.xyCoord(x,y);
-
-    cout << setw(7) << left << headers[0] << "  " << setw(12) << left
-    << headers[1] << "  " << setw(12) << left
-    << headers[2] << "  " << setw(10) << left
-    << headers[3] << "  " << setw(12) << left
-    << headers[4] << "  " << setw(12) << left
-    << headers[5];
-
-    y+=2;
-
-    while(CacheEmployee!=NULL)
+    if(Head!=NULL)
     {
         ConsoleObj.xyCoord(x,y);
-        cout << setw(7) << left << CacheEmployee->getId() << "  " << setw(12) << left
-        << CacheEmployee->getFirstname() << "  " << setw(12) << left
-        << CacheEmployee->getLastname() << "  " << setw(10) << left
-        << CacheEmployee->getDeptCode() << "  " << setw(12) << left
-        << CacheEmployee->getPosition() << "  " << setw(12) << left
-        << CacheEmployee->getHoursWorked();
-        CacheEmployee=CacheEmployee->getNext();
+        cout << setw(7) << left << headers[0] << "  " << setw(12) << left
+        << headers[1] << "  " << setw(12) << left
+        << headers[2] << "  " << setw(10) << left
+        << headers[3] << "  " << setw(12) << left
+        << headers[4] << "  " << setw(12) << left
+        << headers[5];
         y+=2;
+        while(CacheEmployee!=NULL)
+        {
+            ConsoleObj.xyCoord(x,y);
+            cout << setw(7) << left << CacheEmployee->getId() << "  " << setw(12) << left
+            << CacheEmployee->getFirstname() << "  " << setw(12) << left
+            << CacheEmployee->getLastname() << "  " << setw(10) << left
+            << CacheEmployee->getDeptCode() << "  " << setw(12) << left
+            << CacheEmployee->getPosition() << "  " << setw(12) << left
+            << CacheEmployee->getHoursWorked();
+            CacheEmployee=CacheEmployee->getNext();
+            y+=2;
+        }
+        ConsoleObj.xyCoord(x,y+6);
+    }else{
+        ConsoleObj.xyCoord(19,15);
+        ScreenObj.SetScreenTextColour(WhiteColour);
+        cout << "No Employee(s) information is available" << endl;
+        ScreenObj.SetScreenTextColour(DefaultTextColour);
     }
-    ConsoleObj.xyCoord(x,y+6);
 }
 
 void EmployeeList::silentCascadeUpdateDeptRelation(int deptCode, int newDeptCode, Employee* listHead)
