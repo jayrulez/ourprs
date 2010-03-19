@@ -156,14 +156,15 @@ void DepartmentList::UpdateNode(Department* oldNode, Department* newNode)
         if(*oldNode == *Head)
         {
             // if has more than one item
-            Department * hNext;
-            hNext = Head->getNext();
+            Department * hNext = Head->getNext();
+            Head = newNode;
             if(hNext!=NULL)
             {
-                Head = newNode;
                 Head->setNext(hNext);
-                Head->getNext()->setPrev(NULL);
+                Head->getNext()->setPrev(Head);
                 Head->setPrev(NULL);
+            }else{
+                Head->setNext(NULL);
             }
         }else{
             Department * temp = Head;

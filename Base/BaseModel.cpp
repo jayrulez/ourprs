@@ -33,7 +33,6 @@ const char* BaseModel::getFilename()
 
 	/*char* filenameCharS;
 	istringstream filenameString(this->filename);
-	//system("pause");
 	filenameString >> filenameCharS;
 	return (const)filenameCharS;*/
 	return this->filename.c_str();
