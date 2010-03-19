@@ -130,8 +130,7 @@ void PayrollList::Show(Payroll* listHead)
         << setprecision (1)<< EmployeeObj.getHoursWorked() << "  " << setw(7) << right << fixed
         << setprecision (2)<< CachePayroll->GetRegularPay() << "  " << setw(7) << right << fixed
         << CachePayroll->GetOvertimePay() << "  " << setw(7) << right << fixed
-        << CachePayroll->GetGrossPay() ;
-
+        << CachePayroll->GetGrossPay();
         CachePayroll=CachePayroll->getNext();
         y+=4;
     }
