@@ -129,7 +129,7 @@ bool PayrollList::BuildFileFromList()
         }
         else
         {
-            ConsoleObj.xyCoord(5,15);
+            ConsoleObj.xyCoord(7,15);
             ScreenObj.SetScreenTextColour(WhiteColour);
 			cout << "No Employee or Department information is available to be processed." << endl;
 			ScreenObj.SetScreenTextColour(DefaultTextColour);
