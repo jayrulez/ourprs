@@ -227,7 +227,6 @@ void Employee::save(Employee * listHead)
         {
             if(tempEmployee != NULL)
             {
-				cout << tempEmployee->getId();system("pause");
                 oStreamObj << tempEmployee->getId() << "\t" << tempEmployee->getFirstname() << "\t" << tempEmployee->getLastname() << "\t" << tempEmployee->getDeptCode() << "\t" << tempEmployee->getPosition() << "\t" << tempEmployee->getHoursWorked() << "\n";
                 tempEmployee = tempEmployee->getNext();
             }

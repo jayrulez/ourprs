@@ -120,14 +120,15 @@ void EmployeeList::UpdateNode(Employee* oldNode, Employee* newNode)
         if(*oldNode == *Head)
         {
             // if has more than one item
-            Employee * hNext;
-            hNext = Head->getNext();
+            Employee * hNext = Head->getNext();
+            Head = newNode;
             if(hNext!=NULL)
             {
-                Head = newNode;
                 Head->setNext(hNext);
-                Head->getNext()->setPrev(NULL);
+                Head->getNext()->setPrev(Head);
                 Head->setPrev(NULL);
+            }else{
+                Head->setNext(NULL);
             }
         }else{
             Employee * temp = Head;
