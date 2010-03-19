@@ -96,9 +96,9 @@ void PayrollList::Show(Payroll* listHead)
 
         cout << left << setw(4) << headersB[0][0] << "  " << setw(10) << left
         << headersB[1][0] << "  " << setw(10) << left
-        << headersB[2][0] << "  " << setw(4) << left
+        << headersB[2][0] << "  " << setw(5) << left
         << headersB[3][0] << "  " << setw(10) << left
-        << headersB[4][0] << "  " << setw(5) << left
+        << headersB[4][0] << "  " << setw(6) << left
         << headersB[5][0] << "  " << setw(7) << left
         << headersB[6][0] << "  " << setw(7) << left
         << headersB[7][0] << "  " << setw(7) << left
@@ -107,9 +107,9 @@ void PayrollList::Show(Payroll* listHead)
         ConsoleObj.xyCoord(x,y);
         cout << left << setw(4) << headersB[0][1] << "  " << setw(10) << left
         << headersB[1][1] << "  " << setw(10) << left
-        << headersB[2][1] << "  " << setw(4) << left
+        << headersB[2][1] << "  " << setw(5) << left
         << headersB[3][1] << "  " << setw(10) << left
-        << " " << "  " << setw(5) << left
+        << " " << "  " << setw(6) << left
         << headersB[5][1] << "  " << setw(7) << left
         << headersB[6][1] << "  " << setw(7) << left
         << headersB[7][1] << "  " << setw(7) << left
@@ -124,9 +124,9 @@ void PayrollList::Show(Payroll* listHead)
         ConsoleObj.xyCoord(x,y);
         cout << left << setw(4) << EmployeeObj.getId() << "  " << setw(10) << left
         << EmployeeObj.getFirstname() << "  " << setw(10) << left
-        << EmployeeObj.getLastname() << "  " << setw(4) << left
+        << EmployeeObj.getLastname() << "  " << setw(5) << left
         << EmployeeObj.getDeptCode() << "  " << setw(10) << left
-        << EmployeeObj.getPosition() << "  " << setw(5) << right << fixed
+        << EmployeeObj.getPosition() << "  " << setw(6) << right << fixed
         << setprecision (1)<< EmployeeObj.getHoursWorked() << "  " << setw(7) << right << fixed
         << setprecision (2)<< CachePayroll->GetRegularPay() << "  " << setw(7) << right << fixed
         << CachePayroll->GetOvertimePay() << "  " << setw(7) << right << fixed
