@@ -75,7 +75,10 @@ int MenuController::BrowseMenu()
     ConsoleObj.SetCursor(false,1);
     while(!read)
     {
-        Browse();
+        if(HorizontalRangeCheck==IN_MENU_RANGE)
+        {
+            Browse();
+        }
         switch(this->ValidKey())
         {
             case TAB_KEY:
