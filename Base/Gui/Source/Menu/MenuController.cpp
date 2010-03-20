@@ -76,7 +76,7 @@ int MenuController::BrowseMenu()
     while(!read)
     {
         Browse();
-        switch(ConsoleObj.ReadConsoleVirtualKeyInput())
+        switch(this->ValidKey())
         {
             case TAB_KEY:
             break;
@@ -143,6 +143,15 @@ int MenuController::BrowseMenu()
 /*
 *
 */
+int MenuController::ValidKey()
+{
+    int Key;
+    do
+    {
+        Key=ConsoleObj.ReadConsoleVirtualKeyInput();
+    }while(Key!=UP_KEY &&Key!=DOWN_KEY &&Key!=LEFT_KEY &&Key!=RIGHT_KEY &&Key!=F1_KEY &&Key!=F3_KEY &&Key!=ENTER_KEY);
+    return Key;
+}
 void MenuController::Browse()
 {
     if(!this->NewInstance)

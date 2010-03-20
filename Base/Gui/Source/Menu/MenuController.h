@@ -57,6 +57,7 @@ public:
     bool SetMenu(Item*,int,int);
     void SetMenuControllerFrameObj(Frame);
     int BrowseMenu();
+    int ValidKey();
     Item ItemY(int);
     Item ItemX(int);
     Item SearchMenuY(int);
