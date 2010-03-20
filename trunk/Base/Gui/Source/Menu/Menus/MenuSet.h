@@ -78,6 +78,7 @@
 #define PAYROLL_CODE 4000
     //process
 #define PAYROLL_PROCESS_CODE 4100
+#define PAYROLL_PRINT_CODE 4110
     //view
 #define PAYROLL_VIEW_CODE 4200
     //view sorted

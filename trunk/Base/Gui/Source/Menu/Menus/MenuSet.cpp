@@ -286,12 +286,13 @@ Item* MenuSet::PayrollMenu()
 Item* MenuSet::PayrollAfterGenerateMenu()
 {
     this->MenuCode = PAYROLL_PROCESS_CODE;
-    this->MenuSize = 3;
+    this->MenuSize = 4;
     MenuTitle="Payroll Menu - Processing Successful";
-    static Item PayrollAfterGenerateMenuItem[3];
+    static Item PayrollAfterGenerateMenuItem[4];
     PayrollAfterGenerateMenuItem[0].SetItem(20,28,PAYROLL_PROCESS_CODE,"Process");
     PayrollAfterGenerateMenuItem[1].SetItem(36,28,PAYROLL_CODE,"<--Payroll");
     PayrollAfterGenerateMenuItem[2].SetItem(55,28,MAIN_CODE,"Main Menu");
+    PayrollAfterGenerateMenuItem[3].SetItem(38,32,PAYROLL_PRINT_CODE,"Print");
     return PayrollAfterGenerateMenuItem;
 }
 Item* MenuSet::PayrollFailGenerateMenu()
