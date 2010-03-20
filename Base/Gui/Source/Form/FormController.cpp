@@ -369,6 +369,7 @@ bool FormController::ValidateForm()
             return false;
         }
     }
+    CompleteState=true;
     return true;
 }
 void FormController::SetFieldState(bool state)
@@ -394,6 +395,7 @@ void FormController::ShowForm()
         ValidateEmployeeFields();
         ValidateDepartmentFields();
     }
+    this->ValidateForm();
 }
 Field* FormController::GetAllFieldInfo()
 {

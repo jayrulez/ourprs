@@ -159,6 +159,11 @@ int DepartmentController::actionUpdate()
 
                 menuInstance->SetAllFieldData(record);
 
+                ConsoleObj.xyCoord(20,7);
+                ScreenObj.SetScreenTextColour(YellowTextColour);//59 nice
+                cout << "Warning: Dependent Empoyee records will be updated" << endl;
+                ScreenObj.SetScreenTextColour(DefaultTextColour);
+
                 actionCode = menuInstance->UpdateDepartmentMenu();
                 Field * newData = menuInstance->GetAllFieldData();
 

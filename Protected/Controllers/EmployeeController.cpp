@@ -143,6 +143,11 @@ int EmployeeController::actionUpdate()
                 BackToForm:
                 this->getServicesObj()->BasicRunLevel();
 
+                ConsoleObj.xyCoord(13,7);
+                ScreenObj.SetScreenTextColour(SharpeWhiteTextColour);
+                cout << "NB: Process Payroll to reflect changes in Payroll file." << endl;
+                ScreenObj.SetScreenTextColour(DefaultTextColour);
+
                 menuInstance->SetAllFieldData(record);
 
                 actionCode = menuInstance->UpdateEmployeeMenu();
