@@ -46,9 +46,9 @@ int PayrollController::actionProcess()
     }
     else
     {
-        ConsoleObj.xyCoord(20,15);
+        ConsoleObj.xyCoord(14,15);
         ScreenObj.SetScreenTextColour(RedTextColour);
-        cout << "Error: Files could not be processed" << endl;
+        cout << "Error: Payroll File could not be opened for writing" << endl;
         ScreenObj.SetScreenTextColour(DefaultTextColour);
         return this->run(this->getMenuObj()->PayrollFailProcessMenu());
     }

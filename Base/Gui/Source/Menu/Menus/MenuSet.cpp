@@ -105,9 +105,9 @@ Item* MenuSet::AddEmployeeAfterSaveMenu()
     this->MenuSize = 3;
     MenuTitle="Add Employee - Success";
     static Item AddEmployeeAfterSaveMenuItem[3];
-    AddEmployeeAfterSaveMenuItem[0].SetItem(15,32,EMPLOYEE_ADD_CODE,"Add More");
-    AddEmployeeAfterSaveMenuItem[1].SetItem(34,32,EMPLOYEE_CODE,"<--Employee");
-    AddEmployeeAfterSaveMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");
+    AddEmployeeAfterSaveMenuItem[0].SetItem(15,28,EMPLOYEE_ADD_CODE,"Add More");
+    AddEmployeeAfterSaveMenuItem[1].SetItem(34,28,EMPLOYEE_CODE,"<--Employee");
+    AddEmployeeAfterSaveMenuItem[2].SetItem(55,28,MAIN_CODE,"Main Menu");
     return AddEmployeeAfterSaveMenuItem;
 }
 Item* MenuSet::AddEmployeeFailSaveMenu()
@@ -116,9 +116,9 @@ Item* MenuSet::AddEmployeeFailSaveMenu()
     this->MenuSize = 3;
     MenuTitle="Add Employee - Failed";
     static Item AddEmployeeFailSaveMenuItem[3];
-    AddEmployeeFailSaveMenuItem[0].SetItem(15,32,EMPLOYEE_ADD_CODE,"<--Add Form");
-    AddEmployeeFailSaveMenuItem[1].SetItem(32,32,EMPLOYEE_CODE,"Employee");
-    AddEmployeeFailSaveMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");
+    AddEmployeeFailSaveMenuItem[0].SetItem(15,28,EMPLOYEE_ADD_CODE,"<--Add Form");
+    AddEmployeeFailSaveMenuItem[1].SetItem(36,28,EMPLOYEE_CODE,"Employee");
+    AddEmployeeFailSaveMenuItem[2].SetItem(55,28,MAIN_CODE,"Main Menu");
     return AddEmployeeFailSaveMenuItem;
 }
 Item* MenuSet::SearchEmployeeFormMenu()
@@ -302,7 +302,7 @@ Item* MenuSet::PayrollFailGenerateMenu()
     MenuTitle="Payroll Menu - Processing Failed";
     static Item PayrollAFailGenerateMenuItem[3];
     PayrollAFailGenerateMenuItem[0].SetItem(20,28,PAYROLL_PROCESS_CODE,"Retry");
-    PayrollAFailGenerateMenuItem[1].SetItem(32,28,PAYROLL_CODE,"<--Payroll");
+    PayrollAFailGenerateMenuItem[1].SetItem(35,28,PAYROLL_CODE,"<--Payroll");
     PayrollAFailGenerateMenuItem[2].SetItem(55,28,MAIN_CODE,"Main Menu");
     return PayrollAFailGenerateMenuItem;
 }
@@ -665,9 +665,9 @@ Item* MenuSet::AddDepartmentFailSaveMenu()
     this->MenuSize = 3;
     MenuTitle="Add Department - Failed";
     static Item AddDepartmentFailSaveMenuItem[3];
-    AddDepartmentFailSaveMenuItem[0].SetItem(15,32,DEPARTMENT_ADD_CODE,"<--Add Form");
-    AddDepartmentFailSaveMenuItem[1].SetItem(32,32,DEPARTMENT_CODE,"Department");
-    AddDepartmentFailSaveMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");
+    AddDepartmentFailSaveMenuItem[0].SetItem(15,28,DEPARTMENT_ADD_CODE,"<--Add Form");
+    AddDepartmentFailSaveMenuItem[1].SetItem(36,28,DEPARTMENT_CODE,"Department");
+    AddDepartmentFailSaveMenuItem[2].SetItem(55,28,MAIN_CODE,"Main Menu");
     return AddDepartmentFailSaveMenuItem;
 }
 Item* MenuSet::UpdateDepartmentAfterSaveMenu()
