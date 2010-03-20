@@ -54,8 +54,6 @@ string TextInput::FormTextInput(string input)
         if(input.length()<(unsigned)length)
         {
             Achar=InRec.Event.KeyEvent.uChar.AsciiChar;
-            //cout<<"["<<Achar<<"]"<<endl;
-            //system("pause");
             switch(this->CharacterType)
             {
                 case STRICTNUMERICTYPE:
@@ -69,7 +67,7 @@ string TextInput::FormTextInput(string input)
                 case FREENUMERICTYPE:
                     if(isdigit(Achar)||Achar=='.')
                     {
-                        if(Achar=='.'&&input.find('.')!=string::npos)
+                        if(Achar=='.' && input.find('.') != string::npos)
                         {
                         }
                         else
