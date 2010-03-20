@@ -8,6 +8,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -131,7 +132,7 @@ void Employee::show(int y)
     ConsoleObj.xyCoord(10,y+10);
     cout<<"Position        : "<<this->position;
     ConsoleObj.xyCoord(10,y+12);
-    cout<<"Hours Worked    : "<<this->hoursWorked;
+    cout<<"Hours Worked    : "<< fixed << setprecision (1) << this->hoursWorked;
     if(FrameObj.SetFrame(5,STANDARD_FRAME_WIDTH-5,y,y+14,NORMAL_FRAME))
     {
         FrameObj.sFraming();
@@ -227,7 +228,7 @@ void Employee::save(Employee * listHead)
         {
             if(tempEmployee != NULL)
             {
-                oStreamObj << tempEmployee->getId() << "\t" << tempEmployee->getFirstname() << "\t" << tempEmployee->getLastname() << "\t" << tempEmployee->getDeptCode() << "\t" << tempEmployee->getPosition() << "\t" << tempEmployee->getHoursWorked() << "\n";
+                oStreamObj << tempEmployee->getId() << "\t" << tempEmployee->getFirstname() << "\t" << tempEmployee->getLastname() << "\t" << tempEmployee->getDeptCode() << "\t" << tempEmployee->getPosition() << "\t" << fixed << setprecision(1) << tempEmployee->getHoursWorked() << "\n";
                 tempEmployee = tempEmployee->getNext();
             }
         }while(tempEmployee!=NULL);

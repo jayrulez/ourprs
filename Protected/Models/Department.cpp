@@ -14,6 +14,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <iomanip>
 #include <sstream>
 
 using namespace std;
@@ -120,9 +121,9 @@ void Department::show(int y)
     ConsoleObj.xyCoord(10,y+4);
     cout<<"Dept. Name        : "<<deptName;
     ConsoleObj.xyCoord(10,y+6);
-    cout<<"Regular Rate ($)  : "<<regularRate;
+    cout<<"Regular Rate ($)  : "<< fixed << setprecision (2) << regularRate;
     ConsoleObj.xyCoord(10,y+8);
-    cout<<"Overtime Rate ($) : "<<overtimeRate;
+    cout<<"Overtime Rate ($) : " << fixed << setprecision (2) <<overtimeRate;
     if(FrameObj.SetFrame(5,STANDARD_FRAME_WIDTH-5,y,y+10,NORMAL_FRAME))
     {
         FrameObj.sFraming();
@@ -226,7 +227,7 @@ void Department::save(Department * listHead)
         {
             if(tempDepartment != NULL)
             {
-                oStreamObj << tempDepartment->getDeptCode() << "\t" << tempDepartment->getDeptName() << "\t" << tempDepartment->getRegularRate() << "\t" << tempDepartment->getOvertimeRate() << "\n";
+                oStreamObj << tempDepartment->getDeptCode() << "\t" << tempDepartment->getDeptName() << "\t" << fixed << setprecision (2) << tempDepartment->getRegularRate() << "\t" << fixed << setprecision (2) << tempDepartment->getOvertimeRate() << "\n";
                 tempDepartment = tempDepartment->getNext();
             }
         }while(tempDepartment!=NULL);

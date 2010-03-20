@@ -92,8 +92,9 @@ void PayrollList::Show(Payroll* listHead)
             }
             pos++;
         }
+        ConsoleObj.xyCoord(1,y-1);
+        cout<<"--------------------------------------------------------------------------------";
         ConsoleObj.xyCoord(x,y);
-
         cout << left << setw(4) << headersB[0][0] << "  " << setw(10) << left
         << headersB[1][0] << "  " << setw(10) << left
         << headersB[2][0] << "  " << setw(5) << left
@@ -117,7 +118,7 @@ void PayrollList::Show(Payroll* listHead)
 
         ConsoleObj.xyCoord(1,y+1);
         cout<<"--------------------------------------------------------------------------------";
-        y+=4;
+        y+=3;
     while(CachePayroll!=NULL)
     {
         EmployeeObj = CachePayroll->GetEmployeeObj();
@@ -190,8 +191,10 @@ bool PayrollList::BuildFileFromList()
             {
                 EmployeeObj = PayrollPtr->GetEmployeeObj();
                 oStreamObj << EmployeeObj.getId() << "\t" << EmployeeObj.getFirstname() << "\t" << EmployeeObj.getLastname() <<
-                "\t" << EmployeeObj.getDeptCode() << "\t" << EmployeeObj.getPosition() << "\t" << EmployeeObj.getHoursWorked() <<
-                "\t" << PayrollPtr->GetRegularPay() << "\t" << PayrollPtr->GetOvertimePay() << "\t" << PayrollPtr->GetGrossPay() << "\n";
+                "\t" << EmployeeObj.getDeptCode() << "\t" << EmployeeObj.getPosition() << "\t"
+                << fixed << setprecision (1) << EmployeeObj.getHoursWorked() <<
+                "\t" << fixed << setprecision (2) << PayrollPtr->GetRegularPay() << "\t" << fixed << setprecision (2) << PayrollPtr->GetOvertimePay() << "\t" << fixed
+                << setprecision (2) << PayrollPtr->GetGrossPay() << "\n";
                 PayrollPtr = PayrollPtr->getNext();
             }
             ConsoleObj.xyCoord(24,15);
