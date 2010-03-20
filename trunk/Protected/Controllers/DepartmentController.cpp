@@ -58,7 +58,7 @@ int DepartmentController::actionAdd()
 	// cout << actionCode; fgetc(stdin);
 	if(actionCode == MAIN_CODE || actionCode == DEPARTMENT_CODE || actionCode == DEPARTMENT_ADD_CODE)
 	{
-	    // menuInstance->ClearAllFieldData();
+	    menuInstance->ClearAllFieldData();
 		return this->run(actionCode);
 	}
 	if(actionCode == DEPARTMENT_ADD_SAVE_CODE)
@@ -85,12 +85,10 @@ int DepartmentController::actionAdd()
 
         department->save(ListObj.getHead());
 
-        menuInstance->ClearAllFieldData();
-
 		this->getServicesObj()->BasicRunLevel();
 		if(department->getOperationState() == OPERATIONSTATE_FAILURE)
 		{
-            ConsoleObj.xyCoord(20,9);
+            ConsoleObj.xyCoord(18,14);
             ScreenObj.SetScreenTextColour(RedTextColour);
 			cout << "Error: Could not save department info to file" << endl;
 			ScreenObj.SetScreenTextColour(DefaultTextColour);
@@ -98,6 +96,7 @@ int DepartmentController::actionAdd()
 		}
 		else
 		{
+		    menuInstance->ClearAllFieldData();
             ConsoleObj.xyCoord(24,9);
             ScreenObj.SetScreenTextColour(GreenTextColour);
 			cout << "Department Added Successfuly" << endl;
@@ -159,9 +158,9 @@ int DepartmentController::actionUpdate()
 
                 menuInstance->SetAllFieldData(record);
 
-                ConsoleObj.xyCoord(20,7);
-                ScreenObj.SetScreenTextColour(YellowTextColour);//59 nice
-                cout << "Warning: Dependent Empoyee records will be updated" << endl;
+                ConsoleObj.xyCoord(17,7);
+                ScreenObj.SetScreenTextColour(YellowTextColour);
+                cout << "Warning: Dependent Employee records will be updated" << endl;
                 ScreenObj.SetScreenTextColour(DefaultTextColour);
 
                 actionCode = menuInstance->UpdateDepartmentMenu();

@@ -43,6 +43,7 @@ int EmployeeController::actionAdd()
 
 	if(actionCode == MAIN_CODE || actionCode == EMPLOYEE_CODE || actionCode == EMPLOYEE_ADD_CODE)
 	{
+	    menuInstance->ClearAllFieldData();
 		return this->run(actionCode);
 	}
 	if(actionCode == EMPLOYEE_ADD_SAVE_CODE)
@@ -74,14 +75,15 @@ int EmployeeController::actionAdd()
 		this->getServicesObj()->BasicRunLevel();
 		if(employee->getOperationState() == OPERATIONSTATE_FAILURE)
 		{
-            ConsoleObj.xyCoord(20,9);
+            ConsoleObj.xyCoord(18,14);
             ScreenObj.SetScreenTextColour(RedTextColour);
 			cout << "Error: Could not save employee info to file" << endl;
 			ScreenObj.SetScreenTextColour(DefaultTextColour);
-			return this->run(menuInstance->AddDepartmentFailSaveMenu());
+			return this->run(menuInstance->AddEmployeeFailSaveMenu());
 		}
 		else
 		{
+		    menuInstance->ClearAllFieldData();
             ConsoleObj.xyCoord(24,9);
             ScreenObj.SetScreenTextColour(GreenTextColour);
 			cout << "Employee Added Successfuly" << endl;
@@ -183,7 +185,7 @@ int EmployeeController::actionUpdate()
                     this->getServicesObj()->BasicRunLevel();
                     if(updatedEmployee->getOperationState() == OPERATIONSTATE_FAILURE)
                     {
-                        ConsoleObj.xyCoord(20,15);
+                        ConsoleObj.xyCoord(18,15);
                         ScreenObj.SetScreenTextColour(RedTextColour);
                         cout << "Error: Could not update employee record" << endl;
                         ScreenObj.SetScreenTextColour(DefaultTextColour);
