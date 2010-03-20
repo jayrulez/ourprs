@@ -322,6 +322,8 @@ void EmployeeList::Show(Employee* listHead)
     }
     if(Head!=listHead)
     {
+        ConsoleObj.xyCoord(1,y-1);
+        cout<<"--------------------------------------------------------------------------------";
         ConsoleObj.xyCoord(x,y);
         cout << setw(7) << left << headers[0] << "  " << setw(12) << left
         << headers[1] << "  " << setw(12) << left
@@ -331,7 +333,7 @@ void EmployeeList::Show(Employee* listHead)
         << headers[5];
         ConsoleObj.xyCoord(1,y+1);
         cout<<"--------------------------------------------------------------------------------";
-        y+=4;
+        y+=3;
         while(CacheEmployee!=NULL)
         {
             ConsoleObj.xyCoord(x,y);
