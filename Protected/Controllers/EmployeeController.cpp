@@ -351,8 +351,14 @@ int EmployeeController::actionDelete()
             {
                 this->getServicesObj()->BasicRunLevel();
                 employee->show(9);
-                ConsoleObj.xyCoord(25,30);
-                ScreenObj.SetScreenTextColour(WhiteColour);
+
+                ConsoleObj.xyCoord(13,28);
+                ScreenObj.SetScreenTextColour(SharpeWhiteTextColour);
+                cout << "NB: Process Payroll to reflect changes in Payroll file." << endl;
+                ScreenObj.SetScreenTextColour(DefaultTextColour);
+
+                ConsoleObj.xyCoord(25,32);
+                ScreenObj.SetScreenTextColour(SharpeWhiteTextColour);
                 cout << "Do you really want to delete?" << endl;
                 ScreenObj.SetScreenTextColour(DefaultTextColour);
 
@@ -366,9 +372,9 @@ int EmployeeController::actionDelete()
                     this->getServicesObj()->BasicRunLevel();
                     if(employee->getOperationState()==OPERATIONSTATE_SUCCESS)
                     {
-                        ConsoleObj.xyCoord(32,16);
+                        ConsoleObj.xyCoord(25,16);
                         ScreenObj.SetScreenTextColour(GreenTextColour);
-                        cout << "Employee deleted."<<endl;
+                        cout << "Employee deleted successfully."<<endl;
                         ScreenObj.SetScreenTextColour(DefaultTextColour);
                         actionCode = this->getMenuObj()->EmployeeAfterDeleteMenu();
 
