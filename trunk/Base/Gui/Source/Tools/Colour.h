@@ -15,6 +15,8 @@
 #define DefaultTextColour 48
 #define DefaultBgColour 51
 #define WhiteColour 55
+#define SharpeWhiteTextColour 63
+#define YellowTextColour 62
 #define RedTextColour 52
 #define GreenTextColour 58
 
