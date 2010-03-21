@@ -234,7 +234,8 @@ void Employee::save(Employee * listHead)
         }while(tempEmployee!=NULL);
         oStreamObj.close();
     }
-    if(Employee::model()->recordExists(this->getId()))
+	Employee * record = Employee::model()->findById(this->getId());
+    if(record != NULL && (*this == *record))
     {
         this->setOperationState(OPERATIONSTATE_SUCCESS);
     }else{

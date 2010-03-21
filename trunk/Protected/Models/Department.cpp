@@ -234,7 +234,7 @@ void Department::save(Department * listHead)
         oStreamObj.close();
     }
 	Department * record = Department::model()->findByCode(this->deptCode);
-    if(*this == *record)
+    if((record != NULL) && (*this == *record))
     {
         this->setOperationState(OPERATIONSTATE_SUCCESS);
     }else{
