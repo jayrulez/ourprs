@@ -687,9 +687,9 @@ Item* MenuSet::UpdateDepartmentFailSaveMenu()
     this->MenuSize = 3;
     MenuTitle="Update Department - Failed";
     static Item UpdateDepartmentFailSaveMenuItem[3];
-    UpdateDepartmentFailSaveMenuItem[0].SetItem(15,30,DEPARTMENT_UPDATE_CODE,"<--Update Form");
-    UpdateDepartmentFailSaveMenuItem[1].SetItem(34,30,DEPARTMENT_CODE,"Department");
-    UpdateDepartmentFailSaveMenuItem[2].SetItem(50,30,MAIN_CODE,"Main Menu");
+    UpdateDepartmentFailSaveMenuItem[0].SetItem(13,30,DEPARTMENT_UPDATE_CODE,"<--Update Search");
+    UpdateDepartmentFailSaveMenuItem[1].SetItem(37,30,DEPARTMENT_CODE,"Department");
+    UpdateDepartmentFailSaveMenuItem[2].SetItem(54,30,MAIN_CODE,"Main Menu");
     return UpdateDepartmentFailSaveMenuItem;
 }
 
