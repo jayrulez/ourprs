@@ -62,7 +62,7 @@ int Application::run()
 int Application::init()
 {
     this->getServicesObj()->SizeConsoleWindow();
-    this->getServicesObj()->Title("SSN Payroll Management System");
+    this->getServicesObj()->Title(APPLICATION_NAME);
 	return 0;
 }
 
