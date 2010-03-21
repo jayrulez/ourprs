@@ -28,25 +28,42 @@
 #include "./DefaultController.h"
 #endif
 
+/*
+ * @ constructor
+ */
 DepartmentController::DepartmentController()
 {
 }
 
+/*
+ * @ destructor
+ */
 DepartmentController::~DepartmentController()
 {
 }
 
+/*
+ * @ return int
+ */
 int DepartmentController::getDefaultActionCode()
 {
     return DEPARTMENT_CODE;
 }
 
+/*
+ * @ displays department menu
+ * @ return int
+ */
 int DepartmentController::actionIndex()
 {
     this->getServicesObj()->BasicRunLevel();
 	return this->run(this->getMenuObj()->DepartmentMenu());
 }
 
+/*
+ * @ adds a department record
+ * @ return int
+ */
 int DepartmentController::actionAdd()
 {
 	int actionCode;
@@ -109,6 +126,10 @@ int DepartmentController::actionAdd()
 	return this->run(MAIN_CODE);
 }
 
+/*
+ * @ updates a department record
+ * @ return int
+ */
 int DepartmentController::actionUpdate()
 {
 	int actionCode;
@@ -242,6 +263,10 @@ int DepartmentController::actionUpdate()
     return this->run(actionCode);
 }
 
+/*
+ * @ finds and displays a single department record
+ * @ return int
+ */
 int DepartmentController::actionView()
 {
     int actionCode;
@@ -282,6 +307,10 @@ int DepartmentController::actionView()
     return this->run(actionCode);
 }
 
+/*
+ * @ displays a list of all department records
+ * @ return int
+ */
 int DepartmentController::actionList(int page = 0)
 {
 	MasterFormMenuController* menuInstance = this->getMenuObj();
@@ -294,6 +323,11 @@ int DepartmentController::actionList(int page = 0)
     return this->run(menuInstance->ViewAllDepartmentMenu());
 }
 
+/*
+ * @ param int actionCode
+ * @ calls various "class::method"s based on param
+ * @ return int
+ */
 int DepartmentController::run(int actionCode)
 {
     int call;

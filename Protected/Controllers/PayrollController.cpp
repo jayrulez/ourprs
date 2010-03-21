@@ -17,19 +17,34 @@
 #include "../../Base/Gui/Source/Tools/Colour.h"
 #include <sstream>
 
+/*
+ * @ constructor
+ * @ return int
+ */
 PayrollController::PayrollController()
 {
 }
 
+/*
+ * @ destructor
+ * @ return int
+ */
 PayrollController::~PayrollController()
 {
 }
 
+/*
+ * @ return int
+ */
 int PayrollController::getDefaultActionCode()
 {
     return PAYROLL_CODE;
 }
 
+/*
+ * @ displays payroll menu
+ * @ return int
+ */
 int PayrollController::actionIndex()
 {
     this->getServicesObj()->BasicRunLevel();
@@ -54,6 +69,11 @@ int PayrollController::actionProcess()
     }
     return MAIN_CODE;
 }
+
+/*
+ * @ finds and displays a payroll record
+ * @ return int
+ */
 int PayrollController::actionView()
 {
     int actionCode;
@@ -93,6 +113,11 @@ int PayrollController::actionView()
 	}while(payroll==NULL);
     return this->run(actionCode);
 }
+
+/*
+ * @ displays options to sort payroll list by
+ * @ return int
+ */
 int PayrollController::actionViewSorted()
 {
 	MasterFormMenuController* menuInstance = this->getMenuObj();
@@ -132,6 +157,12 @@ int PayrollController::actionViewSorted()
     else
         return this->actionViewSortedList(ListObj.GetHead());
 }
+
+/*
+ * @ displays a sorted list of payroll records
+ * @ param Payroll * listHead
+ * @ return int
+ */
 int PayrollController::actionViewSortedList(Payroll* listHead)
 {
 	MasterFormMenuController* menuInstance = this->getMenuObj();
@@ -144,6 +175,12 @@ int PayrollController::actionViewSortedList(Payroll* listHead)
     menuInstance->SetYRelativeSystemFrame(this->getServicesObj()->DynamicRunLevel());
     return this->run(menuInstance->PayrollAfterViewSortedMenu());
 }
+
+/*
+ * @ param int actionCode
+ * @ calls various "class::method"s based on param
+ * @ return int
+ */
 int PayrollController::run(int actionCode)
 {
     int call;

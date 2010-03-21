@@ -13,25 +13,44 @@
 
 using namespace std;
 
+/*
+ * @ constructor
+ * @ return int
+ */
 EmployeeController::EmployeeController()
 {
 }
 
+/*
+ * @ destructor
+ * @ return int
+ */
 EmployeeController::~EmployeeController()
 {
 }
 
+/*
+ * @ return int
+ */
 int EmployeeController::getDefaultActionCode()
 {
     return EMPLOYEE_CODE;
 }
 
+/*
+ * @ displays employee menu
+ * @ return int
+ */
 int EmployeeController::actionIndex()
 {
     this->getServicesObj()->BasicRunLevel();
     return this->run(this->getMenuObj()->EmployeeMenu());
 }
 
+/*
+ * @ adds an employee record
+ * @ return int
+ */
 int EmployeeController::actionAdd()
 {
 	int actionCode;
@@ -96,11 +115,19 @@ int EmployeeController::actionAdd()
 	return MAIN_CODE;
 }
 
+/*
+ * @ search for an employee record
+ * @ return int
+ */
 int EmployeeController::search()
 {
 	return MAIN_CODE;
 }
 
+/*
+ * @ finds and updates an employee record
+ * @ return int
+ */
 int EmployeeController::actionUpdate()
 {
     bool status=true;
@@ -226,6 +253,10 @@ int EmployeeController::actionUpdate()
 	return this->run(actionCode);
 }
 
+/*
+ * @ finds and displays an employee record
+ * @ return int
+ */
 int EmployeeController::actionView()
 {
     int actionCode;
@@ -267,6 +298,11 @@ int EmployeeController::actionView()
 	}while(employee==NULL);
     return this->run(actionCode);
 }
+
+/*
+ * @ displays available options by which to sort employee records
+ * @ return int
+ */
 int EmployeeController::actionViewSorted()
 {
 	MasterFormMenuController* menuInstance = this->getMenuObj();
@@ -317,6 +353,10 @@ int EmployeeController::actionViewSorted()
         return this->actionViewSortedList(ListObj.GetHead());
 }
 
+/*
+ * @ displays sorted list of employees
+ * @ return int
+ */
 int EmployeeController::actionViewSortedList(Employee* listHead)
 {
 	MasterFormMenuController* menuInstance = this->getMenuObj();
@@ -330,6 +370,10 @@ int EmployeeController::actionViewSortedList(Employee* listHead)
     return this->run(menuInstance->EmployeeAfterViewSortedMenu());
 }
 
+/*
+ * @ finds and deletes an employee record
+ * @ return int
+ */
 int EmployeeController::actionDelete()
 {
     int actionCode;
@@ -409,6 +453,11 @@ int EmployeeController::actionDelete()
     return this->run(actionCode);
 }
 
+/*
+ * @ param int actionCode
+ * @ calls various "class::method"s based on param
+ * @ return int
+ */
 int EmployeeController::run(int actionCode)
 {
     int call;

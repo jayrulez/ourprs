@@ -11,19 +11,32 @@
 #include "./PayrollController.h"
 #endif
 
+/*
+ * @ constructor
+ */
 DefaultController::DefaultController()
 {
 }
 
+/*
+ * @ destructor
+ */
 DefaultController::~DefaultController()
 {
 }
 
+/*
+ * @ return int
+ */
 int DefaultController::getDefaultActionCode()
 {
     return MAIN_CODE;
 }
 
+/*
+ * @ displays main menu
+ * @ return int
+ */
 int DefaultController::actionIndex()
 {
     this->getServicesObj()->SizeConsoleWindow();
@@ -32,6 +45,11 @@ int DefaultController::actionIndex()
     return actionCode;
 }
 
+/*
+ * @ param int actionCode
+ * @ calls various "class::method"s based on param
+ * @ return int
+ */
 int DefaultController::run(int actionCode)
 {
     int menuCode;
@@ -70,6 +88,10 @@ int DefaultController::run(int actionCode)
     return menuCode;
 }
 
+/*
+ * creates and returns an instance of class
+ * @ return DefaultController*
+ */
 DefaultController* DefaultController::getInstance()
 {
     return new DefaultController;
