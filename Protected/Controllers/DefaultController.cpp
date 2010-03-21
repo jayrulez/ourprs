@@ -51,7 +51,6 @@ int DefaultController::getDefaultActionCode()
  */
 int DefaultController::actionIndex()
 {
-    this->getServicesObj()->SizeConsoleWindow();
     this->getServicesObj()->BasicRunLevel();
     int actionCode = this->run(this->getMenuObj()->MainMenu());
     return actionCode;

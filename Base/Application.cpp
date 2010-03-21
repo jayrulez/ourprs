@@ -61,6 +61,8 @@ int Application::run()
  */
 int Application::init()
 {
+    this->getServicesObj()->SizeConsoleWindow();
+    this->getServicesObj()->Title("SSN Payroll Management System");
 	return 0;
 }
 
@@ -72,7 +74,7 @@ int Application::main()
 {
     int menuCode;
 	DefaultController defaultController;
-	
+
 	/* loop continues while menuCore returned from
 	 * defaultController::run(); is not equal to EXIT_CODE
 	 */
