@@ -37,5 +37,6 @@ public:
 	void MaximumScreenBufferSize();
 	void SystemChangeScreenSound();
 	void Title(string);
+	string getSysDate();
 };
 #endif

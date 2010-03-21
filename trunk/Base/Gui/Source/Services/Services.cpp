@@ -11,8 +11,21 @@
 	#include "../../Win32/Media/Media.h"
 #endif
 #include <string>
+#include <ctime>
 
 using namespace std;
+
+string Services::getSysDate()
+{
+	string sysDate;
+	time_t rawtime;
+	struct tm * timeinfo;
+	
+	time ( &rawtime );
+	timeinfo = localtime ( &rawtime );
+	sysDate = asctime(timeinfo);
+	return sysDate;
+}
 
 Services::Services()
 {
@@ -26,7 +39,7 @@ void Services::SystemTitle()
 {
     ScreenObj.SetScreenTextColour(DefaultTextColour);
     ConsoleObj.xyCoord(2,1);
-    cout<<"SSN Payroll Management System";
+    cout<<"SSN Payroll Management System                       " << this->getSysDate();
 }
 void Services::SystemClearScreen()
 {
@@ -44,7 +57,7 @@ void Services::SystemChangeScreen()
     FrameObj.ResetScreenFrame();
     ScreenObj.SetScreenTextColour(DefaultTextColour);
     ConsoleObj.xyCoord(2,1);
-    cout<<"SSN Payroll Management System";
+    cout<<"SSN Payroll Management System                       " << this->getSysDate();
     SystemChangeScreenSound();
 }
 void Services::SizeConsoleWindow()
