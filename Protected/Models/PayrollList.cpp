@@ -67,101 +67,111 @@ void PayrollList::AddPayroll(Payroll NewPayroll)
 void PayrollList::Show(Payroll* listHead)
 {
 	Console ConsoleObj;
+	Screen ScreenObj;
 	Employee EmployeeObj;
 	this->Head = listHead;
 	Payroll * CachePayroll = this->Head;
 
 	int x = 2;
 	int y = 8;
-	
+
 	string headerText;
 	Payroll* payroll = Payroll::model();
-	
-	ifstream iStreamObj(payroll->getFilename());
-	if(iStreamObj.is_open())
+
+	if(this->Head!=NULL)
 	{
-		std::getline( iStreamObj, headerText );
-		iStreamObj.close();
+        ifstream iStreamObj(payroll->getFilename());
+        if(iStreamObj.is_open())
+        {
+            std::getline( iStreamObj, headerText );
+            iStreamObj.close();
+        }
+
+        if(headerText.empty())
+            headerText = payroll->getFileHeader();
+
+        istringstream header(headerText);
+        string headers[9];
+        string temp;
+        int pos = 0;
+        int pos2 = 0;
+        string headersB[9][2];
+        string tempB;
+        const char sdelim = ' ';
+        while(pos < 9 )
+        {
+            getline(header, temp, '\t');
+            headers[pos] = temp;
+            istringstream headerB(headers[pos]);
+            pos2 = 0;
+            while(pos2 < 2)
+            {
+                getline(headerB, tempB, sdelim);
+                headersB[pos][pos2] = tempB;
+                pos2++;
+            }
+            pos++;
+        }
+
+        ConsoleObj.xyCoord(1,y-1);
+        cout<<"--------------------------------------------------------------------------------";
+        ConsoleObj.xyCoord(x,y);
+        cout << left << setw(4) << headersB[0][0] << " " << setw(10) << left
+        << headersB[1][0] << " " << setw(10) << left
+        << headersB[2][0] << " " << setw(5) << left
+        << headersB[3][0] << " " << setw(10) << left
+        << headersB[4][0] << " " << setw(6) << left
+        << headersB[5][0] << " " << setw(7) << left
+        << headersB[6][0] << " " << setw(8) << left
+        << headersB[7][0] << " " << setw(8) << left
+        << headersB[8][0];
+
+        y += 1;
+
+        ConsoleObj.xyCoord(x,y);
+        cout << left << setw(4) << headersB[0][1] << " " << setw(10) << left
+        << headersB[1][1] << " " << setw(10) << left
+        << headersB[2][1] << " " << setw(5) << left
+        << headersB[3][1] << " " << setw(10) << left
+        << "" << " " << setw(6) << left
+        << headersB[5][1] << " " << setw(7) << left
+        << headersB[6][1] << " " << setw(8) << left
+        << headersB[7][1] << " " << setw(8) << left
+        << headersB[8][1];
+
+        ConsoleObj.xyCoord(1,y+1);
+        cout<<"--------------------------------------------------------------------------------";
+
+        y += 3;
+
+        while(CachePayroll != NULL)
+        {
+            EmployeeObj = CachePayroll->GetEmployeeObj();
+            ConsoleObj.xyCoord(x,y);
+            cout << left << setw(4) << EmployeeObj.getId() << " " << setw(10) << left
+            << EmployeeObj.getFirstname() << " " << setw(10) << left
+            << EmployeeObj.getLastname() << " " << setw(5) << left
+            << EmployeeObj.getDeptCode() << " " << setw(10) << left
+            << EmployeeObj.getPosition() << " " << setw(6) << right << fixed
+            << setprecision (1)<< EmployeeObj.getHoursWorked() << " " << setw(7) << right << fixed
+            << setprecision (2)<< CachePayroll->GetRegularPay() << " " << setw(8) << right << fixed
+            << CachePayroll->GetOvertimePay() << " " << setw(8) << right << fixed
+            << CachePayroll->GetGrossPay();
+            CachePayroll=CachePayroll->getNext();
+            y += 4;
+        }
+
+        ConsoleObj.xyCoord(1,y);
+        cout<<"--------------------------------------------------------------------------------";
+        ConsoleObj.xyCoord(x,y+8);
 	}
-	
-	if(headerText.empty())
-		headerText = payroll->getFileHeader();
-	
-	istringstream header(headerText);
-	string headers[9];
-	string temp;
-	int pos = 0;
-	int pos2 = 0;
-	string headersB[9][2];
-	string tempB;
-	const char sdelim = ' ';
-	while(pos < 9 )
+	else
 	{
-		getline(header, temp, '\t');
-		headers[pos] = temp;
-		istringstream headerB(headers[pos]);
-		pos2 = 0;
-		while(pos2 < 2)
-		{
-			getline(headerB, tempB, sdelim);
-			headersB[pos][pos2] = tempB;
-			pos2++;
-		}
-		pos++;
+        ConsoleObj.xyCoord(19,15);
+        ScreenObj.SetScreenTextColour(WhiteColour);
+        cout << "No Payroll information is available" << endl;
+        ScreenObj.SetScreenTextColour(DefaultTextColour);
 	}
-	
-	ConsoleObj.xyCoord(1,y-1);
-	cout<<"--------------------------------------------------------------------------------";
-	ConsoleObj.xyCoord(x,y);
-	cout << left << setw(4) << headersB[0][0] << " " << setw(10) << left
-	<< headersB[1][0] << " " << setw(10) << left
-	<< headersB[2][0] << " " << setw(5) << left
-	<< headersB[3][0] << " " << setw(10) << left
-	<< headersB[4][0] << " " << setw(6) << left
-	<< headersB[5][0] << " " << setw(7) << left
-	<< headersB[6][0] << " " << setw(8) << left
-	<< headersB[7][0] << " " << setw(8) << left
-	<< headersB[8][0];
-	
-	y += 1;
-	
-	ConsoleObj.xyCoord(x,y);
-	cout << left << setw(4) << headersB[0][1] << " " << setw(10) << left
-	<< headersB[1][1] << " " << setw(10) << left
-	<< headersB[2][1] << " " << setw(5) << left
-	<< headersB[3][1] << " " << setw(10) << left
-	<< "" << " " << setw(6) << left
-	<< headersB[5][1] << " " << setw(7) << left
-	<< headersB[6][1] << " " << setw(8) << left
-	<< headersB[7][1] << " " << setw(8) << left
-	<< headersB[8][1];
-	
-	ConsoleObj.xyCoord(1,y+1);
-	cout<<"--------------------------------------------------------------------------------";
-	
-	y += 3;
-	
-	while(CachePayroll != NULL)
-	{
-		EmployeeObj = CachePayroll->GetEmployeeObj();
-		ConsoleObj.xyCoord(x,y);
-		cout << left << setw(4) << EmployeeObj.getId() << " " << setw(10) << left
-		<< EmployeeObj.getFirstname() << " " << setw(10) << left
-		<< EmployeeObj.getLastname() << " " << setw(5) << left
-		<< EmployeeObj.getDeptCode() << " " << setw(10) << left
-		<< EmployeeObj.getPosition() << " " << setw(6) << right << fixed
-		<< setprecision (1)<< EmployeeObj.getHoursWorked() << " " << setw(7) << right << fixed
-		<< setprecision (2)<< CachePayroll->GetRegularPay() << " " << setw(8) << right << fixed
-		<< CachePayroll->GetOvertimePay() << " " << setw(8) << right << fixed
-		<< CachePayroll->GetGrossPay();
-		CachePayroll=CachePayroll->getNext();
-		
-		y += 4;
-	}
-	
-	ConsoleObj.xyCoord(1,y);
-	cout<<"--------------------------------------------------------------------------------";
-	ConsoleObj.xyCoord(x,y+8);
 }
 
 Payroll* PayrollList::GetHead()
