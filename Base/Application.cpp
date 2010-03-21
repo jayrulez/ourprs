@@ -17,19 +17,36 @@
 #include "../Protected/Controllers/DefaultController.h"
 #endif
 
+/*
+ * constructor
+ * @return int
+ */
 Application::Application()
 {
 }
 
+/*
+ * constructor
+ * @param Component * application
+ * @return int
+ */
 Application::Application(Component * application)
 {
 	this->setComponent(application);
 }
 
+/*
+ * destructor
+ */
 Application::~Application()
 {
 }
 
+/*
+ * Application run
+ * called Application::init() and Application::main()
+ * @return int
+ */
 int Application::run()
 {
 	this->init();
@@ -37,15 +54,28 @@ int Application::run()
 	return 0;
 }
 
+/*
+ * Application init
+ * called before Application::main()
+ * @return int
+ */
 int Application::init()
 {
 	return 0;
 }
 
+/*
+ * Application main
+ * @return int
+ */
 int Application::main()
 {
     int menuCode;
 	DefaultController defaultController;
+	
+	/* loop continues while menuCore returned from
+	 * defaultController::run(); is not equal to EXIT_CODE
+	 */
     do
     {
         menuCode = defaultController.run(defaultController.getDefaultActionCode());
@@ -53,6 +83,10 @@ int Application::main()
 	return this->exit();
 }
 
+/*
+ * Exits the application
+ * @return int
+ */
 int Application::exit()
 {
     return 0;
