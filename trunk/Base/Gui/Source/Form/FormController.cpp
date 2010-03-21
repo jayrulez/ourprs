@@ -386,14 +386,20 @@ void FormController::SetFieldState(bool state)
 void FormController::ShowForm()
 {
     int x;
-    Field TempField;
+    //Field TempField;
     for(x=0;x<this->FormSize;x++)
     {
         (fptr+x)->ShowField();
-        TempField=*(fptr+x);
-        ConsoleObj.xyCoord(TempField.GetFieldX(),TempField.GetFieldY()-1);
-        ValidateEmployeeFields();
-        ValidateDepartmentFields();
+        PreviousField=*(fptr+x);
+        ConsoleObj.xyCoord(PreviousField.GetFieldX(),PreviousField.GetFieldY()-1);
+        if(this->FormCode==EMPLOYEE_ADD_FORM_CODE || this->FormCode==EMPLOYEE_SEARCH_FORM_CODE || this->FormCode==EMPLOYEE_UPDATE_FORM_CODE)
+        {
+            ValidateEmployeeFields();
+        }
+        if(this->FormCode==DEPARTMENT_ADD_FORM_CODE || this->FormCode==DEPARTMENT_SEARCH_FORM_CODE || this->FormCode==DEPARTMENT_UPDATE_FORM_CODE)
+        {
+            ValidateDepartmentFields();
+        }
     }
     this->ValidateForm();
 }
