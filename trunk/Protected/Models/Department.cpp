@@ -233,7 +233,8 @@ void Department::save(Department * listHead)
         }while(tempDepartment!=NULL);
         oStreamObj.close();
     }
-    if(Department::model()->recordExists(this->deptCode))
+	Department * record = Department::model()->findByCode(this->deptCode);
+    if(*this == *record)
     {
         this->setOperationState(OPERATIONSTATE_SUCCESS);
     }else{
