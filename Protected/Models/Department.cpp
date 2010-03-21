@@ -93,17 +93,6 @@ void Department::setOvertimeRate(float overtimeRate)
 	this->overtimeRate = overtimeRate;
 }
 
-
-void Department::write()
-{
-
-}
-
-void Department::read()
-{
-
-}
-
 Department* Department::model()
 {
     static Department * instance = NULL;
@@ -219,26 +208,59 @@ void Department::save(Department * listHead)
 	ifstream iStreamObj(this->getFilename());
 	Department * tempDepartment = listHead;
 
-    ofstream oStreamObj(this->getFilename(), ios::trunc);
-    if(oStreamObj.is_open())
-    {
-        oStreamObj << this->getFileHeader();
-        do
-        {
-            if(tempDepartment != NULL)
-            {
-                oStreamObj << tempDepartment->getDeptCode() << "\t" << tempDepartment->getDeptName() << "\t" << fixed << setprecision (2) << tempDepartment->getRegularRate() << "\t" << fixed << setprecision (2) << tempDepartment->getOvertimeRate() << "\n";
-                tempDepartment = tempDepartment->getNext();
-            }
-        }while(tempDepartment!=NULL);
-        oStreamObj.close();
-    }
+	ofstream oStreamObj(this->getFilename(), ios::trunc);
+	if(oStreamObj.is_open())
+	{
+		oStreamObj << this->getFileHeader();
+		do
+		{
+			if(tempDepartment != NULL)
+			{
+				oStreamObj << tempDepartment->getDeptCode() << "\t" << tempDepartment->getDeptName() << "\t" << fixed << setprecision (2) << tempDepartment->getRegularRate() << "\t" << fixed << setprecision (2) << tempDepartment->getOvertimeRate() << "\n";
+				tempDepartment = tempDepartment->getNext();
+			}
+		}while(tempDepartment!=NULL);
+		oStreamObj.close();
+	}
 	Department * record = Department::model()->findByCode(this->deptCode);
-    if((record != NULL) && (*this == *record))
-    {
-        this->setOperationState(OPERATIONSTATE_SUCCESS);
-    }else{
-        this->setOperationState(OPERATIONSTATE_FAILURE);
+	if((record != NULL) && (*this == *record))
+	{
+		this->setOperationState(OPERATIONSTATE_SUCCESS);
+	}else{
+		this->setOperationState(OPERATIONSTATE_FAILURE);
+	}
+}
+
+void Department::save(Department * listHead, Department* oldDepartment)
+{
+	if(*this == *oldDepartment)
+	{
+		this->setOperationState(OPERATIONSTATE_DEFAULT);
+	}else{
+		ifstream iStreamObj(this->getFilename());
+		Department * tempDepartment = listHead;
+
+		ofstream oStreamObj(this->getFilename(), ios::trunc);
+		if(oStreamObj.is_open())
+		{
+			oStreamObj << this->getFileHeader();
+			do
+			{
+				if(tempDepartment != NULL)
+				{
+					oStreamObj << tempDepartment->getDeptCode() << "\t" << tempDepartment->getDeptName() << "\t" << fixed << setprecision (2) << tempDepartment->getRegularRate() << "\t" << fixed << setprecision (2) << tempDepartment->getOvertimeRate() << "\n";
+					tempDepartment = tempDepartment->getNext();
+				}
+			}while(tempDepartment!=NULL);
+			oStreamObj.close();
+		}
+		Department * record = Department::model()->findByCode(this->deptCode);
+		if((record != NULL) && (*this == *record))
+		{
+			this->setOperationState(OPERATIONSTATE_SUCCESS);
+		}else{
+			this->setOperationState(OPERATIONSTATE_FAILURE);
+		}
 	}
 }
 

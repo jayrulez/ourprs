@@ -43,8 +43,6 @@ public:
 	void setPrev(Employee*);
 	Employee* getPrev();
 	void show(int);
-	void read();
-	void write();
 	Employee & Employee::operator=(const Employee &employee)
 	{
 		if(this != &employee)
@@ -77,6 +75,7 @@ public:
 	Employee * findById(int);
 	static Employee * model();
 	void save(Employee*);
+	void save(Employee*, Employee*);
 	void deleteRecord(Employee*);
 	Employee* getHead();
 };

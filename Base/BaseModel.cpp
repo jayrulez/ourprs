@@ -38,12 +38,12 @@ const char* BaseModel::getFilename()
 	return this->filename.c_str();
 }
 
-bool BaseModel::getOperationState()
+int BaseModel::getOperationState()
 {
 	return this->operationState;
 }
 
-void BaseModel::setOperationState(bool operationState)
+void BaseModel::setOperationState(int operationState)
 {
 	this->operationState = operationState;
 }

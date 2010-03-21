@@ -4,8 +4,9 @@
 #include"./Component.h"
 #endif*/
 #include <string>
-#define OPERATIONSTATE_SUCCESS true
-#define OPERATIONSTATE_FAILURE false
+#define OPERATIONSTATE_DEFAULT 100
+#define OPERATIONSTATE_SUCCESS 200
+#define OPERATIONSTATE_FAILURE 300
 
 using namespace std;
 
@@ -14,7 +15,7 @@ class BaseModel
 {
 private:
 	string filename;
-	bool operationState;
+	int operationState;
 	string fileHeader;
 public:
 	BaseModel();
@@ -23,8 +24,8 @@ public:
 	const char* getFilename();
 	virtual void write();
 	virtual void read();
-	bool getOperationState();
-	void setOperationState(bool);
+	int getOperationState();
+	void setOperationState(int);
 	void setFileHeader(string);
 	string getFileHeader();
 };
