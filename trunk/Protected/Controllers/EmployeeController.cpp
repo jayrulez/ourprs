@@ -169,7 +169,6 @@ int EmployeeController::actionUpdate()
 				(record+3)->SetFieldData(deptCode.str());
 				(record+4)->SetFieldData(position);
 				(record+5)->SetFieldData(hoursWorked.str());
-                BackToForm:
                 this->getServicesObj()->BasicRunLevel();
 
                 ConsoleObj.xyCoord(13,7);
@@ -207,10 +206,23 @@ int EmployeeController::actionUpdate()
 					EmployeeList ListObj;
 					ListObj.BuildListFromFile();
 					ListObj.UpdateNode(employee, updatedEmployee);
-                    updatedEmployee->save(ListObj.GetHead());
+                    updatedEmployee->save(ListObj.GetHead(), employee);
 
                     this->getServicesObj()->BasicRunLevel();
-                    if(updatedEmployee->getOperationState() == OPERATIONSTATE_FAILURE)
+                    if(updatedEmployee->getOperationState() == OPERATIONSTATE_DEFAULT)
+                    {
+                        ConsoleObj.xyCoord(18,15);
+                        ScreenObj.SetScreenTextColour(RedTextColour);
+                        cout << "Notice: The record was not changed" << endl;
+                        ScreenObj.SetScreenTextColour(DefaultTextColour);
+                        actionCode=menuInstance->UpdateEmployeeFailSaveMenu();
+                        if(actionCode==EMPLOYEE_SEARCH_SUBMIT_CODE)
+                        {
+                            return this->run(this->actionUpdate());
+                        }
+                        else
+                            return this->run(actionCode);
+                    }else if(updatedEmployee->getOperationState() == OPERATIONSTATE_FAILURE)
                     {
                         ConsoleObj.xyCoord(18,15);
                         ScreenObj.SetScreenTextColour(RedTextColour);
@@ -219,7 +231,7 @@ int EmployeeController::actionUpdate()
                         actionCode=menuInstance->UpdateEmployeeFailSaveMenu();
                         if(actionCode==EMPLOYEE_SEARCH_SUBMIT_CODE)
                         {
-                            goto BackToForm;
+                            return this->run(this->actionUpdate());
                         }
                         else
                             return this->run(actionCode);

@@ -33,22 +33,16 @@ public:
 	void setOvertimeRate(float);
 	void setNext(Department*);
 	Department* getNext();
-	void read();
-	void write();
 	static Department* model();
 	Department* find(int);
 	void show(int);
-	/*bool operator != (const Department);
-	bool operator == (const Department);
-	Department operator = (const Department);*/
-	/*fstream & operator >> (const fstream &, const Department &);
-	fstream & operator << (const fstream &, const Department &);*/
 	bool recordExists(int);
 	bool recordExists(int, int);
 	void setOldDeptCode(int);
 	int getOldDeptCode();
 	Department * findByCode(int);
 	void save(Department*);
+	void save(Department*, Department*);
 	void setPrev(Department*);
 	Department* getPrev();
 	string getFileHeaderFromFile();

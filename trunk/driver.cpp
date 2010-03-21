@@ -4,10 +4,6 @@
 #endif
 using namespace std;
 
-/*
- * @ main
- * @ return int Application::run()
- */
 int main()
 {
 	Application *app = new Application();

@@ -216,10 +216,17 @@ int DepartmentController::actionUpdate()
 					ListObj.BuildListFromFile();
 					ListObj.UpdateNode(department, updatedDepartment);
 					//updatedDepartment->setList(ListObj.getHead());
-                    updatedDepartment->save(ListObj.getHead());
+                    updatedDepartment->save(ListObj.getHead(), department);
 
                     this->getServicesObj()->BasicRunLevel();
-                    if(updatedDepartment->getOperationState() == OPERATIONSTATE_FAILURE)
+                    if(updatedDepartment->getOperationState() == OPERATIONSTATE_DEFAULT)
+                    {
+                        ConsoleObj.xyCoord(20,14);
+                        ScreenObj.SetScreenTextColour(RedTextColour);
+                        cout << "Notice: The record was not changed" << endl;
+                        ScreenObj.SetScreenTextColour(DefaultTextColour);
+                        return this->run(menuInstance->UpdateDepartmentFailSaveMenu());
+                    }else if(updatedDepartment->getOperationState() == OPERATIONSTATE_FAILURE)
                     {
                         ConsoleObj.xyCoord(20,14);
                         ScreenObj.SetScreenTextColour(RedTextColour);

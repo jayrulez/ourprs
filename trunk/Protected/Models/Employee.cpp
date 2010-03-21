@@ -138,15 +138,6 @@ void Employee::show(int y)
         FrameObj.sFraming();
     }
 }
-void Employee::write()
-{
-
-}
-
-void Employee::read()
-{
-
-}
 
 bool Employee::recordExists(int keyCode)
 {
@@ -220,26 +211,60 @@ void Employee::save(Employee * listHead)
 	ifstream iStreamObj(this->getFilename());
 	Employee * tempEmployee = listHead;
 
-    ofstream oStreamObj(this->getFilename(), ios::trunc);
-    if(oStreamObj.is_open())
-    {
-        oStreamObj << this->getFileHeader();
-        do
-        {
-            if(tempEmployee != NULL)
-            {
-                oStreamObj << tempEmployee->getId() << "\t" << tempEmployee->getFirstname() << "\t" << tempEmployee->getLastname() << "\t" << tempEmployee->getDeptCode() << "\t" << tempEmployee->getPosition() << "\t" << fixed << setprecision(1) << tempEmployee->getHoursWorked() << "\n";
-                tempEmployee = tempEmployee->getNext();
-            }
-        }while(tempEmployee!=NULL);
-        oStreamObj.close();
-    }
+	ofstream oStreamObj(this->getFilename(), ios::trunc);
+	if(oStreamObj.is_open())
+	{
+		oStreamObj << this->getFileHeader();
+		do
+		{
+			if(tempEmployee != NULL)
+			{
+				oStreamObj << tempEmployee->getId() << "\t" << tempEmployee->getFirstname() << "\t" << tempEmployee->getLastname() << "\t" << tempEmployee->getDeptCode() << "\t" << tempEmployee->getPosition() << "\t" << fixed << setprecision(1) << tempEmployee->getHoursWorked() << "\n";
+				tempEmployee = tempEmployee->getNext();
+			}
+		}while(tempEmployee!=NULL);
+		oStreamObj.close();
+	}
 	Employee * record = Employee::model()->findById(this->getId());
-    if(record != NULL && (*this == *record))
-    {
-        this->setOperationState(OPERATIONSTATE_SUCCESS);
-    }else{
-        this->setOperationState(OPERATIONSTATE_FAILURE);
+	if(record != NULL && (*this == *record))
+	{
+		this->setOperationState(OPERATIONSTATE_SUCCESS);
+	}else{
+		this->setOperationState(OPERATIONSTATE_FAILURE);
+	}
+}
+
+
+void Employee::save(Employee * listHead, Employee * oldEmployee)
+{
+	if(*this == *oldEmployee)
+	{
+		this->setOperationState(OPERATIONSTATE_DEFAULT);
+	}else{
+		ifstream iStreamObj(this->getFilename());
+		Employee * tempEmployee = listHead;
+
+		ofstream oStreamObj(this->getFilename(), ios::trunc);
+		if(oStreamObj.is_open())
+		{
+			oStreamObj << this->getFileHeader();
+			do
+			{
+				if(tempEmployee != NULL)
+				{
+					oStreamObj << tempEmployee->getId() << "\t" << tempEmployee->getFirstname() << "\t" << tempEmployee->getLastname() << "\t" << tempEmployee->getDeptCode() << "\t" << tempEmployee->getPosition() << "\t" << fixed << setprecision(1) << tempEmployee->getHoursWorked() << "\n";
+					tempEmployee = tempEmployee->getNext();
+				}
+			}while(tempEmployee!=NULL);
+			oStreamObj.close();
+		}
+		Employee * record = Employee::model()->findById(this->getId());
+		if(record != NULL && (*this == *record))
+		{
+			this->setOperationState(OPERATIONSTATE_SUCCESS);
+		}else{
+			this->setOperationState(OPERATIONSTATE_FAILURE);
+		}
 	}
 }
 
