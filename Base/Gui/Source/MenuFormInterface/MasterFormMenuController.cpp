@@ -15,6 +15,10 @@ MasterFormMenuController::MasterFormMenuController()
 MasterFormMenuController::~MasterFormMenuController()
 {
 }
+MenuController MasterFormMenuController::GetMenuController()
+{
+    return MenuControllerObj;
+}
 Field* MasterFormMenuController::GetAllFieldData()
 {
     return FieldObj;

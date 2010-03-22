@@ -35,6 +35,10 @@ string MenuSet::GetMenuTitle()
 {
     return this->MenuTitle;
 }
+void MenuSet::SetMenuTitle(string MenuTitle)
+{
+    this->MenuTitle = MenuTitle;
+}
 void MenuSet::SetYRelativeSystemFrame(int y)
 {
     this->YRelativeSystemFrame=y;
@@ -375,7 +379,6 @@ Item* MenuSet::PayrollAfterViewSortedMenu()
 {
     this->MenuCode = PAYROLL_PROCESS_CODE;
     this->MenuSize = 3;
-    MenuTitle="View Sorted Payroll - Successful";
     static Item PayrollAfterViewSortedMenuItem[3];
     PayrollAfterViewSortedMenuItem[0].SetItem(15,this->YRelativeSystemFrame-4,PAYROLL_VIEW_SORTED_CODE,"<--View Sorted");
     PayrollAfterViewSortedMenuItem[1].SetItem(39,this->YRelativeSystemFrame-4,PAYROLL_CODE,"Payroll");
