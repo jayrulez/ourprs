@@ -145,6 +145,7 @@ void Employee::show(int y)
     cout<<"Position        : "<<this->position;
     ConsoleObj.xyCoord(10,y+12);
     cout<<"Hours Worked    : "<< fixed << setprecision (1) << this->hoursWorked;
+    //creates and displays a frame around the employee data
     if(FrameObj.SetFrame(5,STANDARD_FRAME_WIDTH-5,y,y+14,NORMAL_FRAME))
     {
         FrameObj.sFraming();
@@ -238,6 +239,7 @@ Employee* Employee::findById(int keyCode)
 		{
 			if(employee.id == keyCode)
 			{
+			    //close stream when record if found
 			    streamObj.close();
 			    Employee * record = new Employee(employee.id, employee.firstname, employee.lastname, employee.deptCode, employee.position, employee.hoursWorked);
 				//pointer to record found is returned
@@ -250,41 +252,47 @@ Employee* Employee::findById(int keyCode)
 	return NULL;
 }
 /*
- * Searches "Employee Payroll Data.txt" by id
+ * Saves Employee record to file
  * @ param int keyCode
- * @ return Employee*
+ * @ return void
  */
 void Employee::save(Employee * listHead)
 {
-	ifstream iStreamObj(this->getFilename());
+	ifstream iStreamObj(this->getFilename());//attempts to open "Employee Payroll Data.txt" for overwriting
 	Employee * tempEmployee = listHead;
 
 	ofstream oStreamObj(this->getFilename(), ios::trunc);
 	if(oStreamObj.is_open())
 	{
+	    //writes column headings to file
 		oStreamObj << this->getFileHeader();
 		do
 		{
+		    //if not at the end of the list
 			if(tempEmployee != NULL)
 			{
+			    //write record to file
 				oStreamObj << tempEmployee->getId() << "\t" << tempEmployee->getFirstname() << "\t" << tempEmployee->getLastname() << "\t" << tempEmployee->getDeptCode() << "\t" << tempEmployee->getPosition() << "\t" << fixed << setprecision(1) << tempEmployee->getHoursWorked() << "\n";
+				//traverse list to next node
 				tempEmployee = tempEmployee->getNext();
 			}
+        //loop while not at th end of list
 		}while(tempEmployee!=NULL);
+        //close stream
 		oStreamObj.close();
 	}
 	Employee * record = Employee::model()->findById(this->getId());
 	if(record != NULL && (*this == *record))
 	{
-		this->setOperationState(OPERATIONSTATE_SUCCESS);
+		this->setOperationState(OPERATIONSTATE_SUCCESS);//saved successfully
 	}else{
-		this->setOperationState(OPERATIONSTATE_FAILURE);
+		this->setOperationState(OPERATIONSTATE_FAILURE);//save failed
 	}
 }
 /*
- * Searches "Employee Payroll Data.txt" by id
- * @ param int keyCode
- * @ return Employee*
+ * Save for updating an employee record
+ * @ param Employee * listHead, Employee * oldEmployee
+ * @ return void
  */
 void Employee::save(Employee * listHead, Employee * oldEmployee)
 {
@@ -319,9 +327,9 @@ void Employee::save(Employee * listHead, Employee * oldEmployee)
 	}
 }
 /*
- * Searches "Employee Payroll Data.txt" by id
- * @ param int keyCode
- * @ return Employee*
+ * Deletes a record from file
+ * @ param Employee* listHead
+ * @ return void
  */
 void Employee::deleteRecord(Employee* listHead)
 {
@@ -364,7 +372,11 @@ Employee* Employee::getHead()
 {
     return this->head;
 }
-
+/*
+ * Gets coloumn headings/header row from file
+ * @ param Employee* listHead
+ * @ return void
+ */
 string Employee::getFileHeaderFromFile()
 {
 	ifstream streamObj(this->getFilename());
