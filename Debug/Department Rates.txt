@@ -1,0 +1,5 @@
+Dept. Code	Dept. Name	Regular Rate	Overtime Rate
+1001	HRM	8.75	1.00
+1002	Marketing	9.50	1.25
+1003	Software	13.50	2.00
+1004	Research	11.00	1.75
