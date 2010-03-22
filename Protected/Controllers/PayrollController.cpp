@@ -140,7 +140,7 @@ int PayrollController::actionViewSorted()
 
 	int actionCode;
 	string by;
-	
+
     actionCode = menuInstance->ViewSortedPayrollMenu();
     switch(actionCode)
     {
@@ -183,12 +183,19 @@ int PayrollController::actionViewSorted()
 int PayrollController::actionViewSortedList(Payroll* listHead, string by)
 {
 	MasterFormMenuController* menuInstance = this->getMenuObj();
+    Console ConsoleObj;
+
     this->getServicesObj()->SystemClearScreen();
     this->getServicesObj()->MaximumScreenBufferSize();
 
     PayrollList ListObj;
     ListObj.Show(listHead);
-
+    if(listHead!=NULL)
+    {
+        ConsoleObj.xyCoord(30,6);
+        ScreenObj.SetScreenTextColour(DefaultTextColour);
+        cout << "Sorted by: " << by;
+    }
     menuInstance->SetYRelativeSystemFrame(this->getServicesObj()->DynamicRunLevel());
     return this->run(menuInstance->PayrollAfterViewSortedMenu());
 }

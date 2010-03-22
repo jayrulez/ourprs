@@ -391,12 +391,18 @@ int EmployeeController::actionViewSorted()
 int EmployeeController::actionViewSortedList(Employee* listHead, string by)
 {
 	MasterFormMenuController* menuInstance = this->getMenuObj();
+	Console ConsoleObj;
     this->getServicesObj()->SystemClearScreen();
     this->getServicesObj()->MaximumScreenBufferSize();
 
     EmployeeList ListObj;
     ListObj.Show(listHead);
-
+    if(listHead!=NULL)
+    {
+        ConsoleObj.xyCoord(30,6);
+        ScreenObj.SetScreenTextColour(DefaultTextColour);
+        cout << "Sorted by: " << by;
+    }
     menuInstance->SetYRelativeSystemFrame(this->getServicesObj()->DynamicRunLevel());
     return this->run(menuInstance->EmployeeAfterViewSortedMenu());
 }
