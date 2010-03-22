@@ -58,30 +58,53 @@ void About::ShowAboutMenu()
 }
 void About::ShowAboutInfo()
 {
-    FrameObj.CenteredSFraming(66,32);
-    ConsoleObj.xyCoord(9,15);
+    FrameObj.CenteredSFraming(72,38);
+    ConsoleObj.xyCoord(6,12);
 	cout<<"Name    : Simple Solutions Now (SSN) Payroll Management System";
-	ConsoleObj.xyCoord(9,16);
+	ConsoleObj.xyCoord(6,13);
 	cout<<"Version : 1.00";
 
-	ConsoleObj.xyCoord(9,20);
-	cout<<"Unauthorized reproduction or destribution of this program,";
-	ConsoleObj.xyCoord(9,21);
-	cout<<"or any portion of it, may result in severe civil penalties,";
-	ConsoleObj.xyCoord(9,22);
-	cout<<"and will be prosecuted to the maximum extent under the law.";
+	ConsoleObj.xyCoord(6,17);
+    cout<<"Copyright © 2008-2009 by SocialCMS LLC (http://www.socialcms.org)";
+    ConsoleObj.xyCoord(6,18);
+    cout<<"All rights reserved.";
 
-    ConsoleObj.xyCoord(9,26);
+    ConsoleObj.xyCoord(6,20);
+    cout<<"Redistribution and use in source and binary forms, with or without";
+    ConsoleObj.xyCoord(6,21);
+    cout<<"modification, are permitted provided that the following conditions";
+    ConsoleObj.xyCoord(6,22);
+    cout<<"are met:";
+    ConsoleObj.xyCoord(6,23);
+    cout<<" * Redistributions of source code must retain the above copyright";
+    ConsoleObj.xyCoord(6,24);
+    cout<<"   notice, this list of conditions and the following disclaimer.";
+    ConsoleObj.xyCoord(6,25);
+    cout<<" * Redistributions in binary form must reproduce the above copyright";
+    ConsoleObj.xyCoord(6,26);
+    cout<<"   notice, this list of conditions and the following disclaimer in";
+    ConsoleObj.xyCoord(6,27);
+    cout<<"   the documentation and/or other materials provided with the";
+    ConsoleObj.xyCoord(6,28);
+    cout<<"   distribution.";
+    ConsoleObj.xyCoord(6,29);
+    cout<<" * Neither the name of Yii Software LLC nor the names of its";
+    ConsoleObj.xyCoord(6,30);
+    cout<<"   contributors may be used to endorse or promote products derived";
+    ConsoleObj.xyCoord(6,31);
+    cout<<"   from this software without specific prior written permission.";
+
+    ConsoleObj.xyCoord(6,35);
 	cout<<"Developers:";
-	ConsoleObj.xyCoord(9,27);
+	ConsoleObj.xyCoord(6,36);
     cout<<"----------------------------------";
-    ConsoleObj.xyCoord(9,29);
+    ConsoleObj.xyCoord(6,37);
     cout<<"Robert Campbell       : Developer";
-    ConsoleObj.xyCoord(9,30);
+    ConsoleObj.xyCoord(6,38);
     cout<<"Dyonne Dubbery        : Developer";
-    ConsoleObj.xyCoord(9,31);
+    ConsoleObj.xyCoord(6,39);
     cout<<"Audley Gordon         : Developer";
-    ConsoleObj.xyCoord(9,32);
+    ConsoleObj.xyCoord(6,40);
     cout<<"Dale McFarlane        : Developer";
 }
 
