@@ -33,7 +33,6 @@ private:
     float GrossPay;
     Employee EmployeeObj;
     Payroll * next;
-    Payroll * prev;
 public:
     Payroll();
     ~Payroll();
