@@ -65,7 +65,7 @@ void About::ShowAboutInfo()
 	cout<<"Version : 1.00";
 
 	ConsoleObj.xyCoord(6,17);
-    cout<<"Copyright © 2008-2009 by SocialCMS LLC (http://www.socialcms.org)";
+    cout<<"Copyright "<<"(c)"<<" 2008-2009 by SocialCMS LLC (http://www.socialcms.org)";
     ConsoleObj.xyCoord(6,18);
     cout<<"All rights reserved.";
 
