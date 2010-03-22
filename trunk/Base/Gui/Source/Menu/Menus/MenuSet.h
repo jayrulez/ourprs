@@ -117,7 +117,6 @@ public:
     string GetMenuTitle();
     void SetMenuTitle(string);
     void ShowMenuTitle(int);
-    void SetMenuTitle(string);
     void SetYRelativeSystemFrame(int);
 
     Item* MainMenu();
