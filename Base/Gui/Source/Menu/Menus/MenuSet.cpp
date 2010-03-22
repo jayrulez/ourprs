@@ -106,9 +106,9 @@ Item* MenuSet::AddEmployeeAfterSaveMenu()
     this->MenuSize = 3;
     MenuTitle="Add Employee - Success";
     static Item AddEmployeeAfterSaveMenuItem[3];
-    AddEmployeeAfterSaveMenuItem[0].SetItem(15,28,EMPLOYEE_ADD_CODE,"Add More");
-    AddEmployeeAfterSaveMenuItem[1].SetItem(34,28,EMPLOYEE_CODE,"<--Employee");
-    AddEmployeeAfterSaveMenuItem[2].SetItem(55,28,MAIN_CODE,"Main Menu");
+    AddEmployeeAfterSaveMenuItem[0].SetItem(15,32,EMPLOYEE_ADD_CODE,"Add More");
+    AddEmployeeAfterSaveMenuItem[1].SetItem(34,32,EMPLOYEE_CODE,"<--Employee");
+    AddEmployeeAfterSaveMenuItem[2].SetItem(55,32,MAIN_CODE,"Main Menu");
     return AddEmployeeAfterSaveMenuItem;
 }
 Item* MenuSet::AddEmployeeFailSaveMenu()
