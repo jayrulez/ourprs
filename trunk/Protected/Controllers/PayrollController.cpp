@@ -188,14 +188,15 @@ int PayrollController::actionViewSortedList(Payroll* listHead, string by)
     this->getServicesObj()->SystemClearScreen();
     this->getServicesObj()->MaximumScreenBufferSize();
 
-    PayrollList ListObj;
-    ListObj.Show(listHead);
     if(listHead!=NULL)
     {
         ConsoleObj.xyCoord(30,6);
         ScreenObj.SetScreenTextColour(DefaultTextColour);
         cout << "Sorted by: " << by;
     }
+
+    PayrollList ListObj;
+    ListObj.Show(listHead);
     menuInstance->SetYRelativeSystemFrame(this->getServicesObj()->DynamicRunLevel());
     return this->run(menuInstance->PayrollAfterViewSortedMenu());
 }
