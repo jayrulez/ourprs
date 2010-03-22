@@ -69,7 +69,7 @@ int DepartmentController::getDefaultActionCode()
 int DepartmentController::actionIndex()
 {
     this->getServicesObj()->BasicRunLevel();
-	return this->run(this->getMenuObj()->DepartmentMenu());
+	return this->run(this->getMenuObj()->DepartmentMenu()); // calls the department menu and returns
 }
 
 /*

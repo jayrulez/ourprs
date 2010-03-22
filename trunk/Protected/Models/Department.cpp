@@ -113,6 +113,9 @@ Department* Department::model()
     return instance;
 }
 
+/*
+ * Shows a department
+ */
 void Department::show(int y)
 {
     Console ConsoleObj;
@@ -131,35 +134,26 @@ void Department::show(int y)
     }
 }
 
-/*bool Department::operator == (const Department DepartmentObj)
-{
-    if(DepartmentObj.deptCode==this->deptCode && DepartmentObj.deptName==this->deptName
-    &&DepartmentObj.overtimeRate==this->overtimeRate&&DepartmentObj.regularRate==this->regularRate)
-        return true;
-    else
-        return false;
-}
-Department Department::operator = (const Department DepartmentObj)
-{
-    this->deptCode= DepartmentObj.deptCode;
-    this->deptName=DepartmentObj.deptName;
-    this->overtimeRate=DepartmentObj.overtimeRate;
-    this->regularRate=DepartmentObj.regularRate;
-    return *this;
-}*/
-
+/*
+ * Checks if a Department with deptCode == keyCode exists
+ * @ param int keyCode
+ * @ return bool
+ */
 bool Department::recordExists(int keyCode)
 {
-	ifstream streamObj(this->getFilename());
+	ifstream streamObj(this->getFilename()); // opens the file for reading
 	string line;
 	if(streamObj.is_open())
 	{
 		Department department(0,"",0,0);
-	    std::getline( streamObj, line );
+	    std::getline( streamObj, line ); // reads the table headers
 		while(streamObj >> department.deptCode >> department.deptName >> department.regularRate >> department.overtimeRate)
 		{
 			if(department.deptCode == keyCode)
 			{
+				/*
+					if record is found, close file and return true
+				*/
 			    streamObj.close();
 				return true;
 			}
@@ -169,6 +163,12 @@ bool Department::recordExists(int keyCode)
 	return false;
 }
 
+/*
+ * Checks if a Department with deptCode == keyCode exists, 
+ * ignoring param ignore
+ * @ param int keyCode
+ * @ return bool
+ */
 bool Department::recordExists(int keyCode, int ignore)
 {
 	ifstream streamObj(this->getFilename());
@@ -193,6 +193,11 @@ bool Department::recordExists(int keyCode, int ignore)
 	return false;
 }
 
+/*
+ * Finds and returns Department in file where deptCode == keyCode
+ * @ param int keyCode
+ * @ return Department*
+ */
 Department* Department::findByCode(int keyCode)
 {
 	ifstream streamObj(this->getFilename());
@@ -215,6 +220,10 @@ Department* Department::findByCode(int keyCode)
 	return NULL;
 }
 
+/*
+ * Saves a linked list of Departments to a file
+ * @ param int listHead
+ */
 void Department::save(Department * listHead)
 {
 	ifstream iStreamObj(this->getFilename());
@@ -243,6 +252,10 @@ void Department::save(Department * listHead)
 	}
 }
 
+/*
+ * Saves a linked list of Departments to a file, for update method
+ * @ param int listHead
+ */
 void Department::save(Department * listHead, Department* oldDepartment)
 {
 	if(*this == *oldDepartment)
@@ -286,16 +299,27 @@ int Department::getOldDeptCode()
 	return this->oldDeptCode;
 }
 
+/*
+ * Sets the previous item in a linked list
+ */
 void Department::setPrev(Department* department)
 {
     this->prev = department;
 }
 
+/*
+ * Returns the previous item in a linked list
+ * @ return Department*
+ */
 Department* Department::getPrev()
 {
     return this->prev;
 }
 
+/*
+ * Gets the header row from the file and returns it
+ * @ return string
+ */
 string Department::getFileHeaderFromFile()
 {
 	ifstream streamObj(this->getFilename());
