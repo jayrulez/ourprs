@@ -395,14 +395,16 @@ int EmployeeController::actionViewSortedList(Employee* listHead, string by)
     this->getServicesObj()->SystemClearScreen();
     this->getServicesObj()->MaximumScreenBufferSize();
 
-    EmployeeList ListObj;
-    ListObj.Show(listHead);
     if(listHead!=NULL)
     {
         ConsoleObj.xyCoord(30,6);
         ScreenObj.SetScreenTextColour(DefaultTextColour);
         cout << "Sorted by: " << by;
     }
+
+    EmployeeList ListObj;
+    ListObj.Show(listHead);
+
     menuInstance->SetYRelativeSystemFrame(this->getServicesObj()->DynamicRunLevel());
     return this->run(menuInstance->EmployeeAfterViewSortedMenu());
 }

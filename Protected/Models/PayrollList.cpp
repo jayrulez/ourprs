@@ -161,9 +161,9 @@ void PayrollList::Show(Payroll* listHead)
             y += 4;
         }
 
-        ConsoleObj.xyCoord(1,y);
+        ConsoleObj.xyCoord(1,y-2);
         cout<<"--------------------------------------------------------------------------------";
-        ConsoleObj.xyCoord(x,y+8);
+        ConsoleObj.xyCoord(x,y+6);
 	}
 	else
 	{
