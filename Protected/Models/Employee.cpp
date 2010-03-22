@@ -150,74 +150,110 @@ void Employee::show(int y)
         FrameObj.sFraming();
     }
 }
-
+/*
+ * Checks if a Employee with id == keyCode exists
+ * @ param int keyCode
+ * @ return bool
+ */
 bool Employee::recordExists(int keyCode)
 {
-	ifstream streamObj(this->getFilename());
+	ifstream streamObj(this->getFilename()); //attempts to open "Employee Payroll Data.txt" for reading
 	string line;
+    //checks if stream to "Employee Payroll Data.txt" is open
 	if(streamObj.is_open())
 	{
+	    //Primary contruct an employee object
 		Employee employee(0,"","",0,"",0);
+		//get header row from file
 	    std::getline( streamObj, line );
+	    //read employee records(line by line) from file
 		while(streamObj >> employee.id >> employee.firstname >> employee.lastname >> employee.deptCode >> employee.position >> employee.hoursWorked)
 		{
 			if(employee.id == keyCode)
 			{
+			    //close stream when record if found
 			    streamObj.close();
+			    //found record
 				return true;
 			}
 		}
 		streamObj.close();
 	}
+	//when record is not found or file was not opended
 	return false;
 }
-
+/*
+ * Checks if a Employee with id == keyCode exists by ignoring a certain id
+ * @ param int keyCode, int ignore
+ * @ return bool
+ */
 bool Employee::recordExists(int keyCode, int ignore)
 {
-	ifstream streamObj(this->getFilename());
+	ifstream streamObj(this->getFilename());//attempts to open "Employee Payroll Data.txt" for reading
 	string line;
+	//checks if stream to "Employee Payroll Data.txt" is open
 	if(streamObj.is_open())
 	{
+	    //Primary contruct an employee object
 		Employee employee(0,"","",0,"",0);
+		//get header row from file
 	    std::getline( streamObj, line );
+	    //read employee records(line by line) from file
 		while(streamObj >> employee.id >> employee.firstname >> employee.lastname >> employee.deptCode >> employee.position >> employee.hoursWorked)
 		{
 			if(employee.id != ignore)
 			{
 				if(employee.id == keyCode)
 				{
+				    //close stream when record if found
 					streamObj.close();
+					//found record
 					return true;
 				}
 			}
 		}
 		streamObj.close();
 	}
+	//when record is not found or file was not opended
 	return false;
 }
-
+/*
+ * Searches "Employee Payroll Data.txt" by id
+ * @ param int keyCode
+ * @ return Employee*
+ */
 Employee* Employee::findById(int keyCode)
 {
-	ifstream streamObj(this->getFilename());
+	ifstream streamObj(this->getFilename());//attempts to open "Employee Payroll Data.txt" for reading
 	string line;
+	//checks if stream to "Employee Payroll Data.txt" is open
 	if(streamObj.is_open())
 	{
+	    //Primary contruct an employee object
 		Employee employee(0,"","",0,"",0);
+		//get header row from file
 	    std::getline( streamObj, line );
+	    //read employee records(line by line) from file
 		while(streamObj >> employee.id >> employee.firstname >> employee.lastname >> employee.deptCode >> employee.position >> employee.hoursWorked)
 		{
 			if(employee.id == keyCode)
 			{
 			    streamObj.close();
 			    Employee * record = new Employee(employee.id, employee.firstname, employee.lastname, employee.deptCode, employee.position, employee.hoursWorked);
+				//pointer to record found is returned
 				return record;
 			}
 		}
 		streamObj.close();
 	}
+	//return NULL when record is not found or file was not opened
 	return NULL;
 }
-
+/*
+ * Searches "Employee Payroll Data.txt" by id
+ * @ param int keyCode
+ * @ return Employee*
+ */
 void Employee::save(Employee * listHead)
 {
 	ifstream iStreamObj(this->getFilename());
@@ -245,8 +281,11 @@ void Employee::save(Employee * listHead)
 		this->setOperationState(OPERATIONSTATE_FAILURE);
 	}
 }
-
-
+/*
+ * Searches "Employee Payroll Data.txt" by id
+ * @ param int keyCode
+ * @ return Employee*
+ */
 void Employee::save(Employee * listHead, Employee * oldEmployee)
 {
 	if(*this == *oldEmployee)
@@ -279,8 +318,11 @@ void Employee::save(Employee * listHead, Employee * oldEmployee)
 		}
 	}
 }
-
-
+/*
+ * Searches "Employee Payroll Data.txt" by id
+ * @ param int keyCode
+ * @ return Employee*
+ */
 void Employee::deleteRecord(Employee* listHead)
 {
 	ifstream iStreamObj(this->getFilename());

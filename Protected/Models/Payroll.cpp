@@ -27,7 +27,6 @@ using namespace std;
 Payroll::Payroll()
 {
     this->next = NULL;
-    this->prev = NULL;
     this->setFilename(PROCESSED_PAYROLL_DATA_FILE);
     this->setFileHeader("ID. No.\tFirst Name\tLast Name\tDept. Code\tPosition\tHours Worked\tRegular Pay\tOvertime Pay\tGross Pay\n");
 }
@@ -46,7 +45,6 @@ Payroll::Payroll(int id,string FirstName,string LastName,int DeptCode,string Pos
     this->OvertimePay=OvertimePay;
     this->GrossPay=GrossPay;
     this->next = NULL;
-    this->prev = NULL;
     this->setFilename(PROCESSED_PAYROLL_DATA_FILE);
     this->setFileHeader("ID. No.\tFirst Name\tLast Name\tDept. Code\tPosition\tHours Worked\tRegular Pay\tOvertime Pay\tGross Pay\n");
 }
