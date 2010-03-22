@@ -2,12 +2,12 @@ NATIONAL LIBRARY
 
 Running the program
 
-1. A temporary blank database file is placed on the cd allowing the user to run the program from the CD. 
+1. Temporary database files is placed on the cd allowing the user to run the program from the CD. 
 However, the full use and manipulation of the database file is limited because the files cannot be written to a CD-R once closed.
 
 2. Copy the library.exe and sound folder to your desired destination on your computer.
 
-3. Run library.exe and ENJOY!
+3. Run SSN Payroll Management System.exe and ENJOY!
 
 
 Building the program
@@ -20,7 +20,7 @@ Go to the project settings->linker->general->additional link directories. Add th
 Now go to settings->linker->input->additional dependencies. add "winmm.lib".
 
 If you have any problem building the project, please contact us at:
-waprave@gmail.com, portmore_representa@yahoo.com, duberryd@candw.ms or xavierlowe78@yahoo.com.
+waprave@gmail.com, portmore_representa@yahoo.com, duberryd@candw.ms
 
 
 
