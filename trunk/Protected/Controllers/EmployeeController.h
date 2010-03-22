@@ -33,6 +33,6 @@ public:
 	int actionViewSorted();
 	int actionDelete();
 	int search();
-	int actionViewSortedList(Employee*);
+	int actionViewSortedList(Employee*, string);
 };
 #endif

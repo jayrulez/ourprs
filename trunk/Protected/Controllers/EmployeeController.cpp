@@ -336,6 +336,7 @@ int EmployeeController::actionViewSorted()
     ListObj.BuildListFromFile();
 
 	int actionCode;
+	string by;
 
     actionCode = menuInstance->ViewSortedEmployeeMenu();
     switch(actionCode)
@@ -343,45 +344,51 @@ int EmployeeController::actionViewSorted()
         case EMPLOYEE_VIEW_SORTED_CODE_BY_ID:
         {
             ListObj.SortList("id");
+			by = "Id. No";
         }
         break;
         case EMPLOYEE_VIEW_SORTED_CODE_BY_FIRSTNAME:
         {
             ListObj.SortList("firstname");
+			by = "Firstname";
         }
         break;
         case EMPLOYEE_VIEW_SORTED_CODE_BY_LASTNAME:
         {
             ListObj.SortList("lastname");
+			by = "Lastname";
         }
         break;
         case EMPLOYEE_VIEW_SORTED_CODE_BY_DEPTCODE:
         {
             ListObj.SortList("deptCode");
+			by = "Department Code";
         }
         break;
         case EMPLOYEE_VIEW_SORTED_CODE_BY_POSITION:
         {
             ListObj.SortList("position");
+			by = "Position";
         }
         break;
         case EMPLOYEE_VIEW_SORTED_CODE_BY_HOURSWORKED:
         {
             ListObj.SortList("hoursWorked");
+			by = "Hours Worked";
         }
         break;
     }
     if(actionCode == EMPLOYEE_CODE || actionCode == MAIN_CODE)
         return this->run(actionCode);
     else
-        return this->actionViewSortedList(ListObj.GetHead());
+        return this->actionViewSortedList(ListObj.GetHead(), by);
 }
 
 /*
  * @ displays sorted list of employees
  * @ return int
  */
-int EmployeeController::actionViewSortedList(Employee* listHead)
+int EmployeeController::actionViewSortedList(Employee* listHead, string by)
 {
 	MasterFormMenuController* menuInstance = this->getMenuObj();
     this->getServicesObj()->SystemClearScreen();

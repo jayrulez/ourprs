@@ -27,7 +27,7 @@ public:
     int actionProcess();
     int actionView();
     int actionViewSorted();
-    int actionViewSortedList(Payroll*);
+    int actionViewSortedList(Payroll*, string);
 	int run(int);
 	int getDefaultActionCode();
 };

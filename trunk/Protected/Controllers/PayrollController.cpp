@@ -139,35 +139,40 @@ int PayrollController::actionViewSorted()
     ListObj.BuildListFromFile();
 
 	int actionCode;
-
+	string by;
+	
     actionCode = menuInstance->ViewSortedPayrollMenu();
     switch(actionCode)
     {
         case PAYROLL_VIEW_SORTED_CODE_BY_ID:
         {
             ListObj.SortList("id");
+			by = "Id. No";
         }
         break;
         case PAYROLL_VIEW_SORTED_CODE_BY_LASTNAME:
         {
             ListObj.SortList("lastname");
+			by = "Lastname";
         }
         break;
         case PAYROLL_VIEW_SORTED_CODE_BY_DEPTCODE:
         {
             ListObj.SortList("deptCode");
+			by = "Department Code";
         }
         break;
         case PAYROLL_VIEW_SORTED_CODE_BY_POSITION:
         {
             ListObj.SortList("position");
+			by = "Position";
         }
         break;
     }
     if(actionCode == PAYROLL_CODE || actionCode == MAIN_CODE)
         return this->run(actionCode);
     else
-        return this->actionViewSortedList(ListObj.GetHead());
+        return this->actionViewSortedList(ListObj.GetHead(), by);
 }
 
 /*
@@ -175,7 +180,7 @@ int PayrollController::actionViewSorted()
  * @ param Payroll * listHead
  * @ return int
  */
-int PayrollController::actionViewSortedList(Payroll* listHead)
+int PayrollController::actionViewSortedList(Payroll* listHead, string by)
 {
 	MasterFormMenuController* menuInstance = this->getMenuObj();
     this->getServicesObj()->SystemClearScreen();
